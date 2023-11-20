@@ -78,6 +78,17 @@ return {
                 ensure_installed = {},
                 handlers = {
                     lsp_zero.default_setup,
+                    fortls = function ()
+                        require('lspconfig').fortls.setup{
+                            cmd = {
+                                'fortls',
+                                '--lowercase_intrisics',
+                                '--hover_signature',
+                                '--hover_language=fortran',
+                                '--use_signature_help'
+                            }
+                        }
+                    end,
                     lua_ls = function()
                         -- (Optional) Configure lua language server for neovim
                         local lua_opts = lsp_zero.nvim_lua_ls()

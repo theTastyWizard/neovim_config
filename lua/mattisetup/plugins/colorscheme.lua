@@ -1,9 +1,28 @@
+--return{
+	--"folke/tokyonight.nvim",
+	--lazy = false,
+	--priority = 1000,
+	--opts = {},
+	--config = function()
+		--vim.cmd[[colorscheme tokyonight-night]]
+	--end,
+--}
 return{
-	"folke/tokyonight.nvim",
+    "Shatur/neovim-ayu",
 	lazy = false,
 	priority = 1000,
 	opts = {},
 	config = function()
-		vim.cmd[[colorscheme tokyonight-night]]
+		vim.cmd[[colorscheme ayu-dark]]
 	end,
 }
+
+--return{
+    --'stevedylandev/flexoki-nvim',
+	--lazy = false,
+	--priority = 1000,
+	--opts = {},
+	--config = function()
+		--vim.cmd[[colorscheme flexoki]]
+	--end,
+--}
