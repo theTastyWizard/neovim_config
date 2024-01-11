@@ -62,6 +62,7 @@ return {
         dependencies = {
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'williamboman/mason-lspconfig.nvim' },
+            { 'folke/neodev.nvim' },
         },
         config = function()
             -- This is where all the LSP shenanigans will live
@@ -78,9 +79,6 @@ return {
                 ensure_installed = {},
                 handlers = {
                     lsp_zero.default_setup,
-                    fortls = function ()
-                        require('lspconfig').fortls.setup{}
-                    end,
                     lua_ls = function()
                         -- (Optional) Configure lua language server for neovim
                         local lua_opts = lsp_zero.nvim_lua_ls()
@@ -89,5 +87,35 @@ return {
                 }
             })
         end
-    }
+    },
+    -- null-ls eða none-ls núna sett saman úr
+    -- https://github.com/VonHeikemen/lsp-zero.nvim/blob/main/advance-usage.md#intergrate-with-null-ls
+    -- https://github.com/jay-babu/mason-null-ls.nvim?tab=readme-ov-file#automatic-setup-usage
+    -- https://www.reddit.com/r/neovim/comments/12er016/configuring_autoformatting_using_nullls_and/
+    {
+        "jay-babu/mason-null-ls.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = {
+            "williamboman/mason.nvim",
+            "nvimtools/none-ls.nvim",
+        },
+        config = function()
+            -- require("your.null-ls.config") -- require your null-ls config here (example below)
+            require('mason-null-ls').setup({
+                ensure_installed = {},
+                automatic_installation = false,
+                handlers = {},
+            })
+
+            local lsp_zero = require('lsp-zero')
+            local null_opts = lsp_zero.build_options('null-ls', {})
+            require('null-ls').setup({
+                sources = {},
+                on_attach = function(client, bufnr)
+                    null_opts.on_attach(client, bufnr)
+                end,
+                -- require('mason-null-ls').setup_handlers()
+            })
+        end,
+    },
 }
