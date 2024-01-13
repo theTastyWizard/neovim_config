@@ -108,13 +108,13 @@ return {
             })
 
             local lsp_zero = require('lsp-zero')
+            local null_ls = require('null-ls')
             local null_opts = lsp_zero.build_options('null-ls', {})
-            require('null-ls').setup({
-                sources = {},
+            null_ls.setup({
+                sources = {null_ls.builtins.formatting.fprettify},
                 on_attach = function(client, bufnr)
                     null_opts.on_attach(client, bufnr)
                 end,
-                -- require('mason-null-ls').setup_handlers()
             })
         end,
     },
