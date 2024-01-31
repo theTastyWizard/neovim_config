@@ -82,6 +82,10 @@ return {
                     lua_ls = function()
                         -- (Optional) Configure lua language server for neovim
                         local lua_opts = lsp_zero.nvim_lua_ls()
+                        -- Nota neodev frá folke fyrir nvim config dót
+                        require("neodev").setup({
+                            -- add any options here, or leave empty to use the default settings
+                        })
                         require('lspconfig').lua_ls.setup(lua_opts)
                     end,
                 }
@@ -111,7 +115,7 @@ return {
             local null_ls = require('null-ls')
             local null_opts = lsp_zero.build_options('null-ls', {})
             null_ls.setup({
-                sources = {null_ls.builtins.formatting.fprettify},
+                sources = { null_ls.builtins.formatting.fprettify },
                 on_attach = function(client, bufnr)
                     null_opts.on_attach(client, bufnr)
                 end,
