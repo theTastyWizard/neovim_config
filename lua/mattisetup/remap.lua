@@ -25,5 +25,5 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- This is going to get me cancelled
+-- Til að ctrl-V Insert virki með ctrl-c
 vim.keymap.set("i", "<C-c>", "<Esc>")
