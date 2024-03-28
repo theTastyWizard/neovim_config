@@ -1,18 +1,22 @@
 return {
+    -- {
+    --     "RRethy/base16-nvim",
+    --     lazy = false,
+    --     priority = 1000,
+    --     opts = {},
+    --     config = function ()
+    --         -- vim.cmd[[colorscheme base16-pinky]]
+    --     end
+    -- },
     {
-        "folke/tokyonight.nvim",
+        "bradcush/nvim-base16",
         lazy = false,
         priority = 1000,
         opts = {},
+        config = function()
+            vim.cmd [[colorscheme base16-pinky]]
+        end
     },
-
-    {
-        "EdenEast/nightfox.nvim",
-        lazy = false,
-        priority = 1000,
-        opts = {},
-    },
-
     {
         "Shatur/neovim-ayu",
         lazy = false,

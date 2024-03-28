@@ -39,15 +39,15 @@ return {
                     -- Enable "Super Tab"				
                     ['<Tab>'] = cmp_action.luasnip_supertab(),
                     ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
-                    -- Ctrl+j/k to select next item
-                    ['<C-p>'] = cmp.mapping.select_prev_item(),
-                    ['<C-n>'] = cmp.mapping.select_next_item(),
+                    -- Ctrl+j/k to select next item auk <C-p> og <C-n>
+                    ['<C-k>'] = cmp.mapping.select_prev_item(),
+                    ['<C-j>'] = cmp.mapping.select_next_item(),
                     -- Ctrl+Space to trigger completion menu
                     ['<C-Space>'] = cmp.mapping.complete(),
                     -- Scroll up and down in the completion documentation
                     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
                     ['<C-d>'] = cmp.mapping.scroll_docs(4),
-                    -- Navigate between snippet placeholder				
+                    -- Navigate between snippet placeholder
                     ['<C-f>'] = cmp_action.luasnip_jump_forward(),
                     ['<C-b>'] = cmp_action.luasnip_jump_backward(),
                 })
