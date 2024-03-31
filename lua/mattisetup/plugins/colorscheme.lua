@@ -23,7 +23,7 @@ return {
         priority = 1000,
         opts = {},
         config = function()
-            vim.cmd [[colorscheme ayu-dark]]
+            -- vim.cmd [[colorscheme ayu-dark]]
         end,
     },
 }
