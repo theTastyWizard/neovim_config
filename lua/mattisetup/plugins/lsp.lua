@@ -21,6 +21,9 @@ return {
         event = 'InsertEnter',
         dependencies = {
             { 'L3MON4D3/LuaSnip' },
+            { 'hrsh7th/cmp-path' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { "rafamadriz/friendly-snippets" },
         },
         config = function()
             -- Here is where you configure the autocompletion settings.
@@ -31,8 +34,20 @@ return {
             local cmp = require('cmp')
             local cmp_action = lsp_zero.cmp_action()
 
+            -- Svo friendly snippets virki
+            require('luasnip.loaders.from_vscode').lazy_load()
+
             cmp.setup({
-                formatting = lsp_zero.cmp_format(),
+                formatting = lsp_zero.cmp_format({ details = true }),
+                sources = {
+                    { name = 'path' },
+                    { name = 'nvim_lsp' },
+                    { name = 'luasnip' },
+                },
+                window = {
+                    completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
+                },
                 mapping = cmp.mapping.preset.insert({
                     -- Enter to confirm selected suggestion
                     ['<CR>'] = cmp.mapping.confirm({ select = false }),
@@ -50,7 +65,7 @@ return {
                     -- Navigate between snippet placeholder
                     ['<C-f>'] = cmp_action.luasnip_jump_forward(),
                     ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-                })
+                }),
             })
         end
     },
@@ -63,11 +78,19 @@ return {
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'williamboman/mason-lspconfig.nvim' },
             { 'folke/neodev.nvim' },
+            {'maan2003/lsp_lines.nvim'}
         },
         config = function()
             -- This is where all the LSP shenanigans will live
             local lsp_zero = require('lsp-zero')
             lsp_zero.extend_lspconfig()
+
+            lsp_zero.set_sign_icons({
+                error = '󰅚 ',
+                warn = '󰀪 ',
+                hint = '󰌶 ',
+                info = ' '
+            })
 
             lsp_zero.on_attach(function(client, bufnr)
                 -- see :help lsp-zero-keybindings
@@ -90,6 +113,23 @@ return {
                     end,
                 }
             })
+            vim.diagnostic.config({
+                virtual_text = false,
+                signs = true,
+                update_in_insert = false,
+                underline = true,
+                severity_sort = true,
+                float = {
+                    focusable = true,
+                    style = 'minimal',
+                    border = 'rounded',
+                    source = 'always',
+                    header = '',
+                    prefix = '',
+                },
+            })
+            -- Fyrir aðeins betri diagnostics
+            require('lsp_lines').setup()
         end
     },
     -- null-ls eða none-ls núna sett saman úr
@@ -100,8 +140,8 @@ return {
         "jay-babu/mason-null-ls.nvim",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
-            "williamboman/mason.nvim",
-            "nvimtools/none-ls.nvim",
+            { "williamboman/mason.nvim" },
+            { "nvimtools/none-ls.nvim" },
         },
         config = function()
             -- require("your.null-ls.config") -- require your null-ls config here (example below)
@@ -115,9 +155,11 @@ return {
             local null_ls = require('null-ls')
             local null_opts = lsp_zero.build_options('null-ls', {})
             null_ls.setup({
-                sources = { null_ls.builtins.formatting.fprettify },
-                on_attach = function(client, bufnr)
-                    null_opts.on_attach(client, bufnr)
+                sources = { null_ls.builtins.formatting.fprettify.with({
+                    args = { "--indent 4" },
+                }) },
+                on_attach = function()
+                    null_opts.on_attach()
                 end,
             })
         end,
