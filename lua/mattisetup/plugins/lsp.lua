@@ -182,7 +182,7 @@ return {
             local null_opts = lsp_zero.build_options('null-ls', {})
             null_ls.setup({
                 sources = { null_ls.builtins.formatting.fprettify.with({
-                    args = { "--indent 4" },
+                    args = { "--silent --indent 4" },
                 }) },
                 on_attach = function()
                     null_opts.on_attach()
