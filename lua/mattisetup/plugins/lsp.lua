@@ -104,7 +104,7 @@ return {
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'williamboman/mason-lspconfig.nvim' },
             { 'folke/neodev.nvim' },
-            {'maan2003/lsp_lines.nvim'}
+            { 'maan2003/lsp_lines.nvim' }
         },
         config = function()
             -- This is where all the LSP shenanigans will live
