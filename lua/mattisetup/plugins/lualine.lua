@@ -5,16 +5,16 @@ return {
         require('lualine').setup {
             options = {
                 icons_enabled = true,
-                theme = 'ayu_dark',
+                theme = 'base16',
                 component_separators = '',
-                section_separators = { left = '', right = '' },
+                -- section_separators = { left = '', right = '' },
                 -- component_separators = { left = '', right = '' },
-                -- section_separators = { left = '', right = '' },
+                section_separators = { left = '', right = '' },
                 disabled_filetypes = {
-                    statusline = {},
+                    statusline = { 'undotree_2', 'diffpanel_3' },
                     winbar = {},
                 },
-                ignore_focus = {},
+                ignore_focus = { 'undotree_2', 'diffpanel_3' },
                 always_divide_middle = true,
                 globalstatus = false,
                 refresh = {
@@ -24,16 +24,12 @@ return {
                 }
             },
             sections = {
-                lualine_a = {
-                    { 'mode', separator = { left = '' }, right_padding = 2 }
-                },
-                lualine_b = { 'filename','diff', 'diagnostics' },
+                lualine_a = { 'mode' },
+                lualine_b = { 'filename', 'diff', 'diagnostics' },
                 lualine_c = { 'branch' },
                 lualine_x = { 'filetype' },
                 lualine_y = {},
-                lualine_z = {
-                    { 'location', separator = { right = '' }, left_padding = 2 }
-                },
+                lualine_z = { 'location', 'progress' },
             },
             inactive_sections = {
                 lualine_a = {},
@@ -46,7 +42,7 @@ return {
             tabline = {},
             winbar = {},
             inactive_winbar = {},
-            extensions = {}
+            extensions = { 'oil' },
         }
     end
 }
