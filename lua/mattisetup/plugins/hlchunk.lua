@@ -5,6 +5,10 @@ return {
         require("hlchunk").setup({
             blank = {
                 enable = false,
+                exclude_filetypes = {
+                    undotree = true,
+                    diff = true,
+                },
             },
             chunk = {
                 use_treesitter = true,
@@ -19,7 +23,11 @@ return {
                 style = {
                     "#6600ff",
                     "#df206c",
-                }
+                },
+                exclude_filetypes = {
+                    undotree = true,
+                    diff = true,
+                },
             },
             indent = {
                 enable = false,
@@ -32,11 +40,19 @@ return {
                 style = {
                     vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Whitespace")), "fg", "gui"),
                 },
+                exclude_filetypes = {
+                    undotree = true,
+                    diff = true,
+                },
             },
             line_num = {
                 use_treesitter = true,
                 style = "#806d9c",
-            }
+                exclude_filetypes = {
+                    undotree = true,
+                    diff = true,
+                },
+            },
         })
     end
 }

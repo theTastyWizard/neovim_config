@@ -11,10 +11,10 @@ return {
                 -- component_separators = { left = '', right = '' },
                 section_separators = { left = '', right = '' },
                 disabled_filetypes = {
-                    statusline = { 'undotree_2', 'diffpanel_3' },
+                    statusline = {},
                     winbar = {},
                 },
-                ignore_focus = { 'undotree_2', 'diffpanel_3' },
+                ignore_focus = { 'undotree', 'diff' },
                 always_divide_middle = true,
                 globalstatus = false,
                 refresh = {
