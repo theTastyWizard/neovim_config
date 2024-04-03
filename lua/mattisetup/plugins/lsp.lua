@@ -13,7 +13,18 @@ return {
     {
         'williamboman/mason.nvim',
         lazy = false,
-        config = true,
+        config = function ()
+            require("mason").setup({
+                ui = {
+                    border = "rounded",
+                    icons = {
+                        package_installed = "✓",
+                        package_pending = "➜",
+                        package_uninstalled = "✗"
+                    },
+                },
+            })
+        end,
     },
     -- fyrir tabout
     {
@@ -136,6 +147,7 @@ return {
                             -- add any options here, or leave empty to use the default settings
                         })
                         require('lspconfig').lua_ls.setup(lua_opts)
+                        require('lspconfig.ui.windows').default_options.border = "rounded"
                     end,
                 }
             })
