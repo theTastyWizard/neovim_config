@@ -8,6 +8,7 @@ return {
                 exclude_filetypes = {
                     undotree = true,
                     diff = true,
+                    oil = true,
                 },
             },
             chunk = {
@@ -27,6 +28,7 @@ return {
                 exclude_filetypes = {
                     undotree = true,
                     diff = true,
+                    oil = true,
                 },
             },
             indent = {
@@ -43,6 +45,7 @@ return {
                 exclude_filetypes = {
                     undotree = true,
                     diff = true,
+                    oil = true,
                 },
             },
             line_num = {
@@ -51,6 +54,7 @@ return {
                 exclude_filetypes = {
                     undotree = true,
                     diff = true,
+                    oil = true,
                 },
             },
         })
