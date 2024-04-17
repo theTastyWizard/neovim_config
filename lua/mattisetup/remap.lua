@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex, {desc='Open netrw Explore'})
+-- vim.keymap.set("n", "<leader>e", vim.cmd.Ex, {desc='Open netrw Explore'})
+vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", {desc='Open Oil'})
 
 -- Hraðari færsla sem miðsetur skjáin
 vim.keymap.set("n", "J", "6jzz")
@@ -23,7 +24,11 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
+
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- Til að ctrl-V Insert virki með ctrl-c
 vim.keymap.set("i", "<C-c>", "<Esc>")
+
+-- Terminal remap
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
