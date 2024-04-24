@@ -12,5 +12,8 @@ return {
         window = {
             border = "rounded"
         },
+        layout = {
+            align = "center",
+        }
     }
 }
