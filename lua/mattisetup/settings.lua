@@ -16,6 +16,7 @@ vim.opt.undofile = true
 vim.opt.updatetime = 50
 
 vim.opt.termguicolors = true
+
 vim.opt.scrolloff = 999
 
 -- TODO: virkar ekki þarf að setja autacmd
