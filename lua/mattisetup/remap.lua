@@ -3,8 +3,8 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", {desc='Open Oil'})
 
 -- Hraðari færsla sem miðsetur skjáin
-vim.keymap.set("n", "J", "6j")
-vim.keymap.set("n", "K", "6k")
+vim.keymap.set("n", "J", "6j", {desc='6 lines down'})
+vim.keymap.set("n", "K", "6k", {desc='6 lines up'})
 
 -- next greatest remap ever asbjornHaland tekið frá primeagen
 -- setur system clipboard á space+ y, Y og p,P
