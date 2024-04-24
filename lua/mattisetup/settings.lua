@@ -16,5 +16,8 @@ vim.opt.undofile = true
 vim.opt.updatetime = 50
 
 vim.opt.termguicolors = true
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 999
 
+-- TODO: virkar ekki þarf að setja autacmd
+-- á að taka burt nýtt line með comment á o
+vim.opt.formatoptions:remove("o")
