@@ -13,7 +13,7 @@ return {
     {
         'williamboman/mason.nvim',
         lazy = false,
-        config = function ()
+        config = function()
             require("mason").setup({
                 ui = {
                     border = "rounded",
@@ -133,6 +133,9 @@ return {
                 -- see :help lsp-zero-keybindings
                 -- to learn the available actions
                 lsp_zero.default_keymaps({ buffer = bufnr })
+                vim.keymap.set('n', 'L', '<cmd>lua vim.lsp.buf.hover()<cr>', {buffer = bufnr, desc='Show hover info about symbol'})
+                vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', {buffer = bufnr, desc='List all references to symbol in Ts'})
+                vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', {buffer = bufnr, desc='Go to symbol definition'})
             end)
 
             require('mason-lspconfig').setup({
@@ -151,8 +154,12 @@ return {
                     end,
                 }
             })
+            require('lsp_lines').setup()
             vim.diagnostic.config({
                 virtual_text = false,
+                virtual_lines = { -- lsp_lines
+                    -- only_current_line = true,
+                },
                 signs = true,
                 update_in_insert = false,
                 underline = true,
@@ -161,13 +168,11 @@ return {
                     focusable = true,
                     style = 'minimal',
                     border = 'rounded',
-                    source = 'always',
+                    source = 'if_many',
                     header = '',
                     prefix = '',
                 },
             })
-            -- Fyrir aðeins betri diagnostics
-            require('lsp_lines').setup()
         end
     },
     -- null-ls eða none-ls núna sett saman úr
