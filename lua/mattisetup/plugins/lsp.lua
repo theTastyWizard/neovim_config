@@ -134,7 +134,8 @@ return {
                 -- to learn the available actions
                 lsp_zero.default_keymaps({ buffer = bufnr })
                 vim.keymap.set('n', 'L', '<cmd>lua vim.lsp.buf.hover()<cr>', {buffer = bufnr, desc='Show hover info about symbol'})
-                vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', {buffer = bufnr, desc='List all references to symbol in Ts'})
+                -- vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', {buffer = bufnr, desc='List all references to symbol in Ts'})
+                vim.keymap.set('n', '<leader>r', '<cmd>Trouble lsp_references<cr>', {buffer = bufnr, desc='List all references to symbol in Trouble'})
                 vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', {buffer = bufnr, desc='Go to symbol definition'})
             end)
 
