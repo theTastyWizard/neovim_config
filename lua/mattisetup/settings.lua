@@ -1,3 +1,7 @@
+-- Til að vim opni nýa glugga undir og til hægri
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
