@@ -11,8 +11,19 @@ return {
             require('base16-colorscheme').setup({ --óbreytt er pinky
                 base00 = '#171517',
                 base01 = '#1b181b',
-                base02 = '#333133', --breytt til að sjá betur
-                base03 = '#937979', --breytt til að sjá betur TODO: Velja aðeins betri lit
+                base02 = '#1E3232', --visual selected breytt til að sjá betur 
+                base03 = '#cc0051', --comments breytt til að sjá betur TODO: Velja aðeins betri lit
+                -- #a2626d
+                -- #b26c78
+                -- #937979
+                -- #1E2832
+                -- #1E3232
+                -- #333133
+                -- #944866 
+                -- #ff7fb2
+                -- #b21956
+                -- #cc0051
+                -- #169c4b
                 base04 = '#e7dbdb',
                 base05 = '#f5f5f5',
                 base06 = '#ffffff',
