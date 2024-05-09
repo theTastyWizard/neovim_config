@@ -12,6 +12,7 @@ return {
                 },
             },
             chunk = {
+                notify = false,
                 use_treesitter = true,
                 error_sign = true,
                 chars = {
@@ -23,7 +24,7 @@ return {
                 },
                 style = {
                     "#6600ff",
-                    "#df206c",
+                    "#df206c", --Highlight wrong chunk
                 },
                 exclude_filetypes = {
                     undotree = true,
@@ -44,13 +45,13 @@ return {
                 },
                 exclude_filetypes = {
                     undotree = true,
-                    diff = true,
                     oil = true,
                 },
             },
             line_num = {
                 use_treesitter = true,
-                style = "#806d9c",
+                style = "#6600ff", --"#806d9c",
+
                 exclude_filetypes = {
                     undotree = true,
                     diff = true,
