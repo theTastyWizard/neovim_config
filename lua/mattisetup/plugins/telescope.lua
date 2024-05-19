@@ -17,6 +17,10 @@ return {
             },
         })
         require "telescope".setup {
+            defaults = {
+                prompt_prefix = ' 🔍 ',
+                selection_caret = "󰼛 ",
+            },
             pickers = {
                 colorscheme = {
                     enable_preview = true,
