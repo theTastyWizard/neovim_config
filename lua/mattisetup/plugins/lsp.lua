@@ -158,9 +158,7 @@ return {
             require('lsp_lines').setup()
             vim.diagnostic.config({
                 virtual_text = false,
-                virtual_lines = { -- lsp_lines
-                    -- only_current_line = true,
-                },
+                virtual_lines = false, -- lsp_lines -- only_current_line = true,
                 signs = true,
                 update_in_insert = false,
                 underline = false,
