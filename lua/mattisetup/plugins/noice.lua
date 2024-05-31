@@ -13,7 +13,18 @@ return {
         "rcarriga/nvim-notify",
     },
     config = function()
+        require("notify").setup({
+            fps = 60, --prufa hvort þetta verði of mikið cpu-notkun
+            render = "wrapped-compact",
+            max_width = 45,
+            stages = "fade",
+            timeout = 3000,    -- 3 sek
+            top_down = true,  -- false birtist neðst
+        })
         require("noice").setup({
+            notify = {
+                enabled = true,
+            },
             lsp = {
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
                 override = {
@@ -31,7 +42,7 @@ return {
             -- you can enable a preset for easier configuration
             presets = {
                 bottom_search = true,         -- use a classic bottom cmdline for search
-                command_palette = true,      -- position the cmdline and popupmenu together
+                command_palette = true,       -- position the cmdline and popupmenu together
                 long_message_to_split = true, -- long messages will be sent to a split
                 inc_rename = false,           -- enables an input dialog for inc-rename.nvim
                 lsp_doc_border = false,       -- add a border to hover docs and signature help
