@@ -12,7 +12,7 @@ return {
                 base00 = '#171517',
                 base01 = '#1b181b',
                 base02 = '#1E3232', --visual selected breytt til að sjá betur 
-                base03 = '#cc0051', --comments breytt til að sjá betur TODO: Velja aðeins betri lit
+                base03 = '#b21956', --comments breytt til að sjá betur TODO: Velja aðeins betri lit
                 -- #a2626d
                 -- #b26c78
                 -- #937979
