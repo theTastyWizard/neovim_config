@@ -1,20 +1,22 @@
 return {
     "shellRaining/hlchunk.nvim",
-    event = { "UIEnter" },
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
         require("hlchunk").setup({
-            blank = {
-                enable = false,
+            chunk = {
+                enable = true,
+                notify = false,
+                use_treesitter = true,
+                error_sign = true,
                 exclude_filetypes = {
                     undotree = true,
                     diff = true,
                     oil = true,
                 },
-            },
-            chunk = {
-                notify = false,
-                use_treesitter = true,
-                error_sign = true,
+                style = {
+                    { fg = "#6600ff" },
+                    { fg = "#df206c" }, --Highlight wrong chunk
+                },
                 chars = {
                     horizontal_line = "─",
                     vertical_line = "│",
@@ -22,10 +24,10 @@ return {
                     left_bottom = "╰",
                     right_arrow = ">",
                 },
-                style = {
-                    "#6600ff",
-                    "#df206c", --Highlight wrong chunk
-                },
+            },
+            line_num = { -- virkar ekki eftir update athuga seinna
+                style = "#6600ff", --"#806d9c",
+                use_treesitter = true,
                 exclude_filetypes = {
                     undotree = true,
                     diff = true,
@@ -34,29 +36,22 @@ return {
             },
             indent = {
                 enable = false,
-                chars = {
-                    "│",
-                    "¦",
-                    "┆",
-                    "┊",
-                },
-                style = {
-                    vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Whitespace")), "fg", "gui"),
-                },
-                exclude_filetypes = {
-                    undotree = true,
-                    oil = true,
-                },
+                -- chars = {
+                --     "│",
+                --     "¦",
+                --     "┆",
+                --     "┊",
+                -- },
+                -- style = {
+                --     vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Whitespace")), "fg", "gui"),
+                -- },
+                -- exclude_filetypes = {
+                --     undotree = true,
+                --     oil = true,
+                -- },
             },
-            line_num = {
-                use_treesitter = true,
-                style = "#6600ff", --"#806d9c",
-
-                exclude_filetypes = {
-                    undotree = true,
-                    diff = true,
-                    oil = true,
-                },
+            blank = {
+                enable = false,
             },
         })
     end
