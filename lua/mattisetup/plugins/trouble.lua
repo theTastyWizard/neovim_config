@@ -13,12 +13,12 @@ return {
         },
         {
             "<leader>r",
-            "<cmd>Trouble references toggle<cr>",
+            "<cmd>Trouble lsp_references toggle<cr>",
             desc = "Open references in trouble",
         },
         {
             "<leader>ds",
-            "<cmd>Trouble symbols toggle focus=false<cr>",
+            "<cmd>Trouble symbols toggle focus=true<cr>",
             desc = "Symbols (Trouble)",
         },
         {
@@ -133,15 +133,6 @@ return {
         },
         ---@type table<string, trouble.Mode>
         modes = {
-            test = {
-                mode = "diagnostics",
-                preview = {
-                    type = "split",
-                    relative = "win",
-                    position = "right",
-                    size = 0.3,
-                },
-            },
             symbols = {
                 desc = "document symbols",
                 mode = "lsp_document_symbols",
@@ -179,9 +170,9 @@ return {
             indent        = {
                 top         = "│ ",
                 middle      = "├╴",
-                -- last        = "└╴",
+                last        = "└╴",
                 -- last          = "-╴",
-                last        = "╰╴", -- rounded
+                -- last        = "╰╴", -- rounded
                 fold_open   = " ",
                 fold_closed = " ",
                 ws          = "  ",
