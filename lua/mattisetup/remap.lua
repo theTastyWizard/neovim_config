@@ -2,7 +2,8 @@ vim.g.mapleader = " "
 
 vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", { desc = 'Close nvim' })
 vim.keymap.set("n", "<leader>x", "<cmd>x<cr>", { desc = 'Save and close nvim' })
-vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = 'Save file' })
+-- vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = 'Save file' })
+vim.keymap.set("n", "<leader>w", "<cmd>up<cr>", { desc = 'Update file' })
 
 vim.keymap.set("n", "<leader>e", "<cmd>Ex<cr>", { desc = 'Open netrw Explore' })
 
