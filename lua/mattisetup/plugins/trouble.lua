@@ -12,7 +12,7 @@ return {
             desc = "Open Trouble for buffer",
         },
         {
-            "<leader>r",
+            "<leader>dr",
             "<cmd>Trouble lsp_references toggle<cr>",
             desc = "Open references in trouble",
         },
