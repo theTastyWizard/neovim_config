@@ -2,9 +2,15 @@
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
+-- notar ignore case nema það sé stór í leitarorði
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+-- setja linenumber og relative ln
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+-- hafa allt sem 4 space = tab
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -12,7 +18,6 @@ vim.opt.expandtab = true
 vim.opt.smarttab = true
 
 -- Fyrir undotree plugin svo það muni lengi fra primeagen
--- vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undodir = os.getenv("HOME") .. "/.local/state/nvim/undo"
 vim.opt.undofile = true
 
@@ -25,23 +30,8 @@ vim.opt.scrolloff = 999
 
 vim.opt.cursorline = true
 
-vim.opt.splitkeep = 'screen'
+vim.opt.splitkeep = 'cursor'
 
-vim.opt.list = true
-vim.opt.listchars = {
-    -- Replace tab whitespace with ->
-    tab = '->',
-    -- I don't care about spaces so spaces are just plain old whitespace
-    multispace = ' ',
-    -- nbsp=' ',
-    -- If a line ends with a space, I probably do care about that, show this instead of whitespace
-    -- trail = '',
-    -- If the line goes off the screen (for some reason), show this as the last character of the line so I know the
-    -- line continues to the right
-    extends = '⟩',
-    -- Literally the same but left
-    precedes = '⟨'
-}
 -- Tells me if there is the line is wrapped
 vim.g.showbreak = '↪' --NOTE: virðist ekki virka
 
