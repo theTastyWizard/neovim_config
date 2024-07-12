@@ -6,6 +6,9 @@ vim.opt.splitright = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+-- Láta nvim ripgrep nota smartcase
+vim.opt.grepprg = "rg --vimgrep -uu --smart-case"
+
 -- setja linenumber og relative ln
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -32,8 +35,22 @@ vim.opt.cursorline = true
 
 vim.opt.splitkeep = 'cursor'
 
+-- leyfir að færast lengra en lína í visual block mode
+-- vim.opt.virtualedit = "block"
+
+vim.opt.list = false -- enable or disable listchars
+vim.opt.listchars = {
+    eol = "↲",
+    tab = "-->",
+    trail = "+",
+    extends = ">",
+    precedes = "<",
+    space = "·",
+    nbsp = "␣",
+}
+
 -- Tells me if there is the line is wrapped
-vim.g.showbreak = '↪' --NOTE: virðist ekki virka
+-- vim.g.showbreak = '↪' --NOTE: virðist ekki virka
 
 -- TODO: virkar ekki þarf að setja autacmd
 -- á að taka burt nýtt line með comment á o
