@@ -27,11 +27,11 @@ vim.keymap.set("n", "K", "6k", { desc = '6 lines up' })
 -- setur system clipboard á space+ y, Y og p,P
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = 'System clipboard yank' })
 vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]], { desc = 'System clipboard Yank' })
-vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = 'System clipboard paste' }) --FIX: virkar ekki á win
+vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = 'System clipboard paste' }) 
 vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]], { desc = 'System clipboard Paste' })
 
 -- passar að yankaðir hlutir eyðist ekki eftir paste
--- vim.keymap.set("x", "<leader>p", "\"_dP") --FIX: virðist vera ástæða þess að paste úr + virkaði ekki rétt
+vim.keymap.set("x", "p", "\"_dP") 
 
 -- Til að ctrl-V Insert virki með ctrl-c
 vim.keymap.set("i", "<C-c>", "<Esc>")
