@@ -18,6 +18,17 @@ require("lazy").setup("mattisetup.plugins",
         },
         ui = {
             border = "rounded"
-        }
+        },
+        performance = {
+            rtp = {
+                disable_plugins = {
+                    "netrw",
+                    "netrwPlugin",
+                    "netrwSettings",
+                    "tutor",
+
+                }
+            }
+        },
     }
 )
