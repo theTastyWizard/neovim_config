@@ -26,22 +26,6 @@ return {
             })
         end,
     },
-    -- fyrir tabout
-    {
-        "kawre/neotab.nvim",
-        event = "InsertEnter",
-        opts = {
-            tabkey = "",
-            behavior = "nested",
-            smart_punctuators = {
-                enabled = true,
-                semicolon = {
-                    enabled = true,
-                    ft = { "cs", "c", "cpp", "java" },
-                },
-            },
-        },
-    },
     -- Autocompletion
     {
         'hrsh7th/nvim-cmp',
@@ -114,8 +98,6 @@ return {
         dependencies = {
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'williamboman/mason-lspconfig.nvim' },
-            { 'folke/neodev.nvim' },
-            { 'maan2003/lsp_lines.nvim' }
         },
         config = function()
             -- This is where all the LSP shenanigans will live
@@ -133,77 +115,92 @@ return {
                 -- see :help lsp-zero-keybindings
                 -- to learn the available actions
                 lsp_zero.default_keymaps({ buffer = bufnr })
-                vim.keymap.set('n', 'L', '<cmd>lua vim.lsp.buf.hover()<cr>', {buffer = bufnr, desc='Show hover info about symbol'})
-                -- vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', {buffer = bufnr, desc='List all references to symbol in Ts'})
-                vim.keymap.set('n', '<leader>r', '<cmd>Trouble lsp_references<cr>', {buffer = bufnr, desc='List all references to symbol in Trouble'})
-                vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', {buffer = bufnr, desc='Go to symbol definition'})
+                vim.keymap.set('n', 'L', '<cmd>lua vim.lsp.buf.hover()<cr>',
+                    { buffer = bufnr, desc = 'Show hover info about symbol' })
+                vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>',
+                    { buffer = bufnr, desc = 'Go to symbol definition' })
             end)
 
             require('mason-lspconfig').setup({
                 ensure_installed = {},
                 handlers = {
-                    lsp_zero.default_setup,
+                    lsp_zero.default_setup, -- setur upp alla servera með config í lsp config
                     lua_ls = function()
                         -- (Optional) Configure lua language server for neovim
                         local lua_opts = lsp_zero.nvim_lua_ls()
-                        -- Nota neodev frá folke fyrir nvim config dót
-                        require("neodev").setup({
-                            -- add any options here, or leave empty to use the default settings
-                        })
                         require('lspconfig').lua_ls.setup(lua_opts)
                         require('lspconfig.ui.windows').default_options.border = "rounded"
                     end,
                 }
             })
-            require('lsp_lines').setup()
-            vim.diagnostic.config({
-                virtual_text = false,
-                virtual_lines = false, -- lsp_lines -- only_current_line = true,
-                signs = true,
-                update_in_insert = false,
-                underline = false,
-                severity_sort = true,
-                float = {
-                    focusable = true,
-                    style = 'minimal',
-                    border = 'rounded',
-                    source = 'if_many',
-                    header = '',
-                    prefix = '',
-                },
-            })
         end
     },
+    -- {
+    --     "williamboman/mason.nvim",
+    --     "frostplexx/mason-bridge.nvim",
+    --     'stevearc/conform.nvim',
+    --     -- event = { "BufWritePre" },
+    --     -- cmd = { "ConformInfo" },
+    --     -- opts = {},
+    --     config = function()
+    --         require("mason-bridge").setup()
+    --
+    --         -- After setting up mason-bridge you may set up conform.nvim and nvim-lint
+    --         require("conform").setup({
+    --             formatters_by_ft = require("mason-bridge").get_formatters(),
+    --         })
+    --     end
+    -- },
     -- null-ls eða none-ls núna sett saman úr
     -- https://github.com/VonHeikemen/lsp-zero.nvim/blob/main/advance-usage.md#intergrate-with-null-ls
     -- https://github.com/jay-babu/mason-null-ls.nvim?tab=readme-ov-file#automatic-setup-usage
     -- https://www.reddit.com/r/neovim/comments/12er016/configuring_autoformatting_using_nullls_and/
-    {
-        "jay-babu/mason-null-ls.nvim",
-        event = { "BufReadPre", "BufNewFile" },
-        dependencies = {
-            { "williamboman/mason.nvim" },
-            { "nvimtools/none-ls.nvim" },
-        },
-        config = function()
-            -- require("your.null-ls.config") -- require your null-ls config here (example below)
-            require('mason-null-ls').setup({
-                ensure_installed = {},
-                automatic_installation = false,
-                handlers = {},
-            })
+    -- {
+    --     "nvimtools/none-ls.nvim",
+    --     event = { "BufReadPre", "BufNewFile" },
+    --     dependencies = {"nvim-lua/plenary.nvim"},
+    --     config = function()
+    --         require('null-ls').setup()
+    --     end,
+    -- },
+    -- {
+    --     "zeioth/none-ls-autoload.nvim",
+    --     event = "BufEnter",
+    --     dependencies = {
+    --         "williamboman/mason.nvim",
+    --         "zeioth/none-ls-external-sources.nvim"
+    --     },
+    --     opts = {
+    --         -- Here you can add support for sources not oficially suppored by none-ls.
+    --         external_sources = {
+    --             -- diagnostics
+    --             -- 'none-ls-external-sources.diagnostics.cpplint',
+    --             -- 'none-ls-external-sources.diagnostics.eslint',
+    --             -- 'none-ls-external-sources.diagnostics.eslint_d',
+    --             -- 'none-ls-external-sources.diagnostics.flake8',
+    --             -- 'none-ls-external-sources.diagnostics.luacheck',
+    --             -- 'none-ls-external-sources.diagnostics.psalm',
+    --             'none-ls-external-sources.diagnostics.shellcheck',
+    --             -- 'none-ls-external-sources.diagnostics.yamllint',
 
-            local lsp_zero = require('lsp-zero')
-            local null_ls = require('null-ls')
-            local null_opts = lsp_zero.build_options('null-ls', {})
-            null_ls.setup({
-                sources = { null_ls.builtins.formatting.fprettify.with({
-                    args = { "--silent --indent 4" },
-                }) },
-                on_attach = function()
-                    null_opts.on_attach()
-                end,
-            })
-        end,
-    },
+    --             -- formatting
+    --             -- 'none-ls-external-sources.formatting.autopep8',
+    --             'none-ls-external-sources.formatting.beautysh',
+    --             -- 'none-ls-external-sources.formatting.easy-coding-standard',
+    --             -- 'none-ls-external-sources.formatting.eslint',
+    --             -- 'none-ls-external-sources.formatting.eslint_d',
+    --             -- 'none-ls-external-sources.formatting.jq',
+    --             -- 'none-ls-external-sources.formatting.latexindent',
+    --             -- 'none-ls-external-sources.formatting.reformat_gherkin',
+    --             -- 'none-ls-external-sources.formatting.rustfmt',
+    --             -- 'none-ls-external-sources.formatting.standardrb',
+    --             -- 'none-ls-external-sources.formatting.yq',
+
+    --             -- code actions
+    --             -- 'none-ls-external-sources.code_actions.eslint',
+    --             -- 'none-ls-external-sources.code_actions.eslint_d',
+    --             'none-ls-external-sources.code_actions.shellcheck',
+    --         },
+    --     },
+    -- },
 }
