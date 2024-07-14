@@ -2,20 +2,14 @@ local wk = require("which-key")
 
 vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = 'Open Oil' })
 
-wk.register({
-    ["<leader>t"] = {
-        name = "Terminal",
-        t = {"<cmd>FloatermNew --name=Main --wintype=split --height=0.25 fish <cr>",
-            'Open Main Terminal'},
-        c = {"<cmd>:FloatermNew --autoclose=0 gcc % -o %< && ./%<<cr>", 'Run C code'},
-    }
+wk.add({
+    { "<leader>t",  group = "Terminal" },
+    { "<leader>tc", "<cmd>:FloatermNew --autoclose=0 gcc % -o %< && ./%<<cr>",              desc = "Run C code" },
+    { "<leader>tt", "<cmd>FloatermNew --name=Main --wintype=split --height=0.25 fish <cr>", desc = "Open Main Terminal" },
 })
-wk.register({
-    ["<leader>d"] = {
-        name = "Diagnostics",
-        n = { "<cmd>lua vim.diagnostic.goto_next()<cr>", 'go to next diagnostic' },
-        p = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", 'go to previous diagnostic' },
-        T = { "<cmd>TodoTrouble<cr>", 'open Todo comments in Trouble' },
-    },
-
+wk.add({
+    { "<leader>d",  group = "Diagnostics" },
+    { "<leader>dT", "<cmd>TodoTrouble<cr>",                    desc = "open Todo comments in Trouble" },
+    { "<leader>dn", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "go to next diagnostic" },
+    { "<leader>dp", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "go to previous diagnostic" },
 })

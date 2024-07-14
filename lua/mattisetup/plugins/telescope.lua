@@ -1,20 +1,19 @@
 return {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.2',
+    branch = '0.1.x',
     dependencies = {
         'nvim-lua/plenary.nvim',
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
     },
     config = function()
         local wk = require("which-key")
-        wk.register({
-            ["<leader>f"] = {
-                name = "Find",
-                g = { require('telescope.builtin').git_files, "Git files" },
-                f = { require('telescope.builtin').find_files, "Files" },
-                s = { require('telescope.builtin').grep_string, "String" },
-                l = { require('telescope.builtin').live_grep, "Live grep" },
-            },
+        wk.add({
+            {"<leader>f", group = "Find"},
+            {"<leader>ff", "<cmd>Telescope find_files<cr>", desc="files"},
+            {"<leader>fs", "<cmd>Telescope grep_string<cr>", desc="string"},
+            {"<leader>fg", "<cmd>Telescope live_grep<cr>", desc="grep"},
+            {"<leader>fm", "<cmd>Telescope man_pages<cr>", desc="man page"},
+
         })
         require "telescope".setup {
             defaults = {
@@ -35,8 +34,8 @@ return {
                 }
             },
         }
-        --       -- To get fzf loaded and working with telescope, you need to call
-        --       -- load_extension, somewhere after setup function:
+        -- To get fzf loaded and working with telescope, you need to call
+        -- load_extension, somewhere after setup function:
         require('telescope').load_extension('fzf')
     end
 }
