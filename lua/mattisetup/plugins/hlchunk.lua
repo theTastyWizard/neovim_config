@@ -24,6 +24,8 @@ return {
                     left_bottom = "╰",
                     right_arrow = ">",
                 },
+                delay = 1, -- if 0 then no animation
+                duration = 200,
             },
             line_num = { -- virkar ekki eftir update athuga seinna
                 style = "#6600ff", --"#806d9c",
