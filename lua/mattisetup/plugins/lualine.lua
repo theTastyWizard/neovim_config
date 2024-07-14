@@ -28,9 +28,11 @@ return {
                 lualine_b = { 'filename', 'diff', 'diagnostics' },
                 lualine_c = {
                     { 'branch' },
+                },
+                lualine_x = {
+                    { 'filetype' },
                     { 'grapple' },
                 },
-                lualine_x = { 'filetype' },
                 lualine_y = {
                     { -- setur @macro í lualine
                         require("noice").api.status.mode.get,
