@@ -16,6 +16,10 @@ vim.keymap.set({ "n", "v" }, "<A-j>", "<C-w>j")
 vim.keymap.set({ "n", "v" }, "<A-k>", "<C-w>k")
 vim.keymap.set({ "n", "v" }, "<A-l>", "<C-w>l")
 
+-- better end and start of the line
+vim.keymap.set({ "n", "v" }, "H", "^", { desc = "Start of the line" })
+vim.keymap.set({ "n", "v" }, "L", "$", { desc = "End of the line" })
+
 -- ef Oil er ekki tilstaðar
 vim.keymap.set("n", "<leader>e", "<cmd>Ex<cr>", { desc = 'Open netrw Explore' })
 
@@ -38,10 +42,3 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- Terminal remap til að sleppa úr terminalmode með ESC
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
-
--- heldur öllu í miðjunni á skjánum
--- NOTE: nota scrolloff=999 í staðinn
--- vim.keymap.set("n", "<C-d>", "<C-d>zz")
--- vim.keymap.set("n", "<C-u>", "<C-u>zz")
--- vim.keymap.set("n", "n", "nzzzv")
--- vim.keymap.set("n", "N", "Nzzzv")
