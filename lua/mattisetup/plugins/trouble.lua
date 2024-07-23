@@ -22,8 +22,8 @@ return {
             desc = "Symbols (Trouble)",
         },
         {
-            "<leader>dL",
-            "<cmd>Trouble lsp toggle focus=true win.position=right<cr>",
+            "<leader>dl",
+            "<cmd>Trouble lsp toggle focus=true <cr>",
             desc = "LSP Definitions / references / ... (Trouble)",
         },
         {
@@ -133,6 +133,12 @@ return {
         },
         ---@type table<string, trouble.Mode>
         modes = {
+            lsp_base = {
+                desc = "Base for all lsp trouble modes",
+                focus = true,
+                win = { position = "bottom" },
+                size = 0.2,
+            },
             symbols = {
                 desc = "document symbols",
                 mode = "lsp_document_symbols",
