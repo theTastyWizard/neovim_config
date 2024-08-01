@@ -115,7 +115,7 @@ return {
                 -- see :help lsp-zero-keybindings
                 -- to learn the available actions
                 lsp_zero.default_keymaps({ buffer = bufnr })
-                vim.keymap.set('n', 'L', '<cmd>lua vim.lsp.buf.hover()<cr>',
+                vim.keymap.set('n', 'æ', '<cmd>lua vim.lsp.buf.hover()<cr>',
                     { buffer = bufnr, desc = 'Show hover info about symbol' })
                 vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>',
                     { buffer = bufnr, desc = 'Go to symbol definition' })
