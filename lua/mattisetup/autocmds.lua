@@ -12,6 +12,7 @@ autocmd("FileType", {
         "notify",
         "man",
         "qf",
+        "floaterm"
     },
     callback = function(event)
         vim.bo[event.buf].buflisted = false

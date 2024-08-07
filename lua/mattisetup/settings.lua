@@ -51,10 +51,3 @@ vim.opt.listchars = {
 
 -- Tells me if there is the line is wrapped
 -- vim.g.showbreak = '↪' --NOTE: virðist ekki virka
-
--- TODO: virkar ekki þarf að setja autacmd
--- á að taka burt nýtt line með comment á o
--- vim.opt.formatoptions:remove("o")
-
-
-
