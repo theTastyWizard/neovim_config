@@ -36,7 +36,7 @@ vim.opt.cursorline = true
 vim.opt.splitkeep = 'cursor'
 
 -- leyfir að færast lengra en lína í visual block mode
--- vim.opt.virtualedit = "block"
+vim.opt.virtualedit = "block"
 
 vim.opt.list = false -- enable or disable listchars
 vim.opt.listchars = {
