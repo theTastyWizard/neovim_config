@@ -24,18 +24,30 @@ vim.keymap.set({ "n", "v" }, "L", "$", { desc = "End of the line" })
 vim.keymap.set("n", "<leader>e", "<cmd>Ex<cr>", { desc = 'Open netrw Explore' })
 
 -- Hraðari færsla
-vim.keymap.set("n", "J", "6j", { desc = '6 lines down' })
-vim.keymap.set("n", "K", "6k", { desc = '6 lines up' })
+vim.keymap.set("n", "J", "5j", { desc = '5 lines down' })
+vim.keymap.set("n", "K", "5k", { desc = '5 lines up' })
+
+-- Auðveldari leitar takkar
+vim.keymap.set("n", "ð", "/", { desc = 'search forward' })
+vim.keymap.set("n", "Ð", "?", { desc = 'search backward' })
+
+-- Auðveldari string leit
+vim.keymap.set("n", "þ", "*", { desc = 'search word forward' })
+vim.keymap.set("n", "Þ", "#", { desc = 'search word backward' })
+
+-- Skipta endurtekt á f og t leit
+vim.keymap.set("n", ",", ";", {desc = 'next f & t search'})
+vim.keymap.set("n", ";", ",", {desc = 'previous f & t search'})
 
 -- next greatest remap ever asbjornHaland tekið frá primeagen
 -- setur system clipboard á space+ y, Y og p,P
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = 'System clipboard yank' })
 vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]], { desc = 'System clipboard Yank' })
-vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = 'System clipboard paste' }) 
+vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = 'System clipboard paste' })
 vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]], { desc = 'System clipboard Paste' })
 
 -- passar að yankaðir hlutir eyðist ekki eftir paste
-vim.keymap.set("x", "p", "\"_dP") 
+vim.keymap.set("x", "p", "\"_dP")
 
 -- Til að ctrl-V Insert virki með ctrl-c
 vim.keymap.set("i", "<C-c>", "<Esc>")
