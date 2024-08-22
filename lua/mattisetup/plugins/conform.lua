@@ -13,6 +13,7 @@ return {
             desc = "Format buffer with conform",
         },
     },
+
     -- Everything in opts will be passed to setup()
     opts = {
         -- Define your formatters
@@ -25,10 +26,13 @@ return {
         -- Set up format-on-save
         -- format_on_save = { timeout_ms = 500, lsp_fallback = true },
         -- Customize formatters
-        -- formatters = {
-        --     shfmt = {
-        --         prepend_args = { "-i", "2" },
-        --     },
-        -- },
-    },
+        formatters = {
+            -- shfmt = {
+            --     prepend_args = { "-i", "2" },
+            -- },
+            findent = {
+                prepend_args = {"-i4"}
+            },
+        },
+    }
 }
