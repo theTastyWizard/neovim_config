@@ -20,12 +20,18 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smarttab = true
 
+-- setja lítinn split glugga sem sýnir substitute dótið
+vim.opt.inccommand = "split"
+
 -- Fyrir undotree plugin svo það muni lengi fra primeagen
 vim.opt.undodir = os.getenv("HOME") .. "/.local/state/nvim/undo"
 vim.opt.undofile = true
 
 -- https://www.reddit.com/r/vim/comments/jqogan/how_does_a_lower_updatetime_lead_to_better/
 vim.opt.updatetime = 2000
+
+--
+vim.opt.lazyredraw = true
 
 vim.opt.termguicolors = true
 
