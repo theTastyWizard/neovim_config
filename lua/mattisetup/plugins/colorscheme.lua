@@ -10,6 +10,7 @@ return {
             })
             require('base16-colorscheme').setup({ --óbreytt er pinky
                 base00 = '#171517',
+                -- base00 = '#000000', -- alveg svartur bakgrunnur
                 base01 = '#1b181b',
                 base02 = '#1E3232', --visual selected breytt til að sjá betur 
                 base03 = '#5100cc', --comments breytt til að sjá betur TODO: Velja aðeins betri lit
