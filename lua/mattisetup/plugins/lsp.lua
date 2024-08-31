@@ -35,7 +35,6 @@ return {
             { 'hrsh7th/cmp-path' },
             { 'saadparwaiz1/cmp_luasnip' },
             { "rafamadriz/friendly-snippets" },
-            { "kawre/neotab.nvim" }
         },
         config = function()
             -- Here is where you configure the autocompletion settings.
@@ -45,7 +44,6 @@ return {
             -- And you can configure cmp even more, if you want to.	
             local cmp = require('cmp')
             local cmp_action = lsp_zero.cmp_action()
-            local neotab = require("neotab")
 
             -- Svo friendly snippets virki
             require('luasnip.loaders.from_vscode').lazy_load()
@@ -67,14 +65,14 @@ return {
                     -- Enable "Super Tab"				
                     -- ['<Tab>'] = cmp_action.luasnip_supertab(),
                     -- nota tabout ef ekki er completion menu
-                    ['<Tab>'] = cmp.mapping(function()
-                        if cmp.visible() then
-                            cmp.select_next_item()
-                        else
-                            neotab.tabout()
-                        end
-                    end),
-                    ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+                    -- ['<Tab>'] = cmp.mapping(function()
+                        -- if cmp.visible() then
+                        --     cmp.select_next_item()
+                        -- else
+                            -- neotab.tabout()
+                        -- end
+                    -- end),
+                    -- ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
                     -- Ctrl+j/k to select next item auk <C-p> og <C-n>
                     ['<C-k>'] = cmp.mapping.select_prev_item(),
                     ['<C-j>'] = cmp.mapping.select_next_item(),
