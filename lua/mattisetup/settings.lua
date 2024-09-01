@@ -30,8 +30,7 @@ vim.opt.undofile = true
 -- https://www.reddit.com/r/vim/comments/jqogan/how_does_a_lower_updatetime_lead_to_better/
 vim.opt.updatetime = 2000
 
---
-vim.opt.lazyredraw = true
+-- vim.opt.lazyredraw = true --NOTE:veit ekki alveg hvað þetta hefur áhrif á
 
 vim.opt.termguicolors = true
 
@@ -44,6 +43,36 @@ vim.opt.splitkeep = 'cursor'
 -- leyfir að færast lengra en lína í visual block mode
 vim.opt.virtualedit = "block"
 
+-- diagnostic signs
+vim.diagnostic.config({ ---BUG: virkar ekki og ég skil ekki afhverju :(
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = '󰅚 ',
+            [vim.diagnostic.severity.WARN] = '󰀪 ',
+            [vim.diagnostic.severity.HINT] = '󰌶 ',
+            [vim.diagnostic.severity.INFO] = ' ',
+        },
+        linehl = {
+            [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+        },
+        numhl = {
+            [vim.diagnostic.severity.WARN] = 'WarningMsg',
+        },
+    },
+    virtual_text = false,
+    update_in_insert = false,
+    underline = true,
+    severity_sort = true,
+    float = {
+        focusable = true,
+        style = 'minimal',
+        border = 'rounded',
+        source = 'if_many',
+        header = '',
+        prefix = '',
+    },
+})
+
 vim.opt.list = false -- enable or disable listchars
 vim.opt.listchars = {
     eol = "↲",
@@ -53,6 +82,19 @@ vim.opt.listchars = {
     precedes = "<",
     space = "·",
     nbsp = "␣",
+}
+
+vim.g.clipboard = {
+    name = "win32yank-wsl",
+    copy = {
+        ["+"] = "win32yank.exe -i --crlf",
+        ["*"] = "win32yank.exe -i --crlf",
+    },
+    paste = {
+        ["+"] = "win32yank.exe -o --lf",
+        ["*"] = "win32yank.exe -o --lf",
+    },
+    cache_enabled = true,
 }
 
 -- Tells me if there is the line is wrapped
