@@ -32,16 +32,22 @@ return {
             { 'hrsh7th/cmp-nvim-lsp-signature-help' },
             { 'hrsh7th/cmp-cmdline' },
             { 'hrsh7th/cmp-buffer' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { "rafamadriz/friendly-snippets" },
         },
         config = function()
             local cmp = require('cmp')
+
+            -- svo friendly snippets virki
+            require('luasnip.loaders.from_vscode').lazy_load()
 
             cmp.setup({
                 formatting = require('lsp-zero').cmp_format({ details = true }),
                 sources = {
                     { name = 'path' },
                     { name = 'nvim_lsp' },
-                    { name = 'nvim_lsp_signature_help' }
+                    { name = 'nvim_lsp_signature_help' },
+                    { name = 'luasnip' },
                 },
                 mapping = cmp.mapping.preset.insert({
                     ['<C-Space>'] = cmp.mapping.complete(),
