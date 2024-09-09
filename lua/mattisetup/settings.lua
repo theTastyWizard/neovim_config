@@ -30,7 +30,7 @@ vim.opt.undofile = true
 -- https://www.reddit.com/r/vim/comments/jqogan/how_does_a_lower_updatetime_lead_to_better/
 vim.opt.updatetime = 2000
 
--- vim.opt.lazyredraw = true --NOTE:veit ekki alveg hvað þetta hefur áhrif á
+vim.opt.lazyredraw = true --NOTE:veit ekki alveg hvað þetta hefur áhrif á
 
 vim.opt.termguicolors = true
 
