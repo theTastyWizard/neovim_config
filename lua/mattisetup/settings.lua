@@ -36,8 +36,6 @@ vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 999
 
-vim.opt.cursorline = true
-
 vim.opt.splitkeep = 'cursor'
 
 -- leyfir að færast lengra en lína í visual block mode
@@ -61,7 +59,7 @@ vim.diagnostic.config({ ---BUG: virkar ekki og ég skil ekki afhverju :(
     },
     virtual_text = false,
     update_in_insert = false,
-    underline = true,
+    underline = false,
     severity_sort = true,
     float = {
         focusable = true,
