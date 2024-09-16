@@ -82,7 +82,7 @@ return {
             provider = function(self)
                 return " %2(" .. self.mode_names[self.mode] .. "%)"
             end,
-            hl = {fg = 'black', bold = true}
+            hl = { fg = 'black', bold = true }
             -- hl = function(self)
             --     local color = self:mode_color()
             --     return { fg = color, bold = true, }
@@ -97,8 +97,6 @@ return {
             end,
         }
         -- We can now define some children separately and add them later
-
-
         local FileName = {
             init = function(self)
                 self.lfilename = vim.fn.fnamemodify(self.filename, ":.")
@@ -136,8 +134,6 @@ return {
                 hl = { fg = "orange" },
             },
         }
-
-
         -- let's add the children to our FileNameBlock component
         FileNameBlock = utils.insert(FileNameBlock,
             FileName,
@@ -312,8 +308,6 @@ return {
         }
 
         local TerminalName = {
-            -- we could add a condition to check that buftype == 'terminal'
-            -- or we could do that later (see #conditional-statuslines below)
             provider = function()
                 local tname, _ = vim.api.nvim_buf_get_name(0):gsub(".*:", "")
                 return " " .. tname
@@ -342,10 +336,15 @@ return {
                     self.search = search
                 end
             end,
-            provider = function(self)
-                local search = self.search
-                return string.format(" [%d/%d]", search.current, math.min(search.total, search.maxcount))
-            end,
+            provider = "  ",
+            hl = { fg = "purple", bold = true },
+            utils.surround({ "[", "]" }, nil, {
+                provider = function(self)
+                    local search = self.search
+                    return string.format("%d/%d", search.current, math.min(search.total, search.maxcount))
+                end,
+                hl = { fg = "green", bold = true },
+            })
         }
 
         local MacroRec = {
@@ -369,10 +368,9 @@ return {
         local Align = { provider = "%=" }
         local Space = { provider = " " }
 
-        -- ViMode = utils.surround({ "", "" }, function, { ViMode })
-        -- Ruler = utils.surround({ "", "" }, "black", { Ruler })
-        Ruler = utils.surround({ "", "" }, function(self) return self:mode_color() end, { Ruler, hl = {fg = 'black'} })
-        ViMode = utils.surround({ "", "" }, function(self) return self:mode_color() end, { ViMode} )
+        Ruler = utils.surround({ "", "" }, function(self) return self:mode_color() end,
+            { Ruler, hl = { fg = 'black' } })
+        ViMode = utils.surround({ "", "" }, function(self) return self:mode_color() end, { ViMode })
 
         local DefaultStatusline = {
             ViMode, Space, FileNameBlock, Space, Git, Space, Diagnostics, Align,
@@ -401,14 +399,17 @@ return {
         local OilStatusline = {
             condition = function()
                 return conditions.buffer_matches({
-                    buftype = { "oil" },
                     filetype = { "oil" }
                 })
             end,
             ViMode,
             Space,
             FileNameBlock,
-            Align
+            Align,
+            MacroRec,
+            SearchCount,
+            Space,
+            Ruler
         }
 
         local TerminalStatusline = {
@@ -425,7 +426,7 @@ return {
         local StatusLines = {
             hl = function()
                 if conditions.is_active() then
-                    return  {bg = 'bg'}
+                    return { bg = 'bg' }
                 else
                     return "StatusLineNc"
                 end
@@ -433,7 +434,7 @@ return {
 
             fallthrough = false,
 
-            -- OilStatusline,
+            OilStatusline,
             SpecialStatusline,
             TerminalStatusline,
             InactiveStatusline,
