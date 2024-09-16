@@ -85,7 +85,7 @@ return {
     --         })
     --     end
     -- },
-    {
+    -- {
     --     "RRethy/base16-nvim",
     --     lazy = false,
     --     priority = 1000,
@@ -126,22 +126,22 @@ return {
     --         })
     --         require('base16-colorscheme').setup({
     --             -- setja saman mitt eigið
-    --             base00 = "#",
-    --             base01 = "#",
-    --             base02 = "#",
-    --             base03 = "#",
-    --             base04 = "#",
-    --             base05 = "#",
-    --             base06 = "#",
-    --             base07 = "#",
-    --             base08 = "#",
-    --             base09 = "#",
-    --             base0A = "#",
-    --             base0B = "#",
-    --             base0C = "#21c992",
-    --             base0D = "#",
-    --             base0E = "#d8137f",
-    --             base0F = "#",
+    --             base00 = "#000000",
+    --             base01 = "#404040",
+    --             base02 = "#606060",
+    --             base03 = "#808080",
+    --             base04 = "#c0c0c0",
+    --             base05 = "#d0d0d0",
+    --             base06 = "#e0e0e0",
+    --             base07 = "#ffffff",
+    --             base08 = "#fb0120", --red
+    --             base09 = '#e6550d', --"#ff661a" --orange
+    --             base0A = "#ffa600", --yellow
+    --             base0B = "#1dd361", --"#02d849"--"#50fa7b" --green
+    --             base0C = "#21c992", --aqua
+    --             base0D = "#00948b", --blue
+    --             base0E = "#d8137f", --"#700f98"--"#a71d5d"--purple
+    --             base0F = "#ff0099",       --brown
     --         })
     --     end
     -- },
