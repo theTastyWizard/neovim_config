@@ -15,6 +15,7 @@ return {
                 green = "#00ff66",
                 darker_green = "#20df6c",
                 yellow = "#ffa600",
+                orange = "#d65407",
                 purple = "#6600ff",
                 diag_warn = utils.get_highlight("DiagnosticWarn").fg,
                 diag_error = utils.get_highlight("DiagnosticError").fg,
@@ -262,7 +263,7 @@ return {
                     self.status_dict.changed ~= 0
             end,
 
-            hl = { fg = "yellow" },
+            hl = { fg = "orange" },
 
 
             { -- git branch name
