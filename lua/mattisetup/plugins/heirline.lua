@@ -140,21 +140,6 @@ return {
         }
         -- We can now define some children separately and add them later
 
-        local FileIcon = {
-            init = function(self)
-                self.filename = vim.api.nvim_buf_get_name(0) -- sett til að virki fyrir utan block
-                local filename = self.filename
-                local extension = vim.fn.fnamemodify(filename, ":e")
-                self.icon, self.icon_color = require("nvim-web-devicons").get_icon_color(filename, extension,
-                    { default = true })
-            end,
-            provider = function(self)
-                return self.icon and (self.icon .. " ")
-            end,
-            hl = function(self)
-                return { fg = self.icon_color }
-            end
-        }
 
         local FileName = {
             init = function(self)
@@ -201,6 +186,22 @@ return {
             FileFlags,
             { provider = '%<' } -- this means that the statusline is cut here when there's not enough space
         )
+
+        local FileIcon = {
+            init = function(self)
+                self.filename = vim.api.nvim_buf_get_name(0) -- sett til að virki fyrir utan block
+                local filename = self.filename
+                local extension = vim.fn.fnamemodify(filename, ":e")
+                self.icon, self.icon_color = require("nvim-web-devicons").get_icon_color(filename, extension,
+                    { default = true })
+            end,
+            provider = function(self)
+                return self.icon and (self.icon .. " ")
+            end,
+            hl = function(self)
+                return { fg = self.icon_color }
+            end
+        }
 
         local FileType = {
             provider = function()
@@ -409,8 +410,8 @@ return {
         local Align = { provider = "%=" }
         local Space = { provider = " " }
 
-        ViMode = utils.surround({ "", "" }, "bright_bg", { ViMode })
-        Ruler = utils.surround({ "", "" }, "bright_bg", { Ruler })
+        ViMode = utils.surround({ "", "" }, "bright_bg", { ViMode })
+        Ruler = utils.surround({ "", "" }, "bright_bg", { Ruler })
 
         local DefaultStatusline = {
             ViMode, Space, FileNameBlock, Space, Git, Space, Diagnostics, Align,
