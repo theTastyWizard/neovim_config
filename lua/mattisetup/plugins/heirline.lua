@@ -7,23 +7,19 @@ return {
 
         local function setup_colors()
             return {
-                bright_bg = utils.get_highlight("Folded").bg,
-                bright_fg = utils.get_highlight("Folded").fg,
-                red = utils.get_highlight("DiagnosticError").fg,
-                dark_red = utils.get_highlight("DiffDelete").bg,
-                green = utils.get_highlight("String").fg,
-                blue = utils.get_highlight("Function").fg,
-                gray = utils.get_highlight("NonText").fg,
-                orange = utils.get_highlight("Constant").fg,
-                purple = utils.get_highlight("Statement").fg,
-                cyan = utils.get_highlight("Special").fg,
+                black = "#000000",
+                bg = "#171517",
+                pink = "#ff0066",
+                blue = "#007fff",
+                cyan = "#00ffff",
+                green = "#00ff66",
+                darker_green = "#20df6c",
+                yellow = "#ffa600",
+                purple = "#6600ff",
                 diag_warn = utils.get_highlight("DiagnosticWarn").fg,
                 diag_error = utils.get_highlight("DiagnosticError").fg,
                 diag_hint = utils.get_highlight("DiagnosticHint").fg,
                 diag_info = utils.get_highlight("DiagnosticInfo").fg,
-                -- git_del = utils.get_highlight("diffRemoved").fg,
-                -- git_add = utils.get_highlight("diffAdded").fg,
-                -- git_change = utils.get_highlight("diffChanged").fg,
                 git_del = utils.get_highlight("DiffDelete").fg,
                 git_add = utils.get_highlight("DiffAdd").fg,
                 git_change = utils.get_highlight("DiffChange").fg,
@@ -42,15 +38,9 @@ return {
         require("heirline").load_colors(setup_colors)
 
         local ViMode = {
-            -- get vim current mode, this information will be required by the provider
-            -- and the highlight functions, so we compute it only once per component
-            -- evaluation and store it as a component attribute
             init = function(self)
                 self.mode = vim.fn.mode(1) -- :h mode()
             end,
-            -- Now we define some dictionaries to map the output of mode() to the
-            -- corresponding string and color. We can put these into `static` to compute
-            -- them at initialisation time.
             static = {
                 mode_names = { -- change the strings if you like it vvvvverbose!
                     n = "N",
@@ -88,47 +78,15 @@ return {
                     ["!"] = "!",
                     t = "T",
                 },
-                mode_colors = {
-                    n = "red",
-                    i = "green",
-                    v = "cyan",
-                    V = "cyan",
-                    ["\22"] = "cyan",
-                    c = "orange",
-                    s = "purple",
-                    S = "purple",
-                    ["\19"] = "purple",
-                    R = "orange",
-                    r = "orange",
-                    ["!"] = "red",
-                    t = "green",
-                }
             },
-            -- We can now access the value of mode() that, by now, would have been
-            -- computed by `init()` and use it to index our strings dictionary.
-            -- note how `static` fields become just regular attributes once the
-            -- component is instantiated.
-            -- To be extra meticulous, we can also add some vim statusline syntax to
-            -- control the padding and make sure our string is always at least 2
-            -- characters long. Plus a nice Icon.
             provider = function(self)
                 return " %2(" .. self.mode_names[self.mode] .. "%)"
             end,
-            -- Same goes for the highlight. Now the foreground will change according to the current mode.
-            hl = function(self)
-                local mode = self.mode:sub(1, 1) -- get only the first mode character
-                return { fg = self.mode_colors[mode], bold = true, }
-            end,
-            -- Re-evaluate the component only on ModeChanged event!
-            -- Also allows the statusline to be re-evaluated when entering operator-pending mode
-            update = {
-                "ModeChanged",
-                pattern = "*:*",
-                callback = vim.schedule_wrap(function()
-                    vim.cmd("redrawstatus")
-                end),
-            },
-
+            hl = {fg = 'black', bold = true}
+            -- hl = function(self)
+            --     local color = self:mode_color()
+            --     return { fg = color, bold = true, }
+            -- end,
         }
 
 
@@ -245,6 +203,7 @@ return {
             -- %c = column number
             -- %P = percentage through file of displayed window
             provider = "%7(%l/%3L%):%2c %P",
+            hl = {}
         }
 
         local Diagnostics = {
@@ -307,7 +266,7 @@ return {
                     self.status_dict.changed ~= 0
             end,
 
-            hl = { fg = "orange" },
+            hl = { fg = "yellow" },
 
 
             { -- git branch name
@@ -394,12 +353,12 @@ return {
                 return vim.fn.reg_recording() ~= "" and vim.o.cmdheight == 0
             end,
             provider = "  ",
-            hl = { fg = "orange", bold = true },
+            hl = { fg = "pink", bold = true },
             utils.surround({ "[", "]" }, nil, {
                 provider = function()
                     return vim.fn.reg_recording()
                 end,
-                hl = { fg = "green", bold = true },
+                hl = { fg = "yellow", bold = true },
             }),
             update = {
                 "RecordingEnter",
@@ -410,8 +369,10 @@ return {
         local Align = { provider = "%=" }
         local Space = { provider = " " }
 
-        ViMode = utils.surround({ "", "" }, "bright_bg", { ViMode })
-        Ruler = utils.surround({ "", "" }, "bright_bg", { Ruler })
+        -- ViMode = utils.surround({ "", "" }, function, { ViMode })
+        -- Ruler = utils.surround({ "", "" }, "black", { Ruler })
+        Ruler = utils.surround({ "", "" }, function(self) return self:mode_color() end, { Ruler, hl = {fg = 'black'} })
+        ViMode = utils.surround({ "", "" }, function(self) return self:mode_color() end, { ViMode} )
 
         local DefaultStatusline = {
             ViMode, Space, FileNameBlock, Space, Git, Space, Diagnostics, Align,
@@ -420,9 +381,7 @@ return {
 
         local InactiveStatusline = {
             condition = conditions.is_not_active,
-            FileName,
-            Space,
-            FileType,
+            FileNameBlock,
             Align
         }
 
@@ -466,7 +425,7 @@ return {
         local StatusLines = {
             hl = function()
                 if conditions.is_active() then
-                    return "StatusLine"
+                    return  {bg = 'bg'}
                 else
                     return "StatusLineNc"
                 end
@@ -479,6 +438,27 @@ return {
             TerminalStatusline,
             InactiveStatusline,
             DefaultStatusline,
+            static = {
+                mode_colors_map = {
+                    n = "yellow",
+                    i = "pink",
+                    v = "green",
+                    V = "green",
+                    ["\22"] = "cyan",
+                    c = "purple",
+                    s = "purple",
+                    S = "purple",
+                    ["\19"] = "purple",
+                    R = "yellow",
+                    r = "yellow",
+                    ["!"] = "pink",
+                    t = "pink",
+                },
+                mode_color = function(self)
+                    local mode = conditions.is_active() and vim.fn.mode() or "n"
+                    return self.mode_colors_map[mode]
+                end,
+            },
         }
         require("heirline").setup({ statusline = StatusLines })
     end,
