@@ -21,9 +21,9 @@ return {
                 diag_error = utils.get_highlight("DiagnosticError").fg,
                 diag_hint = utils.get_highlight("DiagnosticHint").fg,
                 diag_info = utils.get_highlight("DiagnosticInfo").fg,
-                git_del = utils.get_highlight("DiffDelete").fg,
-                git_add = utils.get_highlight("DiffAdd").fg,
-                git_change = utils.get_highlight("DiffChange").fg,
+                git_del = utils.get_highlight("GitSignsDelete").fg,
+                git_add = utils.get_highlight("GitSignsAdd").fg,
+                git_change = utils.get_highlight("GitSignsChange").fg,
             }
         end
 
@@ -103,7 +103,8 @@ return {
                 self.lfilename = vim.fn.fnamemodify(self.filename, ":.")
                 if self.lfilename == "" then self.lfilename = "[No Name]" end
             end,
-            hl = { fg = utils.get_highlight("Directory").fg },
+            -- hl = { fg = utils.get_highlight("Directory").fg },
+            hl = { fg = "blue", bold = true},
 
             flexible = 2,
 
@@ -442,10 +443,10 @@ return {
             DefaultStatusline,
             static = {
                 mode_colors_map = {
-                    n = "yellow",
+                    n = "green",
                     i = "pink",
-                    v = "green",
-                    V = "green",
+                    v = "yellow",
+                    V = "yellow",
                     ["\22"] = "cyan",
                     c = "purple",
                     s = "purple",
