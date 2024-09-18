@@ -104,7 +104,7 @@ return {
                 if self.lfilename == "" then self.lfilename = "[No Name]" end
             end,
             -- hl = { fg = utils.get_highlight("Directory").fg },
-            hl = { fg = "blue", bold = true},
+            hl = { fg = "blue", },
 
             flexible = 2,
 
@@ -339,7 +339,7 @@ return {
                 end
             end,
             provider = "  ",
-            hl = { fg = "purple", bold = true },
+            hl = { fg = "purple", },
             utils.surround({ "[", "]" }, nil, {
                 provider = function(self)
                     local search = self.search
@@ -443,11 +443,11 @@ return {
             DefaultStatusline,
             static = {
                 mode_colors_map = {
-                    n = "green",
+                    n = "yellow",
                     i = "pink",
-                    v = "yellow",
-                    V = "yellow",
-                    ["\22"] = "cyan",
+                    v = "green",
+                    V = "green",
+                    ["\22"] = "green",
                     c = "purple",
                     s = "purple",
                     S = "purple",
