@@ -395,7 +395,8 @@ return {
             FileType,
             Space,
             HelpFileName,
-            Align
+            Align,
+            { condition = conditions.is_active, SearchCount, Space, Ruler},
         }
 
         local OilStatusline = {
@@ -404,14 +405,10 @@ return {
                     filetype = { "oil" }
                 })
             end,
-            ViMode,
-            Space,
+            { condition = conditions.is_active, ViMode, Space },
             FileNameBlock,
             Align,
-            MacroRec,
-            SearchCount,
-            Space,
-            Ruler
+            { condition = conditions.is_active, MacroRec, Space, SearchCount, Space, Ruler},
         }
 
         local TerminalStatusline = {
