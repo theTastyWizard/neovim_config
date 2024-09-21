@@ -68,18 +68,28 @@ return {
                 ["l"] = "actions.select",
                 ["<C-s>"] = "actions.select_vsplit",
                 ["<C-v>"] = "actions.select_split",
-                ["<C-t>"] = "actions.select_tab",
+                -- ["<C-t>"] = "actions.select_tab",
                 ["<C-p>"] = "actions.preview",
                 ["<C-c>"] = "actions.close",
                 ["<C-l>"] = "actions.refresh",
                 ["h"] = "actions.parent",
-                ["_"] = "actions.open_cwd",
-                ["`"] = "actions.cd",
-                ["~"] = "actions.tcd",
+                ["-"] = "actions.open_cwd",
+                ["~"] = "actions.cd",
+                -- ["~"] = "actions.tcd",
                 ["gs"] = "actions.change_sort",
                 ["gx"] = "actions.open_external",
                 ["g."] = "actions.toggle_hidden",
                 ["g\\"] = "actions.toggle_trash",
+                ["<leader>ff"] = {
+                    function ()
+                        require("telescope.builtin").find_files({
+                            cwd = require("oil").get_current_dir()
+                        })
+                    end,
+                    mode = "n",
+                    nowait = true,
+                    desc = "Find files in the current directory"
+                }
             },
             -- Configuration for the floating keymaps help window
             keymaps_help = {
@@ -89,7 +99,7 @@ return {
             use_default_keymaps = true,
             view_options = {
                 -- Show files and directories that start with "."
-                show_hidden = true,
+                show_hidden = false,
                 -- This function defines what is considered a "hidden" file
                 is_hidden_file = function(name, bufnr)
                     return vim.startswith(name, ".")
