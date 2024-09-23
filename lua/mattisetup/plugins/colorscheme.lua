@@ -1,13 +1,4 @@
 return {
-    -- {
-    --   "folke/tokyonight.nvim",
-    --   lazy = false,
-    --   priority = 1000,
-    --   opts = {},
-    --   config = function ()
-    --     vim.cmd[[colorscheme tokyonight-night]]
-    --     end,
-    -- },
     {
         "RRethy/base16-nvim",
         lazy = false,
@@ -145,6 +136,22 @@ return {
     --         })
     --     end
     -- },
+-- base16-hardcore
+-- base16-helios
+-- base16-isotope
+-- base16-pico
+-- base16-atelier-forest
+-- base16-bright
+-- base16-equilibrium-dark
+-- base16-equilibrium-gray-dark
+-- base16-framer
+-- base16-gigavolt
+-- base16-gruvbox-dark-hard
+-- base16-monokai
+-- base16-purpledream
+-- base16-standardized-dark
+-- base16-summerfruit-dark
+-- base16-unikitty-dark
     -- {
     --     "bradcush/nvim-base16",
     --     lazy = false,
