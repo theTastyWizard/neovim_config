@@ -13,3 +13,7 @@ wk.add({
     { "<leader>dn", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "go to next diagnostic" },
     { "<leader>dp", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "go to previous diagnostic" },
 })
+
+wk.add({
+    {"<leader>s", group = "Surround"}
+})
