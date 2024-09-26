@@ -7,7 +7,7 @@ return {
             -- Customize or remove this keymap to your liking
             "<leader>i",
             function()
-                require("conform").format({ async = true, lsp_fallback = true })
+                require("conform").format({ async = true, lsp_format = "fallback" })
             end,
             mode = "",
             desc = "Format buffer with conform",
