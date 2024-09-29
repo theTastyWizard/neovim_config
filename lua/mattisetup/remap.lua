@@ -24,8 +24,8 @@ vim.keymap.set({ "n", "v" }, "L", "$", { desc = "End of the line" })
 vim.keymap.set("n", "<leader>e", "<cmd>Ex<cr>", { desc = 'Open netrw Explore' })
 
 -- Hraðari færsla
-vim.keymap.set("n", "J", "5j", { desc = '5 lines down' })
-vim.keymap.set("n", "K", "5k", { desc = '5 lines up' })
+vim.keymap.set("n", "J", "6j", { desc = '6 lines down' })
+vim.keymap.set("n", "K", "6k", { desc = '6 lines up' })
 
 -- Auðveldari leitar takkar
 vim.keymap.set("n", "ð", "/", { desc = 'search forward' })
