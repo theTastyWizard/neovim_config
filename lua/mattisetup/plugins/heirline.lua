@@ -213,10 +213,10 @@ return {
                 -- warn_icon = vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text,
                 -- info_icon = vim.fn.sign_getdefined("DiagnosticSignInfo")[1].text,
                 -- hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
-                error_icon = '󰅚 ',
-                warn_icon = '󰀪 ',
-                hint_icon = '󰌶 ',
-                info_icon = ' ',
+                error_icon = '󰚌 ',
+                warn_icon = ' ',
+                hint_icon = '󱠂 ',
+                info_icon = ' ',
             },
 
             init = function(self)
@@ -366,6 +366,17 @@ return {
                 "RecordingLeave",
             }
         }
+        local Grapple = {
+            provider = function() return require('grapple').statusline() end,
+            -- utils.surround({"(", ")"}, nil, {
+            --     provider = function()
+            --         return require("grapple").statusline()
+            --     end,
+            -- }),
+            update = {
+                "BufEnter"
+            }
+        }
 
         local Align = { provider = "%=" }
         local Space = { provider = " " }
@@ -376,7 +387,9 @@ return {
 
         local DefaultStatusline = {
             ViMode, Space, FileNameBlock, Space, Git, Space, Diagnostics, Align,
-            FileSize, Space, FileIcon, FileType, MacroRec, SearchCount, Space, Ruler
+            FileSize,
+            { condition = require("grapple").exists(),Space, Grapple },
+            Space, FileIcon, FileType, MacroRec, SearchCount, Space, Ruler
         }
 
         local InactiveStatusline = {
@@ -396,7 +409,7 @@ return {
             Space,
             HelpFileName,
             Align,
-            { condition = conditions.is_active, SearchCount, Space, Ruler},
+            { condition = conditions.is_active, SearchCount, Space, Ruler },
         }
 
         local OilStatusline = {
@@ -408,7 +421,8 @@ return {
             { condition = conditions.is_active, ViMode, Space },
             FileNameBlock,
             Align,
-            { condition = conditions.is_active, MacroRec, Space, SearchCount, Space, Ruler},
+            { condition = require("grapple").exists(), Grapple, Space },
+            { condition = conditions.is_active, MacroRec, Space, SearchCount, Space, Ruler },
         }
 
         local TerminalStatusline = {
