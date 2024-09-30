@@ -5,23 +5,6 @@ return {
         lazy = true,
         config = false,
     },
-    {
-        'williamboman/mason.nvim',
-        lazy = false,
-        config = function()
-            require("mason").setup({
-                ui = {
-                    border = "rounded",
-                    icons = {
-                        package_installed = "✓",
-                        package_pending = "➜",
-                        package_uninstalled = "✗"
-                    },
-                },
-            })
-        end,
-    },
-
     -- Autocompletion
     {
         'hrsh7th/nvim-cmp',
@@ -91,7 +74,6 @@ return {
             })
         end
     },
-
     -- LSP
     {
         'neovim/nvim-lspconfig',
@@ -103,6 +85,20 @@ return {
             { 'williamboman/mason-lspconfig.nvim' },
         },
         config = function()
+            require("mason").setup({
+                ui = {
+                    border = "rounded",
+                    icons = {
+                        package_installed = "✓ ",
+                        package_pending = "➜ ",
+                        package_uninstalled = "✗ "
+                    },
+                },
+                registries = {
+                    'github:nvim-java/mason-registry', -- til þess að fá fyrir nvim-java
+                    'github:mason-org/mason-registry',
+                },
+            })
             local lsp_zero = require('lsp-zero')
 
             lsp_zero.ui({
