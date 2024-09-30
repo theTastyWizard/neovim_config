@@ -45,10 +45,10 @@ vim.opt.virtualedit = "block"
 vim.diagnostic.config({ ---BUG: virkar ekki og ég skil ekki afhverju :(
     signs = {
         text = {
-            [vim.diagnostic.severity.ERROR] = '󰅚 ',
-            [vim.diagnostic.severity.WARN] = '󰀪 ',
-            [vim.diagnostic.severity.HINT] = '󰌶 ',
-            [vim.diagnostic.severity.INFO] = ' ',
+            [vim.diagnostic.severity.ERROR] = '󰚌 ', --󰅚
+            [vim.diagnostic.severity.WARN] = ' ', --󰀪
+            [vim.diagnostic.severity.HINT] = '󱠂 ', --󰌶
+            [vim.diagnostic.severity.INFO] = ' ', --
         },
         linehl = {
             [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
@@ -82,6 +82,7 @@ vim.opt.listchars = {
     nbsp = "␣",
 }
 
+vim.g.clipboard = {""}
 -- vim.g.clipboard = {
 --     name = "win32yank-wsl",
 --     copy = {
