@@ -18,6 +18,7 @@ return {
     opts = {
         -- Define your formatters
         formatters_by_ft = {
+            ocaml = {"ocamlformat"},
             fortran = {"findent"},
             -- lua = { "stylua" },
             -- python = { "isort", "black" },
