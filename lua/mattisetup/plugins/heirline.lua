@@ -152,7 +152,7 @@ return {
                     { default = true })
             end,
             provider = function(self)
-                return self.icon and (self.icon .. " ")
+                return self.icon and (" " .. self.icon .. " ")
             end,
             hl = function(self)
                 return { fg = self.icon_color }
@@ -163,7 +163,7 @@ return {
             provider = function()
                 return vim.bo.filetype
             end,
-            hl = { fg = utils.get_highlight("Type").fg, bold = true },
+            hl = { fg = utils.get_highlight("Type").fg, bold = false },
         }
 
         local FileEncoding = {
@@ -271,7 +271,7 @@ return {
                 provider = function(self)
                     return " " .. self.status_dict.head
                 end,
-                hl = { bold = true }
+                hl = { bold = false }
             },
             -- You could handle delimiters, icons and counts similar to Diagnostics
             {
@@ -345,7 +345,7 @@ return {
                     local search = self.search
                     return string.format("%d/%d", search.current, math.min(search.total, search.maxcount))
                 end,
-                hl = { fg = "green", bold = true },
+                hl = { fg = "green", bold = false },
             })
         }
 
@@ -353,13 +353,13 @@ return {
             condition = function()
                 return vim.fn.reg_recording() ~= "" and vim.o.cmdheight == 0
             end,
-            provider = "  ",
+            provider = " ",
             hl = { fg = "pink", bold = true },
             utils.surround({ "[", "]" }, nil, {
                 provider = function()
                     return vim.fn.reg_recording()
                 end,
-                hl = { fg = "yellow", bold = true },
+                hl = { fg = "yellow", bold = false },
             }),
             update = {
                 "RecordingEnter",
@@ -387,9 +387,9 @@ return {
 
         local DefaultStatusline = {
             ViMode, Space, FileNameBlock, Space, Git, Space, Diagnostics, Align,
-            FileSize,
-            { condition = require("grapple").exists(),Space, Grapple },
-            Space, FileIcon, FileType, MacroRec, SearchCount, Space, Ruler
+            -- FileSize,
+            { condition = require("grapple").exists(), Grapple },
+            MacroRec, SearchCount, FileIcon, FileType, Space, Ruler
         }
 
         local InactiveStatusline = {
@@ -421,7 +421,7 @@ return {
             { condition = conditions.is_active, ViMode, Space },
             FileNameBlock,
             Align,
-            { condition = require("grapple").exists(), Grapple, Space },
+            { condition = require("grapple").exists(), Grapple},
             { condition = conditions.is_active, MacroRec, Space, SearchCount, Space, Ruler },
         }
 
