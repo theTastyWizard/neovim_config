@@ -7,3 +7,5 @@
 - [ ] Setja upp snippet keybinds
 - [ ] Setja upp rainbow-delim en svo þau eru bara á ákveðnum ft
 - [ ] Setja upp edge til að trouble og terminal staðsetningar séu betri
+- [ ] Búa til autocmd fyrir grapple í heirline, h: events þá spurning með user
+- [ ] Laga 100% cpu core usage við að taka upp macro
