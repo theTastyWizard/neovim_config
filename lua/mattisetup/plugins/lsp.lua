@@ -133,7 +133,6 @@ return {
             end
 
             lsp_zero.extend_lspconfig({
-                sign_text = true,
                 lsp_attach = lsp_attach,
                 capabilities = require('cmp_nvim_lsp').default_capabilities()
             })

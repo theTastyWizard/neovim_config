@@ -41,6 +41,9 @@ vim.opt.splitkeep = 'cursor'
 -- leyfir að færast lengra en lína í visual block mode
 vim.opt.virtualedit = "block"
 
+-- sign column til að hann sé ekki alltaf að færast ef diag
+vim.opt.signcolumn = "auto:1-9"
+
 -- diagnostic signs
 vim.diagnostic.config({ ---BUG: virkar ekki og ég skil ekki afhverju :(
     signs = {
@@ -50,11 +53,11 @@ vim.diagnostic.config({ ---BUG: virkar ekki og ég skil ekki afhverju :(
             [vim.diagnostic.severity.HINT] = '󱠂 ', --󰌶
             [vim.diagnostic.severity.INFO] = ' ', --
         },
-        linehl = {
-            [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
-        },
+        -- linehl = {
+        -- },
         numhl = {
-            [vim.diagnostic.severity.WARN] = 'WarningMsg',
+            [vim.diagnostic.severity.ERROR] = 'DiagnosticError',
+            [vim.diagnostic.severity.WARN] = 'DiagnosticWarn',
         },
     },
     virtual_text = false,
