@@ -42,7 +42,7 @@ vim.opt.splitkeep = 'cursor'
 vim.opt.virtualedit = "block"
 
 -- sign column til að hann sé ekki alltaf að færast ef diag
-vim.opt.signcolumn = "auto:1-9"
+vim.opt.signcolumn = "yes:1"
 
 -- diagnostic signs
 vim.diagnostic.config({ ---BUG: virkar ekki og ég skil ekki afhverju :(
