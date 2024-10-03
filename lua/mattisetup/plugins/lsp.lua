@@ -7,7 +7,9 @@ return {
     },
     -- Autocompletion
     {
-        'hrsh7th/nvim-cmp',
+        -- 'hrsh7th/nvim-cmp',
+        'yioneko/nvim-cmp', -- miklu hraðari en venjulega, bíða eftir að því er mergað
+        branch = 'perf-up',
         -- event = 'InsertEnter',
         dependencies = {
             { 'L3MON4D3/LuaSnip' },
