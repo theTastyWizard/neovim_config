@@ -4,8 +4,12 @@
 - [ ] Kannski setja upp Ocaml REPL, er með Utop en veit ekki hvort það virkar í nvim
 - [ ] Setja upp og vista gott format fyrir tex skrár
 - [ ] Nota snippets greinarnar til þess að skrifa góð latex snippet og mögulega fleiri, eða finna bara góð snippets sem eru ekki frendly snippets
-- [ ] Setja upp snippet keybinds
-- [ ] Setja upp rainbow-delim en svo þau eru bara á ákveðnum ft
+    - [ ] Setja upp snippet keybinds
+- [ ] Setja upp rainbow-delim en svo þau eru bara á ákveðnum ft -scheme, racket,...
 - [ ] Setja upp edge til að trouble og terminal staðsetningar séu betri
 - [ ] Búa til autocmd fyrir grapple í heirline, h: events þá spurning með user
-- [ ] Laga 100% cpu core usage við að taka upp macro
+- [ ] Laga 100% cpu core usage við að taka upp macro - þetta er víst which-key er komið issue á gh er með notifications
+- [ ] skoða hvort það hagstæðari útgáfa af treesitter eða hvort það sé ekki vandamál
+- [ ] Bíða eftir að blink.nvim sé með allt sem vantar í cmp og prufa að færa yfir 
+- [ ] Setja upp Molten fyrir jupyter notebook [her](https://www.reddit.com/r/neovim/comments/1fy2gxc/molten_markdownpreview_kitty_jupyter_notebook/)
+- [ ] Láta S-Tab virka þannig að hoppi aftur um sviga og setji til tab char
