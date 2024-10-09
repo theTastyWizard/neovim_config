@@ -8,9 +8,11 @@ return {
     -- Autocompletion
     {
         -- 'hrsh7th/nvim-cmp',
-        'yioneko/nvim-cmp', -- miklu hraðari en venjulega, bíða eftir að því er mergað
-        branch = 'perf-up',
-        -- event = 'InsertEnter',
+        -- 'yioneko/nvim-cmp', -- miklu hraðari en venjulega, bíða eftir að því er mergað
+        -- branch = 'perf-up',
+		"iguanacucumber/magazine.nvim", --inniheldur yionek patchið og fleiri
+		name = "nvim-cmp", -- Otherwise highlighting gets messed up
+        -- event = 'InsertEnter', -- til að það virki í :command mode
         dependencies = {
             { 'L3MON4D3/LuaSnip' },
             { 'hrsh7th/cmp-path' },
