@@ -113,12 +113,6 @@ return {
 				-- multiple groups can be provided, where it'll fallback to the next group if the previous
 				-- returns no completion items
 				-- WARN: This API will have breaking changes during the beta
-				providers = {
-					{ 'blink.cmp.sources.lsp',      name = 'LSP' },
-					{ 'blink.cmp.sources.path',     name = 'Path',     score_offset = 3 },
-					{ 'blink.cmp.sources.snippets', name = 'Snippets', score_offset = -3 },
-					{ 'blink.cmp.sources.buffer',   name = 'Buffer',   fallback_for = { 'LSP' } },
-				},
 				-- FOR REF: full example
 				providers = {
 					-- all of these properties work on every source
@@ -260,6 +254,8 @@ return {
 				},
 			})
 			local lsp_zero = require('lsp-zero')
+
+			lsp_zero.ui({ float_border = 'rounded', })
 
 			require('lspconfig.ui.windows').default_options.border = "rounded"
 
