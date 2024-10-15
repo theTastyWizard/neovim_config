@@ -140,6 +140,8 @@ return {
 			})
 			local lsp_zero = require('lsp-zero')
 
+			lsp_zero.ui({ float_border = 'rounded', })
+
 			require('lspconfig.ui.windows').default_options.border = "rounded"
 
 			-- lsp_attach is where you enable features that only work
