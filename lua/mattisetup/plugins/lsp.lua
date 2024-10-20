@@ -74,12 +74,13 @@ return {
 				mapping = cmp.mapping.preset.insert({
 					['<C-Space>'] = cmp.mapping.complete(),
 					-- Enter to confirm selected suggestion
-					['<CR>'] = cmp.mapping.confirm({ select = false }),
+					['<CR>'] = cmp.mapping.confirm({ select = false , behavior = cmp.ConfirmBehavior.Replace}),
 					-- Ctrl+j/k to select next item auk <C-p> og <C-n>
-					['<C-k>'] = cmp.mapping.select_prev_item(),
-					['<C-j>'] = cmp.mapping.select_next_item(),
+					['<C-k>'] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Select}),
+					['<C-j>'] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Select}),
 					['<C-u>'] = cmp.mapping.scroll_docs(-4),
 					['<C-d>'] = cmp.mapping.scroll_docs(4),
+
 				}),
 				window = {
 					completion = cmp.config.window.bordered(),
