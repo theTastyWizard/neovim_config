@@ -8,7 +8,9 @@ return {
         local function setup_colors()
             return {
                 black = "#000000",
+				white = '#f5f5f5',
                 bg = "#171517",
+				bright_bg = "#30365F",
                 pink = "#ff0066",
                 blue = "#007fff",
                 cyan = "#00ffff",
@@ -83,11 +85,18 @@ return {
             provider = function(self)
                 return " %2(" .. self.mode_names[self.mode] .. "%)"
             end,
-            hl = { fg = 'black', bold = true }
-            -- hl = function(self)
-            --     local color = self:mode_color()
-            --     return { fg = color, bold = true, }
-            -- end,
+            -- hl = { fg = 'black', bold = true, },
+            hl = function(self)
+                local color = self:mode_color()
+                return { fg = color, bold = true, }
+            end,
+			update = {
+				"ModeChanged", 
+				pattern = "*:*", 
+				callback = vim.schedule_wrap(function ()
+					vim.cmd("redrawstatus")
+				end),
+			}
         }
 
 
@@ -97,13 +106,24 @@ return {
                 self.filename = vim.api.nvim_buf_get_name(0)
             end,
         }
+		-- Mitt
+		local JustFileName = {
+            init = function(self)
+                self.filename = vim.api.nvim_buf_get_name(0)
+            end,
+			provider = function(self)
+				return vim.fn.fnamemodify(self.filename, ":t:r")
+			end,
+            hl = { fg = "blue", },
+		}
+
         -- We can now define some children separately and add them later
         local FileName = {
             init = function(self)
                 self.lfilename = vim.fn.fnamemodify(self.filename, ":.")
                 if self.lfilename == "" then self.lfilename = "[No Name]" end
             end,
-            -- hl = { fg = utils.get_highlight("Directory").fg },
+            -- -- hl = { fg = utils.get_highlight("Directory").fg },
             hl = { fg = "blue", },
 
             flexible = 2,
@@ -202,7 +222,10 @@ return {
             -- %P = percentage through file of displayed window
             -- provider = "%7(%l/%3L%):%2c %P",
             provider = "%2c:%7(%l/%3L%)",
-            hl = {}
+            hl = function(self)
+                local color = self:mode_color()
+                return { fg = color, bold = true, }
+            end,
         }
 
         local Diagnostics = {
@@ -214,10 +237,14 @@ return {
                 -- warn_icon = vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text,
                 -- info_icon = vim.fn.sign_getdefined("DiagnosticSignInfo")[1].text,
                 -- hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
-                error_icon = '󰚌 ',
-                warn_icon = ' ',
-                hint_icon = '󱠂 ',
-                info_icon = ' ',
+                -- error_icon = '󰚌 ',
+                -- warn_icon = ' ',
+                -- hint_icon = '󱠂 ',
+                -- info_icon = ' ',
+                error_icon = 'E:',
+                warn_icon = 'W:',
+                hint_icon = 'h:',
+                info_icon = 'i:',
             },
 
             init = function(self)
@@ -265,14 +292,16 @@ return {
                     self.status_dict.changed ~= 0
             end,
 
-            hl = { fg = "orange" },
+            hl = { fg = "yellow" },
 
-
+			{
+				provider = " "
+			},
             { -- git branch name
                 provider = function(self)
-                    return " " .. self.status_dict.head
+                    return self.status_dict.head
                 end,
-                hl = { bold = false }
+                hl = { fg = "white", bold = false }
             },
             -- You could handle delimiters, icons and counts similar to Diagnostics
             {
@@ -346,7 +375,7 @@ return {
                     local search = self.search
                     return string.format("%d/%d", search.current, math.min(search.total, search.maxcount))
                 end,
-                hl = { fg = "green", bold = false },
+                hl = { fg = "white", bold = false },
             })
         }
 
@@ -367,6 +396,14 @@ return {
                 "RecordingLeave",
             }
         }
+		vim.opt.showcmdloc = 'statusline'
+		local ShowCmd = {
+			condition = function ()
+				return vim.o.cmdheight == 0
+			end,
+			provider = ":%3.5(%S%)",
+		}
+
         local Grapple = {
             provider = function() return require('grapple').statusline() end,
             -- utils.surround({"(", ")"}, nil, {
@@ -382,14 +419,19 @@ return {
         local Align = { provider = "%=" }
         local Space = { provider = " " }
 
-        Ruler = utils.surround({ "", "" }, function(self) return self:mode_color() end,
-            { Ruler, hl = { fg = 'black' } })
-        ViMode = utils.surround({ "", "" }, function(self) return self:mode_color() end, { ViMode })
+		-- Fyrir surround með litum
+        -- Ruler = utils.surround({ "", "" }, function(self) return self:mode_color() end,
+            -- { Ruler, hl = { fg = 'black' } })
+        -- ViMode = utils.surround({ "", "" }, function(self) return self:mode_color() end,
+			-- { ViMode })
+		Ruler = utils.surround({ "", "" }, "bright_bg",{ Ruler })
+		ViMode = utils.surround({ "", "" }, "bright_bg",{ ViMode })
 
         local DefaultStatusline = {
-            ViMode, Space, FileNameBlock, Space, Git, Space, Diagnostics, Align,
+            ViMode, Space, JustFileName, FileFlags, Space, Git, Space, Diagnostics, Align,
             -- FileSize,
             { condition = require("grapple").exists(), Grapple },
+			ShowCmd,
             MacroRec, SearchCount, FileIcon, FileType, Space, Ruler
         }
 
