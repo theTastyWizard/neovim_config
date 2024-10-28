@@ -12,7 +12,9 @@ return {
                 bg = "#171517",
 				-- bright_bg = "#30365F",
 				-- bright_bg ="#2B3055",
-				bright_bg ="#262b4c",
+				-- bright_bg ="#262b4c",
+				bright_bg ="#1e223c",
+				-- bright_bg ="#1a1e35",
                 pink = "#ff0066",
                 blue = "#007fff",
                 cyan = "#00ffff",
@@ -226,7 +228,7 @@ return {
             provider = "%2c:%7(%l/%3L%)",
             hl = function(self)
                 local color = self:mode_color()
-                return { fg = color, bold = true, }
+                return { fg = color, bold = false, }
             end,
         }
 
@@ -239,14 +241,14 @@ return {
                 -- warn_icon = vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text,
                 -- info_icon = vim.fn.sign_getdefined("DiagnosticSignInfo")[1].text,
                 -- hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
-                -- error_icon = '󰚌 ',
-                -- warn_icon = ' ',
-                -- hint_icon = '󱠂 ',
-                -- info_icon = ' ',
-                error_icon = 'E:',
-                warn_icon = 'W:',
-                hint_icon = 'h:',
-                info_icon = 'i:',
+                error_icon = '󰚌 ',
+                warn_icon = ' ',
+                hint_icon = '󱠂 ',
+                info_icon = ' ',
+                -- error_icon = 'E:',
+                -- warn_icon = 'W:',
+                -- hint_icon = 'h:',
+                -- info_icon = 'i:',
             },
 
             init = function(self)
@@ -403,7 +405,7 @@ return {
 			condition = function ()
 				return vim.o.cmdheight == 0
 			end,
-			provider = ":%3.5(%S%)",
+			provider = "%3.5(%S%)",
 		}
 
         local Grapple = {
@@ -433,7 +435,7 @@ return {
             ViMode, Space, JustFileName, FileFlags, Space, Git, Space, Diagnostics, Align,
             -- FileSize,
             { condition = require("grapple").exists(), Grapple },
-			ShowCmd,
+			-- ShowCmd,
             MacroRec, SearchCount, FileIcon, FileType, Space, Ruler
         }
 
