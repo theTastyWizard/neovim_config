@@ -5,7 +5,6 @@ vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = 'Open Oil' })
 wk.add({
     { "<leader>t",  group = "Terminal" },
     { "<leader>tc", "<cmd>:FloatermNew --autoclose=0 gcc % -o %< && ./%<<cr>",              desc = "Run C code" },
-    { "<leader>tt", "<cmd>FloatermNew --name=Main --wintype=split --height=0.18 fish <cr>", desc = "Open Main Terminal" },
 })
 wk.add({
     { "<leader>d",  group = "Diagnostics" },
