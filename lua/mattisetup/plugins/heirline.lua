@@ -441,7 +441,7 @@ return {
 
         local InactiveStatusline = {
             condition = conditions.is_not_active,
-            FileNameBlock,
+            JustFileName,
             Align
         }
 
