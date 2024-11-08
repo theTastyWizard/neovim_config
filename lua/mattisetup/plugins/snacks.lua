@@ -8,7 +8,8 @@ return {
 		notifier = {
 			enabled = true,
 			timeout = 3000,
-			style = "compact"
+			style = "compact",
+            top_down = false,
 		},
 		quickfile = { enabled = true },
 		statuscolumn = { enabled = true },
