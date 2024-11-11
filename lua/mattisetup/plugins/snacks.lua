@@ -66,7 +66,7 @@ return {
 				vim.print = _G.dd -- Override print to use snacks for `:=` command
 
 				-- Create some toggle mappings
-				Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>.s")
+				Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>.z")
 				Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>.w")
 				Snacks.toggle.diagnostics():map("<leader>.d")
 				Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
