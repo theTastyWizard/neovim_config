@@ -16,7 +16,7 @@ autocmd("FileType", {
     },
     callback = function(event)
         vim.bo[event.buf].buflisted = false
-        vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+        vim.keymap.set("n", "q", "<cmd>q<cr>", { buffer = event.buf, silent = true }) -- breytti úr close í quit svo man geti hætt
     end,
     desc = "Close certain windows with q",
 })
