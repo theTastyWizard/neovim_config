@@ -9,7 +9,8 @@ return {
 			enabled = true,
 			timeout = 3000,
 			style = "compact",
-            top_down = false,
+			top_down = false,
+			margin = { top = 0, right = 0, bottom = 0 }
 		},
 		quickfile = { enabled = true },
 		statuscolumn = { enabled = true },
@@ -21,15 +22,15 @@ return {
 		}
 	},
 	keys = {
-		{ "<leader>n", function() Snacks.notifier.hide() end,           desc = "Dismiss All Notifications" },
+		{ "<leader>n",  function() Snacks.notifier.hide() end,    desc = "Dismiss All Notifications" },
 		-- { "<leader>bd", function() Snacks.bufdelete() end,               desc = "Delete Buffer" },
-		{ "<leader>gg", function() Snacks.lazygit() end,                 desc = "Lazygit" },
-		{ "<leader>gb", function() Snacks.git.blame_line() end,          desc = "Git Blame Line" },
-		{ "<leader>gB", function() Snacks.gitbrowse() end,               desc = "Git Browse" },
-		{ "<leader>gf", function() Snacks.lazygit.log_file() end,        desc = "Lazygit Current File History" },
-		{ "<leader>gl", function() Snacks.lazygit.log() end,             desc = "Lazygit Log (cwd)" },
-		{ "<leader>tt", function() Snacks.terminal() end,                desc = "Toggle Terminal" },
-		{ "<c-_>",      function() Snacks.terminal() end,                desc = "which_key_ignore" },
+		{ "<leader>gg", function() Snacks.lazygit() end,          desc = "Lazygit" },
+		{ "<leader>gb", function() Snacks.git.blame_line() end,   desc = "Git Blame Line" },
+		{ "<leader>gB", function() Snacks.gitbrowse() end,        desc = "Git Browse" },
+		{ "<leader>gf", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
+		{ "<leader>gl", function() Snacks.lazygit.log() end,      desc = "Lazygit Log (cwd)" },
+		{ "<leader>tt", function() Snacks.terminal() end,         desc = "Toggle Terminal" },
+		{ "<c-_>",      function() Snacks.terminal() end,         desc = "which_key_ignore" },
 		-- { "]]",         function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Reference" },
 		-- { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference" },
 		-- {
