@@ -1,7 +1,7 @@
 # Neovim Todo:
 - [x] Stilla heirline þannig að special og oil verði öðurvísi ef inactive 
 - [x] Setja nvim-java þannig að það virki fyrir allt ég þarf í hugbverk1
-- [ ] Kannski setja upp Ocaml REPL, er með Utop en veit ekki hvort það virkar í nvim
+- [X] Kannski setja upp Ocaml REPL, er með Utop en veit ekki hvort það virkar í nvim
 - [ ] Setja upp og vista gott format fyrir tex skrár
 - [ ] Nota snippets greinarnar til þess að skrifa góð latex snippet og mögulega fleiri, eða finna bara góð snippets sem eru ekki frendly snippets
     - [ ] Setja upp snippet keybinds
@@ -13,3 +13,6 @@
 - [ ] Bíða eftir að blink.nvim sé með allt sem vantar í cmp og prufa að færa yfir 
 - [ ] Setja upp Molten fyrir jupyter notebook [her](https://www.reddit.com/r/neovim/comments/1fy2gxc/molten_markdownpreview_kitty_jupyter_notebook/)
 - [ ] Láta S-Tab virka þannig að hoppi aftur um sviga og setji til tab char
+- [ ] stilla markview svo það sé auðveldar að nota það í normalmode
+- [ ] setja upp diffview og kanski nota git mergetool með því
+- [ ] setja upp keybindings fyrir markview, eins og Checkbox toggle og fleira 
