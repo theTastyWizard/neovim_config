@@ -23,15 +23,18 @@ return {
 			-- for keymap, all values may be string | string[]
 			-- use an empty table to disable a keymap
 			keymap = {
-				['<C-space>'] = {'show'},
-				['<C-e>'] = { 'hide' },
-				['<CR>'] = { 'accept'},
+				['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+				['<C-e>'] = { 'hide', 'fallback' },
+				['<CR>'] = { 'accept', 'fallback' },
+
 				['<C-k>'] = { 'select_prev', 'fallback' },
 				['<C-j>'] = { 'select_next', 'fallback' },
+
 				['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
 				['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
-				['<C-b>'] = {'snippet_forward', 'fallback'},
-				['<C-f>'] = {'snippet_backward', 'fallback'},
+
+				['<C-b>'] = { 'snippet_forward', 'fallback' },
+				['<C-f>'] = { 'snippet_backward', 'fallback' },
 			},
 
 			accept = {
