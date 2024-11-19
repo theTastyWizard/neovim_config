@@ -306,6 +306,11 @@ return {
 				vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 			end
 
+			lsp_zero.extend_lspconfig({
+				lsp_attach = lsp_attach,
+				-- capabilities = require('cmp_nvim_lsp').default_capabilities()
+				capabilities = require('blink.cmp').get_lsp_capabilities()
+			})
 
 			require('mason-lspconfig').setup({
 				ensure_installed = {},
