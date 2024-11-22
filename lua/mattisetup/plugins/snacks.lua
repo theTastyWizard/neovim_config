@@ -13,12 +13,40 @@ return {
 			margin = { top = 0, right = 0, bottom = 0 }
 		},
 		quickfile = { enabled = true },
-		statuscolumn = { enabled = true },
+		statuscolumn = {
+			enabled = true,
+			folds = {
+				open = false, -- show open fold icon NOTE: áhugavert að prufa sýnir treesitter held ég
+			}
+		},
 		words = { enabled = false },
 		styles = {
 			notification = {
 				wo = { wrap = true } -- Wrap notifications
 			}
+		},
+		dashboard = {
+			enabled = false,
+			sections = {
+				{ section = "header" },
+				{ section = "keys", gap = 1, padding = 1 },
+				{ pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+				{ pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+				{
+					pane = 2,
+					icon = " ",
+					title = "Git Status",
+					section = "terminal",
+					enabled = vim.fn.isdirectory(".git") == 1,
+					-- enabled = Snacks.git.get_root() ~= nil,
+					cmd = "git status -bs --ignore-submodules",
+					height = 5,
+					padding = 1,
+					ttl = 5 * 60,
+					indent = 3,
+				},
+				{ section = "startup" },
+			},
 		}
 	},
 	keys = {
