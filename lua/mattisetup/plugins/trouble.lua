@@ -1,5 +1,6 @@
 return {
     "folke/trouble.nvim",
+	cmd = "Trouble",
     keys = {
         {
             "<leader>dd",
@@ -48,7 +49,7 @@ return {
         ---@field formatters? table<string,trouble.Formatter> custom formatters
         ---@field filters? table<string, trouble.FilterFn> custom filters
         ---@field sorters? table<string, trouble.SorterFn> custom sorters
-        auto_close = true,       -- auto close when there are no items
+        auto_close = false,       -- auto close when there are no items
         auto_open = false,       -- auto open when there are items
         auto_preview = true,     -- automatically open preview when on an item
         auto_refresh = true,     -- auto refresh when open
