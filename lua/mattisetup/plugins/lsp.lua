@@ -39,6 +39,7 @@ return {
 
 			accept = {
 				create_undo_point = true,
+				expand_snippet = vim.snippet.expand,
 				auto_brackets = {
 					enabled = true,
 					default_brackets = { '(', ')' },
@@ -66,25 +67,7 @@ return {
 					-- 'prefix' will fuzzy match on the text before the cursor
 					-- 'full' will fuzzy match on the text before *and* after the cursor
 					-- example: 'foo_|_bar' will match 'foo_' for 'prefix' and 'foo__bar' for 'full'
-					keyword_range = 'prefix',
-					-- regex used to get the text when fuzzy matching
-					-- changing this may break some sources, so please report if you run into issues
-					-- TODO: shouldnt this also affect the accept command? should this also be per language?
-					keyword_regex = '[%w_\\-]',
-					-- after matching with keyword_regex, any characters matching this regex at the prefix will be excluded
-					exclude_from_prefix_regex = '[\\-]',
-					-- LSPs can indicate when to show the completion window via trigger characters
-					-- however, some LSPs (i.e. tsserver) return characters that would essentially
-					-- always show the window. We block these by default
-					blocked_trigger_characters = { ' ', '\n', '\t' },
-					-- when true, will show the completion window when the cursor comes after a trigger character after accepting an item
-					show_on_accept_on_trigger_character = true,
-					-- when true, will show the completion window when the cursor comes after a trigger character when entering insert mode
-					show_on_insert_on_trigger_character = true,
-					-- list of additional trigger characters that won't trigger the completion window when the cursor comes after a trigger character when entering insert mode/accepting an item
-					show_on_x_blocked_trigger_characters = { "'", '"', '(' },
-					-- when false, will not show the completion window automatically when in a snippet
-					show_in_snippet = true,
+					keyword_range = 'full',
 				},
 
 				signature_help = {
@@ -97,6 +80,9 @@ return {
 			},
 
 			fuzzy = {
+				-- when enabled, allows for a number of typos relative to the length of the query
+				-- disabling this matches the behavior of fzf
+				use_typo_resistance = true,
 				-- frencency tracks the most recently/frequently used items and boosts the score of the item
 				use_frecency = true,
 				-- proximity bonus boosts the score of items matching nearby words
@@ -205,8 +191,20 @@ return {
 					-- 'reversed' will render the label on the left and the kind icon + name on the right
 					-- 'minimal' will render the label on the left and the kind name on the right
 					-- 'function(blink.cmp.CompletionRenderContext): blink.cmp.Component[]' for custom rendering
-					draw = 'reversed',
+					-- draw = 'reversed',
 					-- Controls the cycling behavior when reaching the beginning or end of the completion list.
+					draw = {
+						-- Aligns the keyword you've typed to a component in the menu
+						align_to_component = 'label', -- or 'none' to disable
+						-- Left and right padding, optionally { left, right } for different padding on each side
+						padding = 1,
+						-- Gap between columns
+						gap = 1,
+						-- Components to render, grouped by column
+						columns = { { 'label', 'label_description', gap = 1 }, {'kind', 'kind_icon', gap=1} }
+						-- for a setup similar to nvim-cmp: https://github.com/Saghen/blink.cmp/pull/245#issuecomment-2463659508
+						-- columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+					},
 					cycle = {
 						-- When `true`, calling `select_next` at the *bottom* of the completion list will select the *first* completion item.
 						from_bottom = true,
@@ -231,6 +229,9 @@ return {
 					auto_show = true,
 					auto_show_delay_ms = 150,
 					update_delay_ms = 50,
+					-- whether to use treesitter highlighting, disable if you run into performance issues
+					-- WARN: temporary, eventually blink will support regex highlighting
+					treesitter_highlighting = true,
 				},
 				signature_help = {
 					min_width = 1,
@@ -238,6 +239,13 @@ return {
 					max_height = 10,
 					border = 'rounded',
 					winhighlight = 'Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder',
+					scrollbar = false,
+					-- which directions to show the window,
+					-- falling back to the next direction when there's not enough space
+					direction_priority = { 'n', 's' },
+					-- whether to use treesitter highlighting, disable if you run into performance issues
+					-- WARN: temporary, eventually blink will support regex highlighting
+					treesitter_highlighting = true,
 				},
 				ghost_text = {
 					enabled = false,
@@ -254,7 +262,11 @@ return {
 
 			-- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 			-- adjusts spacing to ensure icons are aligned
-			nerd_font_variant = 'normal',
+			nerd_font_variant = 'mono',
+
+			-- allows extending the enabled_providers array elsewhere in your config
+			-- without having to redefine it
+			opts_extend = { "sources.completion.enabled_providers" }
 
 		}
 	},
