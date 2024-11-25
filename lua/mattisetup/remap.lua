@@ -5,16 +5,16 @@ vim.keymap.set("n", "<leader>x", "<cmd>x<cr>", { desc = 'Save and close nvim' })
 vim.keymap.set("n", "<leader>w", "<cmd>up<cr>", { desc = 'Update file' })
 
 -- Nota alt til að færa á milli ramma fyrir terminal og insert
-vim.keymap.set({ "t", "i" }, "<A-h>", "<C-\\><C-N><C-w>h")
-vim.keymap.set({ "t", "i" }, "<A-j>", "<C-\\><C-N><C-w>j")
-vim.keymap.set({ "t", "i" }, "<A-k>", "<C-\\><C-N><C-w>k")
-vim.keymap.set({ "t", "i" }, "<A-l>", "<C-\\><C-N><C-w>l")
+vim.keymap.set({ "t", "i" }, "<C-h>", "<C-\\><C-N><C-w>h")
+vim.keymap.set({ "t", "i" }, "<C-j>", "<C-\\><C-N><C-w>j")
+vim.keymap.set({ "t", "i" }, "<C-k>", "<C-\\><C-N><C-w>k")
+vim.keymap.set({ "t", "i" }, "<C-l>", "<C-\\><C-N><C-w>l")
 
 -- sama nema fyrir normal og visual
-vim.keymap.set({ "n", "v" }, "<A-h>", "<C-w>h")
-vim.keymap.set({ "n", "v" }, "<A-j>", "<C-w>j")
-vim.keymap.set({ "n", "v" }, "<A-k>", "<C-w>k")
-vim.keymap.set({ "n", "v" }, "<A-l>", "<C-w>l")
+vim.keymap.set({ "n", "v" }, "<C-h>", "<C-w>h")
+vim.keymap.set({ "n", "v" }, "<C-j>", "<C-w>j")
+vim.keymap.set({ "n", "v" }, "<C-k>", "<C-w>k")
+vim.keymap.set({ "n", "v" }, "<C-l>", "<C-w>l")
 
 -- better end and start of the line
 vim.keymap.set({ "n", "v" }, "H", "^", { desc = "Start of the line" })
