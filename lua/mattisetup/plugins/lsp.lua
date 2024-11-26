@@ -33,8 +33,8 @@ return {
 				['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
 				['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
 
-				['<C-b>'] = { 'snippet_forward', 'fallback' },
-				['<C-f>'] = { 'snippet_backward', 'fallback' },
+				['<C-b>'] = { 'snippet_backward', 'fallback' },
+				['<C-f>'] = { 'snippet_forward', 'fallback' },
 			},
 
 			accept = {
@@ -276,7 +276,6 @@ return {
 		cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
 		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = {
-			-- { 'hrsh7th/cmp-nvim-lsp' },
 			{ 'williamboman/mason.nvim' },
 			{ 'williamboman/mason-lspconfig.nvim' },
 		},
