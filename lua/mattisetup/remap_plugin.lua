@@ -1,11 +1,14 @@
 local wk = require("which-key")
 
-vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = 'Open Oil' })
+wk.add({
+	{"<leader>h", group = "Haskell"},
+})
 
 wk.add({
 	{ "<leader>t",  group = "Terminal" },
 	{ "<leader>tc", "<cmd>:FloatermNew --autoclose=0 gcc % -o %< && ./%<<cr>", desc = "Run C code" },
 })
+
 wk.add({
 	{ "<leader>d",  group = "Diagnostics" },
 	{ "<leader>dT", "<cmd>TodoTrouble<cr>",                    desc = "open Todo comments in Trouble" },
