@@ -36,8 +36,8 @@ vim.keymap.set("n", "þ", "*", { desc = 'search word forward' })
 vim.keymap.set("n", "Þ", "#", { desc = 'search word backward' })
 
 -- Skipta endurtekt á f og t leit
-vim.keymap.set("n", ",", ";", {desc = 'next f & t search'})
-vim.keymap.set("n", ";", ",", {desc = 'previous f & t search'})
+vim.keymap.set({"n","v"}, ",", ";", {desc = 'next f & t search'})
+vim.keymap.set({"n","v"}, ";", ",", {desc = 'previous f & t search'})
 
 -- next greatest remap ever asbjornHaland tekið frá primeagen
 -- setur system clipboard á space+ y, Y og p,P
