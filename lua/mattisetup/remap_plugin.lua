@@ -17,7 +17,7 @@ wk.add({
 })
 
 wk.add({
-	{ "<leader>s", group = "Surround" }
+	{ "s", group = "Surround" }
 })
 
 wk.add({

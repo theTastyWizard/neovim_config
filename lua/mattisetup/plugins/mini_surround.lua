@@ -11,13 +11,13 @@ return {
 
 		-- Module mappings. Use `''` (empty string) to disable one.
 		mappings = {
-			add = '<leader>sa', -- Add surrounding in Normal and Visual modes
-			delete = '<leader>sd', -- Delete surrounding
-			find = '<leader>sf', -- Find surrounding (to the right)
-			find_left = '<leader>sF', -- Find surrounding (to the left)
-			-- highlight = '<leader>sh', -- Highlight surrounding
-			replace = '<leader>sr', -- Replace surrounding
-			-- update_n_lines = '<leader>sn', -- Update `n_lines`
+			add = 's', -- Add surrounding in Normal and Visual modes
+			delete = 'sd', -- Delete surrounding
+			find = 'sf', -- Find surrounding (to the right)
+			find_left = 'sF', -- Find surrounding (to the left)
+			highlight = '', -- Highlight surrounding
+			replace = 'sr', -- Replace surrounding
+			update_n_lines = '', -- Update `n_lines`
 
 			suffix_last = 'l', -- Suffix to search with "prev" method
 			suffix_next = 'n', -- Suffix to search with "next" method
@@ -29,7 +29,7 @@ return {
 		-- Whether to respect selection type:
 		-- - Place surroundings on separate lines in linewise mode.
 		-- - Place surroundings on each line in blockwise mode.
-		respect_selection_type = false,
+		respect_selection_type = true,
 
 		-- How to search for surrounding (first inside current line, then inside
 		-- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
