@@ -71,13 +71,24 @@ return {
 					scrollbar = true,
 				}
 			},
+			sources = {
+				completion = {
+					enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev", "dadbod" },
+				},
+				providers = {
+					dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+					-- dont show LuaLS require statements when lazydev has items
+					lsp = { fallback_for = { "lazydev" } },
+					lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+				},
+			},
 			appearance = {
 				use_nvim_cmp_as_default = true,
 			},
 
 			-- allows extending the enabled_providers array elsewhere in your config
 			-- without having to redefine it
-			opts_extend = { "sources.completion.enabled_providers" }
+			-- opts_extend = { "sources.completion.enabled_providers" }
 		},
 	},
 	-- LSP
