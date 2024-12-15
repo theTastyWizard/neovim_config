@@ -1,7 +1,10 @@
 local wk = require("which-key")
+wk.add({
+	{ "<leader>L", "<cmd>Lazy<cr>", desc = "Lazy" },
+})
 
 wk.add({
-	{"<leader>h", group = "Haskell"},
+	{ "<leader>h", group = "Haskell" },
 })
 
 wk.add({

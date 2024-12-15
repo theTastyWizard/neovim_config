@@ -44,8 +44,11 @@ vim.keymap.set({"n","v"}, ";", ",", {desc = 'previous f & t search'})
 -- setur system clipboard á space+ y, Y og p,P
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = 'System clipboard yank' })
 vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]], { desc = 'System clipboard Yank' })
-vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = 'System clipboard paste' })
-vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]], { desc = 'System clipboard Paste' })
+vim.keymap.set({ "n", "v" }, "<leader>p", [["+]p]], { desc = 'System clipboard paste & indent' })
+vim.keymap.set({ "n", "v" }, "<leader>P", [["+]P]], { desc = 'System clipboard Paste & indent' })
+-- mitt: paste með correct indent
+-- vim.keymap.set({ "n", "v" }, "<leader>]p", [["+]p]], { desc = 'System clipboard paste correct indent' })
+-- vim.keymap.set({ "n", "v" }, "<leader>]P", [["+]P]], { desc = 'System clipboard Paste correct indent' })
 
 -- passar að yankaðir hlutir eyðist ekki eftir paste
 vim.keymap.set("x", "p", "\"_dP")
