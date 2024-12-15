@@ -3,7 +3,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	opts = {
 		chunk = {
-			enable = true,
+			enable = false,
 			notify = false,
 			use_treesitter = true,
 			error_sign = true,

@@ -13,6 +13,11 @@ return {
 			margin = { top = 0, right = 0, bottom = 0 }
 		},
 		quickfile = { enabled = true },
+		-- terminal = {
+		-- 	override = {
+		-- 		cmd = "fish",
+		-- 	},
+		-- },
 		statuscolumn = {
 			enabled = true,
 			folds = {
@@ -20,6 +25,49 @@ return {
 			}
 		},
 		words = { enabled = false },
+		scope = { enabled = true, },
+		scroll = {
+			enabled = false,
+			-- animate = {
+			-- 	easing = "Cubic",
+			-- },
+		},
+		animate = {
+			-- easing = "cubic",
+		},
+		indent = {
+			indent = {
+				enabled = false,
+				-- char = "╎",
+				only_scope = false,
+				only_current = false,
+				-- hl = "#171517",
+			},
+			animate = {
+				style = "out",
+				duration = {
+					step = 20,
+					total = 100,
+				},
+			},
+			scope = {
+				enabled = true,
+				underline = false,
+				only_current = true,
+			},
+			chunk = {
+				enabled = false,
+				char = {
+					-- corner_top = "┌",
+					-- corner_bottom = "└",
+					corner_top = "╭",
+					corner_bottom = "╰",
+					horizontal = "─",
+					vertical = "│",
+					arrow = ">",
+				},
+			}
+		},
 		styles = {
 			notification = {
 				wo = { wrap = true } -- Wrap notifications
@@ -50,35 +98,20 @@ return {
 		}
 	},
 	keys = {
-		{ "<leader>n",  function() Snacks.notifier.hide() end,    desc = "Dismiss All Notifications" },
+		{ "<leader>n",  function() Snacks.notifier.hide() end,         desc = "Dismiss All Notifications" },
+		{ "<leader>N",  function() Snacks.notifier.show_history() end, desc = "Show notification history" },
+
 		-- { "<leader>bd", function() Snacks.bufdelete() end,               desc = "Delete Buffer" },
-		{ "<leader>gg", function() Snacks.lazygit() end,          desc = "Lazygit" },
-		{ "<leader>gb", function() Snacks.git.blame_line() end,   desc = "Git Blame Line" },
-		{ "<leader>gB", function() Snacks.gitbrowse() end,        desc = "Git Browse" },
-		{ "<leader>gf", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
-		{ "<leader>gl", function() Snacks.lazygit.log() end,      desc = "Lazygit Log (cwd)" },
-		{ "<leader>tt", function() Snacks.terminal() end,         desc = "Toggle Terminal" },
-		{ "<c-_>",      function() Snacks.terminal() end,         desc = "which_key_ignore" },
+		{ "<leader>gg", function() Snacks.lazygit() end,               desc = "Lazygit" },
+		{ "<leader>gb", function() Snacks.git.blame_line() end,        desc = "Git Blame Line" },
+		{ "<leader>gB", function() Snacks.gitbrowse() end,             desc = "Git Browse" },
+		{ "<leader>gf", function() Snacks.lazygit.log_file() end,      desc = "Lazygit Current File History" },
+		{ "<leader>gl", function() Snacks.lazygit.log() end,           desc = "Lazygit Log (cwd)" },
+
+		{ "<leader>tt", function() Snacks.terminal() end,              desc = "Toggle Terminal" },
+		{ "<c-_>",      function() Snacks.terminal() end,              desc = "which_key_ignore" },
 		-- { "]]",         function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Reference" },
 		-- { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference" },
-		-- {
-		-- 	"<leader>N",
-		-- 	desc = "Neovim News",
-		-- 	function()
-		-- 		Snacks.win({
-		-- 			file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
-		-- 			width = 0.6,
-		-- 			height = 0.6,
-		-- 			wo = {
-		-- 				spell = false,
-		-- 				wrap = false,
-		-- 				signcolumn = "yes",
-		-- 				statuscolumn = " ",
-		-- 				conceallevel = 3,
-		-- 			},
-		-- 		})
-		-- 	end,
-		-- }
 	},
 	init = function()
 		vim.api.nvim_create_autocmd("User", {
@@ -96,11 +129,14 @@ return {
 				-- Create some toggle mappings
 				Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>.z")
 				Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>.w")
-				Snacks.toggle.diagnostics():map("<leader>.d")
+				Snacks.toggle.diagnostics():map("<leader>.D")
 				Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
 					:map("<leader>.c")
 				Snacks.toggle.treesitter():map("<leader>.T")
 				Snacks.toggle.inlay_hints():map("<leader>.h")
+				Snacks.toggle.scroll():map("<leader>.S")
+				Snacks.toggle.zen():map("<leader>.f")
+				Snacks.toggle.dim():map("<leader>.d")
 			end,
 		})
 	end,
