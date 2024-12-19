@@ -8,6 +8,10 @@ wk.add({
 })
 
 wk.add({
+	{ "<leader>f", group = "Find" },
+})
+
+wk.add({
 	{ "<leader>t",  group = "Terminal" },
 	{ "<leader>tc", "<cmd>:FloatermNew --autoclose=0 gcc % -o %< && ./%<<cr>", desc = "Run C code" },
 })

@@ -6,16 +6,16 @@ return {
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
     },
     config = function()
-        local wk = require("which-key")
-        wk.add({
-            {"<leader>f", group = "Find"},
-            {"<leader>ff", "<cmd>Telescope find_files<cr>", desc="files"},
-            {"<leader>fs", "<cmd>Telescope grep_string<cr>", desc="string"},
-            {"<leader>fg", "<cmd>Telescope live_grep<cr>", desc="grep"},
-            {"<leader>fm", "<cmd>Telescope man_pages<cr>", desc="man page"},
-            {"<leader>fh", "<cmd>Telescope help_tags<cr>", desc="help pages"},
-
-        })
+        -- local wk = require("which-key")
+        -- wk.add({
+        --     {"<leader>f", group = "Find"},
+        --     {"<leader>ff", "<cmd>Telescope find_files<cr>", desc="files"},
+        --     {"<leader>fs", "<cmd>Telescope grep_string<cr>", desc="string"},
+        --     {"<leader>fg", "<cmd>Telescope live_grep<cr>", desc="grep"},
+        --     {"<leader>fm", "<cmd>Telescope man_pages<cr>", desc="man page"},
+        --     {"<leader>fh", "<cmd>Telescope help_tags<cr>", desc="help pages"},
+        --
+        -- })
         require "telescope".setup {
             defaults = {
                 prompt_prefix = '󰍉 ',
