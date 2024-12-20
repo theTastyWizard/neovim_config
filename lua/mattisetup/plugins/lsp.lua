@@ -72,14 +72,18 @@ return {
 				}
 			},
 			sources = {
-				completion = {
-					enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev", "dadbod" },
+				default = { "lsp", "path", "snippets", "buffer" },
+				per_filetype = {
+					lua = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', },
+					sql = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod' },
 				},
 				providers = {
 					dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-					-- dont show LuaLS require statements when lazydev has items
-					lsp = { fallback_for = { "lazydev" } },
-					lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+					lazydev = {
+						name = "LazyDev",
+						module = "lazydev.integrations.blink",
+						score_offset = 100
+					},
 				},
 			},
 			appearance = {
