@@ -24,7 +24,7 @@ return {
 				open = false, -- show open fold icon NOTE: áhugavert að prufa sýnir treesitter held ég
 			}
 		},
-		words = { enabled = false },
+		input = { enabled = false },
 		scope = { enabled = true, },
 		scroll = {
 			enabled = false,
@@ -33,6 +33,7 @@ return {
 			-- },
 		},
 		animate = {
+			fps = 144,
 			-- easing = "cubic",
 		},
 		indent = {
@@ -71,6 +72,16 @@ return {
 		styles = {
 			notification = {
 				wo = { wrap = true } -- Wrap notifications
+			},
+			input = {
+				backdrop = false,
+				width = 30,
+				relative = "cursor",
+				row = -3,
+				col = 0,
+				b = {
+					completion = true, -- enable blink completion in input NOTE: virkar ekki
+				}
 			}
 		},
 		dashboard = {
@@ -95,7 +106,7 @@ return {
 				},
 				{ section = "startup" },
 			},
-		}
+		},
 	},
 	keys = {
 		{ "<leader>n",  function() Snacks.notifier.hide() end,         desc = "Dismiss All Notifications" },
