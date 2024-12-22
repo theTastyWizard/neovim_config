@@ -31,7 +31,7 @@ return {
 				-- formatter = "path.dirname_first",
 			},
 			winopts = {
-				width = 0.8,
+				width = 0.85,
 				height = 0.8,
 				row = 0.5,
 				col = 0.5,
