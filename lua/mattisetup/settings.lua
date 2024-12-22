@@ -17,7 +17,7 @@ vim.opt.relativenumber = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = false -- setur space í stað tab, prufa að slökkva á því
+vim.opt.expandtab = true
 vim.opt.smarttab = true
 
 -- setja lítinn split glugga sem sýnir substitute dótið
@@ -30,13 +30,16 @@ vim.opt.undofile = true
 -- https://www.reddit.com/r/vim/comments/jqogan/how_does_a_lower_updatetime_lead_to_better/
 vim.opt.updatetime = 2000
 
-vim.opt.lazyredraw = true --NOTE:veit ekki alveg hvað þetta hefur áhrif á
+vim.opt.lazyredraw = false
 
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 999
 
 vim.opt.splitkeep = 'cursor'
+
+-- wrap á góðum stað
+vim.opt.linebreak = true
 
 -- leyfir að færast lengra en lína í visual block mode
 vim.opt.virtualedit = "block"
@@ -45,7 +48,7 @@ vim.opt.virtualedit = "block"
 vim.opt.signcolumn = "yes:1"
 
 -- diagnostic signs
-vim.diagnostic.config({ ---BUG: virkar ekki og ég skil ekki afhverju :(
+vim.diagnostic.config({
     signs = {
         text = {
             [vim.diagnostic.severity.ERROR] = '󰚌 ', --󰅚
