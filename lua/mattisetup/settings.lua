@@ -17,7 +17,7 @@ vim.opt.relativenumber = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+vim.opt.expandtab = false -- breytir tab í spaces, hafa false því ruglar í makefile
 vim.opt.smarttab = true
 
 -- setja lítinn split glugga sem sýnir substitute dótið
