@@ -100,8 +100,17 @@ return {
 				base0E = '#007fff',
 				base0F = '#df206c'
 			})
-			-- vim.cmd [[colorscheme base16-pinky]]
-		end
+            vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#120f12' })
+            vim.api.nvim_set_hl(0, 'NormalMode', {fg = "#ffa600", bg = '#120f12'  })
+            vim.api.nvim_set_hl(0, 'InsertMode', {fg = "#ff0066" })
+            vim.api.nvim_set_hl(0, 'VisualMode', {fg = "#00ff66" })
+            vim.api.nvim_set_hl(0, 'CommandMode', {fg = "#6600ff" })
+            vim.api.nvim_set_hl(0, 'ReplaceMode', {fg = "#ffa600" })
+            vim.api.nvim_set_hl(0, 'SelectMode', {fg = "#ffa600" })
+            vim.api.nvim_set_hl(0, 'TerminalMode', {fg = "#ffa600" })
+            vim.api.nvim_set_hl(0, 'TerminalNormalMode', {fg = "#ffa600" })
+            -- vim.cmd [[colorscheme base16-pinky]]
+        end
 	},
 	-- {
 	--     "RRethy/base16-nvim",
