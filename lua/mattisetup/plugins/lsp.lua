@@ -42,7 +42,10 @@ return {
 				},
 
 				list = {
-					selection = 'manual',
+					-- selection = 'manual',
+					selection = function (ctx)
+						return ctx.mode == 'cmdline' and 'auto_insert' or 'manual'
+					end
 				},
 
 				accept = {
@@ -52,6 +55,7 @@ return {
 				},
 				menu = {
 					border = 'rounded',
+					scrollbar = false,
 					draw = {
 						columns = { { 'label', 'label_description', gap = 1 }, { 'kind', 'kind_icon', gap = 1 } }
 					},
@@ -68,7 +72,7 @@ return {
 				enabled = true,
 				window = {
 					border = 'rounded',
-					scrollbar = true,
+					scrollbar = false, 
 				}
 			},
 			sources = {
@@ -77,6 +81,18 @@ return {
 					lua = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', },
 					sql = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod' },
 				},
+				cmdline = function()
+					local type = vim.fn.getcmdtype()
+					-- Search
+					if type == "/" or type == "?" then
+						return { "buffer" }
+					end
+					-- Commands
+					if type == ":" then
+						return { "cmdline" }
+					end
+					return {}
+				end,
 				providers = {
 					dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
 					lazydev = {
