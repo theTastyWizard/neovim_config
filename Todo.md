@@ -21,3 +21,5 @@
 
 ## Colorscheme
 - Nota base-16 pinky sem grunn og bæta síðan litum við það, eins og þeim sem þú ert búin að safna
+- Nota lua skránna sem er í share/nvim/lazy/base-16 sem setur upp alla highlight hópana
+- bæta við blink, fzflua og öðrum plugin sem vanta
