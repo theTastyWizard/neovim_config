@@ -11,7 +11,7 @@ return {
         -- if some other plugin modifies them, which in that case you can just
         -- ignore. Feel free to remove this line after you've gotten Modicator to
         -- work properly.
-        show_warnings = true,
+        show_warnings = false,
         highlights = {
             bold = true,
             italic = false,
