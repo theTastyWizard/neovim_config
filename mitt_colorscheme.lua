@@ -1,37 +1,37 @@
-# mitt colorscheme, nota tokyonight sem grunn
-return {
-	bg = "#120f12",
-	bg_dark = "#000000",
-	bg_highlight = "#2d2c2d",-- visual? -- "#2f334d",
-	blue = "#82aaff",
-	blue0 ="#00948b",-- "#3e68d7",
-	blue1 = "#65bcff",
-	blue2 = "#0db9d7",
-	blue5 = "#89ddff",
-	blue6 = "#b4f9f8",
-	blue7 = "#394b70",
-	comment = '#117c3c',
-	cyan = "#00ffff", --#86e1fc",
-	dark3 = "#545c7e",
-	dark5 = "#737aa2",
-	fg = "#e7e7e7",--"#c8d3f5",
-	fg_dark = "#828bb8",
-	fg_gutter = "#3b4261",
-	green = "#1dd361",
-	green1 ="#02d849", --"#4fd6be",
-	green2 = '#169c4b', --"#41a6b5",
-	magenta = "#cd6689", --"#843c54", --"#dbb7bc"--"#c099ff",
-	magenta2 = '#ff0066',--"#ff007c",
-	orange = "#e6550d", --"#ff661a"
-	purple = "#6600ff", --"#fca7ea",
-	red = "#ff757f",
-	red1 = "#ca0019",
-	teal = "#21c992" , --"#4fd6be",
-	terminal_black = "#120f12",
-	yellow = "#e59500", --"#ffa600",
-	git = {
-		add = "#1dd361",
-		change = "#21c992",
-		delete = "#ca0019",
-	},
+return { -- nota pinky sem grunn
+	base00 = '#120f12', -- 2 shade af pinky orig
+	-- base00 = '#111111', --bakgrunnur frá colors
+	-- base00 = '#000000', -- alveg svartur bakgrunnur
+	base01 = '#1b181b',
+	base02 = '#2d2c2d', --visual selected breytt til að sjá betur
+	base03 = '#117c3c', --comments breytt til að sjá betur
+	-- '#169c4b',
+	-- #5100cc'
+	-- #00ff66',
+
+	-- #4700b2
+	-- #b27400
+	-- #a2626d
+	-- #b26c78
+	-- #937979
+	-- #1E2832
+	-- #1E3232
+	-- #333133
+	-- #944866
+	-- #ff7fb2
+	-- #b21956
+	-- #cc0051
+	-- #169c4b
+	base04 = '#e7dbdb',
+	base05 = '#f5f5f5',
+	base06 = '#ffffff',
+	base07 = '#f7f3f7',
+	base08 = '#ffa600',
+	base09 = '#00ff66',
+	base0A = '#20df6c',
+	base0B = '#ff0066',
+	base0C = '#6600ff',
+	base0D = '#00ffff',
+	base0E = '#007fff',
+	base0F = '#df206c'
 }
