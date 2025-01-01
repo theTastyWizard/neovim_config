@@ -23,6 +23,8 @@ return {
 			-- for keymap, all values may be string | string[]
 			-- use an empty table to disable a keymap
 			keymap = {
+				preset = 'none',
+
 				['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
 				['<C-e>'] = { 'hide', 'fallback' },
 				['<CR>'] = { 'accept', 'fallback' },
@@ -35,6 +37,23 @@ return {
 
 				['<C-b>'] = { 'snippet_backward', 'fallback' },
 				['<C-f>'] = { 'snippet_forward', 'fallback' },
+
+				cmdline = {
+					preset = 'none',
+
+					['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+					['<C-e>'] = { 'hide', 'fallback' },
+					['<CR>'] = { 'accept', 'fallback' },
+
+					['<C-k>'] = { 'select_prev', 'fallback' },
+					['<C-j>'] = { 'select_next', 'fallback' },
+
+					['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
+					['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
+
+					['<Tab>'] = { 'select_next' },
+					['<S-Tab>'] = { 'select_prev' },
+				}
 			},
 			completion = {
 				keyword = {
@@ -43,7 +62,7 @@ return {
 
 				list = {
 					-- selection = 'manual',
-					selection = function (ctx)
+					selection = function(ctx)
 						return ctx.mode == 'cmdline' and 'auto_insert' or 'manual'
 					end
 				},
@@ -72,7 +91,7 @@ return {
 				enabled = true,
 				window = {
 					border = 'rounded',
-					scrollbar = false, 
+					scrollbar = false,
 				}
 			},
 			sources = {
@@ -81,18 +100,6 @@ return {
 					lua = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', },
 					sql = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod' },
 				},
-				cmdline = function()
-					local type = vim.fn.getcmdtype()
-					-- Search
-					if type == "/" or type == "?" then
-						return { "buffer" }
-					end
-					-- Commands
-					if type == ":" then
-						return { "cmdline" }
-					end
-					return {}
-				end,
 				providers = {
 					dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
 					lazydev = {
