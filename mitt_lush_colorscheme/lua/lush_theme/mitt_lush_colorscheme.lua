@@ -41,67 +41,74 @@
 --
 --  `:lua require('lush').ify()`
 
-local lush            = require('lush')
-local hsl             = lush.hsl
+local lush        = require('lush')
+local hsl         = lush.hsl
 
-local grunn00         = hsl('#120f12') -- 2 shade af pinky orig
-local grunn01         = hsl('#1b181b')
-local grunn02         = hsl('#2d2c2d') --visual selected breytt til að sjá betur
-local grunn03         = hsl('#117c3c') --comments breytt til að sjá betur
-local grunn04         = hsl('#e7dbdb')
-local grunn05         = hsl('#f5f5f5')
-local grunn06         = hsl('#ffffff')
-local grunn07         = hsl('#f7f3f7')
-local grunn08         = hsl('#ffa600')
-local grunn09         = hsl('#00ff66')
-local grunn0A         = hsl('#20df6c')
-local grunn0B         = hsl('#ff0066')
-local grunn0C         = hsl('#6600ff')
-local grunn0D         = hsl('#00ffff')
-local grunn0E         = hsl('#007fff')
-local grunn0F         = hsl('#df206c')
+local grunn00     = hsl('#120f12') -- 2 shade af pinky orig
+local grunn01     = hsl('#1b181b')
+local grunn02     = hsl('#2d2c2d') --visual selected breytt til að sjá betur
+local grunn03     = hsl('#117c3c') --comments breytt til að sjá betur
+local grunn04     = hsl('#e7dbdb')
+local grunn05     = hsl('#f5f5f5')
+local grunn06     = hsl('#ffffff')
+local grunn07     = hsl('#f7f3f7')
+local grunn08     = hsl('#ffa600')
+local grunn09     = hsl('#00ff66')
+local grunn0A     = hsl('#20df6c')
+local grunn0B     = hsl('#ff0066')
+local grunn0C     = hsl('#6600ff')
+local grunn0D     = hsl('#00ffff')
+local grunn0E     = hsl('#007fff')
+local grunn0F     = hsl('#df206c')
 
-local bakgrunnur      = hsl('#120f12')
-local bakgrunnur_hsl  = hsl(300, 9.09, 6.47)
+-- local bakgrunnur      = hsl('#120f12')
+local bakgrunnur  = hsl(300, 9.09, 6.47)
 
-local bakgrunnurLi    = bakgrunnur.lighten(10)
+-- local bakgrunnurLi = bakgrunnur.lighten(10)
 
-local framgrunnur     = hsl('#f5f5f5')
-local framgrunnur_hsl = hsl(0, 0, 96.08) --TODO: Skoða betur
+-- local framgrunnur     = hsl('#f5f5f5')
+local framgrunnur = hsl(0, 0, 96.08) --TODO: Skoða betur
 
-local cyan            = hsl('#00ffff')
-local cyan_hsl        = hsl(180, 100, 60)
-local green           = hsl('#1dd361')
-local green1          = hsl('#02d849')
-local green2          = hsl('#169c4b')
-local darkgreen       = hsl('#117c3c')
-local darkergreen     = darkgreen.darken(15) -- fyrir comment
-local pink1           = hsl('#cd6689')
-local pink2           = hsl('#ff757f')
-local pink3           = hsl('#fca7ea')
-local pink_dark       = hsl('#843c54')
+local blue        = hsl(210, 100, 50)
 
-local magenta         = hsl('#ff0066')
-local magenta_hsl     = hsl(336, 100, 50)
+-- local cyan         = hsl('#00ffff')
+local cyan        = hsl(180, 100, 60)
 
-local orange          = hsl(18, 100, 50)
+local green1      = hsl('#00ff66')
+local green2      = hsl('#20df6c')
+local green3      = hsl('#1dd361')
+local green4      = hsl('#02d849')
+local green5      = hsl('#169c4b')
 
-local purple          = hsl('#6600ff')
-local purple_hsl      = hsl(264, 100, 50)
+local darkgreen   = hsl('#117c3c')
+local darkergreen = darkgreen.darken(15) -- fyrir comment
 
--- local =red		= hsl('#ff757f)'
-local red             = hsl('#ca0019')
-local red_hsl         = hsl(353, 100, 39)
+local pink1       = hsl('#cd6689')
+local pink2       = hsl('#ff757f')
+local pink3       = hsl('#fca7ea')
+local pink_dark   = hsl('#843c54')
 
-local teal1           = hsl('#21c992') --('#4fd6be(',
-local teal2           = hsl('#4fd6be') --('#4fd6be(',
-local teal3           = hsl('#41a6b5') --('#4fd6be(',
-local yellow          = hsl('#e59500') --('#ffa600(',
+-- local magenta         = hsl('#ff0066')
+local magenta     = hsl(336, 100, 50)
+
+local orange      = hsl(18, 100, 50)
+
+-- local purple       = hsl('#6600ff')
+local purple      = hsl(264, 100, 50)
+
+-- local red             = hsl('#ca0019')
+local red         = hsl(353, 100, 39)
+
+local teal1       = hsl('#21c992')   --('#4fd6be(',
+local teal2       = hsl('#4fd6be')   --('#4fd6be(',
+local teal3       = hsl('#41a6b5')   --('#4fd6be(',
+
+local yellow      = hsl(36, 100, 50) --('#ffa600(',
 
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
 -- support an annotation like the following. Consult your server documentation.
 ---@diagnostic disable: undefined-global
-local theme           = lush(function(injected_functions)
+local theme       = lush(function(injected_functions)
 	local sym = injected_functions.sym
 	return {
 		-- The following are the Neovim (as of 0.8.0-dev+100-g371dfb174) highlight
@@ -114,6 +121,8 @@ local theme           = lush(function(injected_functions)
 		--
 		-- See :h highlight-groups
 		--
+		Normal { bg = bakgrunnur, fg = framgrunnur }, -- Normal text
+		-- NormalFloat    { }, -- Normal text in floating windows.
 		-- ColorColumn    { }, -- Columns set with 'colorcolumn'
 		-- Conceal        { }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
 		-- Cursor         { }, -- Character under the cursor
@@ -149,9 +158,7 @@ local theme           = lush(function(injected_functions)
 		-- MsgSeparator   { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
 		-- MoreMsg        { }, -- |more-prompt|
 		-- NonText        { }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-		Normal { bg = bakgrunnur_hsl, fg = framgrunnur_hsl }, -- Normal text
-		-- NormalFloat    { }, -- Normal text in floating windows.
-		FloatBorder { bg = bakgrunnur, fg = framgrunnur }, -- Border of floating windows.
+		FloatBorder { Normal }, -- Border of floating windows.
 		-- FloatTitle     { }, -- Title of floating windows.
 		-- NormalNC       { }, -- normal text in non-current windows
 		-- Pmenu          { }, -- Popup menu: Normal item.
@@ -166,7 +173,7 @@ local theme           = lush(function(injected_functions)
 		-- QuickFixLine   { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 		-- Search         { }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
 		-- SpecialKey     { }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
-		SpellBad { gui = 'undercurl', sp = red_hsl }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+		SpellBad { gui = 'undercurl', sp = red }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
 		-- SpellCap       { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
 		-- SpellLocal     { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
 		-- SpellRare      { }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
@@ -251,10 +258,11 @@ local theme           = lush(function(injected_functions)
 
 		-- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
 		--
-		DiagnosticError { fg = red_hsl },      -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		-- DiagnosticWarn             { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		-- DiagnosticInfo             { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticOk { fg = green1 }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticError { fg = red },       -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticWarn { fg = yellow },     -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticInfo { fg = blue },       -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		-- DiagnosticHint  { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticOk { fg = green1 },       -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		-- DiagnosticVirtualTextError { } , -- Used for "Error" diagnostic virtual text.
 		-- DiagnosticVirtualTextWarn  { } , -- Used for "Warn" diagnostic virtual text.
 		-- DiagnosticVirtualTextInfo  { } , -- Used for "Info" diagnostic virtual text.
