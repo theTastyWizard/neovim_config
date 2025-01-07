@@ -72,9 +72,10 @@ local framgrunnur = hsl(0, 0, 96.08) --TODO: Skoða betur
 local blue        = hsl(210, 100, 50)
 
 -- local cyan         = hsl('#00ffff')
+-- local cyan         = hsl('#00efff')
 local cyan        = hsl(180, 100, 60)
 
-local green1      = hsl('#00ff66')
+local green1      = hsl('#00ff66') --Notað fyrir tölur,const,boolean í upprunalega
 local green2      = hsl('#20df6c')
 local green3      = hsl('#1dd361')
 local green4      = hsl('#02d849')
@@ -88,8 +89,11 @@ local pink2       = hsl('#ff757f')
 local pink3       = hsl('#fca7ea')
 local pink_dark   = hsl('#843c54')
 
+local pink4       = hsl("#ff5699") -- complement af magenta
+
 -- local magenta         = hsl('#ff0066')
 local magenta     = hsl(336, 100, 50)
+local magenta2    = hsl("#df206c")
 
 local orange      = hsl(18, 100, 50)
 
@@ -98,10 +102,11 @@ local purple      = hsl(264, 100, 50)
 
 -- local red             = hsl('#ca0019')
 local red         = hsl(353, 100, 39)
+local red2        = hsl("#df202c") --complement fyrir magenta2
 
-local teal1       = hsl('#21c992')   --('#4fd6be(',
-local teal2       = hsl('#4fd6be')   --('#4fd6be(',
-local teal3       = hsl('#41a6b5')   --('#4fd6be(',
+local teal1       = hsl('#21c992')
+local teal2       = hsl('#4fd6be')
+local teal3       = hsl('#41a6b5')
 
 local yellow      = hsl(36, 100, 50) --('#ffa600(',
 
@@ -146,9 +151,9 @@ local theme       = lush(function(injected_functions)
 		-- SignColumn     { }, -- Column where |signs| are displayed
 		-- IncSearch      { }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 		-- Substitute     { }, -- |:substitute| replacement text highlighting
-		-- LineNr         { }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-		-- LineNrAbove    { }, -- Line number for when the 'relativenumber' option is set, above the cursor line
-		-- LineNrBelow    { }, -- Line number for when the 'relativenumber' option is set, below the cursor line
+		LineNr { fg = framgrunnur },           -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+		LineNrAbove { fg = framgrunnur.darken(55) }, -- Line number for when the 'relativenumber' option is set, above the cursor line
+		LineNrBelow { fg = framgrunnur.darken(55) }, -- Line number for when the 'relativenumber' option is set, below the cursor line
 		-- CursorLineNr   { }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 		-- CursorLineFold { }, -- Like FoldColumn when 'cursorline' is set for the cursor line
 		-- CursorLineSign { }, -- Like SignColumn when 'cursorline' is set for the cursor line
@@ -158,8 +163,8 @@ local theme       = lush(function(injected_functions)
 		-- MsgSeparator   { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
 		-- MoreMsg        { }, -- |more-prompt|
 		-- NonText        { }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-		FloatBorder { Normal }, -- Border of floating windows.
-		-- FloatTitle     { }, -- Title of floating windows.
+		-- FloatBorder { Normal }, -- Border of floating windows.
+		FloatTitle { Normal }, -- Title of floating windows.
 		-- NormalNC       { }, -- normal text in non-current windows
 		-- Pmenu          { }, -- Popup menu: Normal item.
 		-- PmenuSel       { }, -- Popup menu: Selected item.
@@ -202,12 +207,12 @@ local theme       = lush(function(injected_functions)
 
 		Comment { fg = darkergreen }, -- Any comment
 
-		-- Constant       { }, -- (*) Any constant
+		-- Constant       { fg = red }, -- (*) Any constant
 		-- String         { }, --   A string constant: "this is a string"
 		-- Character      { }, --   A character constant: 'c', '\n'
-		-- Number         { }, --   A number constant: 234, 0xff
+		Number { fg = green1 }, --   A number constant: 234, 0xff
 		-- Boolean        { }, --   A boolean constant: TRUE, false
-		-- Float          { }, --   A floating point constant: 2.3e10
+		Float { fg = green1 }, --   A floating point constant: 2.3e10
 
 		-- Identifier     { }, -- (*) Any variable name
 		-- Function       { }, --   Function name (also: methods for classes)
@@ -258,11 +263,11 @@ local theme       = lush(function(injected_functions)
 
 		-- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
 		--
-		DiagnosticError { fg = red },       -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticWarn { fg = yellow },     -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticInfo { fg = blue },       -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		-- DiagnosticHint  { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticOk { fg = green1 },       -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticError { fg = red }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticWarn { fg = yellow }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticInfo { fg = blue }, --TODO:Breyta í flottari lit Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticHint { fg = purple }, --TODO:Breyta Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticOk { fg = green1 }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		-- DiagnosticVirtualTextError { } , -- Used for "Error" diagnostic virtual text.
 		-- DiagnosticVirtualTextWarn  { } , -- Used for "Warn" diagnostic virtual text.
 		-- DiagnosticVirtualTextInfo  { } , -- Used for "Info" diagnostic virtual text.
@@ -301,13 +306,13 @@ local theme       = lush(function(injected_functions)
 		--
 		-- For more information see https://github.com/rktjmp/lush.nvim/issues/109
 
-		-- sym"@text.literal"      { }, -- Comment
+		sym "@text.literal" { Comment }, -- Comment
 		-- sym"@text.reference"    { }, -- Identifier
 		-- sym"@text.title"        { }, -- Title
 		-- sym"@text.uri"          { }, -- Underlined
 		-- sym"@text.underline"    { }, -- Underlined
 		-- sym"@text.todo"         { }, -- Todo
-		-- sym"@comment"           { }, -- Comment
+		sym"@comment"           { }, -- Comment
 		-- sym"@punctuation"       { }, -- Delimiter
 		-- sym"@constant"          { }, -- Constant
 		-- sym"@constant.builtin"  { }, -- Special
@@ -319,9 +324,9 @@ local theme       = lush(function(injected_functions)
 		-- sym"@string.special"    { }, -- SpecialChar
 		-- sym"@character"         { }, -- Character
 		-- sym"@character.special" { }, -- SpecialChar
-		-- sym"@number"            { }, -- Number
+		sym "@number" { Number }, -- Number
 		-- sym"@boolean"           { }, -- Boolean
-		-- sym"@float"             { }, -- Float
+		sym "@float" { Float }, -- Float
 		-- sym"@function"          { }, -- Function
 		-- sym"@function.builtin"  { }, -- Special
 		-- sym"@function.macro"    { }, -- Macro
