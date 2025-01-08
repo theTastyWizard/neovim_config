@@ -61,10 +61,12 @@ return {
 				},
 
 				list = {
-					-- selection = 'manual',
-					selection = function(ctx)
-						return ctx.mode == 'cmdline' and 'auto_insert' or 'manual'
-					end
+					selection = {
+						preselect = false,
+						auto_insert = function(ctx)
+							return ctx.mode == 'cmdline'
+						end
+					}
 				},
 
 				accept = {
