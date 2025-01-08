@@ -60,5 +60,8 @@ return {
 		{ "<leader>fgb", "<cmd>FzfLua git_bcommits<cr>",      desc = "git commits (buffer)" },
 		{ "<leader>fz",  "<cmd>FzfLua spell_suggest<cr>",     desc = "spelling" },
 		{ "<leader>fr",  "<cmd>FzfLua resume<cr>",            desc = "resume" },
+	},
+	cmd = {
+		"FzfLua"
 	}
 }
