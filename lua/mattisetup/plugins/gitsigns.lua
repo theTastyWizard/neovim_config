@@ -9,12 +9,19 @@ return {
 			changedelete = { text = '~', count = true },
 			untracked    = { text = '┆' },
 		},
-		numhl = true,
+		signs_staged = {
+			add          = { text = '┃', count = true },
+			change       = { text = '┃', count = true },
+			delete       = { text = '_', count = true },
+			topdelete    = { text = '‾', count = true },
+			changedelete = { text = '~', count = true },
+		},
+		numhl = false,
 		preview_config = {
 			border = 'rounded' },
 		current_line_blame_opts = {
 			virt_text = true,
-			virt_text_pos = 'eol',     -- 'eol' | 'overlay' | 'right_align'
+			virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
 			delay = 0,
 			ignore_whitespace = false,
 			virt_text_priority = 100,
