@@ -37,20 +37,21 @@ vim.keymap.set("n", "þ", "*", { desc = 'search word forward' })
 vim.keymap.set("n", "Þ", "#", { desc = 'search word backward' })
 
 -- Skipta endurtekt á f og t leit
-vim.keymap.set({"n","v"}, ",", ";", {desc = 'next f & t search'})
-vim.keymap.set({"n","v"}, ";", ",", {desc = 'previous f & t search'})
+vim.keymap.set({ "n", "v" }, ",", ";", { desc = 'next f & t search' })
+vim.keymap.set({ "n", "v" }, ";", ",", { desc = 'previous f & t search' })
 
 -- next greatest remap ever asbjornHaland tekið frá primeagen
 -- setur system clipboard á space+ y, Y og p,P
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = 'System clipboard yank' })
 vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]], { desc = 'System clipboard Yank' })
-vim.keymap.set({ "n", "v" }, "<leader>p", [["+]p]], { desc = 'System clipboard paste & indent' })
-vim.keymap.set({ "n", "v" }, "<leader>P", [["+]P]], { desc = 'System clipboard Paste & indent' })
--- mitt: paste með correct indent
--- vim.keymap.set({ "n", "v" }, "<leader>]p", [["+]p]], { desc = 'System clipboard paste correct indent' })
--- vim.keymap.set({ "n", "v" }, "<leader>]P", [["+]P]], { desc = 'System clipboard Paste correct indent' })
+vim.keymap.set({ "n", "v" }, "<leader>p", [["+]p]], { desc = 'System clipboard put & indent' })
+vim.keymap.set({ "n", "v" }, "<leader>P", [["+]P]], { desc = 'System clipboard put & indent' })
 
--- passar að yankaðir hlutir eyðist ekki eftir paste
+-- normal put with correct indent
+vim.keymap.set({ "n", "v" }, "p", "]p", { desc = 'put with indent' })
+vim.keymap.set({ "n", "v" }, "P", "]P", { desc = 'Put with indent' })
+
+-- passar að yankaðir hlutir eyðist ekki eftir put
 vim.keymap.set("x", "p", "\"_dP")
 
 -- Til að ctrl-V Insert virki með ctrl-c
