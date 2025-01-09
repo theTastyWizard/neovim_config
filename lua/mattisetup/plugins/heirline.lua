@@ -242,7 +242,7 @@ return {
 				-- info_icon = vim.fn.sign_getdefined("DiagnosticSignInfo")[1].text,
 				-- hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
 				error_icon = '󰯈 ', --'󰚌 ',
-				warn_icon = '󰀪 ', --' ',
+				warn_icon = ' ',--'󰀪 ', --' ',
 				hint_icon = ' ', --'󱠂 ',
 				info_icon = ' ', --' ',
 			},
