@@ -1,115 +1,5 @@
 return {
 	{
-		"xero/miasma.nvim",
-		lazy = false,
-	},
-	{
-		"loctvl842/monokai-pro.nvim",
-		config = function()
-			require("monokai-pro").setup({
-				transparent_background = false,
-				terminal_colors = true,
-				devicons = true, -- highlight the icons of `nvim-web-devicons`
-				styles = {
-					comment = { italic = true },
-					keyword = { italic = true }, -- any other keyword
-					type = { italic = true }, -- (preferred) int, long, char, etc
-					storageclass = { italic = true }, -- static, register, volatile, etc
-					structure = { italic = true }, -- struct, union, enum, etc
-					parameter = { italic = true }, -- parameter pass in function
-					annotation = { italic = true },
-					tag_attribute = { italic = true }, -- attribute of tag in reactjs
-				},
-				filter = "spectrum",    -- classic | octagon | pro | machine | ristretto | spectrum
-				-- Enable this will disable filter option
-				day_night = {
-					enable = false, -- turn off by default
-					day_filter = "pro", -- classic | octagon | pro | machine | ristretto | spectrum
-					night_filter = "spectrum", -- classic | octagon | pro | machine | ristretto | spectrum
-				},
-				inc_search = "background", -- underline | background
-				background_clear = {
-					-- "float_win",
-					"toggleterm",
-					"telescope",
-					"which-key",
-					"renamer",
-					"notify",
-					-- "nvim-tree",
-					-- "neo-tree",
-					-- "bufferline", -- better used if background of `neo-tree` or `nvim-tree` is cleared
-				}, -- "float_win", "toggleterm", "telescope", "which-key", "renamer", "neo-tree", "nvim-tree", "bufferline"
-				plugins = {
-					bufferline = {
-						underline_selected = false,
-						underline_visible = false,
-					},
-					indent_blankline = {
-						context_highlight = "default", -- default | pro
-						context_start_underline = false,
-					},
-				},
-				-- ---@param c Colorscheme
-				-- override = function(c) end,
-				-- ---@param cs Colorscheme
-				-- ---@param p ColorschemeOptions
-				-- ---@param Config MonokaiProOptions
-				-- ---@param hp Helper
-				-- override = function(cs: Colorscheme, p: ColorschemeOptions, Config: MonokaiProOptions, hp: Helper) end,
-			})
-			-- vim.cmd [[colorscheme monokai-pro]]
-		end
-	},
-	{
-		"cpwrs/americano.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require('americano').setup({
-				terminal = true, -- Set terminal colors
-				overrides = {}, -- Override americano highlight groups
-			})
-		end
-	},
-	-- {
-	-- 	"folke/tokyonight.nvim",
-	-- 	config = function()
-	-- 		require("tokyonight").setup({
-	-- 			-- use the night style
-	-- 			style = "moon",
-	-- 			-- disable italic for functions
-	-- 			styles = {
-	-- 				functions = {}
-	-- 			},
-	-- 			-- Change the "hint" color to the "orange" color, and make the "error" color bright red
-	-- 			on_colors = function(colors)
-	-- 				colors.bg = "#120f12"
-	-- 				colors.bg_dark = "#000000"
-	-- 				-- colors.blue0 = "#00948b" -- "#3e68d7",
-	-- 				-- colors.comment = '#169c4b' -- "#636da6",
-	-- 				colors.cyan = "#00ffff" --#86e1fc",
-	-- 				colors.fg = "#e7e7e7" --"#c8d3f5",
-	-- 				colors.fg_dark = "#df206c"
-	-- 				colors.green = "#1dd361"
-	-- 				colors.green1 = "#02d849" --"#4fd6be",
-	-- 				colors.green2 = '#169c4b' --"#41a6b5",
-	-- 				colors.magenta = '#ff0066' --"#ff007c",
-	-- 				colors.magenta2 = "#cd6689" --"#843c54", --"#dbb7bc"--"#c099ff",
-	-- 				colors.orange = "#ff661a" --"#e6550d"
-	-- 				colors.purple = "#6600ff" --"#fca7ea",
-	-- 				colors.red = "#ca0019"
-	-- 				colors.teal = "#21c992" --"#4fd6be",
-	-- 				colors.terminal_black = "#120f12"
-	-- 				colors.yellow = "#e59500" --"#ffa600",
-	-- 				colors.git.add ="#ff661a"
-	-- 				colors.git.change = "#21c992"
-	-- 				colors.git.delete = "#ca0019"
-	-- 			end
-	-- 		})
-	-- 		vim.cmd [[colorscheme tokyonight]]
-	-- 	end,
-	-- },
-	{
 		"RRethy/base16-nvim",
 		lazy = false,
 		priority = 1000,
@@ -166,99 +56,143 @@ return {
 			vim.api.nvim_set_hl(0, 'SelectMode', { fg = "#ffa600" })
 			vim.api.nvim_set_hl(0, 'TerminalMode', { fg = "#ffa600" })
 			vim.api.nvim_set_hl(0, 'TerminalNormalMode', { fg = "#ffa600" })
-			-- vim.cmd [[colorscheme base16-pinky]]
 		end
 	},
-	-- {
-	--     "RRethy/base16-nvim",
-	--     lazy = false,
-	--     priority = 1000,
-	--     opts = {},
-	--     config = function()
-	--         require('base16-colorscheme').with_config({
-	--             telescope = false,
-	--         })
-	--         require('base16-colorscheme').setup({
-	--             -- isotope
-	--             base00 = "#000000",
-	--             base01 = "#404040",
-	--             base02 = "#606060",
-	--             base03 = "#808080",
-	--             base04 = "#c0c0c0",
-	--             base05 = "#d0d0d0",
-	--             base06 = "#e0e0e0",
-	--             base07 = "#ffffff",
-	--             base08 = "#ff0000",
-	--             base09 = "#ff9900",
-	--             base0A = "#ff0099",
-	--             base0B = "#33ff00",
-	--             base0C = "#00ffff",
-	--             base0D = "#0066ff",
-	--             base0E = "#cc00ff",
-	--             base0F = "#3300ff",
-	--         })
-	--     end
-	-- },
-	-- {
-	--     "RRethy/base16-nvim",
-	--     lazy = false,
-	--     priority = 1000,
-	--     opts = {},
-	--     config = function()
-	--         require('base16-colorscheme').with_config({
-	--             telescope = false,
-	--         })
-	--         require('base16-colorscheme').setup({
-	--             -- spaceduck
-	--             base00 = "#16172d",
-	--             base01 = "#1b1c36",
-	--             base02 = "#30365F",
-	--             base03 = "#686f9a",
-	--             base04 = "#818596",
-	--             base05 = "#ecf0c1",
-	--             base06 = "#c1c3cc",
-	--             base07 = "#ffffff",
-	--             base08 = "#e33400",
-	--             base09 = "#e39400",
-	--             base0A = "#f2ce00",
-	--             base0B = "#5ccc96",
-	--             base0C = "#00a3cc",
-	--             base0D = "#7a5ccc",
-	--             base0E = "#b3a1e6",
-	--             base0F = "#ce6f8f",
-	--         })
-	--     end
-	-- },
-	-- {
-	--     "RRethy/base16-nvim",
-	--     lazy = false,
-	--     priority = 1000,
-	--     opts = {},
-	--     config = function()
-	--         require('base16-colorscheme').with_config({
-	--             telescope = false,
-	--         })
-	--         require('base16-colorscheme').setup({
-	--             -- setja saman mitt eigið
-	--             base00 = "#000000",
-	--             base01 = "#404040",
-	--             base02 = "#606060",
-	--             base03 = "#808080",
-	--             base04 = "#c0c0c0",
-	--             base05 = "#d0d0d0",
-	--             base06 = "#e0e0e0",
-	--             base07 = "#ffffff",
-	--             base08 = "#fb0120", --red
-	--             base09 = '#e6550d', --"#ff661a" --orange
-	--             base0A = "#ffa600", --yellow
-	--             base0B = "#1dd361", --"#02d849"--"#50fa7b" --green
-	--             base0C = "#21c992", --aqua
-	--             base0D = "#00948b", --blue
-	--             base0E = "#d8137f", --"#700f98"--"#a71d5d"--purple
-	--             base0F = "#ff0099",       --brown
-	--         })
-	--     end
-	-- },
+	{
+		"xero/miasma.nvim",
+		cond = false,
+		lazy = false,
+	},
+	{
+		"jackplus-xyz/binary.nvim",
+		cond = false,
+		opts = {
+			style = "dark",
+			colors = {
+				-- bg = "#FFB400",
+				bg = "#f5f5f5",
+				fg = "#120f12"
+			},
+			-- Customize the reversed groups
+			reversed_group = {
+				Title = true, -- Add a new reversed group
+				Search = false, -- Disable a default reversed group
+			},
+		},
+	},
+	{
+		'jesseleite/nvim-noirbuddy',
+		cond = false,
+		dependencies = {
+			{ 'tjdevries/colorbuddy.nvim' }
+		},
+		lazy = false,
+		priority = 1000,
+		opts = {
+			colors = {
+				primary = "#ff661a",
+				-- secondary = "",
+				background = '#120f12',
+			}
+		}
+	},
+	{
+		"loctvl842/monokai-pro.nvim",
+		cond = false,
+		config = function()
+			require("monokai-pro").setup({
+				transparent_background = false,
+				terminal_colors = true,
+				devicons = true, -- highlight the icons of `nvim-web-devicons`
+				styles = {
+					comment = { italic = true },
+					keyword = { italic = true }, -- any other keyword
+					type = { italic = true }, -- (preferred) int, long, char, etc
+					storageclass = { italic = true }, -- static, register, volatile, etc
+					structure = { italic = true }, -- struct, union, enum, etc
+					parameter = { italic = true }, -- parameter pass in function
+					annotation = { italic = true },
+					tag_attribute = { italic = true }, -- attribute of tag in reactjs
+				},
+				filter = "spectrum",    -- classic | octagon | pro | machine | ristretto | spectrum
+				-- Enable this will disable filter option
+				day_night = {
+					enable = false, -- turn off by default
+					day_filter = "pro", -- classic | octagon | pro | machine | ristretto | spectrum
+					night_filter = "spectrum", -- classic | octagon | pro | machine | ristretto | spectrum
+				},
+				inc_search = "background", -- underline | background
+				background_clear = {
+					-- "float_win",
+					"toggleterm",
+					"telescope",
+					"which-key",
+					"renamer",
+					"notify",
+					-- "nvim-tree",
+					-- "neo-tree",
+					-- "bufferline", -- better used if background of `neo-tree` or `nvim-tree` is cleared
+				}, -- "float_win", "toggleterm", "telescope", "which-key", "renamer", "neo-tree", "nvim-tree", "bufferline"
+				plugins = {
+					bufferline = {
+						underline_selected = false,
+						underline_visible = false,
+					},
+					indent_blankline = {
+						context_highlight = "default", -- default | pro
+						context_start_underline = false,
+					},
+				},
+				-- ---@param c Colorscheme
+				-- override = function(c) end,
+				-- ---@param cs Colorscheme
+				-- ---@param p ColorschemeOptions
+				-- ---@param Config MonokaiProOptions
+				-- ---@param hp Helper
+				-- override = function(cs: Colorscheme, p: ColorschemeOptions, Config: MonokaiProOptions, hp: Helper) end,
+			})
+			-- vim.cmd [[colorscheme monokai-pro]]
+		end
+	},
+	{
+		"folke/tokyonight.nvim",
+		cond = false,
+		config = function()
+			require("tokyonight").setup({
+				-- use the night style
+				style = "moon",
+				-- disable italic for functions
+				styles = {
+					functions = {}
+				},
+				-- Change the "hint" color to the "orange" color, and make the "error" color bright red
+				on_colors = function(colors)
+					colors.bg = "#120f12"
+					colors.bg_dark = "#000000"
+					-- colors.blue0 = "#00948b" -- "#3e68d7",
+					-- colors.comment = '#169c4b' -- "#636da6",
+					colors.cyan = "#00ffff" --#86e1fc",
+					colors.fg = "#e7e7e7" --"#c8d3f5",
+					colors.fg_dark = "#df206c"
+					colors.green = "#1dd361"
+					colors.green1 = "#02d849" --"#4fd6be",
+					colors.green2 = '#169c4b' --"#41a6b5",
+					colors.magenta = '#ff0066' --"#ff007c",
+					colors.magenta2 = "#cd6689" --"#843c54", --"#dbb7bc"--"#c099ff",
+					colors.orange = "#ff661a" --"#e6550d"
+					colors.purple = "#6600ff" --"#fca7ea",
+					colors.red = "#ca0019"
+					colors.teal = "#21c992" --"#4fd6be",
+					colors.terminal_black = "#120f12"
+					colors.yellow = "#e59500" --"#ffa600",
+					colors.git.add = "#ff661a"
+					colors.git.change = "#21c992"
+					colors.git.delete = "#ca0019"
+				end
+			})
+			vim.cmd [[colorscheme tokyonight]]
+		end,
+	},
 	-- base16-hardcore
 	-- base16-helios
 	-- base16-isotope
@@ -276,13 +210,4 @@ return {
 	-- base16-synth-midnight-dark
 	-- base16-summerfruit-dark
 	-- base16-unikitty-dark
-	-- {
-	--     "bradcush/nvim-base16",
-	--     lazy = false,
-	--     priority = 1000,
-	--     opts = {},
-	--     config = function()
-	--         -- vim.cmd [[colorscheme base16-pinky]]
-	--     end
-	-- },
 }
