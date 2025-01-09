@@ -28,5 +28,11 @@ wk.add({
 })
 
 wk.add({
+	{ "<leader>g", group = "Git" },
+	{ "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Toggle line blame" },
+})
+
+wk.add({
+	{ "<leader>.",          group = "Settings" },
 	{ "<leader>.s", "<cmd>nohlsearch<cr>", desc = "hide search highlight" },
 })
