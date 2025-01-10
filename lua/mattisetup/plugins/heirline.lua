@@ -461,7 +461,7 @@ return {
 		local InactiveStatusline = {
 			condition = conditions.is_not_active,
 			Align,
-			JustFileName,
+			JustFileName, FileFlags,
 			Align
 		}
 
