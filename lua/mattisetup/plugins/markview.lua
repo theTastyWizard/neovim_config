@@ -1,5 +1,6 @@
 return {
 	"OXY2DEV/markview.nvim",
+	cond = false,
 	lazy = true,  -- false Recommended
 	ft = "markdown", -- If you decide to lazy-load anyway
 
