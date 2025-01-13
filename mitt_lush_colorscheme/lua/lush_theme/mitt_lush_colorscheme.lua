@@ -41,34 +41,39 @@
 --
 --  `:lua require('lush').ify()`
 
-local lush        = require('lush')
-local hsl         = lush.hsl
+local lush                = require('lush')
+local hsl                 = lush.hsl
 
-local grunn00     = hsl('#120f12') -- 2 shade af pinky orig
-local grunn01     = hsl('#1b181b')
-local grunn02     = hsl('#2d2c2d') --visual selected breytt til að sjá betur
-local grunn03     = hsl('#117c3c') --comments breytt til að sjá betur
-local grunn04     = hsl('#e7dbdb')
-local grunn05     = hsl('#f5f5f5')
-local grunn06     = hsl('#ffffff')
-local grunn07     = hsl('#f7f3f7')
-local grunn08     = hsl('#ffa600')
-local grunn09     = hsl('#00ff66')
-local grunn0A     = hsl('#20df6c')
-local grunn0B     = hsl('#ff0066')
-local grunn0C     = hsl('#6600ff')
-local grunn0D     = hsl('#00ffff')
-local grunn0E     = hsl('#007fff')
-local grunn0F     = hsl('#df206c')
+local grunn00             = hsl('#120f12') -- 2 shade af pinky orig
+local grunn01             = hsl('#1b181b')
+local grunn02             = hsl('#2d2c2d') --visual selected breytt til að sjá betur
+local grunn03             = hsl('#117c3c') --comments breytt til að sjá betur
+local grunn04             = hsl('#e7dbdb')
+local grunn05             = hsl('#f5f5f5')
+local grunn06             = hsl('#ffffff')
+local grunn07             = hsl('#f7f3f7')
+local grunn08             = hsl('#ffa600')
+local grunn09             = hsl('#00ff66')
+local grunn0A             = hsl('#20df6c')
+local grunn0B             = hsl('#ff0066')
+local grunn0C             = hsl('#6600ff')
+local grunn0D             = hsl('#00ffff')
+local grunn0E             = hsl('#007fff')
+local grunn0F             = hsl('#df206c')
 
 -- local bakgrunnur      = hsl('#120f12')
-local bakgrunnur  = hsl(300, 9.09, 6.47)
+local bakgrunnur          = hsl(300, 9.09, 6.47)
+local blar_bakgrunnur     = hsl("#1e223c")
+local ljos_bakgrunnur     = bakgrunnur.lighten(12)
 
--- local bakgrunnurLi = bakgrunnur.lighten(10)
+local bakgrunnur_dokkblar = hls("#16172d")
+local bakgrunnur_dokkblar = hls("1b1c36")
 
 -- local framgrunnur     = hsl('#f5f5f5')
-local framgrunnur = hsl(0, 0, 96.08) --TODO: Skoða betur
+local framgrunnur         = hsl(0, 0, 96.08) --TODO: Skoða betur
 
+
+local blue_mag    = hsl("#0066ff")
 local blue        = hsl(210, 100, 50)
 
 -- local cyan         = hsl('#00ffff')
@@ -90,12 +95,15 @@ local pink3       = hsl('#fca7ea')
 local pink_dark   = hsl('#843c54')
 
 local pink4       = hsl("#ff5699") -- complement af magenta
+local pink5       = hsl("#ce6f8f") -- space ducks
 
 -- local magenta         = hsl('#ff0066')
 local magenta     = hsl(336, 100, 50)
 local magenta2    = hsl("#df206c")
+local magenta3    = hsl('#b62d65')
 
 local orange      = hsl(18, 100, 50)
+local orange_purp = hsl("#ff6600")
 
 -- local purple       = hsl('#6600ff')
 local purple      = hsl(264, 100, 50)
@@ -107,6 +115,7 @@ local red2        = hsl("#df202c") --complement fyrir magenta2
 local teal1       = hsl('#21c992')
 local teal2       = hsl('#4fd6be')
 local teal3       = hsl('#41a6b5')
+local teal4       = hsl('#38a89d')   -- úr tokyodark
 
 local yellow      = hsl(36, 100, 50) --('#ffa600(',
 
@@ -136,15 +145,15 @@ local theme       = lush(function(injected_functions)
 		-- CursorIM       { }, -- Like Cursor, but used when in IME mode |CursorIM|
 		-- CursorColumn   { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
 		-- CursorLine     { }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
-		Directory { fg = cyan }, -- Directory names (and other special names in listings)
+		Directory { fg = teal2 }, -- Directory names (and other special names in listings)
 		-- DiffAdd        { }, -- Diff mode: Added line |diff.txt|
 		-- DiffChange     { }, -- Diff mode: Changed line |diff.txt|
-		-- DiffDelete     { }, -- Diff mode: Deleted line |diff.txt|
+		DiffDelete { fg = pink2 }, -- Diff mode: Deleted line |diff.txt|
 		-- DiffText       { }, -- Diff mode: Changed text within a changed line |diff.txt|
 		-- EndOfBuffer    { }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
 		-- TermCursor     { }, -- Cursor in a focused terminal
 		-- TermCursorNC   { }, -- Cursor in an unfocused terminal
-		-- ErrorMsg       { }, -- Error messages on the command line
+		ErrorMsg { fg = red }, -- Error messages on the command line
 		VertSplit { Normal }, -- Column separating vertically split windows
 		-- Folded         { }, -- Line used for closed folds
 		-- FoldColumn     { }, -- 'foldcolumn'
@@ -163,7 +172,7 @@ local theme       = lush(function(injected_functions)
 		-- MsgSeparator   { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
 		-- MoreMsg        { }, -- |more-prompt|
 		-- NonText        { }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-		-- FloatBorder { Normal }, -- Border of floating windows.
+		FloatBorder { Normal }, -- Border of floating windows.
 		FloatTitle { Normal }, -- Title of floating windows.
 		-- NormalNC       { }, -- normal text in non-current windows
 		-- Pmenu          { }, -- Popup menu: Normal item.
@@ -182,17 +191,17 @@ local theme       = lush(function(injected_functions)
 		-- SpellCap       { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
 		-- SpellLocal     { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
 		-- SpellRare      { }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
-		-- StatusLine     { }, -- Status line of current window
-		-- StatusLineNC   { }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
-		-- TabLine        { }, -- Tab pages line, not active tab page label
+		StatusLine { bg = blar_bakgrunnur }, -- Status line of current window
+		StatusLineNC { bg = blar_bakgrunnur }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+		-- TabLine        { bg = bjartur_framgrunnur }, -- Tab pages line, not active tab page label
 		-- TabLineFill    { }, -- Tab pages line, where there are no labels
 		-- TabLineSel     { }, -- Tab pages line, active tab page label
 		-- Title          { }, -- Titles for output from ":set all", ":autocmd" etc.
-		-- Visual         { }, -- Visual mode selection
+		Visual { bg = ljos_bakgrunnur }, -- Visual mode selection
 		-- VisualNOS      { }, -- Visual mode selection when vim is "Not Owning the Selection".
-		-- WarningMsg     { }, -- Warning messages
+		WarningMsg { fg = yellow }, -- Warning messages
 		-- Whitespace     { }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
-		Winseparator { Normal }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
+		Winseparator { Normal },   -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
 		-- WildMenu       { }, -- Current match in 'wildmenu' completion
 		-- WinBar         { }, -- Window bar of current window
 		-- WinBarNC       { }, -- Window bar of not-current windows
@@ -265,7 +274,7 @@ local theme       = lush(function(injected_functions)
 		--
 		DiagnosticError { fg = red }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticWarn { fg = yellow }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticInfo { fg = blue }, --TODO:Breyta í flottari lit Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticInfo { fg = blue_mag }, --TODO:Breyta í flottari lit Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticHint { fg = purple }, --TODO:Breyta Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticOk { fg = green1 }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		-- DiagnosticVirtualTextError { } , -- Used for "Error" diagnostic virtual text.
@@ -312,7 +321,7 @@ local theme       = lush(function(injected_functions)
 		-- sym"@text.uri"          { }, -- Underlined
 		-- sym"@text.underline"    { }, -- Underlined
 		-- sym"@text.todo"         { }, -- Todo
-		sym"@comment"           { }, -- Comment
+		sym "@comment" { Comment }, -- Comment
 		-- sym"@punctuation"       { }, -- Delimiter
 		-- sym"@constant"          { }, -- Constant
 		-- sym"@constant.builtin"  { }, -- Special
@@ -351,6 +360,12 @@ local theme       = lush(function(injected_functions)
 		-- sym"@preproc"           { }, -- PreProc
 		-- sym"@debug"             { }, -- Debug
 		-- sym"@tag"               { }, -- Tag
+
+		-- Mín viðbót
+		NormalMode { fg = orange },
+		InsertMode { fg = magenta },
+		VisualMode { fg = green2 },
+
 	}
 end)
 
