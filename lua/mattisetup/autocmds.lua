@@ -44,3 +44,6 @@ autocmd("FileType", {
 		vim.cmd 'wincmd L'
 	end
 })
+
+-- Equal size buffers if window resized
+autocmd("VimResized", { command = "wincmd =" })
