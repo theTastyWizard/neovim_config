@@ -3,6 +3,9 @@ return {
 	"ibhagwan/fzf-lua",
 	-- optional for icon support
 	dependencies = { 'echasnovski/mini.icons' },
+	cmd = {
+		"FzfLua"
+	},
 	config = function()
 		-- calling `setup` is optional for customization
 		local config = require("fzf-lua.config")
@@ -35,9 +38,12 @@ return {
 				height = 0.8,
 				row = 0.5,
 				col = 0.5,
+				border = "rounded",
 				preview = {
+					-- default = "bat", -- fyrir meira performance TODO: stilla litina í bat
 					scrollchars = { "┃", "" },
 					scrollbar = "border",
+					delay = 50,
 				},
 			},
 			files = {
@@ -61,7 +67,4 @@ return {
 		{ "<leader>fz",  "<cmd>FzfLua spell_suggest<cr>",     desc = "spelling" },
 		{ "<leader>fr",  "<cmd>FzfLua resume<cr>",            desc = "resume" },
 	},
-	cmd = {
-		"FzfLua"
-	}
 }
