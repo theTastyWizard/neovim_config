@@ -66,8 +66,8 @@ local bakgrunnur          = hsl(300, 9.09, 6.47)
 local blar_bakgrunnur     = hsl("#1e223c")
 local ljos_bakgrunnur     = bakgrunnur.lighten(12)
 
-local bakgrunnur_dokkblar = hls("#16172d")
-local bakgrunnur_dokkblar = hls("1b1c36")
+local bakgrunnur_dokkblar_1 = hsl("#16172d")
+local bakgrunnur_dokkblar_2 = hsl("#1b1c36")
 
 -- local framgrunnur     = hsl('#f5f5f5')
 local framgrunnur         = hsl(0, 0, 96.08) --TODO: Skoða betur
@@ -150,9 +150,9 @@ local theme       = lush(function(injected_functions)
 		-- DiffChange     { }, -- Diff mode: Changed line |diff.txt|
 		DiffDelete { fg = pink2 }, -- Diff mode: Deleted line |diff.txt|
 		-- DiffText       { }, -- Diff mode: Changed text within a changed line |diff.txt|
-		-- EndOfBuffer    { }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
-		-- TermCursor     { }, -- Cursor in a focused terminal
-		-- TermCursorNC   { }, -- Cursor in an unfocused terminal
+		EndOfBuffer    { fg = blar_bakgrunnur}, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
+		TermCursor     { bg = bakgrunnur, fg = framgrunnur }, -- Cursor in a focused terminal
+		TermCursorNC   { TermCursor }, -- Cursor in an unfocused terminal
 		ErrorMsg { fg = red }, -- Error messages on the command line
 		VertSplit { Normal }, -- Column separating vertically split windows
 		-- Folded         { }, -- Line used for closed folds
@@ -173,7 +173,7 @@ local theme       = lush(function(injected_functions)
 		-- MoreMsg        { }, -- |more-prompt|
 		-- NonText        { }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
 		FloatBorder { Normal }, -- Border of floating windows.
-		FloatTitle { Normal }, -- Title of floating windows.
+		FloatTitle { fg = orange }, -- Title of floating windows.
 		-- NormalNC       { }, -- normal text in non-current windows
 		-- Pmenu          { }, -- Popup menu: Normal item.
 		-- PmenuSel       { }, -- Popup menu: Selected item.
@@ -191,8 +191,8 @@ local theme       = lush(function(injected_functions)
 		-- SpellCap       { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
 		-- SpellLocal     { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
 		-- SpellRare      { }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
-		StatusLine { bg = blar_bakgrunnur }, -- Status line of current window
-		StatusLineNC { bg = blar_bakgrunnur }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+		StatusLine { bg = bakgrunnur_dokkblar_1 }, -- Status line of current window
+		StatusLineNC { StatusLine }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 		-- TabLine        { bg = bjartur_framgrunnur }, -- Tab pages line, not active tab page label
 		-- TabLineFill    { }, -- Tab pages line, where there are no labels
 		-- TabLineSel     { }, -- Tab pages line, active tab page label
@@ -217,7 +217,7 @@ local theme       = lush(function(injected_functions)
 		Comment { fg = darkergreen }, -- Any comment
 
 		-- Constant       { fg = red }, -- (*) Any constant
-		-- String         { }, --   A string constant: "this is a string"
+		String         { fg = magenta }, --   A string constant: "this is a string"
 		-- Character      { }, --   A character constant: 'c', '\n'
 		Number { fg = green1 }, --   A number constant: 234, 0xff
 		-- Boolean        { }, --   A boolean constant: TRUE, false
@@ -362,7 +362,7 @@ local theme       = lush(function(injected_functions)
 		-- sym"@tag"               { }, -- Tag
 
 		-- Mín viðbót
-		NormalMode { fg = orange },
+		NormalMode { fg = orange2 },
 		InsertMode { fg = magenta },
 		VisualMode { fg = green2 },
 
