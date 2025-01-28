@@ -59,6 +59,20 @@ return {
 		end
 	},
 	{
+		"craftzdog/solarized-osaka.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+	},
+	{
+		'mistweaverco/retro-theme.nvim',
+		opts = {
+			italic_comments = true,
+			disable_cache = true,
+			hot_reload = true,
+		},
+	},
+	{
 		"xero/miasma.nvim",
 		cond = false,
 		lazy = false,
