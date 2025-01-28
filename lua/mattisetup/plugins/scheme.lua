@@ -17,7 +17,7 @@ return {
     },
     {
         "dundalek/parpar.nvim",
-        ft = { "clojure", "fennel", "python", "racket", "scheme" },
+        ft = { "clojure", "fennel", "racket", "scheme" },
         lazy = true,
         dependencies = { "gpanders/nvim-parinfer", "julienvincent/nvim-paredit" },
         opts = {}

@@ -33,7 +33,8 @@ return {
 			-- },
 		},
 		animate = {
-			fps = 144,
+			fps = 60,
+			-- fps = 144,
 			-- easing = "cubic",
 		},
 		indent = {
