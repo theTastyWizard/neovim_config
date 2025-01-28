@@ -47,3 +47,12 @@ autocmd("FileType", {
 
 -- Equal size buffers if window resized
 autocmd("VimResized", { command = "wincmd =" })
+
+-- passa línustærð og setja colorcolumn til að sýna hana
+autocmd("Filetype", {
+	pattern = { "text", "markdown", "tex", "typst" },
+	callback = function()
+		vim.bo.textwidth = 90
+		vim.opt_local.colorcolumn = "+1"
+	end
+})
