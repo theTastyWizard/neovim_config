@@ -10,7 +10,8 @@ return {
 			})
 			require('base16-colorscheme').setup({ --óbreytt er pinky
 				-- base00 = '#171517', -- original pinky
-				base00 = '#120f12',      -- 2 shade af pinky orig
+				-- base00 = '#120f12',      -- 2 shade af pinky orig
+				base00 = '#010b10', -- 2 shade af pinky orig
 				-- base00 = '#111111', --bakgrunnur frá colors
 				-- base00 = '#000000', -- alveg svartur bakgrunnur
 				base01 = '#1b181b',
@@ -58,6 +59,41 @@ return {
 			vim.api.nvim_set_hl(0, 'TerminalNormalMode', { fg = "#ffa600" })
 		end
 	},
+	{
+		"atelierbram/Base2Tone-nvim",
+		cond = false,
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.cmd [[colorscheme base2tone_suburb_dark]]
+		end
+	},
+	{
+		'dasupradyumna/midnight.nvim',
+		cond = false,
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.cmd [[colorscheme midnight]]
+		end
+	},
+	{
+		"theamallalgi/zitchdog",
+		cond = false,
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.cmd [[colorscheme zitchdog-night]]
+		end
+	},
+	-- {
+	-- 	'metalelf0/jellybeans-nvim',
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd [[colorscheme jellybeans-nvim]]
+	-- 	end
+	-- },
 	{
 		"craftzdog/solarized-osaka.nvim",
 		lazy = false,

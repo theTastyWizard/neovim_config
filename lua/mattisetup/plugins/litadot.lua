@@ -23,6 +23,15 @@ return {
 		},
 	},
 	{
+		"max397574/colortils.nvim",
+		cmd = "Colortils",
+		config = function()
+			require("colortils").setup({
+				default_format = "hls",
+			})
+		end,
+	},
+	{
 		'brenoprata10/nvim-highlight-colors',
 		config = function()
 			require('nvim-highlight-colors').setup({

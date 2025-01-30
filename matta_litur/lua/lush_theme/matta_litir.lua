@@ -1,5 +1,5 @@
 -- Built with,
---
+
 --        ,gggg,
 --       d8" "8I                         ,dPYb,
 --       88  ,dP                         IP'`Yb
@@ -41,36 +41,38 @@
 --
 --  `:lua require('lush').ify()`
 
-local lush                = require('lush')
-local hsl                 = lush.hsl
+local lush                  = require('lush')
+local hsl                   = lush.hsl
 
-local grunn00             = hsl('#120f12') -- 2 shade af pinky orig
-local grunn01             = hsl('#1b181b')
-local grunn02             = hsl('#2d2c2d') --visual selected breytt til að sjá betur
-local grunn03             = hsl('#117c3c') --comments breytt til að sjá betur
-local grunn04             = hsl('#e7dbdb')
-local grunn05             = hsl('#f5f5f5')
-local grunn06             = hsl('#ffffff')
-local grunn07             = hsl('#f7f3f7')
-local grunn08             = hsl('#ffa600')
-local grunn09             = hsl('#00ff66')
-local grunn0A             = hsl('#20df6c')
-local grunn0B             = hsl('#ff0066')
-local grunn0C             = hsl('#6600ff')
-local grunn0D             = hsl('#00ffff')
-local grunn0E             = hsl('#007fff')
-local grunn0F             = hsl('#df206c')
+local grunn00               = hsl('#120f12') -- 2 shade af pinky orig
+local grunn01               = hsl('#1b181b')
+local grunn02               = hsl('#2d2c2d') --visual selected breytt til að sjá betur
+local grunn03               = hsl('#117c3c') --comments breytt til að sjá betur
+local grunn04               = hsl('#e7dbdb')
+local grunn05               = hsl('#f5f5f5')
+local grunn06               = hsl('#ffffff')
+local grunn07               = hsl('#f7f3f7')
+local grunn08               = hsl('#ffa600')
+local grunn09               = hsl('#00ff66')
+local grunn0A               = hsl('#20df6c')
+local grunn0B               = hsl('#ff0066')
+local grunn0C               = hsl('#6600ff')
+local grunn0D               = hsl('#00ffff')
+local grunn0E               = hsl('#007fff')
+local grunn0F               = hsl('#df206c')
 
--- local bakgrunnur      = hsl('#120f12')
-local bakgrunnur          = hsl(300, 9.09, 6.47)
-local blar_bakgrunnur     = hsl("#1e223c")
-local ljos_bakgrunnur     = bakgrunnur.lighten(12)
+-- local bg_black      = hsl('#120f12')
+local bg_black              = hsl(300, 9.09, 6.47)
+local bg_black_blue         = hsl("#050008")
+local bg_blar               = hsl("#010b10")
+local blar_bakgrunnur       = hsl("#1e223c")
+local ljos_bakgrunnur       = bg_black.lighten(12)
 
 local bakgrunnur_dokkblar_1 = hsl("#16172d")
 local bakgrunnur_dokkblar_2 = hsl("#1b1c36")
 
 -- local framgrunnur     = hsl('#f5f5f5')
-local framgrunnur         = hsl(0, 0, 96.08) --TODO: Skoða betur
+local white                 = hsl(0, 0, 96.08) --TODO: Skoða betur
 
 
 local blue_mag    = hsl("#0066ff")
@@ -96,26 +98,35 @@ local pink_dark   = hsl('#843c54')
 
 local pink4       = hsl("#ff5699") -- complement af magenta
 local pink5       = hsl("#ce6f8f") -- space ducks
+local pink6       = hsl("#ed655e") -- 2tone pool
 
 -- local magenta         = hsl('#ff0066')
 local magenta     = hsl(336, 100, 50)
 local magenta2    = hsl("#df206c")
 local magenta3    = hsl('#b62d65')
+local magenta3    = hsl('#ad1f51') --2tone
 
 local orange      = hsl(18, 100, 50)
 local orange_purp = hsl("#ff6600")
 
 -- local purple       = hsl('#6600ff')
 local purple      = hsl(264, 100, 50)
+local purple_2    = hsl('#4961da')
+local purple_3    = hsl('#8f51e6')
+local purple_4    = hsl("#512c74")
 
 -- local red             = hsl('#ca0019')
 local red         = hsl(353, 100, 39)
 local red2        = hsl("#df202c") --complement fyrir magenta2
+local red3        = hsl("#e43728") -- úr zitchdog-pine
+local red3        = hsl("#cf504a") -- úr zitchdog-pine
 
 local teal1       = hsl('#21c992')
 local teal2       = hsl('#4fd6be')
 local teal3       = hsl('#41a6b5')
-local teal4       = hsl('#38a89d')   -- úr tokyodark
+local teal4       = hsl('#38a89d') -- úr tokyodark
+local teal5       = hsl('#289dbd')
+local teal6       = hsl('#33abcc')
 
 local yellow      = hsl(36, 100, 50) --('#ffa600(',
 
@@ -135,8 +146,8 @@ local theme       = lush(function(injected_functions)
 		--
 		-- See :h highlight-groups
 		--
-		Normal { bg = bakgrunnur, fg = framgrunnur }, -- Normal text
-		-- NormalFloat    { }, -- Normal text in floating windows.
+		Normal { bg = bg_black_blue, fg = white }, -- Normal text
+		NormalFloat { bg = bg_black_blue, fg = white }, -- Normal text in floating windows.
 		-- ColorColumn    { }, -- Columns set with 'colorcolumn'
 		-- Conceal        { }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
 		-- Cursor         { }, -- Character under the cursor
@@ -148,21 +159,21 @@ local theme       = lush(function(injected_functions)
 		Directory { fg = teal2 }, -- Directory names (and other special names in listings)
 		-- DiffAdd        { }, -- Diff mode: Added line |diff.txt|
 		-- DiffChange     { }, -- Diff mode: Changed line |diff.txt|
-		DiffDelete { fg = pink2 }, -- Diff mode: Deleted line |diff.txt|
+		DiffDelete { fg = pink2 },          -- Diff mode: Deleted line |diff.txt|
 		-- DiffText       { }, -- Diff mode: Changed text within a changed line |diff.txt|
-		EndOfBuffer    { fg = blar_bakgrunnur}, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
-		TermCursor     { bg = bakgrunnur, fg = framgrunnur }, -- Cursor in a focused terminal
-		TermCursorNC   { TermCursor }, -- Cursor in an unfocused terminal
-		ErrorMsg { fg = red }, -- Error messages on the command line
-		VertSplit { Normal }, -- Column separating vertically split windows
+		EndOfBuffer { fg = blar_bakgrunnur }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
+		TermCursor { bg = bg_black, fg = white }, -- Cursor in a focused terminal
+		TermCursorNC { TermCursor },        -- Cursor in an unfocused terminal
+		ErrorMsg { fg = red },              -- Error messages on the command line
+		VertSplit { Normal },               -- Column separating vertically split windows
 		-- Folded         { }, -- Line used for closed folds
 		-- FoldColumn     { }, -- 'foldcolumn'
 		-- SignColumn     { }, -- Column where |signs| are displayed
 		-- IncSearch      { }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 		-- Substitute     { }, -- |:substitute| replacement text highlighting
-		LineNr { fg = framgrunnur },           -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-		LineNrAbove { fg = framgrunnur.darken(55) }, -- Line number for when the 'relativenumber' option is set, above the cursor line
-		LineNrBelow { fg = framgrunnur.darken(55) }, -- Line number for when the 'relativenumber' option is set, below the cursor line
+		LineNr { fg = white },           -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+		LineNrAbove { fg = white.darken(55) }, -- Line number for when the 'relativenumber' option is set, above the cursor line
+		LineNrBelow { fg = white.darken(55) }, -- Line number for when the 'relativenumber' option is set, below the cursor line
 		-- CursorLineNr   { }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 		-- CursorLineFold { }, -- Like FoldColumn when 'cursorline' is set for the cursor line
 		-- CursorLineSign { }, -- Like SignColumn when 'cursorline' is set for the cursor line
@@ -191,7 +202,7 @@ local theme       = lush(function(injected_functions)
 		-- SpellCap       { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
 		-- SpellLocal     { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
 		-- SpellRare      { }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
-		StatusLine { bg = bakgrunnur_dokkblar_1 }, -- Status line of current window
+		StatusLine { bg = bg_blar }, -- Status line of current window
 		StatusLineNC { StatusLine }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 		-- TabLine        { bg = bjartur_framgrunnur }, -- Tab pages line, not active tab page label
 		-- TabLineFill    { }, -- Tab pages line, where there are no labels
@@ -217,7 +228,7 @@ local theme       = lush(function(injected_functions)
 		Comment { fg = darkergreen }, -- Any comment
 
 		-- Constant       { fg = red }, -- (*) Any constant
-		String         { fg = magenta }, --   A string constant: "this is a string"
+		String { fg = magenta }, --   A string constant: "this is a string"
 		-- Character      { }, --   A character constant: 'c', '\n'
 		Number { fg = green1 }, --   A number constant: 234, 0xff
 		-- Boolean        { }, --   A boolean constant: TRUE, false
@@ -362,7 +373,7 @@ local theme       = lush(function(injected_functions)
 		-- sym"@tag"               { }, -- Tag
 
 		-- Mín viðbót
-		NormalMode { fg = orange2 },
+		NormalMode { fg = orange },
 		InsertMode { fg = magenta },
 		VisualMode { fg = green2 },
 
