@@ -155,8 +155,8 @@ local theme       = lush(function(injected_functions)
 		-- lCursor        { }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
 		-- CursorIM       { }, -- Like Cursor, but used when in IME mode |CursorIM|
 		-- CursorColumn   { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-		-- CursorLine     { }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
-		Directory { fg = teal2 }, -- Directory names (and other special names in listings)
+		CursorLine     { bg = Normal.bg }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
+		Directory { fg = teal6 }, -- Directory names (and other special names in listings)
 		-- DiffAdd        { }, -- Diff mode: Added line |diff.txt|
 		-- DiffChange     { }, -- Diff mode: Changed line |diff.txt|
 		DiffDelete { fg = pink2 },          -- Diff mode: Deleted line |diff.txt|
@@ -174,7 +174,7 @@ local theme       = lush(function(injected_functions)
 		LineNr { fg = white },           -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
 		LineNrAbove { fg = white.darken(55) }, -- Line number for when the 'relativenumber' option is set, above the cursor line
 		LineNrBelow { fg = white.darken(55) }, -- Line number for when the 'relativenumber' option is set, below the cursor line
-		-- CursorLineNr   { }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+		CursorLineNr { fg = white },    -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 		-- CursorLineFold { }, -- Like FoldColumn when 'cursorline' is set for the cursor line
 		-- CursorLineSign { }, -- Like SignColumn when 'cursorline' is set for the cursor line
 		-- MatchParen     { }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
@@ -202,7 +202,7 @@ local theme       = lush(function(injected_functions)
 		-- SpellCap       { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
 		-- SpellLocal     { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
 		-- SpellRare      { }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
-		StatusLine { bg = bg_blar }, -- Status line of current window
+		StatusLine { bg = bg_black_blue }, -- Status line of current window
 		StatusLineNC { StatusLine }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 		-- TabLine        { bg = bjartur_framgrunnur }, -- Tab pages line, not active tab page label
 		-- TabLineFill    { }, -- Tab pages line, where there are no labels

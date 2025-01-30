@@ -17,5 +17,5 @@ vim.g.colors_name = 'matta_litir'
 package.loaded['lush_theme.matta_litir'] = nil
 
 -- include our theme file and pass it to lush to apply
-require('lush')(require('mitt_lush_colorscheme.lua.lush_theme.matta_litir'))
+require('lush')(require('lush_theme.matta_litir'))
 
