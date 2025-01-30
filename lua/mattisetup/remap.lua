@@ -29,12 +29,12 @@ vim.keymap.set("n", "J", "6j", { desc = '6 lines down' })
 vim.keymap.set("n", "K", "6k", { desc = '6 lines up' })
 
 -- Auðveldari leitar takkar
-vim.keymap.set("n", "ð", "/", { desc = 'search forward' })
-vim.keymap.set("n", "Ð", "?", { desc = 'search backward' })
+vim.keymap.set("n", "þ", "/", { desc = 'search forward' })
+vim.keymap.set("n", "Þ", "?", { desc = 'search backward' })
 
 -- Auðveldari string leit
-vim.keymap.set("n", "þ", "*", { desc = 'search word forward' })
-vim.keymap.set("n", "Þ", "#", { desc = 'search word backward' })
+vim.keymap.set("n", "ð", "*", { desc = 'search word forward' })
+vim.keymap.set("n", "Ð", "#", { desc = 'search word backward' })
 
 -- Skipta endurtekt á f og t leit
 vim.keymap.set({ "n", "v" }, ",", ";", { desc = 'next f & t search' })
