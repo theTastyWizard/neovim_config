@@ -10,8 +10,8 @@ return {
 			})
 			require('base16-colorscheme').setup({ --óbreytt er pinky
 				-- base00 = '#171517', -- original pinky
-				-- base00 = '#120f12',      -- 2 shade af pinky orig
-				base00 = '#010b10', -- 2 shade af pinky orig
+				base00 = '#120f12',      -- 2 shade af pinky orig
+				-- base00 = '#010b10', -- 2 shade af pinky orig
 				-- base00 = '#111111', --bakgrunnur frá colors
 				-- base00 = '#000000', -- alveg svartur bakgrunnur
 				base01 = '#1b181b',
