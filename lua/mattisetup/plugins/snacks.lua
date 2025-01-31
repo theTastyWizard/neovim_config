@@ -13,11 +13,12 @@ return {
 			margin = { top = 0, right = 0, bottom = 0 }
 		},
 		quickfile = { enabled = false },
-		-- terminal = {
-		-- 	override = {
-		-- 		cmd = "fish",
-		-- 	},
-		-- },
+		terminal = {
+			{ win = { wo = { winbar = "" } } }, -- FIX: virkar ekki
+			-- override = {
+			-- 	cmd = "fish", --FIX: virkar heldur ekki :(
+			-- },
+		},
 		statuscolumn = {
 			enabled = true,
 			folds = {
