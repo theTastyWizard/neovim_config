@@ -46,47 +46,7 @@ return {
 			["gx"] = "actions.open_external",
 			["g."] = "actions.toggle_hidden",
 			["g\\"] = "actions.toggle_trash",
-			-- ["<leader>ff"] = {
-			-- 	function()
-			-- 		require("telescope.builtin").find_files({
-			-- 			cwd = require("oil").get_current_dir()
-			-- 		})
-			-- 	end,
-			-- 	mode = "n",
-			-- 	nowait = true,
-			-- 	desc = "Find files in the current directory"
-			-- },
-			-- ["<leader>fg"] = {
-			-- 	function()
-			-- 		require("telescope.builtin").live_grep({
-			-- 			cwd = require("oil").get_current_dir()
-			-- 		})
-			-- 	end,
-			-- 	mode = "n",
-			-- 	nowait = true,
-			-- 	desc = "Grep in the current directory"
-			-- }
-			["<leader>ff"] = {
-				function()
-					require("fzf-lua").files({
-						cwd = require("oil").get_current_dir()
-					})
-				end,
-				mode = "n",
-				nowait = true,
-				desc = "Find files in the current directory"
-			},
-			["<leader>fj"] = {
-				function()
-					require("fzf-lua").live_grep({
-						cwd = require("oil").get_current_dir()
-					})
-				end,
-				mode = "n",
-				nowait = true,
-				desc = "Grep in the current directory"
-			}
+			use_default_keymaps = false,
 		},
-		use_default_keymaps = false,
-	},
+	}
 }
