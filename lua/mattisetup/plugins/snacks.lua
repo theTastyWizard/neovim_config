@@ -14,10 +14,7 @@ return {
 		},
 		quickfile = { enabled = false },
 		terminal = {
-			{ win = { wo = { winbar = "" } } }, -- FIX: virkar ekki
-			-- override = {
-			-- 	cmd = "fish", --FIX: virkar heldur ekki :(
-			-- },
+			shell = "fish",
 		},
 		statuscolumn = {
 			enabled = true,
@@ -72,6 +69,9 @@ return {
 			}
 		},
 		styles = {
+			terminal = {
+				wo = { winbar = "" }
+			},
 			notification = {
 				wo = { wrap = true } -- Wrap notifications
 			},
