@@ -135,11 +135,15 @@ return {
 		keys = {
 			{ "<leader><leader>", function() Snacks.picker.files() end,                                   desc = "Files" },
 			{ "<leader>ff",       function() Snacks.picker.files() end,                                   desc = "Files" },
-
 			{ "<leader>fc",       function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Config File" },
-			{ "<leader>fj",       function() Snacks.picker.grep() end,                                    desc = "Grep" },
 
-			{ "<leader>fw",       function() Snacks.picker.grep_word() end,                               desc = "Visual selection or word", mode = { "n", "x" } },
+			{ "<leader>fj",       function() Snacks.picker.grep() end,                                    desc = "Grep" },
+			{ "<leader>fw",       function() Snacks.picker.grep_word() end,                               desc = "Word or visual selection", mode = { "n", "x" } },
+
+			{ "<leader>gl",       function() Snacks.picker.git_log() end,                                 desc = "Git Log" },
+			{ "<leader>gL",       function() Snacks.picker.git_log_line() end,                            desc = "Git Log Line" },
+			{ "<leader>gf",       function() Snacks.picker.git_log_file() end,                            desc = "Git Log File" },
+
 			{ "<leader>fm",       function() Snacks.picker.man() end,                                     desc = "Man Pages" },
 			{ "<leader>fh",       function() Snacks.picker.help() end,                                    desc = "Help Pages" },
 
