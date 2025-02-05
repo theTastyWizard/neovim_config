@@ -70,7 +70,38 @@ return {
 		},
 		styles = {
 			terminal = {
-				wo = { winbar = "" }
+				wo = { winbar = "" },
+				height = 12,
+				keys = {
+					q = "hide",
+					gf = function(self)
+						local f = vim.fn.findfile(vim.fn.expand("<cfile>"), "**")
+						if f == "" then
+							Snacks.notify.warn("No file under cursor")
+						else
+							self:hide()
+							vim.schedule(function()
+								vim.cmd("e " .. f)
+							end)
+						end
+					end,
+					term_normal = {
+						"<esc>",
+						function(self)
+							self.esc_timer = self.esc_timer or (vim.uv or vim.loop).new_timer()
+							if self.esc_timer:is_active() then
+								self.esc_timer:stop()
+								vim.cmd("stopinsert")
+							else
+								self.esc_timer:start(400, 0, function() end)
+								return "<esc>"
+							end
+						end,
+						mode = "t",
+						expr = true,
+						desc = "Double escape to normal mode",
+					},
+				}
 			},
 			notification = {
 				wo = { wrap = true } -- Wrap notifications
@@ -120,7 +151,7 @@ return {
 		{ "<leader>gf", function() Snacks.lazygit.log_file() end,      desc = "Lazygit Current File History" },
 		{ "<leader>gl", function() Snacks.lazygit.log() end,           desc = "Lazygit Log (cwd)" },
 
-		{ "<leader>tt", function() Snacks.terminal() end,              desc = "Toggle Terminal" },
+		{ "<leader>tt", function() Snacks.terminal.toggle() end,       desc = "Toggle Terminal" },
 		{ "<c-_>",      function() Snacks.terminal() end,              desc = "which_key_ignore" },
 		-- { "]]",         function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Reference" },
 		-- { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference" },

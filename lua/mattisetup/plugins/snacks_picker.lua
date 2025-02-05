@@ -144,6 +144,8 @@ return {
 			{ "<leader>gL",       function() Snacks.picker.git_log_line() end,                            desc = "Git Log Line" },
 			{ "<leader>gf",       function() Snacks.picker.git_log_file() end,                            desc = "Git Log File" },
 
+
+			{ "<leader>fz",       function() Snacks.picker.spelling() end,                                desc = "Spelling" },
 			{ "<leader>fm",       function() Snacks.picker.man() end,                                     desc = "Man Pages" },
 			{ "<leader>fh",       function() Snacks.picker.help() end,                                    desc = "Help Pages" },
 
