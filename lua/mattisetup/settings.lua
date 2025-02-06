@@ -6,6 +6,9 @@ vim.opt.splitright = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+-- diff stillingar
+vim.opt.diffopt = "internal,filler,closeoff,indent-heuristic,algorithm:histogram,linematch:60"
+
 -- Láta nvim ripgrep nota smartcase
 vim.opt.grepprg = "rg --vimgrep -uu --smart-case"
 
