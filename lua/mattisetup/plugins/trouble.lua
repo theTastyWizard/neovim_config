@@ -3,12 +3,12 @@ return {
 	cmd = "Trouble",
     keys = {
         {
-            "<leader>dd",
+            "<leader>dD",
             "<cmd>Trouble diagnostics toggle<cr>",
             desc = "Open Trouble for directory",
         },
         {
-            "<leader>dt",
+            "<leader>dd",
             "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
             desc = "Open Trouble for buffer",
         },

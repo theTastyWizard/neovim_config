@@ -102,6 +102,7 @@ return {
 	},
 	{
 		'mistweaverco/retro-theme.nvim',
+		cond = false,
 		opts = {
 			italic_comments = true,
 			disable_cache = true,
