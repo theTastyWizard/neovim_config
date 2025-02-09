@@ -69,9 +69,30 @@ return {
 					man_pager = nil, ---@type string? MANPAGER env to use for `man` preview
 				},
 				layouts = {
+					MinVertical = {
+						layout = {
+							backdrop = true,
+							width = 0.5,
+							min_width = 80,
+							height = 0.8,
+							min_height = 30,
+							box = "vertical",
+							border = "rounded",
+							title = "{title} {live} {flags}",
+							title_pos = "center",
+							{ win = "input",   height = 1,          border = "bottom" },
+							{ win = "list",    border = "none" },
+							{ win = "preview", title = "{preview}", height = 0.4,     border = "top" },
+						},
+					}
 				},
 				sources = {
 					files = {
+						layout = {
+							preset = "MinVertical",
+							backdrop = true,
+							preview = false,
+						},
 						matcher = {
 							fuzzy = true, -- use fuzzy matching
 							smartcase = true, -- use smartcase
@@ -165,9 +186,10 @@ return {
 	{
 		"folke/todo-comments.nvim",
 		optional = true,
+		lazy = false,
 		keys = {
-			-- { "<leader>ft", function() Snacks.picker.todo_comments() end,                                          desc = "Todo" },
-			{ "<leader>ft", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "Todo/Fix/Fixme" },
+			{ "<leader>ft", function() Snacks.picker.todo_comments() end, desc = "Todo" },
+			-- { "<leader>ft", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME",} }) end, desc = "Todo/Fix/Fixme" },
 		},
 	},
 	{
