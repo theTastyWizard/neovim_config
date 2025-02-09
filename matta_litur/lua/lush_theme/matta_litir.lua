@@ -77,6 +77,7 @@ local white                 = hsl(0, 0, 96.08) --TODO: Skoða betur
 
 local blue_mag    = hsl("#0066ff")
 local blue        = hsl(210, 100, 50)
+local blue2       = hsl("#149bda")  --unikitty
 
 -- local cyan         = hsl('#00ffff')
 -- local cyan         = hsl('#00efff')
@@ -107,13 +108,15 @@ local magenta3    = hsl('#b62d65')
 local magenta3    = hsl('#ad1f51') --2tone
 
 local orange      = hsl(18, 100, 50)
-local orange_purp = hsl("#ff6600")
+local orange2     = hsl("#ff6600")
+local orange3 = hsl("#d65407")
 
 -- local purple       = hsl('#6600ff')
 local purple      = hsl(264, 100, 50)
-local purple_2    = hsl('#4961da')
-local purple_3    = hsl('#8f51e6')
-local purple_4    = hsl("#512c74")
+local purple2     = hsl('#4961da')
+local purple3     = hsl('#8f51e6')
+local purple4     = hsl("#512c74")
+local purple5     = hsl("#796af5") --unikitty
 
 -- local red             = hsl('#ca0019')
 local red         = hsl(353, 100, 39)
@@ -127,6 +130,7 @@ local teal3       = hsl('#41a6b5')
 local teal4       = hsl('#38a89d') -- úr tokyodark
 local teal5       = hsl('#289dbd')
 local teal6       = hsl('#33abcc')
+local teal6       = hsl('#17ad98')   --unikitty
 
 local yellow      = hsl(36, 100, 50) --('#ffa600(',
 
@@ -146,7 +150,7 @@ local theme       = lush(function(injected_functions)
 		--
 		-- See :h highlight-groups
 		--
-		Normal { bg = bg_black_blue, fg = white }, -- Normal text
+		Normal { bg = bg_black, fg = white },     -- Normal text
 		NormalFloat { bg = bg_black_blue, fg = white }, -- Normal text in floating windows.
 		-- ColorColumn    { }, -- Columns set with 'colorcolumn'
 		-- Conceal        { }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
@@ -155,7 +159,7 @@ local theme       = lush(function(injected_functions)
 		-- lCursor        { }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
 		-- CursorIM       { }, -- Like Cursor, but used when in IME mode |CursorIM|
 		-- CursorColumn   { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-		CursorLine     { bg = Normal.bg }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
+		CursorLine { bg = Normal.bg }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
 		Directory { fg = teal6 }, -- Directory names (and other special names in listings)
 		-- DiffAdd        { }, -- Diff mode: Added line |diff.txt|
 		-- DiffChange     { }, -- Diff mode: Changed line |diff.txt|
@@ -174,7 +178,7 @@ local theme       = lush(function(injected_functions)
 		LineNr { fg = white },           -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
 		LineNrAbove { fg = white.darken(55) }, -- Line number for when the 'relativenumber' option is set, above the cursor line
 		LineNrBelow { fg = white.darken(55) }, -- Line number for when the 'relativenumber' option is set, below the cursor line
-		CursorLineNr { fg = white },    -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+		CursorLineNr { fg = white },     -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 		-- CursorLineFold { }, -- Like FoldColumn when 'cursorline' is set for the cursor line
 		-- CursorLineSign { }, -- Like SignColumn when 'cursorline' is set for the cursor line
 		-- MatchParen     { }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
@@ -229,39 +233,40 @@ local theme       = lush(function(injected_functions)
 
 		-- Constant       { fg = red }, -- (*) Any constant
 		String { fg = magenta }, --   A string constant: "this is a string"
-		-- Character      { }, --   A character constant: 'c', '\n'
+		Character { fg = teal5 }, --   A character constant: 'c', '\n'
 		Number { fg = green1 }, --   A number constant: 234, 0xff
-		-- Boolean        { }, --   A boolean constant: TRUE, false
+		Boolean { fg = green1 }, --   A boolean constant: TRUE, false
 		Float { fg = green1 }, --   A floating point constant: 2.3e10
 
-		-- Identifier     { }, -- (*) Any variable name
-		-- Function       { }, --   Function name (also: methods for classes)
+		Identifier { fg = pink2 }, -- (*) Any variable name
+		-- Function { fg = orange2 }, --   Function name (also: methods for classes)
+		Function { fg = pink4 }, --   Function name (also: methods for classes)
 
-		-- Statement      { }, -- (*) Any statement
-		-- Conditional    { }, --   if, then, else, endif, switch, etc.
-		-- Repeat         { }, --   for, do, while, etc.
-		-- Label          { }, --   case, default, etc.
-		-- Operator       { }, --   "sizeof", "+", "*", etc.
-		-- Keyword        { }, --   any other keyword
-		-- Exception      { }, --   try, catch, throw
+		Statement { fg = blue_mag }, -- (*) Any statement
+		Conditional { fg = blue_mag }, --   if, then, else, endif, switch, etc.
+		Repeat { fg = blue_mag },    --   for, do, while, etc.
+		Label { fg = purple3 },      --   case, default, etc.
+		Operator { fg = teal4 },     --   "sizeof", "+", "*", etc. --TODO: velja annað
+		Keyword { fg = blue_mag },    --   any other keyword
+		Exception { fg = yellow },   --   try, catch, throw
 
-		-- PreProc        { }, -- (*) Generic Preprocessor
-		-- Include        { }, --   Preprocessor #include
-		-- Define         { }, --   Preprocessor #define
-		-- Macro          { }, --   Same as Define
-		-- PreCondit      { }, --   Preprocessor #if, #else, #endif, etc.
+		PreProc        { fg = yellow }, -- (*) Generic Preprocessor
+		Include        { fg = yellow }, --   Preprocessor #include
+		Define         { fg = yellow }, --   Preprocessor #define
+		Macro          { fg = yellow }, --   Same as Define
+		PreCondit      { fg = yellow }, --   Preprocessor #if, #else, #endif, etc.
 
-		-- Type           { }, -- (*) int, long, char, etc.
-		-- StorageClass   { }, --   static, register, volatile, etc.
-		-- Structure      { }, --   struct, union, enum, etc.
-		-- Typedef        { }, --   A typedef
+		Type           { fg = magenta3 }, -- (*) int, long, char, etc.
+		StorageClass   { fg =purple }, --   static, register, volatile, etc.
+		Structure      {  fg =purple }, --   struct, union, enum, etc.
+		Typedef        {  fg =purple }, --   A typedef
 
-		-- Special        { }, -- (*) Any special symbol
-		-- SpecialChar    { }, --   Special character in a constant
-		-- Tag            { }, --   You can use CTRL-] on this
-		-- Delimiter      { }, --   Character that needs attention
-		-- SpecialComment { }, --   Special things inside a comment (e.g. '\n')
-		-- Debug          { }, --   Debugging statements
+		Special        { fg = darkergreen }, -- (*) Any special symbol
+		SpecialChar    { fg = magenta2 }, --   Special character in a constant
+		Tag            { fg = green1 }, --   You can use CTRL-] on this
+		Delimiter      { fg = magenta3 }, --   Character that needs attention
+		SpecialComment { fg = purple }, --   Special things inside a comment (e.g. '\n')
+		-- Debug          { fg = blue}, --   Debugging statements
 
 		Underlined { gui = "underline" }, -- Text that stands out, HTML links
 		-- Ignore         { }, -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
@@ -286,7 +291,7 @@ local theme       = lush(function(injected_functions)
 		DiagnosticError { fg = red }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticWarn { fg = yellow }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticInfo { fg = blue_mag }, --TODO:Breyta í flottari lit Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-		DiagnosticHint { fg = purple }, --TODO:Breyta Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+		DiagnosticHint { fg = pink4 }, --TODO:Breyta Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		DiagnosticOk { fg = green1 }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
 		-- DiagnosticVirtualTextError { } , -- Used for "Error" diagnostic virtual text.
 		-- DiagnosticVirtualTextWarn  { } , -- Used for "Warn" diagnostic virtual text.
@@ -326,13 +331,13 @@ local theme       = lush(function(injected_functions)
 		--
 		-- For more information see https://github.com/rktjmp/lush.nvim/issues/109
 
-		sym "@text.literal" { Comment }, -- Comment
+		-- sym "@text.literal" { Comment }, -- Comment
 		-- sym"@text.reference"    { }, -- Identifier
 		-- sym"@text.title"        { }, -- Title
 		-- sym"@text.uri"          { }, -- Underlined
 		-- sym"@text.underline"    { }, -- Underlined
 		-- sym"@text.todo"         { }, -- Todo
-		sym "@comment" { Comment }, -- Comment
+		-- sym "@comment" { Comment }, -- Comment
 		-- sym"@punctuation"       { }, -- Delimiter
 		-- sym"@constant"          { }, -- Constant
 		-- sym"@constant.builtin"  { }, -- Special
@@ -344,22 +349,22 @@ local theme       = lush(function(injected_functions)
 		-- sym"@string.special"    { }, -- SpecialChar
 		-- sym"@character"         { }, -- Character
 		-- sym"@character.special" { }, -- SpecialChar
-		sym "@number" { Number }, -- Number
+		-- sym "@number" { Number },	-- Number
 		-- sym"@boolean"           { }, -- Boolean
-		sym "@float" { Float }, -- Float
+		-- sym "@float" { Float },		-- Float
 		-- sym"@function"          { }, -- Function
-		-- sym"@function.builtin"  { }, -- Special
+		-- sym"@function.builtin"  { fg = yellow}, -- Special
 		-- sym"@function.macro"    { }, -- Macro
 		-- sym"@parameter"         { }, -- Identifier
 		-- sym"@method"            { }, -- Function
-		-- sym"@field"             { }, -- Identifier
+		-- sym"@field"             { fg = pink2 }, -- Identifier
 		-- sym"@property"          { }, -- Identifier
 		-- sym"@constructor"       { }, -- Special
 		-- sym"@conditional"       { }, -- Conditional
-		-- sym"@repeat"            { }, -- Repeat
+		sym"@repeat"            { Repeat}, -- Repeat
 		-- sym"@label"             { }, -- Label
 		-- sym"@operator"          { }, -- Operator
-		-- sym"@keyword"           { }, -- Keyword
+		-- sym"@keyword"           { fg = yellow }, -- Keyword
 		-- sym"@exception"         { }, -- Exception
 		-- sym"@variable"          { }, -- Identifier
 		-- sym"@type"              { }, -- Type
@@ -367,7 +372,7 @@ local theme       = lush(function(injected_functions)
 		-- sym"@storageclass"      { }, -- StorageClass
 		-- sym"@structure"         { }, -- Structure
 		-- sym"@namespace"         { }, -- Identifier
-		-- sym"@include"           { }, -- Include
+		-- sym"@include"           { Include}, -- Include
 		-- sym"@preproc"           { }, -- PreProc
 		-- sym"@debug"             { }, -- Debug
 		-- sym"@tag"               { }, -- Tag
