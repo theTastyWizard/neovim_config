@@ -25,6 +25,7 @@ return {
 			},
 			input = { enabled = true, },
 			scope = { enabled = true, },
+			image = { enabled = true },
 			scroll = {
 				enabled = false,
 				-- animate = {
