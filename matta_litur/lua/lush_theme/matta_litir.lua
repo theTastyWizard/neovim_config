@@ -44,6 +44,12 @@
 local lush                  = require('lush')
 local hsl                   = lush.hsl
 
+
+-- cyan = "#36d0e0",
+-- blue = ,
+-- magenta = "#c678dd",
+
+
 local grunn00               = hsl('#120f12') -- 2 shade af pinky orig
 local grunn01               = hsl('#1b181b')
 local grunn02               = hsl('#2d2c2d') --visual selected breytt til að sjá betur
@@ -78,6 +84,7 @@ local white                 = hsl(0, 0, 96.08) --TODO: Skoða betur
 local blue_mag    = hsl("#0066ff")
 local blue        = hsl(210, 100, 50)
 local blue2       = hsl("#149bda")  --unikitty
+local blue3		  = hsl("#61afef")
 
 -- local cyan         = hsl('#00ffff')
 -- local cyan         = hsl('#00efff')
@@ -100,6 +107,7 @@ local pink_dark   = hsl('#843c54')
 local pink4       = hsl("#ff5699") -- complement af magenta
 local pink5       = hsl("#ce6f8f") -- space ducks
 local pink6       = hsl("#ed655e") -- 2tone pool
+local pink7		  = hsl("#d16d9e")
 
 -- local magenta         = hsl('#ff0066')
 local magenta     = hsl(336, 100, 50)
@@ -109,7 +117,8 @@ local magenta3    = hsl('#ad1f51') --2tone
 
 local orange      = hsl(18, 100, 50)
 local orange2     = hsl("#ff6600")
-local orange3 = hsl("#d65407")
+local orange3	  = hsl("#d65407")
+local orange4	  = hsl("#FF8700")
 
 -- local purple       = hsl('#6600ff')
 local purple      = hsl(264, 100, 50)
@@ -123,6 +132,8 @@ local red         = hsl(353, 100, 39)
 local red2        = hsl("#df202c") --complement fyrir magenta2
 local red3        = hsl("#e43728") -- úr zitchdog-pine
 local red3        = hsl("#cf504a") -- úr zitchdog-pine
+local red4		  = hsl("#e95678")
+
 
 local teal1       = hsl('#21c992')
 local teal2       = hsl('#4fd6be')
@@ -130,8 +141,10 @@ local teal3       = hsl('#41a6b5')
 local teal4       = hsl('#38a89d') -- úr tokyodark
 local teal5       = hsl('#289dbd')
 local teal6       = hsl('#33abcc')
-local teal6       = hsl('#17ad98')   --unikitty
+local teal7       = hsl('#17ad98')   --unikitty
+local teal8		  = hsl("#1abc9c")
 
+local yellow_fg = hsl("#f7bb3b")
 local yellow      = hsl(36, 100, 50) --('#ffa600(',
 
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
@@ -161,9 +174,9 @@ local theme       = lush(function(injected_functions)
 		-- CursorColumn   { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
 		CursorLine { bg = Normal.bg }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
 		Directory { fg = teal6 }, -- Directory names (and other special names in listings)
-		-- DiffAdd        { }, -- Diff mode: Added line |diff.txt|
-		-- DiffChange     { }, -- Diff mode: Changed line |diff.txt|
-		DiffDelete { fg = pink2 },          -- Diff mode: Deleted line |diff.txt|
+		DiffAdd        { fg = green2 }, -- Diff mode: Added line |diff.txt|
+		DiffChange     { fg = yellow}, -- Diff mode: Changed line |diff.txt|
+		DiffDelete { fg = red },          -- Diff mode: Deleted line |diff.txt|
 		-- DiffText       { }, -- Diff mode: Changed text within a changed line |diff.txt|
 		EndOfBuffer { fg = blar_bakgrunnur }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
 		TermCursor { bg = bg_black, fg = white }, -- Cursor in a focused terminal
@@ -188,7 +201,7 @@ local theme       = lush(function(injected_functions)
 		-- MoreMsg        { }, -- |more-prompt|
 		-- NonText        { }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
 		FloatBorder { Normal }, -- Border of floating windows.
-		FloatTitle { fg = orange }, -- Title of floating windows.
+		FloatTitle { fg = orange2 }, -- Title of floating windows.
 		-- NormalNC       { }, -- normal text in non-current windows
 		-- Pmenu          { }, -- Popup menu: Normal item.
 		-- PmenuSel       { }, -- Popup menu: Selected item.
@@ -202,8 +215,8 @@ local theme       = lush(function(injected_functions)
 		-- QuickFixLine   { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 		-- Search         { }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
 		-- SpecialKey     { }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
-		SpellBad { gui = 'undercurl', sp = red }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-		-- SpellCap       { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+		SpellBad { gui = 'undercurl', sp = red2 }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+		SpellCap       { gui = 'undercurl', sp = yellow  }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
 		-- SpellLocal     { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
 		-- SpellRare      { }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
 		StatusLine { bg = bg_black_blue }, -- Status line of current window
@@ -238,15 +251,16 @@ local theme       = lush(function(injected_functions)
 		Boolean { fg = green1 }, --   A boolean constant: TRUE, false
 		Float { fg = green1 }, --   A floating point constant: 2.3e10
 
-		Identifier { fg = pink2 }, -- (*) Any variable name
-		-- Function { fg = orange2 }, --   Function name (also: methods for classes)
-		Function { fg = pink4 }, --   Function name (also: methods for classes)
+		Identifier { fg = red4 }, -- (*) Any variable name
+		Function { fg = orange2 }, --   Function name (also: methods for classes)
+		-- Function { fg = pink4 }, --   Function name (also: methods for classes)
 
 		Statement { fg = blue_mag }, -- (*) Any statement
 		Conditional { fg = blue_mag }, --   if, then, else, endif, switch, etc.
 		Repeat { fg = blue_mag },    --   for, do, while, etc.
 		Label { fg = purple3 },      --   case, default, etc.
-		Operator { fg = teal4 },     --   "sizeof", "+", "*", etc. --TODO: velja annað
+		Operator { fg = red3  },     --   "sizeof", "+", "*", etc. --TODO: velja annað
+		-- Operator { fg = green4  },     --   "sizeof", "+", "*", etc. --TODO: velja annað
 		Keyword { fg = blue_mag },    --   any other keyword
 		Exception { fg = yellow },   --   try, catch, throw
 
@@ -337,7 +351,7 @@ local theme       = lush(function(injected_functions)
 		-- sym"@text.uri"          { }, -- Underlined
 		-- sym"@text.underline"    { }, -- Underlined
 		-- sym"@text.todo"         { }, -- Todo
-		-- sym "@comment" { Comment }, -- Comment
+		sym "@comment" { Comment }, -- Comment
 		-- sym"@punctuation"       { }, -- Delimiter
 		-- sym"@constant"          { }, -- Constant
 		-- sym"@constant.builtin"  { }, -- Special
@@ -361,7 +375,7 @@ local theme       = lush(function(injected_functions)
 		-- sym"@property"          { }, -- Identifier
 		-- sym"@constructor"       { }, -- Special
 		-- sym"@conditional"       { }, -- Conditional
-		sym"@repeat"            { Repeat}, -- Repeat
+		-- sym"@repeat"            { Repeat}, -- Repeat
 		-- sym"@label"             { }, -- Label
 		-- sym"@operator"          { }, -- Operator
 		-- sym"@keyword"           { fg = yellow }, -- Keyword
@@ -371,14 +385,14 @@ local theme       = lush(function(injected_functions)
 		-- sym"@type.definition"   { }, -- Typedef
 		-- sym"@storageclass"      { }, -- StorageClass
 		-- sym"@structure"         { }, -- Structure
-		-- sym"@namespace"         { }, -- Identifier
+		-- sym"@namespace"         { fg = pink4 }, -- Identifier
 		-- sym"@include"           { Include}, -- Include
 		-- sym"@preproc"           { }, -- PreProc
 		-- sym"@debug"             { }, -- Debug
 		-- sym"@tag"               { }, -- Tag
 
 		-- Mín viðbót
-		NormalMode { fg = orange },
+		NormalMode { fg = teal8 },
 		InsertMode { fg = magenta },
 		VisualMode { fg = green2 },
 
