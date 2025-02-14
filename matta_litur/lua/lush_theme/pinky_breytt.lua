@@ -5,6 +5,23 @@ local lush = require("lush")
 local hsl = lush.hsl
 local hsluv = lush.hsluv
 
+local grunn00               = hsl('#120f12') -- 2 shade af pinky orig
+local grunn01               = hsl('#1b181b')
+local grunn02               = hsl('#2d2c2d') --visual selected breytt til að sjá betur
+local grunn03               = hsl('#117c3c') --comments breytt til að sjá betur
+local grunn04               = hsl('#e7dbdb')
+local grunn05               = hsl('#f5f5f5')
+local grunn06               = hsl('#ffffff')
+local grunn07               = hsl('#f7f3f7')
+local grunn08               = hsl('#ffa600')
+local grunn09               = hsl('#00ff66')
+local grunn0A               = hsl('#20df6c')
+local grunn0B               = hsl('#ff0066')
+local grunn0C               = hsl('#6600ff')
+local grunn0D               = hsl('#00ffff')
+local grunn0E               = hsl('#007fff')
+local grunn0F               = hsl('#df206c')
+
 local teal6 = hsl("#33abcc")
 local magenta3    = hsl('#ad1f51') --2tone
 local red         = hsl(353, 100, 39)
@@ -69,14 +86,14 @@ local theme = lush(function(injected_functions)
     Folded                                         { fg="#117c3c", bg="#1b181b", }, -- Folded         xxx guifg=#117c3c guibg=#1b181b
     FoldColumn                                     { fg="#6600ff", bg="#120f12", }, -- FoldColumn     xxx guifg=#6600ff guibg=#120f12
     CursorLineFold                                 { FoldColumn }, -- CursorLineFold xxx links to FoldColumn
-    DiffAdd                                        { fg="#ff0066", bg="#120f12", }, -- DiffAdd        xxx guifg=#ff0066 guibg=#120f12
+    DiffAdd                                        { fg=grunn0B }, -- DiffAdd        xxx guifg=#ff0066 guibg=#120f12
     sym"@text.diff.add"                            { DiffAdd }, -- @text.diff.add xxx links to DiffAdd
     GitSignsAddLn                                  { DiffAdd }, -- GitSignsAddLn  xxx links to DiffAdd
     GitSignsAddPreview                             { DiffAdd }, -- GitSignsAddPreview xxx links to DiffAdd
-    DiffChange                                     { fg="#117c3c", bg="#120f12", }, -- DiffChange     xxx guifg=#117c3c guibg=#120f12
+    DiffChange                                     { fg= yellow}, -- DiffChange     xxx guifg=#117c3c guibg=#120f12
     sym"@diff.delta"                               { DiffChange }, -- @diff.delta    xxx links to DiffChange
     GitSignsChangeLn                               { DiffChange }, -- GitSignsChangeLn xxx links to DiffChange
-    DiffDelete                                     { fg="#ffa600", bg="#120f12", }, -- DiffDelete     xxx guifg=#ffa600 guibg=#120f12
+    DiffDelete                                     { fg= red }, -- DiffDelete     xxx guifg=#ffa600 guibg=#120f12
     sym"@text.diff.delete"                         { DiffDelete }, -- @text.diff.delete xxx links to DiffDelete
     GitSignsDeletePreview                          { DiffDelete }, -- GitSignsDeletePreview xxx links to DiffDelete
     GitSignsDeleteVirtLn                           { DiffDelete }, -- GitSignsDeleteVirtLn xxx links to DiffDelete
