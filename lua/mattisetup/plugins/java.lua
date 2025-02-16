@@ -14,9 +14,9 @@ return {
 		})
 	end,
 	keys = {
-		{ "<leader>rr", "<cmd>JavaRunnerRunMain<cr>",  desc = "Java main runner" },
-		{ "<leader>rs", "<cmd>JavaRunnerStopMain<cr>", desc = "Stops java runner" },
-		{ "<leader>rc", "<cmd>JavaRunnerToggleLogs<cr>", desc = "Toggle runner logs" },
-		{ "<leader>rb", "<cmd>JavaBuildBuildWorkspace<cr>", desc = "Build workspace" },
+		{ "<leader>rr", "<cmd>JavaRunnerRunMain<cr>",      ft = {"java"}, desc = "Java main runner" },
+		{ "<leader>rs", "<cmd>JavaRunnerStopMain<cr>",     ft = {"java"}, desc = "Stops java runner" },
+		{ "<leader>rc", "<cmd>JavaRunnerToggleLogs<cr>",   ft = {"java"}, desc = "Toggle runner logs" },
+		{ "<leader>rb", "<cmd>JavaBuildBuildWorkspace<cr>",ft = {"java"}, desc = "Build workspace" },
 	}
 }
