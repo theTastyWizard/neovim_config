@@ -38,7 +38,17 @@ return {
 				['<C-b>'] = { 'snippet_backward', 'fallback' },
 				['<C-f>'] = { 'snippet_forward', 'fallback' },
 
-				cmdline = {
+			},
+			cmdline = {
+				sources = function()
+					local type = vim.fn.getcmdtype()
+					-- Search forward and backward
+					if type == '/' or type == '?' then return { 'buffer' } end
+					-- Commands
+					if type == ':' or type == '@' then return { 'cmdline' } end
+					return {}
+				end,
+				keymap = {
 					preset = 'none',
 
 					['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
@@ -82,6 +92,7 @@ return {
 					},
 				},
 				documentation = {
+					-- treesitter_highlighting = false,
 					auto_show = true,
 					auto_show_delay_ms = 100,
 					window = {
