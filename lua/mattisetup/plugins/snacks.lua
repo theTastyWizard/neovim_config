@@ -25,7 +25,13 @@ return {
 			},
 			input = { enabled = true, },
 			scope = { enabled = true, },
-			image = { enabled = true },
+			image = { 
+				enabled = true,
+				doc = {
+					inline = false,
+					float = true
+				}
+			},
 			scroll = {
 				enabled = false,
 				-- animate = {
