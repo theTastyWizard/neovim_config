@@ -9,7 +9,8 @@ return {
 			return {
 				black = "#000000",
 				white = '#f5f5f5',
-				bg = "#171517",
+				-- bg = "#171517",
+				bg = utils.get_highlight("statusline").bg,
 				-- bright_bg = "#30365F",
 				-- bright_bg ="#2B3055",
 				-- bright_bg ="#262b4c",

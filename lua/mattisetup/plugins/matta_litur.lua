@@ -3,7 +3,7 @@ return {
 	{
 		dir = '/home/matti/.config/nvim/matta_litur',
 		lazy = false,
-		cond = false,
+		-- cond = false,
 		config = function()
 			vim.cmd [[colorscheme matta_litir]]
 		end
