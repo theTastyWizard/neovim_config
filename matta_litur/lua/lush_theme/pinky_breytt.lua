@@ -22,12 +22,17 @@ local grunn0D               = hsl('#00ffff')
 local grunn0E               = hsl('#007fff')
 local grunn0F               = hsl('#df206c')
 
-local teal6 = hsl("#33abcc")
+local teal6		  = hsl("#33abcc")
 local magenta3    = hsl('#ad1f51') --2tone
 local red         = hsl(353, 100, 39)
 local yellow      = hsl(36, 100, 50) --('#ffa600(',
 local green1      = hsl('#00ff66') --Notað fyrir tölur,const,boolean í upprunalega
+local green4      = hsl('#02d849')
 local pink4       = hsl("#ff5699") -- complement af magenta
+local orange      = hsl(18, 100, 50)
+
+local bg_blue	  = hsl("#050008")
+local blue        = hsl(210, 100, 50)
 local blue_mag    = hsl("#0066ff")
 
 local theme = lush(function(injected_functions)
@@ -60,16 +65,16 @@ local theme = lush(function(injected_functions)
     CurSearch                                      { fg="nvimdarkgrey1", bg="nvimlightyellow", }, -- CurSearch      xxx ctermfg=0 ctermbg=11 guifg=NvimDarkGrey1 guibg=NvimLightYellow
     MoreMsg                                        { fg="#ff0066", }, -- MoreMsg        xxx guifg=#ff0066
     ModeMsg                                        { fg="#ff0066", }, -- ModeMsg        xxx guifg=#ff0066
-    LineNr                                         { fg="#e7dbdb", bg="#120f12", }, -- LineNr         xxx guifg=#e7dbdb guibg=#120f12
-    LineNrAbove                                    { LineNr }, -- LineNrAbove    xxx links to LineNr
-    LineNrBelow                                    { LineNr }, -- LineNrBelow    xxx links to LineNr
+    LineNr                                         { fg="#f5f5f5", bg="#120f12" }, -- LineNr         xxx guifg=#e7dbdb guibg=#120f12
+    LineNrAbove                                    { fg="#e7dbdb", bg="#120f12" }, -- LineNrAbove    xxx links to LineNr
+    LineNrBelow                                    { fg="#e7dbdb", bg="#120f12" }, -- LineNrBelow    xxx links to LineNr
     CursorLineNr                                   { fg="#ffa600", bg="#120f12", }, -- CursorLineNr   xxx guifg=#ffa600 guibg=#120f12
     Question                                       { fg="#00ffff", }, -- Question       xxx guifg=#00ffff
-    StatusLine                                     { fg="#f5f5f5", bg="#2d2c2d", }, -- StatusLine     xxx guifg=#f5f5f5 guibg=#2d2c2d
+    StatusLine                                     { fg="#f5f5f5", bg=bg_blue, }, -- StatusLine     xxx guifg=#f5f5f5 guibg=#2d2c2d
     MsgSeparator                                   { StatusLine }, -- MsgSeparator   xxx links to StatusLine
-    StatusLineNC                                   { fg="#e7dbdb", bg="#1b181b", }, -- StatusLineNC   xxx guifg=#e7dbdb guibg=#1b181b
+    StatusLineNC                                   { StatusLine }, -- StatusLineNC   xxx guifg=#e7dbdb guibg=#1b181b
     VertSplit                                      { fg="#f5f5f5", bg="#120f12", }, -- VertSplit      xxx guifg=#f5f5f5 guibg=#120f12
-    Title                                          { fg="#00ffff", }, -- Title          xxx guifg=#00ffff
+    Title                                          { fg=orange, }, -- Title          xxx guifg=#00ffff
     FloatTitle                                     { Title }, -- FloatTitle     xxx links to Title
     EdgyTitle                                      { Title }, -- EdgyTitle      xxx links to Title
     EdgyWinBar                                     { Title }, -- EdgyWinBar     xxx links to Title
@@ -86,7 +91,7 @@ local theme = lush(function(injected_functions)
     Folded                                         { fg="#117c3c", bg="#1b181b", }, -- Folded         xxx guifg=#117c3c guibg=#1b181b
     FoldColumn                                     { fg="#6600ff", bg="#120f12", }, -- FoldColumn     xxx guifg=#6600ff guibg=#120f12
     CursorLineFold                                 { FoldColumn }, -- CursorLineFold xxx links to FoldColumn
-    DiffAdd                                        { fg=grunn0B }, -- DiffAdd        xxx guifg=#ff0066 guibg=#120f12
+    DiffAdd                                        { fg=green4 }, -- DiffAdd        xxx guifg=#ff0066 guibg=#120f12
     sym"@text.diff.add"                            { DiffAdd }, -- @text.diff.add xxx links to DiffAdd
     GitSignsAddLn                                  { DiffAdd }, -- GitSignsAddLn  xxx links to DiffAdd
     GitSignsAddPreview                             { DiffAdd }, -- GitSignsAddPreview xxx links to DiffAdd
@@ -97,7 +102,7 @@ local theme = lush(function(injected_functions)
     sym"@text.diff.delete"                         { DiffDelete }, -- @text.diff.delete xxx links to DiffDelete
     GitSignsDeletePreview                          { DiffDelete }, -- GitSignsDeletePreview xxx links to DiffDelete
     GitSignsDeleteVirtLn                           { DiffDelete }, -- GitSignsDeleteVirtLn xxx links to DiffDelete
-    DiffText                                       { fg="#00ffff", bg="#120f12", }, -- DiffText       xxx guifg=#00ffff guibg=#120f12
+    DiffText                                       { fg=grunn0B, bg="#120f12", }, -- DiffText       xxx guifg=#00ffff guibg=#120f12
     SignColumn                                     { fg="#e7dbdb", bg="#120f12", }, -- SignColumn     xxx guifg=#e7dbdb guibg=#120f12
     CursorLineSign                                 { SignColumn }, -- CursorLineSign xxx links to SignColumn
     EdgyIcon                                       { SignColumn }, -- EdgyIcon       xxx links to SignColumn
@@ -133,7 +138,7 @@ local theme = lush(function(injected_functions)
     QuickFixLine                                   { bg="#1b181b", }, -- QuickFixLine   xxx guibg=#1b181b
     NormalNC                                       { fg="#f5f5f5", bg="#120f12", }, -- NormalNC       xxx guifg=#f5f5f5 guibg=#120f12
     FloatermNC                                     { NormalNC }, -- FloatermNC     xxx links to NormalNC
-    NormalFloat                                    { fg="#f5f5f5", bg="#120f12", }, -- NormalFloat    xxx guifg=#f5f5f5 guibg=#120f12
+    NormalFloat                                    { fg="#f5f5f5", bg=bg_blue, }, -- NormalFloat    xxx guifg=#f5f5f5 guibg=#120f12
     DapUIFloatNormal                               { NormalFloat }, -- DapUIFloatNormal xxx links to NormalFloat
     FloatermBorder                                 { NormalFloat }, -- FloatermBorder xxx links to NormalFloat
     GrappleNormal                                  { NormalFloat }, -- GrappleNormal  xxx links to NormalFloat
