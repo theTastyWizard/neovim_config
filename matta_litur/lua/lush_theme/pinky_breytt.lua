@@ -23,7 +23,8 @@ local grunn0E               = hsl('#007fff')
 local grunn0F               = hsl('#df206c')
 
 local teal6		  = hsl("#33abcc")
-local magenta3    = hsl('#ad1f51') --2tone
+local magenta3    = hsl('#b62d65')
+local magenta4    = hsl('#ad1f51') --2tone
 local red         = hsl(353, 100, 39)
 local yellow      = hsl(36, 100, 50) --('#ffa600(',
 local green1      = hsl('#00ff66') --Notað fyrir tölur,const,boolean í upprunalega
@@ -95,14 +96,14 @@ local theme = lush(function(injected_functions)
     sym"@text.diff.add"                            { DiffAdd }, -- @text.diff.add xxx links to DiffAdd
     GitSignsAddLn                                  { DiffAdd }, -- GitSignsAddLn  xxx links to DiffAdd
     GitSignsAddPreview                             { DiffAdd }, -- GitSignsAddPreview xxx links to DiffAdd
-    DiffChange                                     { fg= yellow}, -- DiffChange     xxx guifg=#117c3c guibg=#120f12
+    DiffChange                                     { fg= grunn0B }, -- DiffChange     xxx guifg=#117c3c guibg=#120f12
     sym"@diff.delta"                               { DiffChange }, -- @diff.delta    xxx links to DiffChange
     GitSignsChangeLn                               { DiffChange }, -- GitSignsChangeLn xxx links to DiffChange
     DiffDelete                                     { fg= red }, -- DiffDelete     xxx guifg=#ffa600 guibg=#120f12
     sym"@text.diff.delete"                         { DiffDelete }, -- @text.diff.delete xxx links to DiffDelete
     GitSignsDeletePreview                          { DiffDelete }, -- GitSignsDeletePreview xxx links to DiffDelete
     GitSignsDeleteVirtLn                           { DiffDelete }, -- GitSignsDeleteVirtLn xxx links to DiffDelete
-    DiffText                                       { fg=grunn0B, bg="#120f12", }, -- DiffText       xxx guifg=#00ffff guibg=#120f12
+    DiffText                                       { fg= yellow, bg="#120f12", }, -- DiffText       xxx guifg=#00ffff guibg=#120f12
     SignColumn                                     { fg="#e7dbdb", bg="#120f12", }, -- SignColumn     xxx guifg=#e7dbdb guibg=#120f12
     CursorLineSign                                 { SignColumn }, -- CursorLineSign xxx links to SignColumn
     EdgyIcon                                       { SignColumn }, -- EdgyIcon       xxx links to SignColumn
@@ -212,7 +213,7 @@ local theme = lush(function(injected_functions)
     sym"@text.environment"                         { Macro }, -- @text.environment xxx links to Macro
     StorageClass                                   { fg="#20df6c", }, -- StorageClass   xxx guifg=#20df6c
     sym"@storageclass"                             { StorageClass }, -- @storageclass  xxx links to StorageClass
-    Type                                           { fg=magenta3 }, -- Type           xxx guifg=#20df6c
+    Type                                           { fg=magenta4 }, -- Type           xxx guifg=#20df6c
     NvimNumberPrefix                               { Type }, -- NvimNumberPrefix xxx links to Type
     NvimOptionSigil                                { Type }, -- NvimOptionSigil xxx links to Type
     sym"@text.environment.name"                    { Type }, -- @text.environment.name xxx links to Type
@@ -358,13 +359,13 @@ local theme = lush(function(injected_functions)
     gitcommitUnmergedFile                          { fg="#ffa600", gui="bold", }, -- gitcommitUnmergedFile xxx cterm=bold gui=bold guifg=#ffa600
     gitcommitDiscardedFile                         { fg="#ffa600", gui="bold", }, -- gitcommitDiscardedFile xxx cterm=bold gui=bold guifg=#ffa600
     gitcommitSelectedFile                          { fg="#ff0066", gui="bold", }, -- gitcommitSelectedFile xxx cterm=bold gui=bold guifg=#ff0066
-    GitGutterAdd                                   { fg="#ff0066", bg="#120f12", }, -- GitGutterAdd   xxx guifg=#ff0066 guibg=#120f12
+    GitGutterAdd                                   { DiffAdd }, -- GitGutterAdd   xxx guifg=#ff0066 guibg=#120f12
     GitSignsAdd                                    { GitGutterAdd }, -- GitSignsAdd    xxx links to GitGutterAdd
-    GitGutterChange                                { fg="#00ffff", bg="#120f12", }, -- GitGutterChange xxx guifg=#00ffff guibg=#120f12
+    GitGutterChange                                { DiffChange }, -- GitGutterChange xxx guifg=#00ffff guibg=#120f12
     GitSignsChange                                 { GitGutterChange }, -- GitSignsChange xxx links to GitGutterChange
-    GitGutterDelete                                { fg="#ffa600", bg="#120f12", }, -- GitGutterDelete xxx guifg=#ffa600 guibg=#120f12
+    GitGutterDelete                                { DiffDelete }, -- GitGutterDelete xxx guifg=#ffa600 guibg=#120f12
     GitSignsDelete                                 { GitGutterDelete }, -- GitSignsDelete xxx links to GitGutterDelete
-    GitGutterChangeDelete                          { fg="#007fff", bg="#120f12", }, -- GitGutterChangeDelete xxx guifg=#007fff guibg=#120f12
+    GitGutterChangeDelete                          { DiffText}, -- GitGutterChangeDelete xxx guifg=#007fff guibg=#120f12
     DiagnosticUnderlineWarning                     { gui="undercurl", sp="#007fff", }, -- DiagnosticUnderlineWarning xxx cterm=undercurl gui=undercurl guisp=#007fff
     LspDiagnosticsUnderlineWarning                 { DiagnosticUnderlineWarning }, -- LspDiagnosticsUnderlineWarning xxx links to DiagnosticUnderlineWarning
     DiagnosticUnderlineInformation                 { gui="undercurl", sp="#df206c", }, -- DiagnosticUnderlineInformation xxx cterm=undercurl gui=undercurl guisp=#df206c
