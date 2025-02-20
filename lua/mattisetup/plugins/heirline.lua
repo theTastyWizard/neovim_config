@@ -8,29 +8,25 @@ return {
 		local function setup_colors()
 			return {
 				black = "#000000",
-				white = '#f5f5f5',
-				-- bg = "#171517",
 				bg = utils.get_highlight("statusline").bg,
-				-- bright_bg = "#30365F",
-				-- bright_bg ="#2B3055",
-				-- bright_bg ="#262b4c",
 				bright_bg = "#1e223c",
-				-- bright_bg ="#1a1e35",
-				pink = "#ff0066",
-				blue = "#007fff",
-				cyan = "#00ffff",
-				green = "#00ff66",
-				darker_green = "#20df6c",
-				yellow = "#ffa600",
-				orange = "#d65407",
-				purple = "#6600ff",
+
+				white = utils.get_highlight('White').fg , --'#f5f5f5',
+				pink = utils.get_highlight('Magenta1').fg, --"#ff0066",
+				blue = utils.get_highlight('blue1').fg, --"#007fff",
+				cyan = utils.get_highlight('cyan').fg, --"#00ffff",
+				green = utils.get_highlight('green1').fg, --"#00ff66",
+				yellow = utils.get_highlight('yellow').fg, --"#ffa600",
+				orange = utils.get_highlight('orange').fg, --"#d65407",
+				purple = utils.get_highlight('purple').fg, --"#6600ff",
+
 				diag_warn = utils.get_highlight("DiagnosticWarn").fg,
 				diag_error = utils.get_highlight("DiagnosticError").fg,
 				diag_hint = utils.get_highlight("DiagnosticHint").fg,
 				diag_info = utils.get_highlight("DiagnosticInfo").fg,
-				git_del = utils.get_highlight("GitSignsDelete").fg,
-				git_add = utils.get_highlight("GitSignsAdd").fg,
-				git_change = utils.get_highlight("GitSignsChange").fg,
+				git_del = utils.get_highlight("DiffDelete").fg,
+				git_add = utils.get_highlight("DiffAdd").fg,
+				git_change = utils.get_highlight("DiffChange").fg,
 			}
 		end
 
@@ -293,7 +289,7 @@ return {
 					self.status_dict.changed ~= 0
 			end,
 
-			hl = { fg = "yellow" },
+			hl = { fg = "orange" },
 
 			{
 				provider = " "
