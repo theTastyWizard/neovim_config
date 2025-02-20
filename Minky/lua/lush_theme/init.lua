@@ -2,12 +2,15 @@ local lush = require("lush")
 local hsl = lush.hsl
 local hsluv = lush.hsluv
 
-local Adal = require('lush_theme.Minky')
-local Modicator = require('lush_theme.plugins.modicator')
+local adal = require('lush_theme.Minky')
+local modicator = require('lush_theme.plugins.modicator')
+local blink = require('lush_theme.plugins.blink')
+local mini_icons = require('lush_theme.plugins.mini_icons')
 
 local specs = {
-	Adal,
-	Modicator,
+	adal,
+	modicator,
+	mini_icons,
 }
 
 local spec = lush.merge(specs)

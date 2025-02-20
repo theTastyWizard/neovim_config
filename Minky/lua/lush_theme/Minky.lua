@@ -22,19 +22,28 @@ local grunn0D               = hsl('#00ffff')
 local grunn0E               = hsl('#007fff')
 local grunn0F               = hsl('#df206c')
 
-local teal6		  = hsl("#33abcc")
-local magenta3    = hsl('#b62d65')
-local magenta4    = hsl('#ad1f51') --2tone
-local red         = hsl(353, 100, 39)
-local yellow      = hsl(36, 100, 50) --('#ffa600(',
-local green1      = hsl('#00ff66') --Notað fyrir tölur,const,boolean í upprunalega
-local green4      = hsl('#02d849')
-local pink4       = hsl("#ff5699") -- complement af magenta
-local orange      = hsl(18, 100, 50)
+local white		= hsl("#f5f5f5")
+local bg_black  = hsl('#120f12') 
+local bg_blue	= hsl("#050008")
+local gray		= hsl('#2d2c2d') --visual selected breytt til að sjá betur
 
-local bg_blue	  = hsl("#050008")
-local blue        = hsl(210, 100, 50)
-local blue_mag    = hsl("#0066ff")
+local purple	= hsl("#6600ff")
+local teal		= hsl("#33abcc")
+local magenta1	= hsl("#ff0066")
+local magenta2  = hsl('#ad1f51') --2tone
+local magenta3  = hsl('#b62d65')
+local red       = hsl(353, 100, 39)
+local yellow    = hsl(36, 100, 50) 
+local green1    = hsl('#00ff66') 
+local green2    = hsl('#02d849')
+local pink      = hsl("#ff5699") -- complement af magenta
+local orange    = hsl(18, 100, 50)
+local blue1		= hsl(210, 100, 50)
+local blue2		= hsl("#0066ff")
+local cyan		= hsl('#00ffff')
+
+-- help treesitter highlight groups
+-- help  highlight groups
 
 local theme = lush(function(injected_functions)
   local sym = injected_functions.sym
@@ -56,7 +65,7 @@ local theme = lush(function(injected_functions)
     NoiceFormatKind                                { NonText }, -- NoiceFormatKind xxx links to NonText
     NoiceFormatEvent                               { NonText }, -- NoiceFormatEvent xxx links to NonText
     NoiceLspProgressTitle                          { NonText }, -- NoiceLspProgressTitle xxx links to NonText
-    Directory                                      { fg=teal6, }, -- Directory      xxx guifg=#00ffff
+    Directory                                      { fg=teal, }, -- Directory      xxx guifg=#00ffff
     ErrorMsg                                       { fg="#ffa600", bg="#120f12", }, -- ErrorMsg       xxx guifg=#ffa600 guibg=#120f12
     NvimInvalidSpacing                             { ErrorMsg }, -- NvimInvalidSpacing xxx links to ErrorMsg
     IncSearch                                      { fg="#1b181b", bg="#00ff66", }, -- IncSearch      xxx guifg=#1b181b guibg=#00ff66
@@ -85,25 +94,12 @@ local theme = lush(function(injected_functions)
     Visual                                         { bg="#2d2c2d", }, -- Visual         xxx guibg=#2d2c2d
     LspSignatureActiveParameter                    { Visual }, -- LspSignatureActiveParameter xxx links to Visual
     SnippetTabstop                                 { Visual }, -- SnippetTabstop xxx links to Visual
-    BlinkCmpDocCursorLine                          { Visual }, -- BlinkCmpDocCursorLine xxx links to Visual
     NoiceFormatConfirmDefault                      { Visual }, -- NoiceFormatConfirmDefault xxx links to Visual
     WarningMsg                                     { fg="#ffa600", }, -- WarningMsg     xxx guifg=#ffa600
     WildMenu                                       { fg="#ffa600", bg="#20df6c", }, -- WildMenu       xxx guifg=#ffa600 guibg=#20df6c
     Folded                                         { fg="#117c3c", bg="#1b181b", }, -- Folded         xxx guifg=#117c3c guibg=#1b181b
     FoldColumn                                     { fg="#6600ff", bg="#120f12", }, -- FoldColumn     xxx guifg=#6600ff guibg=#120f12
     CursorLineFold                                 { FoldColumn }, -- CursorLineFold xxx links to FoldColumn
-    DiffAdd                                        { fg=green4 }, -- DiffAdd        xxx guifg=#ff0066 guibg=#120f12
-    sym"@text.diff.add"                            { DiffAdd }, -- @text.diff.add xxx links to DiffAdd
-    GitSignsAddLn                                  { DiffAdd }, -- GitSignsAddLn  xxx links to DiffAdd
-    GitSignsAddPreview                             { DiffAdd }, -- GitSignsAddPreview xxx links to DiffAdd
-    DiffChange                                     { fg= grunn0B }, -- DiffChange     xxx guifg=#117c3c guibg=#120f12
-    sym"@diff.delta"                               { DiffChange }, -- @diff.delta    xxx links to DiffChange
-    GitSignsChangeLn                               { DiffChange }, -- GitSignsChangeLn xxx links to DiffChange
-    DiffDelete                                     { fg= red }, -- DiffDelete     xxx guifg=#ffa600 guibg=#120f12
-    sym"@text.diff.delete"                         { DiffDelete }, -- @text.diff.delete xxx links to DiffDelete
-    GitSignsDeletePreview                          { DiffDelete }, -- GitSignsDeletePreview xxx links to DiffDelete
-    GitSignsDeleteVirtLn                           { DiffDelete }, -- GitSignsDeleteVirtLn xxx links to DiffDelete
-    DiffText                                       { fg= yellow, bg="#120f12", }, -- DiffText       xxx guifg=#00ffff guibg=#120f12
     SignColumn                                     { fg="#e7dbdb", bg="#120f12", }, -- SignColumn     xxx guifg=#e7dbdb guibg=#120f12
     CursorLineSign                                 { SignColumn }, -- CursorLineSign xxx links to SignColumn
     EdgyIcon                                       { SignColumn }, -- EdgyIcon       xxx links to SignColumn
@@ -112,20 +108,17 @@ local theme = lush(function(injected_functions)
     SpellCap                                       { gui="undercurl", sp="#00ffff", }, -- SpellCap       xxx cterm=undercurl gui=undercurl guisp=#00ffff
     SpellRare                                      { gui="undercurl", sp="#007fff", }, -- SpellRare      xxx cterm=undercurl gui=undercurl guisp=#007fff
     SpellLocal                                     { gui="undercurl", sp="#6600ff", }, -- SpellLocal     xxx cterm=undercurl gui=undercurl guisp=#6600ff
-    Pmenu                                          { fg="#f5f5f5", bg="#1b181b", }, -- Pmenu          xxx guifg=#f5f5f5 guibg=#1b181b
+    -- Pmenu                                          { fg="#f5f5f5", bg="#1b181b", }, -- Pmenu          xxx guifg=#f5f5f5 guibg=#1b181b
+	Pmenu                                          { fg="#f5f5f5", bg=bg_blue, }, -- Pmenu          xxx guifg=#f5f5f5 guibg=#1b181b
     PmenuKind                                      { Pmenu }, -- PmenuKind      xxx links to Pmenu
     PmenuExtra                                     { Pmenu }, -- PmenuExtra     xxx links to Pmenu
     PmenuSbar                                      { Pmenu }, -- PmenuSbar      xxx links to Pmenu
-    BlinkCmpMenu                                   { Pmenu }, -- BlinkCmpMenu   xxx links to Pmenu
-    BlinkCmpMenuBorder                             { Pmenu }, -- BlinkCmpMenuBorder xxx links to Pmenu
     NoicePopupmenu                                 { Pmenu }, -- NoicePopupmenu xxx links to Pmenu
     PmenuSel                                       { fg="#1b181b", bg="#f5f5f5", }, -- PmenuSel       xxx guifg=#1b181b guibg=#f5f5f5
     PmenuKindSel                                   { PmenuSel }, -- PmenuKindSel   xxx links to PmenuSel
     PmenuExtraSel                                  { PmenuSel }, -- PmenuExtraSel  xxx links to PmenuSel
-    BlinkCmpMenuSelection                          { PmenuSel }, -- BlinkCmpMenuSelection xxx links to PmenuSel
     NoicePopupmenuSelected                         { PmenuSel }, -- NoicePopupmenuSelected xxx links to PmenuSel
     PmenuThumb                                     { bg="nvimdarkgrey4", }, -- PmenuThumb     xxx guibg=NvimDarkGrey4
-    BlinkCmpScrollBarThumb                         { PmenuThumb }, -- BlinkCmpScrollBarThumb xxx links to PmenuThumb
     NoiceScrollbarThumb                            { PmenuThumb }, -- NoiceScrollbarThumb xxx links to PmenuThumb
     TabLine                                        { fg="#117c3c", bg="#1b181b", }, -- TabLine        xxx guifg=#117c3c guibg=#1b181b
     TabLineSel                                     { fg="#ff0066", bg="#1b181b", }, -- TabLineSel     xxx guifg=#ff0066 guibg=#1b181b
@@ -145,11 +138,6 @@ local theme = lush(function(injected_functions)
     GrappleNormal                                  { NormalFloat }, -- GrappleNormal  xxx links to NormalFloat
     WhichKeyNormal                                 { NormalFloat }, -- WhichKeyNormal xxx links to NormalFloat
     EdgyNormal                                     { NormalFloat }, -- EdgyNormal     xxx links to NormalFloat
-    BlinkCmpDoc                                    { NormalFloat }, -- BlinkCmpDoc    xxx links to NormalFloat
-    BlinkCmpDocBorder                              { NormalFloat }, -- BlinkCmpDocBorder xxx links to NormalFloat
-    BlinkCmpDocSeparator                           { NormalFloat }, -- BlinkCmpDocSeparator xxx links to NormalFloat
-    BlinkCmpSignatureHelp                          { NormalFloat }, -- BlinkCmpSignatureHelp xxx links to NormalFloat
-    BlinkCmpSignatureHelpBorder                    { NormalFloat }, -- BlinkCmpSignatureHelpBorder xxx links to NormalFloat
     NoiceSplit                                     { NormalFloat }, -- NoiceSplit     xxx links to NormalFloat
     NoicePopup                                     { NormalFloat }, -- NoicePopup     xxx links to NormalFloat
     FloatBorder                                    { fg="#f5f5f5", bg="#120f12", }, -- FloatBorder    xxx guifg=#f5f5f5 guibg=#120f12
@@ -188,7 +176,6 @@ local theme = lush(function(injected_functions)
     Character                                      { fg="#ffa600", }, -- Character      xxx guifg=#ffa600
     Constant                                       { fg="#00ff66", }, -- Constant       xxx guifg=#00ff66
     sym"@enumMember"                               { Constant }, -- @enumMember    xxx links to Constant
-    MiniIconsPurple                                { Constant }, -- MiniIconsPurple xxx links to Constant
     EdgyIconActive                                 { Constant }, -- EdgyIconActive xxx links to Constant
     NoiceLspProgressSpinner                        { Constant }, -- NoiceLspProgressSpinner xxx links to Constant
     Number                                         { fg="#00ff66", }, -- Number         xxx guifg=#00ff66
@@ -213,7 +200,7 @@ local theme = lush(function(injected_functions)
     sym"@text.environment"                         { Macro }, -- @text.environment xxx links to Macro
     StorageClass                                   { fg="#20df6c", }, -- StorageClass   xxx guifg=#20df6c
     sym"@storageclass"                             { StorageClass }, -- @storageclass  xxx links to StorageClass
-    Type                                           { fg=magenta4 }, -- Type           xxx guifg=#20df6c
+    Type                                           { fg=magenta2 }, -- Type           xxx guifg=#20df6c
     NvimNumberPrefix                               { Type }, -- NvimNumberPrefix xxx links to Type
     NvimOptionSigil                                { Type }, -- NvimOptionSigil xxx links to Type
     sym"@text.environment.name"                    { Type }, -- @text.environment.name xxx links to Type
@@ -250,39 +237,35 @@ local theme = lush(function(injected_functions)
     DiagnosticVirtualTextError                     { DiagnosticError }, -- DiagnosticVirtualTextError xxx links to DiagnosticError
     DiagnosticSignError                            { DiagnosticError }, -- DiagnosticSignError xxx links to DiagnosticError
     LspDiagnosticsDefaultError                     { DiagnosticError }, -- LspDiagnosticsDefaultError xxx links to DiagnosticError
-    sym"@text.danger"                              { DiagnosticError }, -- @text.danger   xxx links to DiagnosticError
-    MiniIconsRed                                   { DiagnosticError }, -- MiniIconsRed   xxx links to DiagnosticError
+    -- sym"@text.danger"                              { DiagnosticError }, -- @text.danger   xxx links to DiagnosticError
+	sym"@comment.error"                            { DiagnosticError }, -- @comment.note  xxx links to DiagnosticInfo
     GrappleNoExist                                 { DiagnosticError }, -- GrappleNoExist xxx links to DiagnosticError
     DiagnosticWarn                                 { fg = yellow }, -- DiagnosticWarn xxx guifg=#007fff
     DiagnosticFloatingWarn                         { DiagnosticWarn }, -- DiagnosticFloatingWarn xxx links to DiagnosticWarn
     DiagnosticVirtualTextWarn                      { DiagnosticWarn }, -- DiagnosticVirtualTextWarn xxx links to DiagnosticWarn
     DiagnosticSignWarn                             { DiagnosticWarn }, -- DiagnosticSignWarn xxx links to DiagnosticWarn
     LspDiagnosticsDefaultWarning                   { DiagnosticWarn }, -- LspDiagnosticsDefaultWarning xxx links to DiagnosticWarn
+	sym"@comment.warning"                          { DiagnosticWarn }, -- @text.warning  xxx links to DiagnosticWarn
     sym"@text.warning"                             { DiagnosticWarn }, -- @text.warning  xxx links to DiagnosticWarn
-    MiniIconsOrange                                { DiagnosticWarn }, -- MiniIconsOrange xxx links to DiagnosticWarn
-    MiniIconsYellow                                { DiagnosticWarn }, -- MiniIconsYellow xxx links to DiagnosticWarn
-    DiagnosticInfo                                 { fg = blue_mag }, -- DiagnosticInfo xxx guifg=#00ffff
+    DiagnosticInfo                                 { fg = blue2 }, -- DiagnosticInfo xxx guifg=#00ffff
     DiagnosticFloatingInfo                         { DiagnosticInfo }, -- DiagnosticFloatingInfo xxx links to DiagnosticInfo
     DiagnosticVirtualTextInfo                      { DiagnosticInfo }, -- DiagnosticVirtualTextInfo xxx links to DiagnosticInfo
     DiagnosticSignInfo                             { DiagnosticInfo }, -- DiagnosticSignInfo xxx links to DiagnosticInfo
     sym"@comment.note"                             { DiagnosticInfo }, -- @comment.note  xxx links to DiagnosticInfo
     LspDiagnosticsDefaultInformation               { DiagnosticInfo }, -- LspDiagnosticsDefaultInformation xxx links to DiagnosticInfo
     sym"@comment.info"                             { DiagnosticInfo }, -- @comment.info  xxx links to DiagnosticInfo
-    MiniIconsBlue                                  { DiagnosticInfo }, -- MiniIconsBlue  xxx links to DiagnosticInfo
-    DiagnosticHint                                 { fg= pink4 }, -- DiagnosticHint xxx guifg=#6600ff
+    DiagnosticHint                                 { fg= pink }, -- DiagnosticHint xxx guifg=#6600ff
     DiagnosticFloatingHint                         { DiagnosticHint }, -- DiagnosticFloatingHint xxx links to DiagnosticHint
     DiagnosticVirtualTextHint                      { DiagnosticHint }, -- DiagnosticVirtualTextHint xxx links to DiagnosticHint
     DiagnosticSignHint                             { DiagnosticHint }, -- DiagnosticSignHint xxx links to DiagnosticHint
     LspDiagnosticsDefaultHint                      { DiagnosticHint }, -- LspDiagnosticsDefaultHint xxx links to DiagnosticHint
     sym"@comment.hint"                             { DiagnosticHint }, -- @comment.hint  xxx links to DiagnosticHint
-    MiniIconsCyan                                  { DiagnosticHint }, -- MiniIconsCyan  xxx links to DiagnosticHint
     SnacksStatusColumnMark                         { DiagnosticHint }, -- SnacksStatusColumnMark xxx links to DiagnosticHint
     GrappleName                                    { DiagnosticHint }, -- GrappleName    xxx links to DiagnosticHint
     DiagnosticOk                                   { fg=green1 }, -- DiagnosticOk   xxx ctermfg=10 guifg=NvimLightGreen
     DiagnosticFloatingOk                           { DiagnosticOk }, -- DiagnosticFloatingOk xxx links to DiagnosticOk
     DiagnosticVirtualTextOk                        { DiagnosticOk }, -- DiagnosticVirtualTextOk xxx links to DiagnosticOk
     DiagnosticSignOk                               { DiagnosticOk }, -- DiagnosticSignOk xxx links to DiagnosticOk
-    MiniIconsGreen                                 { DiagnosticOk }, -- MiniIconsGreen xxx links to DiagnosticOk
     Comment                                        { fg="#117c3c", }, -- Comment        xxx guifg=#117c3c
     DiagnosticUnnecessary                          { Comment }, -- DiagnosticUnnecessary xxx links to Comment
     GrappleHint                                    { Comment }, -- GrappleHint    xxx links to Comment
@@ -297,7 +280,6 @@ local theme = lush(function(injected_functions)
     sym"@decorator"                                { Identifier }, -- @decorator     xxx links to Identifier
     WhichKeyDesc                                   { Identifier }, -- WhichKeyDesc   xxx links to Identifier
     Function                                       { fg="#00ffff", }, -- Function       xxx guifg=#00ffff
-    MiniIconsAzure                                 { Function }, -- MiniIconsAzure xxx links to Function
     WhichKey                                       { Function }, -- WhichKey       xxx links to Function
     Operator                                       { fg="#007fff", }, -- Operator       xxx guifg=#007fff
     NvimAssignment                                 { Operator }, -- NvimAssignment xxx links to Operator
@@ -310,6 +292,7 @@ local theme = lush(function(injected_functions)
     NvimArrow                                      { Delimiter }, -- NvimArrow      xxx links to Delimiter
     Todo                                           { fg="#20df6c", bg="#1b181b", }, -- Todo           xxx guifg=#20df6c guibg=#1b181b
     sym"@text.todo"                                { Todo }, -- @text.todo     xxx links to Todo
+
     sym"@markup.underline"                         { gui="underline", }, -- @markup.underline xxx cterm=underline gui=underline
     Added                                          { fg="nvimlightgreen", }, -- Added          xxx ctermfg=10 guifg=NvimLightGreen
     Removed                                        { fg="nvimlightred", }, -- Removed        xxx ctermfg=9 guifg=NvimLightRed
@@ -322,8 +305,10 @@ local theme = lush(function(injected_functions)
     RedrawDebugClear                               { bg="nvimdarkyellow", }, -- RedrawDebugClear xxx ctermfg=0 ctermbg=11 guibg=NvimDarkYellow
     RedrawDebugComposed                            { bg="nvimdarkgreen", }, -- RedrawDebugComposed xxx ctermfg=0 ctermbg=10 guibg=NvimDarkGreen
     RedrawDebugRecompose                           { bg="nvimdarkred", }, -- RedrawDebugRecompose xxx ctermfg=0 ctermbg=9 guibg=NvimDarkRed
+
     Error                                          { fg=red }, -- Error          xxx guifg=#ffa600 guibg=#120f12
     NvimInvalid                                    { Error }, -- NvimInvalid    xxx links to Error
+
     DiagnosticUnderlineError                       { gui="undercurl", sp="#ffa600", }, -- DiagnosticUnderlineError xxx cterm=undercurl gui=undercurl guisp=#ffa600
     LspDiagnosticsUnderlineError                   { DiagnosticUnderlineError }, -- LspDiagnosticsUnderlineError xxx links to DiagnosticUnderlineError
     DiagnosticUnderlineWarn                        { gui="undercurl", sp="#007fff", }, -- DiagnosticUnderlineWarn xxx cterm=undercurl gui=undercurl guisp=#007fff
@@ -339,37 +324,55 @@ local theme = lush(function(injected_functions)
     Italic                                         { gui="italic", }, -- Italic         xxx cterm=italic gui=italic
     sym"@markup.italic"                            { Italic }, -- @markup.italic xxx links to Italic
     TooLong                                        { fg="#ffa600", }, -- TooLong        xxx guifg=#ffa600
-    DiffAdded                                      { fg="#ff0066", bg="#120f12", }, -- DiffAdded      xxx guifg=#ff0066 guibg=#120f12
-    DiffFile                                       { fg="#ffa600", bg="#120f12", }, -- DiffFile       xxx guifg=#ffa600 guibg=#120f12
-    DiffNewFile                                    { fg="#ff0066", bg="#120f12", }, -- DiffNewFile    xxx guifg=#ff0066 guibg=#120f12
-    DiffLine                                       { fg="#00ffff", bg="#120f12", }, -- DiffLine       xxx guifg=#00ffff guibg=#120f12
-    DiffRemoved                                    { fg="#ffa600", bg="#120f12", }, -- DiffRemoved    xxx guifg=#ffa600 guibg=#120f12
-    gitcommitOverflow                              { fg="#ffa600", }, -- gitcommitOverflow xxx guifg=#ffa600
-    gitcommitSummary                               { fg="#ff0066", }, -- gitcommitSummary xxx guifg=#ff0066
-    gitcommitComment                               { fg="#117c3c", }, -- gitcommitComment xxx guifg=#117c3c
-    gitcommitUntracked                             { fg="#117c3c", }, -- gitcommitUntracked xxx guifg=#117c3c
-    gitcommitDiscarded                             { fg="#117c3c", }, -- gitcommitDiscarded xxx guifg=#117c3c
-    gitcommitSelected                              { fg="#117c3c", }, -- gitcommitSelected xxx guifg=#117c3c
-    gitcommitHeader                                { fg="#007fff", }, -- gitcommitHeader xxx guifg=#007fff
-    gitcommitSelectedType                          { fg="#00ffff", }, -- gitcommitSelectedType xxx guifg=#00ffff
-    gitcommitUnmergedType                          { fg="#00ffff", }, -- gitcommitUnmergedType xxx guifg=#00ffff
-    gitcommitDiscardedType                         { fg="#00ffff", }, -- gitcommitDiscardedType xxx guifg=#00ffff
-    gitcommitBranch                                { fg="#00ff66", gui="bold", }, -- gitcommitBranch xxx cterm=bold gui=bold guifg=#00ff66
-    gitcommitUntrackedFile                         { fg="#20df6c", }, -- gitcommitUntrackedFile xxx guifg=#20df6c
-    gitcommitUnmergedFile                          { fg="#ffa600", gui="bold", }, -- gitcommitUnmergedFile xxx cterm=bold gui=bold guifg=#ffa600
-    gitcommitDiscardedFile                         { fg="#ffa600", gui="bold", }, -- gitcommitDiscardedFile xxx cterm=bold gui=bold guifg=#ffa600
-    gitcommitSelectedFile                          { fg="#ff0066", gui="bold", }, -- gitcommitSelectedFile xxx cterm=bold gui=bold guifg=#ff0066
-    GitGutterAdd                                   { DiffAdd }, -- GitGutterAdd   xxx guifg=#ff0066 guibg=#120f12
-    GitSignsAdd                                    { GitGutterAdd }, -- GitSignsAdd    xxx links to GitGutterAdd
-    GitGutterChange                                { DiffChange }, -- GitGutterChange xxx guifg=#00ffff guibg=#120f12
-    GitSignsChange                                 { GitGutterChange }, -- GitSignsChange xxx links to GitGutterChange
-    GitGutterDelete                                { DiffDelete }, -- GitGutterDelete xxx guifg=#ffa600 guibg=#120f12
-    GitSignsDelete                                 { GitGutterDelete }, -- GitSignsDelete xxx links to GitGutterDelete
-    GitGutterChangeDelete                          { DiffText}, -- GitGutterChangeDelete xxx guifg=#007fff guibg=#120f12
+
+    -- DiffAdded                                      { fg="#ff0066", bg="#120f12", }, -- DiffAdded      xxx guifg=#ff0066 guibg=#120f12
+    -- DiffFile                                       { fg="#ffa600", bg="#120f12", }, -- DiffFile       xxx guifg=#ffa600 guibg=#120f12
+    -- DiffNewFile                                    { fg="#ff0066", bg="#120f12", }, -- DiffNewFile    xxx guifg=#ff0066 guibg=#120f12
+    -- DiffLine                                       { fg="#00ffff", bg="#120f12", }, -- DiffLine       xxx guifg=#00ffff guibg=#120f12
+    -- DiffRemoved                                    { fg="#ffa600", bg="#120f12", }, -- DiffRemoved    xxx guifg=#ffa600 guibg=#120f12
+
+	DiffAdd                                        { fg=green2 }, -- DiffAdd        xxx guifg=#ff0066 guibg=#120f12
+	sym"@text.diff.add"                            { DiffAdd }, -- @text.diff.add xxx links to DiffAdd
+	GitSignsAddLn                                  { DiffAdd }, -- GitSignsAddLn  xxx links to DiffAdd
+	GitSignsAddPreview                             { DiffAdd }, -- GitSignsAddPreview xxx links to DiffAdd
+	DiffChange                                     { fg= magenta3 }, -- DiffChange     xxx guifg=#117c3c guibg=#120f12
+	sym"@diff.delta"                               { DiffChange }, -- @diff.delta    xxx links to DiffChange
+	GitSignsChangeLn                               { DiffChange }, -- GitSignsChangeLn xxx links to DiffChange
+	DiffDelete                                     { fg= red }, -- DiffDelete     xxx guifg=#ffa600 guibg=#120f12
+	sym"@text.diff.delete"                         { DiffDelete }, -- @text.diff.delete xxx links to DiffDelete
+	GitSignsDeletePreview                          { DiffDelete }, -- GitSignsDeletePreview xxx links to DiffDelete
+	GitSignsDeleteVirtLn                           { DiffDelete }, -- GitSignsDeleteVirtLn xxx links to DiffDelete
+	DiffText                                       { fg= yellow, bg="#120f12", }, -- DiffText       xxx guifg=#00ffff guibg=#120f12
+
+	GitGutterAdd                                   { DiffAdd }, -- GitGutterAdd   xxx guifg=#ff0066 guibg=#120f12
+	GitSignsAdd                                    { GitGutterAdd }, -- GitSignsAdd    xxx links to GitGutterAdd
+	GitGutterChange                                { DiffChange }, -- GitGutterChange xxx guifg=#00ffff guibg=#120f12
+	GitSignsChange                                 { GitGutterChange }, -- GitSignsChange xxx links to GitGutterChange
+	GitGutterDelete                                { DiffDelete }, -- GitGutterDelete xxx guifg=#ffa600 guibg=#120f12
+	GitSignsDelete                                 { GitGutterDelete }, -- GitSignsDelete xxx links to GitGutterDelete
+	GitGutterChangeDelete                          { DiffText}, -- GitGutterChangeDelete xxx guifg=#007fff guibg=#120f12
+
+    -- gitcommitOverflow                              { fg="#ffa600", }, -- gitcommitOverflow xxx guifg=#ffa600
+    -- gitcommitSummary                               { fg="#ff0066", }, -- gitcommitSummary xxx guifg=#ff0066
+    -- gitcommitComment                               { fg="#117c3c", }, -- gitcommitComment xxx guifg=#117c3c
+    -- gitcommitUntracked                             { fg="#117c3c", }, -- gitcommitUntracked xxx guifg=#117c3c
+    -- gitcommitDiscarded                             { fg="#117c3c", }, -- gitcommitDiscarded xxx guifg=#117c3c
+    -- gitcommitSelected                              { fg="#117c3c", }, -- gitcommitSelected xxx guifg=#117c3c
+    -- gitcommitHeader                                { fg="#007fff", }, -- gitcommitHeader xxx guifg=#007fff
+    -- gitcommitSelectedType                          { fg="#00ffff", }, -- gitcommitSelectedType xxx guifg=#00ffff
+    -- gitcommitUnmergedType                          { fg="#00ffff", }, -- gitcommitUnmergedType xxx guifg=#00ffff
+    -- gitcommitDiscardedType                         { fg="#00ffff", }, -- gitcommitDiscardedType xxx guifg=#00ffff
+    -- gitcommitBranch                                { fg="#00ff66", gui="bold", }, -- gitcommitBranch xxx cterm=bold gui=bold guifg=#00ff66
+    -- gitcommitUntrackedFile                         { fg="#20df6c", }, -- gitcommitUntrackedFile xxx guifg=#20df6c
+    -- gitcommitUnmergedFile                          { fg="#ffa600", gui="bold", }, -- gitcommitUnmergedFile xxx cterm=bold gui=bold guifg=#ffa600
+    -- gitcommitDiscardedFile                         { fg="#ffa600", gui="bold", }, -- gitcommitDiscardedFile xxx cterm=bold gui=bold guifg=#ffa600
+    -- gitcommitSelectedFile                          { fg="#ff0066", gui="bold", }, -- gitcommitSelectedFile xxx cterm=bold gui=bold guifg=#ff0066
+
     DiagnosticUnderlineWarning                     { gui="undercurl", sp="#007fff", }, -- DiagnosticUnderlineWarning xxx cterm=undercurl gui=undercurl guisp=#007fff
     LspDiagnosticsUnderlineWarning                 { DiagnosticUnderlineWarning }, -- LspDiagnosticsUnderlineWarning xxx links to DiagnosticUnderlineWarning
     DiagnosticUnderlineInformation                 { gui="undercurl", sp="#df206c", }, -- DiagnosticUnderlineInformation xxx cterm=undercurl gui=undercurl guisp=#df206c
     LspDiagnosticsUnderlineInformation             { DiagnosticUnderlineInformation }, -- LspDiagnosticsUnderlineInformation xxx links to DiagnosticUnderlineInformation
+
     TSAnnotation                                   { fg="#df206c", }, -- TSAnnotation   xxx guifg=#df206c
     TSAttribute                                    { fg="#20df6c", }, -- TSAttribute    xxx guifg=#20df6c
     sym"@attribute"                                { TSAttribute }, -- @attribute     xxx links to TSAttribute
@@ -486,6 +489,7 @@ local theme = lush(function(injected_functions)
     TSDefinition                                   { gui="underline", sp="#e7dbdb", }, -- TSDefinition   xxx cterm=underline gui=underline guisp=#e7dbdb
     TSDefinitionUsage                              { gui="underline", sp="#e7dbdb", }, -- TSDefinitionUsage xxx cterm=underline gui=underline guisp=#e7dbdb
     TSCurrentScope                                 { gui="bold", }, -- TSCurrentScope xxx cterm=bold gui=bold
+
     rainbowcol1                                    { fg="#ffffff", }, -- rainbowcol1    xxx guifg=#ffffff
     rainbowcol2                                    { fg="#00ff66", }, -- rainbowcol2    xxx guifg=#00ff66
     rainbowcol3                                    { fg="#20df6c", }, -- rainbowcol3    xxx guifg=#20df6c
@@ -522,62 +526,6 @@ local theme = lush(function(injected_functions)
     IndentBlanklineContextChar                     { fg="#e7dbdb", gui="nocombine", }, -- IndentBlanklineContextChar xxx cterm=nocombine gui=nocombine guifg=#e7dbdb
     IblIndent                                      { fg="#2d2c2d", gui="nocombine", }, -- IblIndent      xxx cterm=nocombine gui=nocombine guifg=#2d2c2d
     IblScope                                       { fg="#e7dbdb", gui="nocombine", }, -- IblScope       xxx cterm=nocombine gui=nocombine guifg=#e7dbdb
-    CmpDocumentationBorder                         { fg="#f5f5f5", bg="#120f12", }, -- CmpDocumentationBorder xxx guifg=#f5f5f5 guibg=#120f12
-    CmpDocumentation                               { fg="#f5f5f5", bg="#120f12", }, -- CmpDocumentation xxx guifg=#f5f5f5 guibg=#120f12
-    CmpItemAbbr                                    { fg="#f5f5f5", bg="#1b181b", }, -- CmpItemAbbr    xxx guifg=#f5f5f5 guibg=#1b181b
-    BlinkCmpLabel                                  { CmpItemAbbr }, -- BlinkCmpLabel  xxx links to CmpItemAbbr
-    CmpItemAbbrDeprecated                          { fg="#117c3c", gui="strikethrough", }, -- CmpItemAbbrDeprecated xxx cterm=strikethrough gui=strikethrough guifg=#117c3c
-    BlinkCmpLabelDeprecated                        { CmpItemAbbrDeprecated }, -- BlinkCmpLabelDeprecated xxx links to CmpItemAbbrDeprecated
-    CmpItemAbbrMatch                               { fg="#00ffff", }, -- CmpItemAbbrMatch xxx guifg=#00ffff
-    BlinkCmpLabelMatch                             { CmpItemAbbrMatch }, -- BlinkCmpLabelMatch xxx links to CmpItemAbbrMatch
-    CmpItemAbbrMatchFuzzy                          { fg="#00ffff", }, -- CmpItemAbbrMatchFuzzy xxx guifg=#00ffff
-    CmpItemKindDefault                             { fg="#f5f5f5", }, -- CmpItemKindDefault xxx guifg=#f5f5f5
-    CmpItemMenu                                    { fg="#e7dbdb", }, -- CmpItemMenu    xxx guifg=#e7dbdb
-    BlinkCmpLabelDetail                            { CmpItemMenu }, -- BlinkCmpLabelDetail xxx links to CmpItemMenu
-    BlinkCmpLabelDescription                       { CmpItemMenu }, -- BlinkCmpLabelDescription xxx links to CmpItemMenu
-    BlinkCmpSource                                 { CmpItemMenu }, -- BlinkCmpSource xxx links to CmpItemMenu
-    CmpItemKindKeyword                             { fg="#007fff", }, -- CmpItemKindKeyword xxx guifg=#007fff
-    BlinkCmpKindKeyword                            { CmpItemKindKeyword }, -- BlinkCmpKindKeyword xxx links to CmpItemKindKeyword
-    CmpItemKindVariable                            { fg="#ffa600", }, -- CmpItemKindVariable xxx guifg=#ffa600
-    BlinkCmpKindVariable                           { CmpItemKindVariable }, -- BlinkCmpKindVariable xxx links to CmpItemKindVariable
-    CmpItemKindConstant                            { fg="#00ff66", }, -- CmpItemKindConstant xxx guifg=#00ff66
-    BlinkCmpKindConstant                           { CmpItemKindConstant }, -- BlinkCmpKindConstant xxx links to CmpItemKindConstant
-    CmpItemKindReference                           { fg="#ffa600", }, -- CmpItemKindReference xxx guifg=#ffa600
-    BlinkCmpKindReference                          { CmpItemKindReference }, -- BlinkCmpKindReference xxx links to CmpItemKindReference
-    CmpItemKindValue                               { fg="#00ff66", }, -- CmpItemKindValue xxx guifg=#00ff66
-    BlinkCmpKindValue                              { CmpItemKindValue }, -- BlinkCmpKindValue xxx links to CmpItemKindValue
-    CmpItemKindFunction                            { fg="#00ffff", }, -- CmpItemKindFunction xxx guifg=#00ffff
-    BlinkCmpKindFunction                           { CmpItemKindFunction }, -- BlinkCmpKindFunction xxx links to CmpItemKindFunction
-    CmpItemKindMethod                              { fg="#00ffff", }, -- CmpItemKindMethod xxx guifg=#00ffff
-    BlinkCmpKindMethod                             { CmpItemKindMethod }, -- BlinkCmpKindMethod xxx links to CmpItemKindMethod
-    CmpItemKindConstructor                         { fg="#00ffff", }, -- CmpItemKindConstructor xxx guifg=#00ffff
-    BlinkCmpKindConstructor                        { CmpItemKindConstructor }, -- BlinkCmpKindConstructor xxx links to CmpItemKindConstructor
-    CmpItemKindClass                               { fg="#20df6c", }, -- CmpItemKindClass xxx guifg=#20df6c
-    BlinkCmpKindClass                              { CmpItemKindClass }, -- BlinkCmpKindClass xxx links to CmpItemKindClass
-    CmpItemKindInterface                           { fg="#20df6c", }, -- CmpItemKindInterface xxx guifg=#20df6c
-    BlinkCmpKindInterface                          { CmpItemKindInterface }, -- BlinkCmpKindInterface xxx links to CmpItemKindInterface
-    CmpItemKindStruct                              { fg="#20df6c", }, -- CmpItemKindStruct xxx guifg=#20df6c
-    BlinkCmpKindStruct                             { CmpItemKindStruct }, -- BlinkCmpKindStruct xxx links to CmpItemKindStruct
-    CmpItemKindEvent                               { fg="#20df6c", }, -- CmpItemKindEvent xxx guifg=#20df6c
-    BlinkCmpKindEvent                              { CmpItemKindEvent }, -- BlinkCmpKindEvent xxx links to CmpItemKindEvent
-    CmpItemKindEnum                                { fg="#20df6c", }, -- CmpItemKindEnum xxx guifg=#20df6c
-    BlinkCmpKindEnum                               { CmpItemKindEnum }, -- BlinkCmpKindEnum xxx links to CmpItemKindEnum
-    CmpItemKindUnit                                { fg="#20df6c", }, -- CmpItemKindUnit xxx guifg=#20df6c
-    BlinkCmpKindUnit                               { CmpItemKindUnit }, -- BlinkCmpKindUnit xxx links to CmpItemKindUnit
-    CmpItemKindModule                              { fg="#f5f5f5", }, -- CmpItemKindModule xxx guifg=#f5f5f5
-    BlinkCmpKindModule                             { CmpItemKindModule }, -- BlinkCmpKindModule xxx links to CmpItemKindModule
-    CmpItemKindProperty                            { fg="#ffa600", }, -- CmpItemKindProperty xxx guifg=#ffa600
-    BlinkCmpKindProperty                           { CmpItemKindProperty }, -- BlinkCmpKindProperty xxx links to CmpItemKindProperty
-    CmpItemKindField                               { fg="#ffa600", }, -- CmpItemKindField xxx guifg=#ffa600
-    BlinkCmpKindField                              { CmpItemKindField }, -- BlinkCmpKindField xxx links to CmpItemKindField
-    CmpItemKindTypeParameter                       { fg="#20df6c", }, -- CmpItemKindTypeParameter xxx guifg=#20df6c
-    BlinkCmpKindTypeParameter                      { CmpItemKindTypeParameter }, -- BlinkCmpKindTypeParameter xxx links to CmpItemKindTypeParameter
-    CmpItemKindEnumMember                          { fg="#20df6c", }, -- CmpItemKindEnumMember xxx guifg=#20df6c
-    BlinkCmpKindEnumMember                         { CmpItemKindEnumMember }, -- BlinkCmpKindEnumMember xxx links to CmpItemKindEnumMember
-    CmpItemKindOperator                            { fg="#f5f5f5", }, -- CmpItemKindOperator xxx guifg=#f5f5f5
-    BlinkCmpKindOperator                           { CmpItemKindOperator }, -- BlinkCmpKindOperator xxx links to CmpItemKindOperator
-    CmpItemKindSnippet                             { fg="#e7dbdb", }, -- CmpItemKindSnippet xxx guifg=#e7dbdb
-    BlinkCmpKindSnippet                            { CmpItemKindSnippet }, -- BlinkCmpKindSnippet xxx links to CmpItemKindSnippet
     IlluminatedWordText                            { gui="underline", sp="#e7dbdb", }, -- IlluminatedWordText xxx cterm=underline gui=underline guisp=#e7dbdb
     IlluminatedWordRead                            { gui="underline", sp="#e7dbdb", }, -- IlluminatedWordRead xxx cterm=underline gui=underline guisp=#e7dbdb
     IlluminatedWordWrite                           { gui="underline", sp="#e7dbdb", }, -- IlluminatedWordWrite xxx cterm=underline gui=underline guisp=#e7dbdb
@@ -643,27 +591,6 @@ local theme = lush(function(injected_functions)
     Stl6d8086_171517__                             { fg="#6d8086", bg="#171517", }, -- Stl6d8086_171517__ xxx guifg=#6d8086 guibg=#171517
     Stl20df6c_171517__                             { fg="#20df6c", bg="#171517", }, -- Stl20df6c_171517__ xxx guifg=#20df6c guibg=#171517
     Stlffa600_1e223c__                             { fg="#ffa600", bg="#1e223c", }, -- Stlffa600_1e223c__ xxx guifg=#ffa600 guibg=#1e223c
-    TodoBgWARN                                     { fg="#120f12", bg="#007fff", gui="bold", }, -- TodoBgWARN     xxx gui=bold guifg=#120f12 guibg=#007fff
-    TodoFgWARN                                     { fg="#007fff", }, -- TodoFgWARN     xxx guifg=#007fff
-    TodoSignWARN                                   { fg="#007fff", bg="#120f12", }, -- TodoSignWARN   xxx guifg=#007fff guibg=#120f12
-    TodoBgTODO                                     { fg="#120f12", bg="#00ffff", gui="bold", }, -- TodoBgTODO     xxx gui=bold guifg=#120f12 guibg=#00ffff
-    TodoFgTODO                                     { fg="#00ffff", }, -- TodoFgTODO     xxx guifg=#00ffff
-    TodoSignTODO                                   { fg="#00ffff", bg="#120f12", }, -- TodoSignTODO   xxx guifg=#00ffff guibg=#120f12
-    TodoBgPERF                                     { fg="#120f12", bg="#ffa600", gui="bold", }, -- TodoBgPERF     xxx gui=bold guifg=#120f12 guibg=#ffa600
-    TodoFgPERF                                     { fg="#ffa600", }, -- TodoFgPERF     xxx guifg=#ffa600
-    TodoSignPERF                                   { fg="#ffa600", bg="#120f12", }, -- TodoSignPERF   xxx guifg=#ffa600 guibg=#120f12
-    TodoBgNOTE                                     { fg="#f5f5f5", bg="#6600ff", gui="bold", }, -- TodoBgNOTE     xxx gui=bold guifg=#f5f5f5 guibg=#6600ff
-    TodoFgNOTE                                     { fg="#6600ff", }, -- TodoFgNOTE     xxx guifg=#6600ff
-    TodoSignNOTE                                   { fg="#6600ff", bg="#120f12", }, -- TodoSignNOTE   xxx guifg=#6600ff guibg=#120f12
-    TodoBgFIX                                      { fg="#120f12", bg="#ffa600", gui="bold", }, -- TodoBgFIX      xxx gui=bold guifg=#120f12 guibg=#ffa600
-    TodoFgFIX                                      { fg="#ffa600", }, -- TodoFgFIX      xxx guifg=#ffa600
-    TodoSignFIX                                    { fg="#ffa600", bg="#120f12", }, -- TodoSignFIX    xxx guifg=#ffa600 guibg=#120f12
-    TodoBgTEST                                     { fg="#120f12", bg="#ffa600", gui="bold", }, -- TodoBgTEST     xxx gui=bold guifg=#120f12 guibg=#ffa600
-    TodoFgTEST                                     { fg="#ffa600", }, -- TodoFgTEST     xxx guifg=#ffa600
-    TodoSignTEST                                   { fg="#ffa600", bg="#120f12", }, -- TodoSignTEST   xxx guifg=#ffa600 guibg=#120f12
-    TodoBgHACK                                     { fg="#120f12", bg="#007fff", gui="bold", }, -- TodoBgHACK     xxx gui=bold guifg=#120f12 guibg=#007fff
-    TodoFgHACK                                     { fg="#007fff", }, -- TodoFgHACK     xxx guifg=#007fff
-    TodoSignHACK                                   { fg="#007fff", bg="#120f12", }, -- TodoSignHACK   xxx guifg=#007fff guibg=#120f12
     NoiceFormatProgressDone                        { fg="#1b181b", bg="#20df6c", }, -- NoiceFormatProgressDone xxx guifg=#1b181b guibg=#20df6c
     NoiceHiddenCursor                              { gui="nocombine", blend=100, }, -- NoiceHiddenCursor xxx cterm=nocombine gui=nocombine blend=100
     Stl6600ff_1e223c__                             { fg="#6600ff", bg="#1e223c", }, -- Stl6600ff_1e223c__ xxx guifg=#6600ff guibg=#1e223c
