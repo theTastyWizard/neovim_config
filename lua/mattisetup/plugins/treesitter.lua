@@ -16,7 +16,7 @@ return {
 			highlight = { enable = true },
 			indent = {
 				enable = true,
-				disable = { "fortran", "cpp" }
+				disable = { "fortran", "cpp", "python" }
 			},
 			-- disable fyrir of stór file
 			disable = function(lang, buf)
