@@ -25,14 +25,14 @@ local blink = lush(function(injected_functions)
 		-- BlinkCmpDocCursorLine {},          --Visual	The documentation window cursor line
 		-- BlinkCmpSignatureHelp {},          --NormalFloat	The signature help window
 		-- BlinkCmpSignatureHelpBorder {},    --NormalFloat	The signature help window border
-		-- BlinkCmpSignatureHelpActiveParameter {}, --LspSignatureActiveParameter	Active parameter of the signature help
-		BlinkCmpKindClass { Minky.TSType }, -- BlinkCmpKindClass xxx links to CmpItemKindClass
+		BlinkCmpSignatureHelpActiveParameter { Minky.Visual }, --LspSignatureActiveParameter	Active parameter of the signature help --TODO: finna aðeins sýnilegra yfirlag
+		BlinkCmpKindClass { Minky.TSType },
 		BlinkCmpKindConstant { Minky.Constant },
 		BlinkCmpKindConstructor { Minky.TSConstructor },
 		BlinkCmpKindEnum { Minky.TSType },
 		BlinkCmpKindEnumMember { Minky.Constant },
 		BlinkCmpKindEvent { Minky.Constant },
-		BlinkCmpKindField { Minky.TSField },
+		BlinkCmpKindField { Minky.magenta1 },
 		BlinkCmpKindFunction { Minky.Function },
 		BlinkCmpKindInterface { Minky.Structure },
 		BlinkCmpKindKeyword { Minky.TSKeyword },
@@ -47,45 +47,12 @@ local blink = lush(function(injected_functions)
 		-- BlinkCmpKindUnit                               { CmpItemKindUnit },
 		-- BlinkCmpKindValue                              { CmpItemKindValue },
 		BlinkCmpKindVariable { Minky.TSVariable },
+		BlinkCmpKindFile { Minky.Teal }
+		-- BlinkCmpKindText { Minky.1}
+		-- BlinkCmpKindSnippet { BlinkCmpKindVariable }
 
 
-		-- BlinkCmpLabel                                  { CmpItemAbbr }, -- BlinkCmpLabel  xxx links to CmpItemAbbr
-		-- BlinkCmpLabelDeprecated                        { CmpItemAbbrDeprecated }, -- BlinkCmpLabelDeprecated xxx links to CmpItemAbbrDeprecated
-		-- BlinkCmpLabelDescription                       { CmpItemMenu }, -- BlinkCmpLabelDescription xxx links to CmpItemMenu
-		-- BlinkCmpLabelDetail                            { CmpItemMenu }, -- BlinkCmpLabelDetail xxx links to CmpItemMenu
-		-- BlinkCmpLabelMatch                             { CmpItemAbbrMatch }, -- BlinkCmpLabelMatch xxx links to CmpItemAbbrMatch
-		-- BlinkCmpSource                                 { CmpItemMenu }, -- BlinkCmpSource xxx links to CmpItemMenu
 
-		-- CmpDocumentation                               { fg="#f5f5f5", bg="#120f12", }, -- CmpDocumentation xxx guifg=#f5f5f5 guibg=#120f12
-		-- CmpDocumentationBorder                         { fg="#f5f5f5", bg="#120f12", }, -- CmpDocumentationBorder xxx guifg=#f5f5f5 guibg=#120f12
-		-- CmpItemAbbr                                    { fg="#f5f5f5", bg="#1b181b", }, -- CmpItemAbbr    xxx guifg=#f5f5f5 guibg=#1b181b
-		-- CmpItemAbbrDeprecated                          { fg="#117c3c", gui="strikethrough", }, -- CmpItemAbbrDeprecated xxx cterm=strikethrough gui=strikethrough guifg=#117c3c
-		-- CmpItemAbbrMatch                               { fg="#00ffff", }, -- CmpItemAbbrMatch xxx guifg=#00ffff
-		-- CmpItemAbbrMatchFuzzy                          { fg="#00ffff", }, -- CmpItemAbbrMatchFuzzy xxx guifg=#00ffff
-
-		-- CmpItemKindClass                               { fg="#20df6c", }, -- CmpItemKindClass xxx guifg=#20df6c
-		-- CmpItemKindConstant                            { fg="#00ff66", }, -- CmpItemKindConstant xxx guifg=#00ff66
-		-- CmpItemKindConstructor                         { fg="#00ffff", }, -- CmpItemKindConstructor xxx guifg=#00ffff
-		-- CmpItemKindDefault                             { fg="#f5f5f5", }, -- CmpItemKindDefault xxx guifg=#f5f5f5
-		-- CmpItemKindEnum                                { fg="#20df6c", }, -- CmpItemKindEnum xxx guifg=#20df6c
-		-- CmpItemKindEnumMember                          { fg="#20df6c", }, -- CmpItemKindEnumMember xxx guifg=#20df6c
-		-- CmpItemKindEvent                               { fg="#20df6c", }, -- CmpItemKindEvent xxx guifg=#20df6c
-		-- CmpItemKindField                               { fg="#ffa600", }, -- CmpItemKindField xxx guifg=#ffa600
-		-- CmpItemKindFunction                            { fg="#00ffff", }, -- CmpItemKindFunction xxx guifg=#00ffff
-		-- CmpItemKindInterface                           { fg="#20df6c", }, -- CmpItemKindInterface xxx guifg=#20df6c
-		-- CmpItemKindKeyword                             { fg="#007fff", }, -- CmpItemKindKeyword xxx guifg=#007fff
-		-- CmpItemKindMethod                              { fg="#00ffff", }, -- CmpItemKindMethod xxx guifg=#00ffff
-		-- CmpItemKindModule                              { fg="#f5f5f5", }, -- CmpItemKindModule xxx guifg=#f5f5f5
-		-- CmpItemKindOperator                            { fg="#f5f5f5", }, -- CmpItemKindOperator xxx guifg=#f5f5f5
-		-- CmpItemKindProperty                            { fg="#ffa600", }, -- CmpItemKindProperty xxx guifg=#ffa600
-		-- CmpItemKindReference                           { fg="#ffa600", }, -- CmpItemKindReference xxx guifg=#ffa600
-		-- CmpItemKindSnippet                             { fg="#e7dbdb", }, -- CmpItemKindSnippet xxx guifg=#e7dbdb
-		-- CmpItemKindStruct                              { fg="#20df6c", }, -- CmpItemKindStruct xxx guifg=#20df6c
-		-- CmpItemKindTypeParameter                       { fg="#20df6c", }, -- CmpItemKindTypeParameter xxx guifg=#20df6c
-		-- CmpItemKindUnit                                { fg="#20df6c", }, -- CmpItemKindUnit xxx guifg=#20df6c
-		-- CmpItemKindValue                               { fg="#00ff66", }, -- CmpItemKindValue xxx guifg=#00ff66
-		-- CmpItemKindVariable                            { fg="#ffa600", }, -- CmpItemKindVariable xxx guifg=#ffa600
-		-- CmpItemMenu                                    { fg="#e7dbdb", }, -- CmpItemMenu    xxx guifg=#e7dbdb
 	}
 end)
 return blink

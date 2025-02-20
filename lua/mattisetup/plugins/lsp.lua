@@ -122,9 +122,6 @@ return {
 					},
 				},
 			},
-			appearance = {
-				use_nvim_cmp_as_default = true,
-			},
 
 			-- allows extending the enabled_providers array elsewhere in your config
 			-- without having to redefine it
