@@ -26,27 +26,27 @@ local blink = lush(function(injected_functions)
 		-- BlinkCmpSignatureHelp {},          --NormalFloat	The signature help window
 		-- BlinkCmpSignatureHelpBorder {},    --NormalFloat	The signature help window border
 		-- BlinkCmpSignatureHelpActiveParameter {}, --LspSignatureActiveParameter	Active parameter of the signature help
-		BlinkCmpKindClass { Minky.TSType },                        -- BlinkCmpKindClass xxx links to CmpItemKindClass
-		BlinkCmpKindConstant { Minky.Constant },                                             -- BlinkCmpKindConstant xxx links to CmpItemKindConstant
-		BlinkCmpKindConstructor { Minky.TSConstructor },                                     -- BlinkCmpKindConstructor xxx links to CmpItemKindConstructor
-		BlinkCmpKindEnum { Minky.TSType },                                                   -- BlinkCmpKindEnum xxx links to CmpItemKindEnum
-		BlinkCmpKindEnumMember { Minky.Constant },                                           -- BlinkCmpKindEnumMember xxx links to CmpItemKindEnumMember
-		BlinkCmpKindEvent { Minky.Constant },                                                -- BlinkCmpKindEvent xxx links to CmpItemKindEvent
-		BlinkCmpKindField { Minky.TSField },                                                 -- BlinkCmpKindField xxx links to CmpItemKindField
-		BlinkCmpKindFunction { Minky.Function },                                             -- BlinkCmpKindFunction xxx links to CmpItemKindFunction
-		BlinkCmpKindInterface { Minky.Structure },                                           -- BlinkCmpKindInterface xxx links to CmpItemKindInterface
-		BlinkCmpKindKeyword { Minky.TSKeyword },                                             -- BlinkCmpKindKeyword xxx links to CmpItemKindKeyword
-		BlinkCmpKindMethod { Minky.TSMethod },                                               -- BlinkCmpKindMethod xxx links to CmpItemKindMethod
-		BlinkCmpKindModule { Minky.Special },                                                -- BlinkCmpKindModule xxx links to CmpItemKindModule
-		BlinkCmpKindOperator { Minky.Operator },                                             -- BlinkCmpKindOperator xxx links to CmpItemKindOperator
-		BlinkCmpKindProperty { Minky.TSProperty },                                           -- BlinkCmpKindProperty xxx links to CmpItemKindProperty
-		BlinkCmpKindReference { Minky.TSParameterReference },                                -- BlinkCmpKindReference xxx links to CmpItemKindReference
-		BlinkCmpKindSnippet { Minky.grunn04 },                                               -- BlinkCmpKindSnippet xxx links to CmpItemKindSnippet
-		BlinkCmpKindStruct { Minky.TSStruct },                                               -- BlinkCmpKindStruct xxx links to CmpItemKindStruct
-		-- BlinkCmpKindTypeParameter { Minky.sym "@variable.parameter.builtin" },               -- BlinkCmpKindTypeParameter xxx links to CmpItemKindTypeParameter
-		-- BlinkCmpKindUnit                               { CmpItemKindUnit }, -- BlinkCmpKindUnit xxx links to CmpItemKindUnit
-		-- BlinkCmpKindValue                              { CmpItemKindValue }, -- BlinkCmpKindValue xxx links to CmpItemKindValue
-		BlinkCmpKindVariable { Minky.TSVariable },                     -- BlinkCmpKindVariable xxx links to CmpItemKindVariable
+		BlinkCmpKindClass { Minky.TSType }, -- BlinkCmpKindClass xxx links to CmpItemKindClass
+		BlinkCmpKindConstant { Minky.Constant },
+		BlinkCmpKindConstructor { Minky.TSConstructor },
+		BlinkCmpKindEnum { Minky.TSType },
+		BlinkCmpKindEnumMember { Minky.Constant },
+		BlinkCmpKindEvent { Minky.Constant },
+		BlinkCmpKindField { Minky.TSField },
+		BlinkCmpKindFunction { Minky.Function },
+		BlinkCmpKindInterface { Minky.Structure },
+		BlinkCmpKindKeyword { Minky.TSKeyword },
+		BlinkCmpKindMethod { Minky.TSMethod },
+		BlinkCmpKindModule { Minky.Special },
+		BlinkCmpKindOperator { Minky.Operator },
+		BlinkCmpKindProperty { Minky.TSProperty },
+		BlinkCmpKindReference { Minky.TSParameterReference },
+		BlinkCmpKindSnippet { Minky.grunn04 },
+		BlinkCmpKindStruct { Minky.TSStruct },
+		-- BlinkCmpKindTypeParameter { Minky.sym "@variable.parameter.builtin" },
+		-- BlinkCmpKindUnit                               { CmpItemKindUnit },
+		-- BlinkCmpKindValue                              { CmpItemKindValue },
+		BlinkCmpKindVariable { Minky.TSVariable },
 
 
 		-- BlinkCmpLabel                                  { CmpItemAbbr }, -- BlinkCmpLabel  xxx links to CmpItemAbbr

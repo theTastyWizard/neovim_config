@@ -7,7 +7,6 @@ local Minky = require('lush_theme.Minky')
 local theme = lush(function(injected_functions)
 	local sym = injected_functions.sym
 	return {
-
 		MiniIconsAzure   { Minky.teal },
 		MiniIconsBlue    { Minky.blue },
 		MiniIconsCyan    { Minky.cyan },
