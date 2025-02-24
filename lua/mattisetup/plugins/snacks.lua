@@ -161,7 +161,7 @@ return {
 					Snacks.toggle.option("conceallevel",
 						{ off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
 						:map("<leader>.c")
-					Snacks.toggle.treesitter():map("<leader>.T")
+					Snacks.toggle.treesitter():map("<leader>.t")
 					Snacks.toggle.inlay_hints():map("<leader>.h")
 					Snacks.toggle.scroll():map("<leader>.S")
 					Snacks.toggle.zen():map("<leader>.f")
