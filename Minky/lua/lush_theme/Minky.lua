@@ -93,7 +93,7 @@ local theme    = lush(function(injected_functions)
 		EndOfBuffer                          { NonText }, -- EndOfBuffer
 		Whitespace                           { NonText }, -- Whitespace
 		Directory                            { fg = teal, }, -- Directory
-		ErrorMsg                             { fg = "#ffa600", bg = "#120f12", }, -- ErrorMsg
+		ErrorMsg                             { fg = yellow, bg = "#120f12", }, -- ErrorMsg
 		NvimInvalidSpacing                   { ErrorMsg }, -- NvimInvalidSpacing
 		IncSearch                            { fg = "#1b181b", bg = "#00ff66", }, -- IncSearch
 		MiniSurround                         { IncSearch }, -- MiniSurround
@@ -115,7 +115,7 @@ local theme    = lush(function(injected_functions)
 		FloatTitle                           { Title }, -- FloatTitle
 		Visual                               { bg = "#2d2c2d", }, -- Visual
 		SnippetTabstop                       { Visual }, -- SnippetTabstop
-		WarningMsg                           { fg = "#ffa600", }, -- WarningMsg
+		WarningMsg                           { fg = yellow, }, -- WarningMsg
 		WildMenu                             { fg = "#ffa600", bg = "#20df6c", }, -- WildMenu
 		Folded                               { fg = "#117c3c", bg = "#1b181b", }, -- Folded
 		FoldColumn                           { fg = "#6600ff", bg = "#120f12", }, -- FoldColumn
@@ -144,7 +144,7 @@ local theme    = lush(function(injected_functions)
 		QuickFixLine                         { bg = "#1b181b", }, -- QuickFixLine
 
 		-- Native Syntax
-		Character                            { fg = "#ffa600", }, -- Character
+		Character                            { fg = yellow }, -- Character
 		Constant                             { fg = "#00ff66", }, -- Constant
 		sym "@enumMember"                    { Constant }, -- @enumMember
 		Number                               { fg = "#00ff66", }, -- Number
@@ -153,18 +153,18 @@ local theme    = lush(function(injected_functions)
 		Boolean                              { fg = "#00ff66", }, -- Boolean
 		Float                                { fg = "#00ff66", }, -- Float
 		Conditional                          { fg = "#007fff", }, -- Conditional
-		Statement                            { fg = "#ffa600", }, -- Statement
+		Statement                            { fg = yellow }, -- Statement
 		Repeat                               { fg = "#20df6c", }, -- Repeat
 		Label                                { fg = "#20df6c", }, -- Label
 		Keyword                              { fg = "#007fff", }, -- Keyword
-		Exception                            { fg = "#ffa600", }, -- Exception
+		Exception                            { fg = yellow }, -- Exception
 		Include                              { fg = "#00ffff", }, -- Include
 		PreProc                              { fg = "#20df6c", }, -- PreProc
 		PreCondit                            { PreProc }, -- PreCondit
 		sym "@preproc"                       { PreProc }, -- @preproc
 		Define                               { fg = "#007fff", }, -- Define
 		sym "@define"                        { Define }, -- @define
-		Macro                                { fg = "#ffa600", }, -- Macro
+		Macro                                { fg = yellow }, -- Macro
 		sym "@text.environment"              { Macro }, -- @text.environment
 		StorageClass                         { fg = "#20df6c", }, -- StorageClass
 		sym "@storageclass"                  { StorageClass }, -- @storageclass
@@ -191,13 +191,13 @@ local theme    = lush(function(injected_functions)
 		sym "@character.special"             { SpecialChar }, -- @character.special
 		NvimRegister                         { SpecialChar }, -- NvimRegister
 		NvimStringSpecial                    { SpecialChar }, -- NvimStringSpecial
-		Debug                                { fg = "#ffa600", }, -- Debug
+		Debug                                { fg = yellow }, -- Debug
 		sym "@debug"                         { Debug }, -- @debug
 		Comment                              { fg = "#117c3c", }, -- Comment
 		DiagnosticUnnecessary                { Comment }, -- DiagnosticUnnecessary
 		String                               { fg = "#ff0066", }, -- String
 		NvimString                           { String }, -- NvimString
-		Identifier                           { fg = "#ffa600", }, -- Identifier
+		Identifier                           { fg = yellow }, -- Identifier
 		NvimIdentifier                       { Identifier }, -- NvimIdentifier
 		sym "@event"                         { Identifier }, -- @event
 		sym "@modifier"                      { Identifier }, -- @modifier
@@ -230,14 +230,14 @@ local theme    = lush(function(injected_functions)
 		DiagnosticUnderlineHint              { gui = "undercurl", sp = "#6600ff", }, -- DiagnosticUnderlineHint
 		DiagnosticUnderlineOk                { gui = "underline", sp = "nvimlightgreen", }, -- DiagnosticUnderlineOk
 
-		NvimInternalError                    { fg = "#120f12", bg = "#ffa600", }, -- NvimInternalError
+		NvimInternalError                    { fg = "#120f12", bg = yellow }, -- NvimInternalError
 		NvimFigureBrace                      { NvimInternalError }, -- NvimFigureBrace
 		NvimSingleQuotedUnknownEscape        { NvimInternalError }, -- NvimSingleQuotedUnknownEscape
 		NvimInvalidSingleQuotedUnknownEscape { NvimInternalError }, -- NvimInvalidSingleQuotedUnknownEscape
 		Bold                                 { gui = "bold", }, -- Bold
 		Italic                               { gui = "italic", }, -- Italic
 		sym "@markup.italic"                 { Italic }, -- @markup.italic
-		TooLong                              { fg = "#ffa600", }, -- TooLong
+		TooLong                              { fg = yellow }, -- TooLong
 
 		DiffAdd                              { fg = green2 }, -- DiffAdd
 		sym "@text.diff.add"                 { DiffAdd }, -- @text.diff.add
@@ -299,7 +299,7 @@ local theme    = lush(function(injected_functions)
 		sym "@tag.attribute"                 { TSAttribute }, -- @tag.attribute
 		TSBoolean                            { fg = "#00ff66", }, -- TSBoolean
 		sym "@boolean"                       { TSBoolean }, -- @boolean
-		TSCharacter                          { fg = "#ffa600", }, -- TSCharacter
+		TSCharacter                          { Character }, -- TSCharacter
 		sym "@character"                     { TSCharacter }, -- @character
 		TSComment                            { Comment }, -- TSComment
 		sym "@comment"                       { TSComment }, -- @comment
@@ -326,7 +326,7 @@ local theme    = lush(function(injected_functions)
 		sym "@function.call"                 { TSFunction }, -- @function.call
 		TSFuncBuiltin                        { fg = "#00ffff", gui = "italic", }, -- TSFuncBuiltin
 		sym "@function.builtin"              { TSFuncBuiltin }, -- @function.builtin
-		TSFuncMacro                          { fg = "#ffa600", }, -- TSFuncMacro
+		TSFuncMacro                          { Macro }, -- TSFuncMacro
 		sym "@function.macro"                { TSFuncMacro }, -- @function.macro
 		TSInclude                            { fg = "#00ffff", }, -- TSInclude
 		sym "@include"                       { TSInclude }, -- @include
@@ -343,7 +343,7 @@ local theme    = lush(function(injected_functions)
 		TSMethod                             { fg = "#00ffff", }, -- TSMethod
 		sym "@method"                        { TSMethod }, -- @method
 		sym "@method.call"                   { TSMethod }, -- @method.call
-		TSNamespace                          { fg = "#ffa600", }, -- TSNamespace
+		TSNamespace                          { fg = yellow }, -- TSNamespace
 		sym "@namespace"                     { TSNamespace }, -- @namespace
 		TSNone                               { fg = "#f5f5f5", }, -- TSNone
 		sym "@none"                          { TSNone }, -- @none
@@ -374,7 +374,7 @@ local theme    = lush(function(injected_functions)
 		sym "@string.escape"                 { TSStringEscape }, -- @string.escape
 		TSSymbol                             { fg = "#ff0066", }, -- TSSymbol
 		sym "@symbol"                        { TSSymbol }, -- @symbol
-		TSTag                                { fg = "#ffa600", }, -- TSTag
+		TSTag                                { fg = yellow }, -- TSTag
 		sym "@tag"                           { TSTag }, -- @tag
 		TSTagDelimiter                       { fg = "#df206c", }, -- TSTagDelimiter
 		sym "@tag.delimiter"                 { TSTagDelimiter }, -- @tag.delimiter
@@ -402,9 +402,9 @@ local theme    = lush(function(injected_functions)
 		sym "@enum"                          { TSType }, -- @enum
 		TSTypeBuiltin                        { fg = "#20df6c", gui = "italic", }, -- TSTypeBuiltin
 		sym "@type.builtin"                  { TSTypeBuiltin }, -- @type.builtin
-		TSVariable                           { fg = "#ffa600", }, -- TSVariable
+		TSVariable                           { fg = yellow }, -- TSVariable
 		sym "@variable"                      { TSVariable }, -- @variable
-		TSVariableBuiltin                    { fg = "#ffa600", gui = "italic", }, -- TSVariableBuiltin
+		TSVariableBuiltin                    { fg = yellow, gui = "italic", }, -- TSVariableBuiltin
 		sym "@variable.builtin"              { TSVariableBuiltin }, -- @variable.builtin
 		TSDefinition                         { gui = "underline", sp = "#e7dbdb", }, -- TSDefinition
 		TSDefinitionUsage                    { gui = "underline", sp = "#e7dbdb", }, -- TSDefinitionUsage
