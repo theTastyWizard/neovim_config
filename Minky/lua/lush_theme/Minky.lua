@@ -374,7 +374,7 @@ local theme    = lush(function(injected_functions)
 		TSParameter                          { fg = "#f5f5f5", }, 
 		sym "@parameter"                     { TSParameter }, 
 		TSParameterReference                 { fg = "#f5f5f5", }, 
-		TSProperty                           { fg = "#f5f5f5", }
+		TSProperty                           { fg = "#f5f5f5", },
 		sym "@property"                      { TSProperty }, 
 		TSPunctDelimiter                     { fg = "#df206c", }, 
 		sym "@punctuation.delimiter"         { TSPunctDelimiter }, 
