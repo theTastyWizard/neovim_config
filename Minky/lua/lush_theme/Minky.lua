@@ -36,6 +36,7 @@ local red      = hsl(353, 100, 39)
 local yellow   = hsl(36, 100, 50)
 local green1   = hsl('#00ff66')
 local green2   = hsl('#02d849')
+local darkgreen = hsl('#117c3c')
 local pink     = hsl("#ff5699")  -- complement af magenta
 local orange   = hsl(18, 100, 50) 
 local blue1    = hsl('#007fff') --hsl(210, 100, 50) 
@@ -69,381 +70,395 @@ local theme    = lush(function(injected_functions)
 		Cyan                                 { fg = hsl('#01ffff') },
 
 		-- Native UI
-		NormalNC                             { fg = "#f5f5f5", bg = "#120f12", }, -- NormalNC
-		FloatermNC                           { NormalNC }, -- FloatermNC
-		NormalFloat                          { fg = "#f5f5f5", bg = bg_blue, }, -- NormalFloat
-		FloatermBorder                       { NormalFloat }, -- FloatermBorder
-		FloatBorder                          { fg = "#f5f5f5", bg = "#120f12", }, -- FloatBorder
-		WinBar                               { fg = "#f5f5f5", }, -- WinBar
-		WinBarNC                             { fg = "#e7dbdb", }, -- WinBarNC
-		Cursor                               { fg = "#120f12", bg = "#f5f5f5", }, -- Cursor
-		CursorIM                             { Cursor }, -- CursorIM
-		Underlined                           { fg = "#ffa600", }, -- Underlined
-		lCursor                              { fg = "bg", bg = "fg", }, -- lCursor
-		Substitute                           { fg = "#1b181b", bg = "#20df6c", }, -- Substitute
-		VisualNOS                            { fg = "#ffa600", }, -- VisualNOS
-		Normal                               { fg = "#f5f5f5", bg = "#120f12", }, -- Normal
-		WinSeparator                         { Normal }, -- WinSeparator
-		Ignore                               { Normal }, -- Ignore
-		NvimSpacing                          { Normal }, -- NvimSpacing
-		SpecialKey                           { fg = "#117c3c", }, -- SpecialKey
-		TermCursor                           { fg = "#120f12", bg = "#f5f5f5", }, -- TermCursor
-		TermCursorNC                         { fg = "#120f12", bg = "#f5f5f5", }, -- TermCursorNC
-		NonText                              { fg = "#117c3c", }, -- NonText
-		EndOfBuffer                          { NonText }, -- EndOfBuffer
-		Whitespace                           { NonText }, -- Whitespace
-		Directory                            { fg = teal, }, -- Directory
-		ErrorMsg                             { fg = yellow, bg = "#120f12", }, -- ErrorMsg
-		NvimInvalidSpacing                   { ErrorMsg }, -- NvimInvalidSpacing
-		IncSearch                            { fg = "#1b181b", bg = "#00ff66", }, -- IncSearch
-		MiniSurround                         { IncSearch }, -- MiniSurround
-		MiniOperatorsExchangeFrom            { IncSearch }, -- MiniOperatorsExchangeFrom
-		Search                               { fg = "#1b181b", bg = "#20df6c", }, -- Search
-		CurSearch                            { fg = "nvimdarkgrey1", bg = "nvimlightyellow", }, -- CurSearch
-		MoreMsg                              { fg = "#ff0066", }, -- MoreMsg
-		ModeMsg                              { fg = "#ff0066", }, -- ModeMsg
-		LineNr                               { fg = "#f5f5f5", bg = "#120f12" }, -- LineNr
-		LineNrAbove                          { fg = "#e7dbdb", bg = "#120f12" }, -- LineNrAbove
-		LineNrBelow                          { fg = "#e7dbdb", bg = "#120f12" }, -- LineNrBelow
-		CursorLineNr                         { fg = "#ffa600", bg = "#120f12", }, -- CursorLineNr
-		Question                             { fg = "#00ffff", }, -- Question
-		StatusLine                           { fg = "#f5f5f5", bg = bg_blue, }, -- StatusLine
-		MsgSeparator                         { StatusLine }, -- MsgSeparator
-		StatusLineNC                         { StatusLine }, -- StatusLineNC
-		VertSplit                            { fg = "#f5f5f5", bg = "#120f12", }, -- VertSplit
-		Title                                { fg = orange, }, -- Title
-		FloatTitle                           { Title }, -- FloatTitle
-		Visual                               { bg = "#2d2c2d", }, -- Visual
-		SnippetTabstop                       { Visual }, -- SnippetTabstop
-		WarningMsg                           { fg = yellow, }, -- WarningMsg
-		WildMenu                             { fg = "#ffa600", bg = "#20df6c", }, -- WildMenu
-		Folded                               { fg = "#117c3c", bg = "#1b181b", }, -- Folded
-		FoldColumn                           { fg = "#6600ff", bg = "#120f12", }, -- FoldColumn
-		CursorLineFold                       { FoldColumn }, -- CursorLineFold
-		SignColumn                           { fg = "#e7dbdb", bg = "#120f12", }, -- SignColumn
-		CursorLineSign                       { SignColumn }, -- CursorLineSign
-		Conceal                              { fg = "#00ffff", bg = "#120f12", }, -- Conceal
-		SpellBad                             { gui = "undercurl", sp = "#ffa600", }, -- SpellBad
-		SpellCap                             { gui = "undercurl", sp = "#00ffff", }, -- SpellCap
-		SpellRare                            { gui = "undercurl", sp = "#007fff", }, -- SpellRare
-		SpellLocal                           { gui = "undercurl", sp = "#6600ff", }, -- SpellLocal
-		Pmenu                                { fg = "#f5f5f5", bg = bg_blue, }, -- Pmenu
-		PmenuKind                            { Pmenu }, -- PmenuKind
-		PmenuExtra                           { Pmenu }, -- PmenuExtra
-		PmenuSbar                            { Pmenu }, -- PmenuSbar
-		PmenuSel                             { fg = "#1b181b", bg = "#f5f5f5", }, -- PmenuSel
-		PmenuKindSel                         { PmenuSel }, -- PmenuKindSel
-		PmenuExtraSel                        { PmenuSel }, -- PmenuExtraSel
-		PmenuThumb                           { bg = "nvimdarkgrey4", }, -- PmenuThumb
-		TabLine                              { fg = "#117c3c", bg = "#1b181b", }, -- TabLine
-		TabLineSel                           { fg = "#ff0066", bg = "#1b181b", }, -- TabLineSel
-		TabLineFill                          { fg = "#117c3c", bg = "#1b181b", }, -- TabLineFill
-		CursorColumn                         { bg = "#1b181b", }, -- CursorColumn
-		CursorLine                           { bg = "#120f12", }, -- CursorLine
-		ColorColumn                          { bg = "#1b181b", }, -- ColorColumn
-		QuickFixLine                         { bg = "#1b181b", }, -- QuickFixLine
+		NormalNC                             { fg = "#f5f5f5", bg = "#120f12", }, 
+		FloatermNC                           { NormalNC }, 
+		NormalFloat                          { fg = "#f5f5f5", bg = bg_blue, }, 
+		FloatermBorder                       { NormalFloat }, 
+		FloatBorder                          { fg = "#f5f5f5", bg = "#120f12", }, 
+		WinBar                               { fg = "#f5f5f5", }, 
+		WinBarNC                             { fg = "#e7dbdb", }, 
+		Cursor                               { fg = "#120f12", bg = "#f5f5f5", }, 
+		CursorIM                             { Cursor }, 
+		Underlined                           { fg = "#ffa600", }, 
+		lCursor                              { fg = "bg", bg = "fg", }, 
+		Substitute                           { fg = "#1b181b", bg = "#20df6c", }, 
+		VisualNOS                            { fg = "#ffa600", }, 
+		Normal                               { fg = "#f5f5f5", bg = "#120f12", }, 
+		WinSeparator                         { Normal }, 
+		Ignore                               { Normal }, 
+		NvimSpacing                          { Normal }, 
+		SpecialKey                           { fg = "#117c3c", }, 
+		TermCursor                           { fg = "#120f12", bg = "#f5f5f5", }, 
+		TermCursorNC                         { fg = "#120f12", bg = "#f5f5f5", }, 
+		NonText                              { fg = "#117c3c", }, 
+		EndOfBuffer                          { NonText }, 
+		Whitespace                           { NonText }, 
+		Directory                            { fg = teal, }, 
+		ErrorMsg                             { fg = yellow, bg = "#120f12", }, 
+		NvimInvalidSpacing                   { ErrorMsg }, 
+		IncSearch                            { fg = "#1b181b", bg = "#00ff66", }, 
+		MiniSurround                         { IncSearch }, 
+		MiniOperatorsExchangeFrom            { IncSearch }, 
+		Search                               { fg = "#1b181b", bg = "#20df6c", }, 
+		CurSearch                            { fg = "nvimdarkgrey1", bg = "nvimlightyellow", }, 
+		MoreMsg                              { fg = "#ff0066", }, 
+		ModeMsg                              { fg = "#ff0066", }, 
+		LineNr                               { fg = "#f5f5f5", bg = "#120f12" }, 
+		LineNrAbove                          { fg = "#e7dbdb", bg = "#120f12" }, 
+		LineNrBelow                          { fg = "#e7dbdb", bg = "#120f12" }, 
+		CursorLineNr                         { fg = "#ffa600", bg = "#120f12", }, 
+		Question                             { fg = "#00ffff", }, 
+		StatusLine                           { fg = "#f5f5f5", bg = bg_blue, }, 
+		MsgSeparator                         { StatusLine }, 
+		StatusLineNC                         { StatusLine }, 
+		VertSplit                            { fg = "#f5f5f5", bg = "#120f12", }, 
+		Title                                { fg = orange, }, 
+		FloatTitle                           { Title }, 
+		Visual                               { bg = "#2d2c2d", }, 
+		SnippetTabstop                       { Visual }, 
+		WarningMsg                           { fg = yellow, }, 
+		WildMenu                             { fg = "#ffa600", bg = "#20df6c", }, 
+		Folded                               { fg = "#117c3c", bg = "#1b181b", }, 
+		FoldColumn                           { fg = "#6600ff", bg = "#120f12", }, 
+		CursorLineFold                       { FoldColumn }, 
+		SignColumn                           { fg = "#e7dbdb", bg = "#120f12", }, 
+		CursorLineSign                       { SignColumn }, 
+		Conceal                              { fg = "#00ffff", bg = "#120f12", }, 
+		SpellBad                             { gui = "undercurl", sp = "#ffa600", }, 
+		SpellCap                             { gui = "undercurl", sp = "#00ffff", }, 
+		SpellRare                            { gui = "undercurl", sp = "#007fff", }, 
+		SpellLocal                           { gui = "undercurl", sp = "#6600ff", }, 
+		Pmenu                                { fg = "#f5f5f5", bg = bg_blue, }, 
+		PmenuKind                            { Pmenu }, 
+		PmenuExtra                           { Pmenu }, 
+		PmenuSbar                            { Pmenu }, 
+		PmenuSel                             { fg = "#1b181b", bg = "#f5f5f5", }, 
+		PmenuKindSel                         { PmenuSel }, 
+		PmenuExtraSel                        { PmenuSel }, 
+		PmenuThumb                           { bg = "nvimdarkgrey4", }, 
+		TabLine                              { fg = "#117c3c", bg = "#1b181b", }, 
+		TabLineSel                           { fg = "#ff0066", bg = "#1b181b", }, 
+		TabLineFill                          { fg = "#117c3c", bg = "#1b181b", }, 
+		CursorColumn                         { bg = "#1b181b", }, 
+		CursorLine                           { bg = "#120f12", }, 
+		ColorColumn                          { bg = "#1b181b", }, 
+		QuickFixLine                         { bg = "#1b181b", }, 
 
 		-- Native Syntax
-		Character                            { fg = yellow }, -- Character
-		Constant                             { fg = "#00ff66", }, -- Constant
-		sym "@enumMember"                    { Constant }, -- @enumMember
-		Number                               { fg = "#00ff66", }, -- Number
-		NvimNumber                           { Number }, -- NvimNumber
-		sym "@text.math"                     { Number }, -- @text.math
-		Boolean                              { fg = "#00ff66", }, -- Boolean
-		Float                                { fg = "#00ff66", }, -- Float
-		Conditional                          { fg = "#007fff", }, -- Conditional
-		Statement                            { fg = yellow }, -- Statement
-		Repeat                               { fg = "#20df6c", }, -- Repeat
-		Label                                { fg = "#20df6c", }, -- Label
-		Keyword                              { fg = "#007fff", }, -- Keyword
-		Exception                            { fg = yellow }, -- Exception
-		Include                              { fg = "#00ffff", }, -- Include
-		PreProc                              { fg = "#20df6c", }, -- PreProc
-		PreCondit                            { PreProc }, -- PreCondit
-		sym "@preproc"                       { PreProc }, -- @preproc
-		Define                               { fg = "#007fff", }, -- Define
-		sym "@define"                        { Define }, -- @define
-		Macro                                { fg = yellow }, -- Macro
-		sym "@text.environment"              { Macro }, -- @text.environment
-		StorageClass                         { fg = "#20df6c", }, -- StorageClass
-		sym "@storageclass"                  { StorageClass }, -- @storageclass
-		Type                                 { fg = magenta2 }, -- Type
-		NvimNumberPrefix                     { Type }, -- NvimNumberPrefix
-		NvimOptionSigil                      { Type }, -- NvimOptionSigil
-		sym "@text.environment.name"         { Type }, -- @text.environment.name
-		sym "@typeParameter"                 { Type }, -- @typeParameter
-		Structure                            { fg = "#007fff", }, -- Structure
-		sym "@interface"                     { Structure }, -- @interface
-		Typedef                              { fg = "#20df6c", }, -- Typedef
-		Tag                                  { fg = "#20df6c", }, -- Tag
-		sym "@text.note"                     { Tag }, -- @text.note
-		Special                              { fg = "#6600ff", }, -- Special
-		SpecialComment                       { Special }, -- SpecialComment
-		sym "@variable.parameter.builtin"    { Special }, -- @variable.parameter.builtin
-		sym "@module.builtin"                { Special }, -- @module.builtin
-		sym "@attribute.builtin"             { Special }, -- @attribute.builtin
-		sym "@markup"                        { Special }, -- @markup
-		sym "@tag.builtin"                   { Special }, -- @tag.builtin
-		DressingSelectIdx                    { Special }, -- DressingSelectIdx
-		SpecialChar                          { fg = "#df206c", }, -- SpecialChar
-		sym "@string.special"                { SpecialChar }, -- @string.special
-		sym "@character.special"             { SpecialChar }, -- @character.special
-		NvimRegister                         { SpecialChar }, -- NvimRegister
-		NvimStringSpecial                    { SpecialChar }, -- NvimStringSpecial
-		Debug                                { fg = yellow }, -- Debug
-		sym "@debug"                         { Debug }, -- @debug
-		Comment                              { fg = "#117c3c", }, -- Comment
-		DiagnosticUnnecessary                { Comment }, -- DiagnosticUnnecessary
-		String                               { fg = "#ff0066", }, -- String
-		NvimString                           { String }, -- NvimString
-		Identifier                           { fg = yellow }, -- Identifier
-		NvimIdentifier                       { Identifier }, -- NvimIdentifier
-		sym "@event"                         { Identifier }, -- @event
-		sym "@modifier"                      { Identifier }, -- @modifier
-		sym "@decorator"                     { Identifier }, -- @decorator
-		Function                             { fg = "#00ffff", }, -- Function
-		Operator                             { fg = "#007fff", }, -- Operator
-		NvimAssignment                       { Operator }, -- NvimAssignment
-		NvimOperator                         { Operator }, -- NvimOperator
-		Delimiter                            { fg = "#df206c", }, -- Delimiter
-		sym "@punctuation"                   { Delimiter }, -- @punctuation
-		NvimParenthesis                      { Delimiter }, -- NvimParenthesis
-		NvimColon                            { Delimiter }, -- NvimColon
-		NvimComma                            { Delimiter }, -- NvimComma
-		NvimArrow                            { Delimiter }, -- NvimArrow
-		Todo                                 { fg = "#20df6c", bg = "#1b181b", }, -- Todo
-		sym "@text.todo"                     { Todo }, -- @text.todo
+		Character                            { fg = yellow }, 
+		Constant                             { fg = "#00ff66", }, 
+		sym "@enumMember"                    { Constant }, 
+		Number                               { fg = "#00ff66", }, 
+		NvimNumber                           { Number }, 
+		Boolean                              { fg = "#00ff66", }, 
+		Float                                { fg = "#00ff66", }, 
+		Conditional                          { fg = "#007fff", }, 
+		Statement                            { fg = yellow }, 
+		Repeat                               { fg = "#20df6c", }, 
+		Label                                { fg = "#20df6c", }, 
+		Keyword                              { fg = "#007fff", }, 
+		Exception                            { fg = yellow }, 
+		Include                              { fg = "#00ffff", }, 
+		PreProc                              { fg = "#20df6c", }, 
+		PreCondit                            { PreProc }, 
+		sym "@preproc"                       { PreProc }, 
+		Define                               { fg = "#007fff", }, 
+		sym "@define"                        { Define }, 
+		Macro                                { fg = yellow }, 
+		StorageClass                         { fg = "#20df6c", }, 
+		sym "@storageclass"                  { StorageClass }, 
+		Type                                 { fg = magenta2 }, 
+		NvimNumberPrefix                     { Type }, 
+		NvimOptionSigil                      { Type }, 
+		sym "@typeParameter"                 { Type }, 
+		Structure                            { fg = "#007fff", }, 
+		sym "@interface"                     { Structure }, 
+		Typedef                              { fg = "#20df6c", }, 
+		Tag                                  { fg = "#20df6c", }, 
+		Special                              { fg = "#6600ff", }, 
+		SpecialComment                       { Special }, 
+		sym "@variable.parameter.builtin"    { Special }, 
+		sym "@module.builtin"                { Special }, 
+		sym "@attribute.builtin"             { Special }, 
+		sym "@markup"                        { Special }, 
+		sym "@tag.builtin"                   { Special }, 
+		DressingSelectIdx                    { Special }, 
+		SpecialChar                          { fg = "#df206c", }, 
+		sym "@string.special"                { SpecialChar }, 
+		sym "@character.special"             { SpecialChar }, 
+		NvimRegister                         { SpecialChar }, 
+		NvimStringSpecial                    { SpecialChar }, 
+		Debug                                { fg = yellow }, 
+		sym "@debug"                         { Debug }, 
+		Comment                              { fg = darkgreen }, 
+		DiagnosticUnnecessary                { Comment }, 
+		String                               { fg = "#ff0066", }, 
+		NvimString                           { String }, 
+		Identifier                           { fg = yellow }, 
+		NvimIdentifier                       { Identifier }, 
+		sym "@event"                         { Identifier }, 
+		sym "@modifier"                      { Identifier }, 
+		sym "@decorator"                     { Identifier }, 
+		Function                             { fg = "#00ffff", }, 
+		Operator                             { fg = "#007fff", }, 
+		NvimAssignment                       { Operator }, 
+		NvimOperator                         { Operator }, 
+		Delimiter                            { fg = "#df206c", }, 
+		sym "@punctuation"                   { Delimiter }, 
+		NvimParenthesis                      { Delimiter }, 
+		NvimColon                            { Delimiter }, 
+		NvimComma                            { Delimiter }, 
+		NvimArrow                            { Delimiter }, 
+		Todo                                 { fg = "#20df6c"}, 
 
-		sym "@markup.underline"              { gui = "underline", }, -- @markup.underline
-		DiagnosticDeprecated                 { gui = "strikethrough", sp = "nvimlightred", }, -- DiagnosticDeprecated
-		FloatShadow                          { blend = 80, bg = "nvimdarkgrey4", }, -- FloatShadow
-		FloatShadowThrough                   { blend = 100, bg = "nvimdarkgrey4", }, -- FloatShadowThrough
-		MatchParen                           { bg = "#117c3c", }, -- MatchParen
+		sym "@markup.underline"              { gui = "underline", }, 
+		DiagnosticDeprecated                 { gui = "strikethrough", sp = "nvimlightred", }, 
+		FloatShadow                          { blend = 80, bg = "nvimdarkgrey4", }, 
+		FloatShadowThrough                   { blend = 100, bg = "nvimdarkgrey4", }, 
+		MatchParen                           { bg = "#117c3c", }, 
 
-		Error                                { fg = red }, -- Error
-		NvimInvalid                          { Error }, -- NvimInvalid
+		Error                                { fg = red }, 
+		NvimInvalid                          { Error }, 
 
-		DiagnosticUnderlineError             { gui = "undercurl", sp = "#ffa600", }, -- DiagnosticUnderlineError
-		DiagnosticUnderlineWarn              { gui = "undercurl", sp = "#007fff", }, -- DiagnosticUnderlineWarn
-		DiagnosticUnderlineInfo              { gui = "underline", sp = "nvimlightcyan", }, -- DiagnosticUnderlineInfo
-		DiagnosticUnderlineHint              { gui = "undercurl", sp = "#6600ff", }, -- DiagnosticUnderlineHint
-		DiagnosticUnderlineOk                { gui = "underline", sp = "nvimlightgreen", }, -- DiagnosticUnderlineOk
+		DiagnosticUnderlineError             { gui = "undercurl", sp = "#ffa600", }, 
+		DiagnosticUnderlineWarn              { gui = "undercurl", sp = "#007fff", }, 
+		DiagnosticUnderlineInfo              { gui = "underline", sp = "nvimlightcyan", }, 
+		DiagnosticUnderlineHint              { gui = "undercurl", sp = "#6600ff", }, 
+		DiagnosticUnderlineOk                { gui = "underline", sp = "nvimlightgreen", }, 
 
-		NvimInternalError                    { fg = "#120f12", bg = yellow }, -- NvimInternalError
-		NvimFigureBrace                      { NvimInternalError }, -- NvimFigureBrace
-		NvimSingleQuotedUnknownEscape        { NvimInternalError }, -- NvimSingleQuotedUnknownEscape
-		NvimInvalidSingleQuotedUnknownEscape { NvimInternalError }, -- NvimInvalidSingleQuotedUnknownEscape
-		Bold                                 { gui = "bold", }, -- Bold
-		Italic                               { gui = "italic", }, -- Italic
-		sym "@markup.italic"                 { Italic }, -- @markup.italic
-		TooLong                              { fg = yellow }, -- TooLong
+		NvimInternalError                    { fg = "#120f12", bg = yellow }, 
+		NvimFigureBrace                      { NvimInternalError }, 
+		NvimSingleQuotedUnknownEscape        { NvimInternalError }, 
+		NvimInvalidSingleQuotedUnknownEscape { NvimInternalError }, 
+		Bold                                 { gui = "bold", }, 
+		Italic                               { gui = "italic", }, 
+		sym "@markup.italic"                 { Italic }, 
+		TooLong                              { fg = yellow }, 
 
-		DiffAdd                              { fg = green2 }, -- DiffAdd
-		sym "@text.diff.add"                 { DiffAdd }, -- @text.diff.add
-		sym "@diff.plus"                     { DiffAdd }, -- added text (for diff files) 
-		Added                                { DiffAdd}, -- Added
+		DiffAdd                              { fg = green2 }, 
+		sym "@diff.plus"                     { DiffAdd }, 
+		Added                                { DiffAdd}, 
 
-		DiffChange                           { fg = magenta3 }, -- DiffChange
-		sym "@diff.delta"                    { DiffChange }, -- @diff.delta
-		Changed                              {DiffChange}, -- Changed
+		DiffChange                           { fg = magenta3 }, 
+		sym "@diff.delta"                    { DiffChange }, 
+		Changed                              {DiffChange}, 
 
-		DiffDelete                           { fg = red }, -- DiffDelete
-		sym "@text.diff.delete"              { DiffDelete }, -- @text.diff.delete
+		DiffDelete                           { fg = red }, 
 		sym "@diff.minus"                    { DiffDelete }, 
-		Removed                              {DiffDelete}, -- Removed
+		Removed                              {DiffDelete}, 
 
 
-		DiffText                             { fg = yellow, bg = "#120f12", }, -- DiffText
+		DiffText                             { fg = yellow, bg = "#120f12", }, 
 
-		GitGutterAdd                         { DiffAdd }, -- GitGutterAdd
-		GitGutterChange                      { DiffChange }, -- GitGutterChange
-		GitGutterDelete                      { DiffDelete }, -- GitGutterDelete
-		GitGutterChangeDelete                { DiffText }, -- GitGutterChangeDelete
+		GitGutterAdd                         { DiffAdd }, 
+		GitGutterChange                      { DiffChange }, 
+		GitGutterDelete                      { DiffDelete }, 
+		GitGutterChangeDelete                { DiffText }, 
 
-		DiagnosticError                      { fg = red }, -- DiagnosticError
-		DiagnosticFloatingError              { DiagnosticError }, -- DiagnosticFloatingError
-		DiagnosticVirtualTextError           { DiagnosticError }, -- DiagnosticVirtualTextError
-		DiagnosticSignError                  { DiagnosticError }, -- DiagnosticSignError
-		-- sym"@text.danger" { DiagnosticError }, -- @text.danger
-		sym "@comment.error"                 { DiagnosticError }, -- @comment.note
-		DiagnosticWarn                       { fg = yellow }, -- DiagnosticWarn
-		DiagnosticFloatingWarn               { DiagnosticWarn }, -- DiagnosticFloatingWarn
-		DiagnosticVirtualTextWarn            { DiagnosticWarn }, -- DiagnosticVirtualTextWarn
-		DiagnosticSignWarn                   { DiagnosticWarn }, -- DiagnosticSignWarn
-		sym "@comment.warning"               { DiagnosticWarn }, -- @text.warning
-		sym "@text.warning"                  { DiagnosticWarn }, -- @text.warning
-		DiagnosticInfo                       { fg = blue2 }, -- DiagnosticInfo
-		DiagnosticFloatingInfo               { DiagnosticInfo }, -- DiagnosticFloatingInfo
-		DiagnosticVirtualTextInfo            { DiagnosticInfo }, -- DiagnosticVirtualTextInfo
-		DiagnosticSignInfo                   { DiagnosticInfo }, -- DiagnosticSignInfo
-		sym "@comment.note"                  { DiagnosticInfo }, -- @comment.note
-		sym "@comment.info"                  { DiagnosticInfo }, -- @comment.info
-		DiagnosticHint                       { fg = pink }, -- DiagnosticHint
-		DiagnosticFloatingHint               { DiagnosticHint }, -- DiagnosticFloatingHint
-		DiagnosticVirtualTextHint            { DiagnosticHint }, -- DiagnosticVirtualTextHint
-		DiagnosticSignHint                   { DiagnosticHint }, -- DiagnosticSignHint
-		sym "@comment.hint"                  { DiagnosticHint }, -- @comment.hint
-		SnacksStatusColumnMark               { DiagnosticHint }, -- SnacksStatusColumnMark
-		DiagnosticOk                         { fg = green1 }, -- DiagnosticOk
-		DiagnosticFloatingOk                 { DiagnosticOk }, -- DiagnosticFloatingOk
-		DiagnosticVirtualTextOk              { DiagnosticOk }, -- DiagnosticVirtualTextOk
-		DiagnosticSignOk                     { DiagnosticOk }, -- DiagnosticSignOk
-		DiagnosticUnderlineWarning           { gui = "undercurl", sp = "#007fff", }, -- DiagnosticUnderlineWarning
-		DiagnosticUnderlineInformation       { gui = "undercurl", sp = "#df206c", }, -- DiagnosticUnderlineInformation
+		DiagnosticError                      { fg = red }, 
+		DiagnosticFloatingError              { DiagnosticError }, 
+		DiagnosticVirtualTextError           { DiagnosticError }, 
+		DiagnosticSignError                  { DiagnosticError }, 
+		
+		DiagnosticWarn                       { fg = yellow }, 
+		DiagnosticFloatingWarn               { DiagnosticWarn }, 
+		DiagnosticVirtualTextWarn            { DiagnosticWarn }, 
+		DiagnosticSignWarn                   { DiagnosticWarn }, 
+		DiagnosticInfo                       { fg = blue2 }, 
+		DiagnosticFloatingInfo               { DiagnosticInfo }, 
+		DiagnosticVirtualTextInfo            { DiagnosticInfo }, 
+		DiagnosticSignInfo                   { DiagnosticInfo }, 
+		DiagnosticHint                       { fg = pink }, 
+		DiagnosticFloatingHint               { DiagnosticHint }, 
+		DiagnosticVirtualTextHint            { DiagnosticHint }, 
+		DiagnosticSignHint                   { DiagnosticHint }, 
+		SnacksStatusColumnMark               { DiagnosticHint }, 
+		DiagnosticOk                         { fg = green1 }, 
+		DiagnosticFloatingOk                 { DiagnosticOk }, 
+		DiagnosticVirtualTextOk              { DiagnosticOk }, 
+		DiagnosticSignOk                     { DiagnosticOk }, 
+		DiagnosticUnderlineWarning           { gui = "undercurl", sp = "#007fff", }, 
+		DiagnosticUnderlineInformation       { gui = "undercurl", sp = "#df206c", }, 
 
 		-- Treesitter Syntax
-		TSAnnotation                         { fg = "#df206c", }, -- TSAnnotation
-		TSAttribute                          { fg = "#20df6c", }, -- TSAttribute
-		sym "@attribute"                     { TSAttribute }, -- @attribute
-		sym "@tag.attribute"                 { TSAttribute }, -- @tag.attribute
-		TSBoolean                            { fg = "#00ff66", }, -- TSBoolean
-		sym "@boolean"                       { TSBoolean }, -- @boolean
-		TSCharacter                          { Character }, -- TSCharacter
-		sym "@character"                     { TSCharacter }, -- @character
-		TSComment                            { Comment }, -- TSComment
-		sym "@comment"                       { TSComment }, -- @comment
-		TSConstructor                        { fg = "#00ffff", }, -- TSConstructor
-		sym "@constructor"                   { TSConstructor }, -- @constructor
-		TSConditional                        { fg = "#007fff", }, -- TSConditional
-		sym "@conditional"                   { TSConditional }, -- @conditional
-		TSConstant                           { fg = "#00ff66", }, -- TSConstant
-		sym "@constant"                      { TSConstant }, -- @constant
-		sym "@constant.builtin"              { TSConstant }, -- @constant.builtin
-		sym "@constant.macro"                { TSConstant }, -- @constant.macro
-		TSConstBuiltin                       { fg = "#00ff66", gui = "italic", }, -- TSConstBuiltin
-		TSConstMacro                         { fg = "#ffa600", }, -- TSConstMacro
-		TSError                              { fg = "#ffa600", }, -- TSError
-		sym "@error"                         { TSError }, -- @error
-		TSException                          { fg = "#ffa600", }, -- TSException
-		sym "@exception"                     { TSException }, -- @exception
-		TSField                              { fg = "#f5f5f5", }, -- TSField
-		sym "@field"                         { TSField }, -- @field
-		TSFloat                              { fg = "#00ff66", }, -- TSFloat
-		sym "@float"                         { TSFloat }, -- @float
-		TSFunction                           { Function }, -- TSFunction
-		sym "@function"                      { TSFunction }, -- @function
-		sym "@function.call"                 { TSFunction }, -- @function.call
-		TSFuncBuiltin                        { fg = "#00ffff", gui = "italic", }, -- TSFuncBuiltin
-		sym "@function.builtin"              { TSFuncBuiltin }, -- @function.builtin
-		TSFuncMacro                          { Macro }, -- TSFuncMacro
-		sym "@function.macro"                { TSFuncMacro }, -- @function.macro
-		TSInclude                            { fg = "#00ffff", }, -- TSInclude
-		sym "@include"                       { TSInclude }, -- @include
-		TSKeyword                            { fg = "#007fff", }, -- TSKeyword
-		sym "@keyword"                       { TSKeyword }, -- @keyword
-		sym "@type.qualifier"                { TSKeyword }, -- @type.qualifier
-		sym "@keyword.return"                { TSKeyword }, -- @keyword.return
-		TSKeywordFunction                    { fg = "#007fff", }, -- TSKeywordFunction
-		sym "@keyword.function"              { TSKeywordFunction }, -- @keyword.function
-		TSKeywordOperator                    { fg = "#007fff", }, -- TSKeywordOperator
-		sym "@keyword.operator"              { TSKeywordOperator }, -- @keyword.operator
-		TSLabel                              { fg = "#20df6c", }, -- TSLabel
-		sym "@label"                         { TSLabel }, -- @label
-		TSMethod                             { fg = "#00ffff", }, -- TSMethod
-		sym "@method"                        { TSMethod }, -- @method
-		sym "@method.call"                   { TSMethod }, -- @method.call
-		TSNamespace                          { fg = yellow }, -- TSNamespace
-		sym "@namespace"                     { TSNamespace }, -- @namespace
-		TSNone                               { fg = "#f5f5f5", }, -- TSNone
-		sym "@none"                          { TSNone }, -- @none
-		TSNumber                             { fg = "#00ff66", }, -- TSNumber
-		sym "@number"                        { TSNumber }, -- @number
-		TSOperator                           { fg = "#f5f5f5", }, -- TSOperator
-		sym "@operator"                      { TSOperator }, -- @operator
-		TSParameter                          { fg = "#f5f5f5", }, -- TSParameter
-		sym "@parameter"                     { TSParameter }, -- @parameter
-		TSParameterReference                 { fg = "#f5f5f5", }, -- TSParameterReference
-		sym "@text.reference"                { TSParameterReference }, -- @text.reference
-		TSProperty                           { fg = "#f5f5f5", }, -- TSProperty
-		sym "@property"                      { TSProperty }, -- @property
-		TSPunctDelimiter                     { fg = "#df206c", }, -- TSPunctDelimiter
-		sym "@punctuation.delimiter"         { TSPunctDelimiter }, -- @punctuation.delimiter
-		TSPunctBracket                       { fg = "#f5f5f5", }, -- TSPunctBracket
-		sym "@punctuation.bracket"           { TSPunctBracket }, -- @punctuation.bracket
-		TSPunctSpecial                       { fg = "#df206c", }, -- TSPunctSpecial
-		sym "@punctuation.special"           { TSPunctSpecial }, -- @punctuation.special
-		TSRepeat                             { fg = "#007fff", }, -- TSRepeat
-		sym "@repeat"                        { TSRepeat }, -- @repeat
-		TSString                             { fg = "#ff0066", }, -- TSString
-		sym "@string"                        { TSString }, -- @string
-		TSStringRegex                        { fg = "#6600ff", }, -- TSStringRegex
-		sym "@string.regex"                  { TSStringRegex }, -- @string.regex
-		sym "@regexp"                        { TSStringRegex }, -- @regexp
-		TSStringEscape                       { fg = "#6600ff", }, -- TSStringEscape
-		sym "@string.escape"                 { TSStringEscape }, -- @string.escape
-		TSSymbol                             { fg = "#ff0066", }, -- TSSymbol
-		sym "@symbol"                        { TSSymbol }, -- @symbol
-		TSTag                                { fg = yellow }, -- TSTag
-		sym "@tag"                           { TSTag }, -- @tag
-		TSTagDelimiter                       { fg = "#df206c", }, -- TSTagDelimiter
-		sym "@tag.delimiter"                 { TSTagDelimiter }, -- @tag.delimiter
-		TSText                               { fg = "#f5f5f5", }, -- TSText
-		sym "@text"                          { TSText }, -- @text
-		TSStrong                             { gui = "bold", }, -- TSStrong
-		sym "@text.strong"                   { TSStrong }, -- @text.strong
-		TSEmphasis                           { fg = "#00ff66", gui = "italic", }, -- TSEmphasis
-		sym "@text.emphasis"                 { TSEmphasis }, -- @text.emphasis
-		TSUnderline                          { fg = "#120f12", gui = "underline", }, -- TSUnderline
-		sym "@text.underline"                { TSUnderline }, -- @text.underline
-		TSStrike                             { fg = "#120f12", gui = "strikethrough", }, -- TSStrike
-		sym "@text.strike"                   { TSStrike }, -- @text.strike
-		TSTitle                              { fg = "#00ffff", }, -- TSTitle
-		sym "@text.title"                    { TSTitle }, -- @text.title
-		TSLiteral                            { fg = "#00ff66", }, -- TSLiteral
-		sym "@text.literal"                  { TSLiteral }, -- @text.literal
-		TSURI                                { fg = "#00ff66", gui = "underline", }, -- TSURI
-		sym "@text.uri"                      { TSURI }, -- @text.uri
-		TSType                               { fg = "#20df6c", }, -- TSType
-		sym "@type"                          { TSType }, -- @type
-		sym "@type.definition"               { TSType }, -- @type.definition
-		sym "@class"                         { TSType }, -- @class
-		sym "@struct"                        { TSType }, -- @struct
-		sym "@enum"                          { TSType }, -- @enum
-		TSTypeBuiltin                        { fg = "#20df6c", gui = "italic", }, -- TSTypeBuiltin
-		sym "@type.builtin"                  { TSTypeBuiltin }, -- @type.builtin
-		TSVariable                           { fg = yellow }, -- TSVariable
-		sym "@variable"                      { TSVariable }, -- @variable
-		TSVariableBuiltin                    { fg = yellow, gui = "italic", }, -- TSVariableBuiltin
-		sym "@variable.builtin"              { TSVariableBuiltin }, -- @variable.builtin
-		TSDefinition                         { gui = "underline", sp = "#e7dbdb", }, -- TSDefinition
-		TSDefinitionUsage                    { gui = "underline", sp = "#e7dbdb", }, -- TSDefinitionUsage
-		TSCurrentScope                       { gui = "bold", }, -- TSCurrentScope
-		TreesitterContext                    { gui = "italic", bg = "#1b181b", }, -- TreesitterContext
+		TSAnnotation                         { fg = "#df206c", }, 
+		TSAttribute                          { fg = "#20df6c", }, 
+		sym "@attribute"                     { TSAttribute }, 
+		sym "@tag.attribute"                 { TSAttribute }, 
+		TSCharacter                          { Character }, 
+		sym "@character"                     { TSCharacter }, 
 
-		rainbowcol1                          { fg = "#ffffff", }, -- rainbowcol1
-		rainbowcol2                          { fg = "#00ff66", }, -- rainbowcol2
-		rainbowcol3                          { fg = "#20df6c", }, -- rainbowcol3
-		rainbowcol4                          { fg = "#f7f3f7", }, -- rainbowcol4
-		rainbowcol5                          { fg = "#6600ff", }, -- rainbowcol5
-		rainbowcol6                          { fg = "#00ffff", }, -- rainbowcol6
-		rainbowcol7                          { fg = "#007fff", }, -- rainbowcol7
-		User1                                { fg = "#ffa600", bg = "#2d2c2d", }, -- User1
-		User2                                { fg = "#007fff", bg = "#2d2c2d", }, -- User2
-		User3                                { fg = "#f5f5f5", bg = "#2d2c2d", }, -- User3
-		User4                                { fg = "#6600ff", bg = "#2d2c2d", }, -- User4
-		User5                                { fg = "#f5f5f5", bg = "#2d2c2d", }, -- User5
-		User6                                { fg = "#f5f5f5", bg = "#1b181b", }, -- User6
-		User7                                { fg = "#f5f5f5", bg = "#2d2c2d", }, -- User7
-		User8                                { fg = "#120f12", bg = "#2d2c2d", }, -- User8
-		User9                                { fg = "#120f12", bg = "#2d2c2d", }, -- User9
+		-- TSComment                            { Comment }, 
+		sym "@comment"                       { Comment }, 
+		sym "@comment.documentation"         { Comment }, 
+		sym "@comment.todo"                  { Todo }, 
+		sym "@comment.error"                 { DiagnosticError }, 
+		sym "@comment.warning"               { DiagnosticWarn }, 
+		sym "@comment.note"                  { DiagnosticInfo }, 
+		sym "@comment.info"                  { DiagnosticInfo }, 
+		sym "@comment.hint"                  { DiagnosticHint }, 
 
-		-- Lsp help lsp-highlight
-		LspCodeLens                          { NonText }, -- LspCodeLens
-		LspSignatureActiveParameter          { Visual }, -- LspSignatureActiveParameter
-		LspInlayHint                         { fg = "#117c3c", gui = "italic", }, -- LspInlayHint
-		LspReferenceRead                     { gui = "underline", sp = "#e7dbdb", }, -- LspReferenceRead
-		LspReferenceText                     { gui = "underline", sp = "#e7dbdb", }, -- LspReferenceText
-		LspReferenceWrite                    { gui = "underline", sp = "#e7dbdb", }, -- LspReferenceWrite
-		LspDiagnosticsDefaultError           { DiagnosticError }, -- LspDiagnosticsDefaultError
-		LspDiagnosticsDefaultWarning         { DiagnosticWarn }, -- LspDiagnosticsDefaultWarning
-		LspDiagnosticsDefaultInformation     { DiagnosticInfo }, -- LspDiagnosticsDefaultInformation
-		LspDiagnosticsDefaultHint            { DiagnosticHint }, -- LspDiagnosticsDefaultHint
-		sym "@lsp.mod.deprecated"            { DiagnosticDeprecated }, -- @lsp.mod.deprecated
-		LspDiagnosticsUnderlineError         { DiagnosticUnderlineError }, -- LspDiagnosticsUnderlineError
-		LspDiagnosticsUnderlineHint          { DiagnosticUnderlineHint }, -- LspDiagnosticsUnderlineHint
-		LspDiagnosticsUnderlineWarning       { DiagnosticUnderlineWarning }, -- LspDiagnosticsUnderlineWarning
-		LspDiagnosticsUnderlineInformation   { DiagnosticUnderlineInformation }, -- LspDiagnosticsUnderlineInformation
+		TSConstructor                        { fg = "#00ffff", }, 
+		sym "@constructor"                   { TSConstructor }, 
+		TSConditional                        { fg = "#007fff", }, 
+		sym "@conditional"                   { TSConditional }, 
+
+		sym "@text"                          { fg = white }, 
+		sym "@text.math"                     { Number }, 
+		sym "@text.environment"              { Macro }, 
+		sym "@text.environment.name"         { Type }, 
+		sym "@text.note"                     { DiagnosticInfo }, 
+		sym "@text.todo"                     { Todo }, 
+		sym "@text.diff.add"                 { DiffAdd }, 
+		sym "@text.diff.delete"              { DiffDelete }, 
+		sym "@text.warning"                  { DiagnosticWarn }, 
+		sym "@text.reference"                { fg = white }, 
+		sym "@text.strong"                   { gui = "bold" }, 
+		sym "@text.emphasis"                 { fg = green1,  gui = "italic", }, 
+		sym "@text.underline"                { gui = "underline" }, 
+		sym "@text.strike"                   { gui = "strikethrough" }, 
+		sym "@text.title"                    { Title }, 
+		sym "@text.literal"                  { fg = darkgreen }, 
+		sym "@text.uri"                      { fg = green1, gui = "underline", }, 
+
+		TSConstant                           { fg = "#00ff66", }, 
+		sym "@constant"                      { TSConstant }, 
+		sym "@constant.builtin"              { TSConstant }, 
+		sym "@constant.macro"                { TSConstant }, 
+
+		sym "@error"                         { Error }, 
+
+		TSException                          { fg = "#ffa600", }, 
+		sym "@exception"                     { TSException }, 
+		TSField                              { fg = "#f5f5f5", }, 
+		sym "@field"                         { TSField }, 
+		-- sym "@float"                         { Float }, 
+
+		TSFunction                           { Function }, 
+		sym "@function"                      { TSFunction }, 
+		sym "@function.call"                 { TSFunction }, 
+		TSFuncBuiltin                        { fg = "#00ffff", gui = "italic", }, 
+		sym "@function.builtin"              { TSFuncBuiltin }, 
+		sym "@function.macro"                { Macro }, 
+		sym "@function.method"               { fg = cyan }, 
+		sym "@function.method.call"          { fg = cyan }, 
+
+		TSInclude                            { fg = "#00ffff", }, 
+		sym "@include"                       { TSInclude }, 
+		TSKeyword                            { fg = "#007fff", }, 
+		sym "@keyword"                       { TSKeyword }, 
+		sym "@type.qualifier"                { TSKeyword }, 
+		sym "@keyword.return"                { TSKeyword }, 
+		TSKeywordFunction                    { fg = "#007fff", }, 
+		sym "@keyword.function"              { TSKeywordFunction }, 
+		TSKeywordOperator                    { fg = "#007fff", }, 
+		sym "@keyword.operator"              { TSKeywordOperator }, 
+		TSLabel                              { fg = "#20df6c", }, 
+		sym "@label"                         { TSLabel }, 
+
+		-- TSMethod                             { fg = "#00ffff", }, 
+		-- sym "@method"                        { TSMethod }, 
+		-- sym "@method.call"                   { TSMethod }, 
+
+		TSNamespace                          { fg = yellow }, 
+		sym "@namespace"                     { TSNamespace }, 
+		TSNone                               { fg = "#f5f5f5", }, 
+		sym "@none"                          { TSNone }, 
+
+		sym "@boolean"                       { Boolean }, 
+		sym "@number"                        { Number }, 
+		sym "@number.float"                  { Number }, 
+
+		TSOperator                           { fg = "#f5f5f5", }, 
+		sym "@operator"                      { TSOperator }, 
+		TSParameter                          { fg = "#f5f5f5", }, 
+		sym "@parameter"                     { TSParameter }, 
+		TSParameterReference                 { fg = "#f5f5f5", }, 
+		TSProperty                           { fg = "#f5f5f5", }
+		sym "@property"                      { TSProperty }, 
+		TSPunctDelimiter                     { fg = "#df206c", }, 
+		sym "@punctuation.delimiter"         { TSPunctDelimiter }, 
+		TSPunctBracket                       { fg = "#f5f5f5", }, 
+		sym "@punctuation.bracket"           { TSPunctBracket }, 
+		TSPunctSpecial                       { fg = "#df206c", }, 
+		sym "@punctuation.special"           { TSPunctSpecial }, 
+		TSRepeat                             { fg = "#007fff", }, 
+		sym "@repeat"                        { TSRepeat }, 
+
+		TSString                             { fg = "#ff0066", }, 
+		sym "@string"                        { TSString }, 
+		TSStringRegex                        { fg = "#6600ff", }, 
+		sym "@string.regex"                  { TSStringRegex }, 
+		sym "@regexp"                        { TSStringRegex }, 
+		TSStringEscape                       { fg = "#6600ff", }, 
+		sym "@string.escape"                 { TSStringEscape }, 
+		TSSymbol                             { fg = "#ff0066", }, 
+		sym "@symbol"                        { TSSymbol }, 
+		TSTag                                { fg = yellow }, 
+		sym "@tag"                           { TSTag }, 
+		TSTagDelimiter                       { fg = "#df206c", }, 
+		sym "@tag.delimiter"                 { TSTagDelimiter }, 
+		TSText                               { fg = "#f5f5f5", }, 
+		TSStrong                             { gui = "bold", }, 
+		TSEmphasis                           { fg = "#00ff66", gui = "italic", }, 
+		TSUnderline                          { fg = "#120f12", gui = "underline", }, 
+		TSStrike                             { fg = "#120f12", gui = "strikethrough", }, 
+		TSTitle                              { fg = "#00ffff", }, 
+		TSLiteral                            { fg = "#00ff66", }, 
+		TSURI                                { fg = "#00ff66", gui = "underline", }, 
+		TSType                               { fg = "#20df6c", }, 
+		sym "@type"                          { TSType }, 
+		sym "@type.definition"               { TSType }, 
+		sym "@class"                         { TSType }, 
+		sym "@struct"                        { TSType }, 
+		sym "@enum"                          { TSType }, 
+		TSTypeBuiltin                        { fg = "#20df6c", gui = "italic", }, 
+		sym "@type.builtin"                  { TSTypeBuiltin }, 
+
+		TSVariable                           { fg = yellow }, 
+		sym "@variable"                      { TSVariable }, 
+		TSVariableBuiltin                    { fg = yellow, gui = "italic", }, 
+		sym "@variable.builtin"              { TSVariableBuiltin }, 
+
+		TSDefinition                         { gui = "underline", sp = "#e7dbdb", }, 
+		TSDefinitionUsage                    { gui = "underline", sp = "#e7dbdb", }, 
+		TSCurrentScope                       { gui = "bold", }, 
+		TreesitterContext                    { gui = "italic", bg = "#1b181b", }, 
+
+		rainbowcol1                          { fg = "#ffffff", }, 
+		rainbowcol2                          { fg = "#00ff66", }, 
+		rainbowcol3                          { fg = "#20df6c", }, 
+		rainbowcol4                          { fg = "#f7f3f7", }, 
+		rainbowcol5                          { fg = "#6600ff", }, 
+		rainbowcol6                          { fg = "#00ffff", }, 
+		rainbowcol7                          { fg = "#007fff", }, 
+		User1                                { fg = "#ffa600", bg = "#2d2c2d", }, 
+		User2                                { fg = "#007fff", bg = "#2d2c2d", }, 
+		User3                                { fg = "#f5f5f5", bg = "#2d2c2d", }, 
+		User4                                { fg = "#6600ff", bg = "#2d2c2d", }, 
+		User5                                { fg = "#f5f5f5", bg = "#2d2c2d", }, 
+		User6                                { fg = "#f5f5f5", bg = "#1b181b", }, 
+		User7                                { fg = "#f5f5f5", bg = "#2d2c2d", }, 
+		User8                                { fg = "#120f12", bg = "#2d2c2d", }, 
+		User9                                { fg = "#120f12", bg = "#2d2c2d", }, 
+
+		-- lsp-highlight
+		-- Lsp help 
+		LspCodeLens                          { NonText }, 
+		LspSignatureActiveParameter          { Visual }, 
+		LspInlayHint                         { fg = "#117c3c", gui = "italic", }, 
+		LspReferenceRead                     { gui = "underline", sp = "#e7dbdb", }, 
+		LspReferenceText                     { gui = "underline", sp = "#e7dbdb", }, 
+		LspReferenceWrite                    { gui = "underline", sp = "#e7dbdb", }, 
+		LspDiagnosticsDefaultError           { DiagnosticError }, 
+		LspDiagnosticsDefaultWarning         { DiagnosticWarn }, 
+		LspDiagnosticsDefaultInformation     { DiagnosticInfo }, 
+		LspDiagnosticsDefaultHint            { DiagnosticHint }, 
+		sym "@lsp.mod.deprecated"            { DiagnosticDeprecated }, 
+		LspDiagnosticsUnderlineError         { DiagnosticUnderlineError }, 
+		LspDiagnosticsUnderlineHint          { DiagnosticUnderlineHint }, 
+		LspDiagnosticsUnderlineWarning       { DiagnosticUnderlineWarning }, 
+		LspDiagnosticsUnderlineInformation   { DiagnosticUnderlineInformation }, 
 	}
 end)
 return theme
