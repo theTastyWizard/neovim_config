@@ -61,9 +61,10 @@ return {
 					['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
 					['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
 
-					['<Tab>'] = { 'show','select_next' },
-					['<S-Tab>'] = { 'select_prev' },
+					['<Tab>'] = { 'show_and_insert', 'select_next' },
+					['<S-Tab>'] = { 'show_and_insert', 'select_prev' },
 				},
+				completion = { ghost_text = { enabled = false } },
 			},
 			completion = {
 				keyword = {
