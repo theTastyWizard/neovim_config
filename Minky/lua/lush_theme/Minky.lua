@@ -220,12 +220,6 @@ local theme    = lush(function(injected_functions)
 		Error                                { fg = red }, 
 		NvimInvalid                          { Error }, 
 
-		DiagnosticUnderlineError             { gui = "undercurl", sp = "#ffa600", }, 
-		DiagnosticUnderlineWarn              { gui = "undercurl", sp = "#007fff", }, 
-		DiagnosticUnderlineInfo              { gui = "underline", sp = "nvimlightcyan", }, 
-		DiagnosticUnderlineHint              { gui = "undercurl", sp = "#6600ff", }, 
-		DiagnosticUnderlineOk                { gui = "underline", sp = "nvimlightgreen", }, 
-
 		NvimInternalError                    { fg = "#120f12", bg = yellow }, 
 		NvimFigureBrace                      { NvimInternalError }, 
 		NvimSingleQuotedUnknownEscape        { NvimInternalError }, 
@@ -235,50 +229,59 @@ local theme    = lush(function(injected_functions)
 		sym "@markup.italic"                 { Italic }, 
 		TooLong                              { fg = yellow }, 
 
+		-- Diff & Git
 		DiffAdd                              { fg = green2 }, 
 		sym "@diff.plus"                     { DiffAdd }, 
 		Added                                { DiffAdd}, 
 
 		DiffChange                           { fg = magenta3 }, 
 		sym "@diff.delta"                    { DiffChange }, 
-		Changed                              {DiffChange}, 
+		Changed                              { DiffChange }, 
 
 		DiffDelete                           { fg = red }, 
 		sym "@diff.minus"                    { DiffDelete }, 
-		Removed                              {DiffDelete}, 
+		Removed                              { DiffDelete }, 
 
-
-		DiffText                             { fg = yellow, bg = "#120f12", }, 
+		DiffText                             { fg = yellow}, 
 
 		GitGutterAdd                         { DiffAdd }, 
 		GitGutterChange                      { DiffChange }, 
 		GitGutterDelete                      { DiffDelete }, 
 		GitGutterChangeDelete                { DiffText }, 
 
+		-- Diagnostics
 		DiagnosticError                      { fg = red }, 
 		DiagnosticFloatingError              { DiagnosticError }, 
 		DiagnosticVirtualTextError           { DiagnosticError }, 
 		DiagnosticSignError                  { DiagnosticError }, 
-		
+
 		DiagnosticWarn                       { fg = yellow }, 
 		DiagnosticFloatingWarn               { DiagnosticWarn }, 
 		DiagnosticVirtualTextWarn            { DiagnosticWarn }, 
 		DiagnosticSignWarn                   { DiagnosticWarn }, 
+
 		DiagnosticInfo                       { fg = blue2 }, 
 		DiagnosticFloatingInfo               { DiagnosticInfo }, 
 		DiagnosticVirtualTextInfo            { DiagnosticInfo }, 
 		DiagnosticSignInfo                   { DiagnosticInfo }, 
+
 		DiagnosticHint                       { fg = pink }, 
 		DiagnosticFloatingHint               { DiagnosticHint }, 
 		DiagnosticVirtualTextHint            { DiagnosticHint }, 
 		DiagnosticSignHint                   { DiagnosticHint }, 
-		SnacksStatusColumnMark               { DiagnosticHint }, 
+
 		DiagnosticOk                         { fg = green1 }, 
 		DiagnosticFloatingOk                 { DiagnosticOk }, 
 		DiagnosticVirtualTextOk              { DiagnosticOk }, 
 		DiagnosticSignOk                     { DiagnosticOk }, 
+
 		DiagnosticUnderlineWarning           { gui = "undercurl", sp = "#007fff", }, 
 		DiagnosticUnderlineInformation       { gui = "undercurl", sp = "#df206c", }, 
+		DiagnosticUnderlineError             { gui = "undercurl", sp = "#ffa600", }, 
+		DiagnosticUnderlineWarn              { gui = "undercurl", sp = "#007fff", }, 
+		DiagnosticUnderlineInfo              { gui = "underline", sp = "nvimlightcyan", }, 
+		DiagnosticUnderlineHint              { gui = "undercurl", sp = "#6600ff", }, 
+		DiagnosticUnderlineOk                { gui = "underline", sp = "nvimlightgreen", }, 
 
 		-- Treesitter Syntax
 		TSAnnotation                         { fg = "#df206c", }, 
