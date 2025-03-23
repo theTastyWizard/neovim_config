@@ -1,4 +1,13 @@
 return {
+	{
+		"zootedb0t/citruszest.nvim",
+		lazy = false,
+		-- cond = false,
+		priority = 1000,
+		-- config = function()
+			-- vim.cmd("colorscheme citruszest")
+		-- end
+	},
 	-- {
 	-- 	"RRethy/base16-nvim",
 	-- 	lazy = false,
