@@ -41,7 +41,9 @@ local pink     = hsl("#ff5699")  -- complement af magenta
 local orange   = hsl(18, 100, 50) 
 local blue1    = hsl('#007fff') --hsl(210, 100, 50) 
 local blue2    = hsl("#0066ff")
-local cyan     = hsl('#00ffff')
+local cyan     = hsl('#33ffff')
+
+local green_sea = hsl("#1AFFA3") -- fra citruszest
 
 -- help treesitter highlight groups
 -- help  highlight groups
@@ -63,6 +65,7 @@ local theme    = lush(function(injected_functions)
 		Yellow                               { fg = hsl(36, 100, 50) },
 		Green1                               { fg = hsl('#00ff66') },
 		Green2                               { fg = hsl('#02d849') },
+		Green_Sea							 { fg = hsl('#1affa3') },
 		Pink                                 { fg = hsl("#ff5699") }, -- complement af magenta
 		Orange                               { fg = hsl(18, 100, 50) },
 		Blue1                                { fg = hsl('#007fff') },
@@ -107,7 +110,7 @@ local theme    = lush(function(injected_functions)
 		LineNrAbove                          { fg = "#e7dbdb", bg = "#120f12" }, 
 		LineNrBelow                          { fg = "#e7dbdb", bg = "#120f12" }, 
 		CursorLineNr                         { fg = "#ffa600", bg = "#120f12", }, 
-		Question                             { fg = "#00ffff", }, 
+		Question                             { fg = cyan, }, 
 		StatusLine                           { fg = "#f5f5f5", bg = bg_blue, }, 
 		MsgSeparator                         { StatusLine }, 
 		StatusLineNC                         { StatusLine }, 
@@ -123,7 +126,7 @@ local theme    = lush(function(injected_functions)
 		CursorLineFold                       { FoldColumn }, 
 		SignColumn                           { fg = "#e7dbdb", bg = "#120f12", }, 
 		CursorLineSign                       { SignColumn }, 
-		Conceal                              { fg = "#00ffff", bg = "#120f12", }, 
+		Conceal                              { fg = cyan, bg = "#120f12", }, 
 		SpellBad                             { gui = "undercurl", sp = "#ffa600", }, 
 		SpellCap                             { gui = "undercurl", sp = "#00ffff", }, 
 		SpellRare                            { gui = "undercurl", sp = "#007fff", }, 
@@ -158,7 +161,7 @@ local theme    = lush(function(injected_functions)
 		Label                                { fg = "#20df6c", }, 
 		Keyword                              { fg = "#007fff", }, 
 		Exception                            { fg = yellow }, 
-		Include                              { fg = "#00ffff", }, 
+		Include                              { fg = cyan, }, 
 		PreProc                              { fg = "#20df6c", }, 
 		PreCondit                            { PreProc }, 
 		sym "@preproc"                       { PreProc }, 
@@ -175,6 +178,7 @@ local theme    = lush(function(injected_functions)
 		sym "@interface"                     { Structure }, 
 		Typedef                              { fg = "#20df6c", }, 
 		Tag                                  { fg = "#20df6c", }, 
+
 		Special                              { fg = "#6600ff", }, 
 		SpecialComment                       { Special }, 
 		sym "@variable.parameter.builtin"    { Special }, 
@@ -182,7 +186,7 @@ local theme    = lush(function(injected_functions)
 		sym "@attribute.builtin"             { Special }, 
 		sym "@markup"                        { Special }, 
 		sym "@tag.builtin"                   { Special }, 
-		DressingSelectIdx                    { Special }, 
+
 		SpecialChar                          { fg = "#df206c", }, 
 		sym "@string.special"                { SpecialChar }, 
 		sym "@character.special"             { SpecialChar }, 
@@ -199,12 +203,11 @@ local theme    = lush(function(injected_functions)
 		sym "@event"                         { Identifier }, 
 		sym "@modifier"                      { Identifier }, 
 		sym "@decorator"                     { Identifier }, 
-		Function                             { fg = "#00ffff", }, 
+		Function                             { fg = green_sea , }, 
 		Operator                             { fg = "#007fff", }, 
 		NvimAssignment                       { Operator }, 
 		NvimOperator                         { Operator }, 
 		Delimiter                            { fg = "#df206c", }, 
-		sym "@punctuation"                   { Delimiter }, 
 		NvimParenthesis                      { Delimiter }, 
 		NvimColon                            { Delimiter }, 
 		NvimComma                            { Delimiter }, 
@@ -291,7 +294,7 @@ local theme    = lush(function(injected_functions)
 		TSCharacter                          { Character }, 
 		sym "@character"                     { TSCharacter }, 
 
-		-- TSComment                            { Comment }, 
+		-- Comment
 		sym "@comment"                       { Comment }, 
 		sym "@comment.documentation"         { Comment }, 
 		sym "@comment.todo"                  { Todo }, 
@@ -301,7 +304,7 @@ local theme    = lush(function(injected_functions)
 		sym "@comment.info"                  { DiagnosticInfo }, 
 		sym "@comment.hint"                  { DiagnosticHint }, 
 
-		TSConstructor                        { fg = "#00ffff", }, 
+		TSConstructor                        { fg = cyan, }, 
 		sym "@constructor"                   { TSConstructor }, 
 		TSConditional                        { fg = "#007fff", }, 
 		sym "@conditional"                   { TSConditional }, 
@@ -337,16 +340,15 @@ local theme    = lush(function(injected_functions)
 		sym "@field"                         { TSField }, 
 		-- sym "@float"                         { Float }, 
 
-		TSFunction                           { Function }, 
-		sym "@function"                      { TSFunction }, 
-		sym "@function.call"                 { TSFunction }, 
-		TSFuncBuiltin                        { fg = "#00ffff", gui = "italic", }, 
-		sym "@function.builtin"              { TSFuncBuiltin }, 
+		-- Functions
+		sym "@function"                      { Function }, 
+		sym "@function.call"                 { Function }, 
+		sym "@function.builtin"              { fg = cyan, gui = "italic",}, 
 		sym "@function.macro"                { Macro }, 
 		sym "@function.method"               { fg = cyan }, 
 		sym "@function.method.call"          { fg = cyan }, 
 
-		TSInclude                            { fg = "#00ffff", }, 
+		TSInclude                            { fg = cyan, }, 
 		sym "@include"                       { TSInclude }, 
 		TSKeyword                            { fg = "#007fff", }, 
 		sym "@keyword"                       { TSKeyword }, 
@@ -358,10 +360,6 @@ local theme    = lush(function(injected_functions)
 		sym "@keyword.operator"              { TSKeywordOperator }, 
 		TSLabel                              { fg = "#20df6c", }, 
 		sym "@label"                         { TSLabel }, 
-
-		-- TSMethod                             { fg = "#00ffff", }, 
-		-- sym "@method"                        { TSMethod }, 
-		-- sym "@method.call"                   { TSMethod }, 
 
 		TSNamespace                          { fg = yellow }, 
 		sym "@namespace"                     { TSNamespace }, 
@@ -379,12 +377,12 @@ local theme    = lush(function(injected_functions)
 		TSParameterReference                 { fg = "#f5f5f5", }, 
 		TSProperty                           { fg = "#f5f5f5", },
 		sym "@property"                      { TSProperty }, 
-		TSPunctDelimiter                     { fg = "#df206c", }, 
-		sym "@punctuation.delimiter"         { TSPunctDelimiter }, 
-		TSPunctBracket                       { fg = "#f5f5f5", }, 
-		sym "@punctuation.bracket"           { TSPunctBracket }, 
-		TSPunctSpecial                       { fg = "#df206c", }, 
-		sym "@punctuation.special"           { TSPunctSpecial }, 
+
+		-- Punctuation
+		sym "@punctuation.delimiter"         { Delimiter }, 
+		sym "@punctuation.bracket"           { fg = white }, 
+		sym "@punctuation.special"           { Special }, 
+
 		TSRepeat                             { fg = "#007fff", }, 
 		sym "@repeat"                        { TSRepeat }, 
 
@@ -406,7 +404,7 @@ local theme    = lush(function(injected_functions)
 		TSEmphasis                           { fg = "#00ff66", gui = "italic", }, 
 		TSUnderline                          { fg = "#120f12", gui = "underline", }, 
 		TSStrike                             { fg = "#120f12", gui = "strikethrough", }, 
-		TSTitle                              { fg = "#00ffff", }, 
+		TSTitle                              { fg = cyan, }, 
 		TSLiteral                            { fg = "#00ff66", }, 
 		TSURI                                { fg = "#00ff66", gui = "underline", }, 
 		TSType                               { fg = "#20df6c", }, 
@@ -433,7 +431,7 @@ local theme    = lush(function(injected_functions)
 		rainbowcol3                          { fg = "#20df6c", }, 
 		rainbowcol4                          { fg = "#f7f3f7", }, 
 		rainbowcol5                          { fg = "#6600ff", }, 
-		rainbowcol6                          { fg = "#00ffff", }, 
+		rainbowcol6                          { fg = cyan, }, 
 		rainbowcol7                          { fg = "#007fff", }, 
 		User1                                { fg = "#ffa600", bg = "#2d2c2d", }, 
 		User2                                { fg = "#007fff", bg = "#2d2c2d", }, 
