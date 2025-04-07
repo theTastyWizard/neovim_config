@@ -33,17 +33,17 @@ local magenta1 = hsl("#ff0066")
 local magenta2 = hsl('#ad1f51')  --2tone
 local magenta3 = hsl('#b62d65')
 local red      = hsl(353, 100, 39)
+local red2	   = hsl('#ff273f')
 local yellow   = hsl(36, 100, 50)
 local green1   = hsl('#00ff66')
 local green2   = hsl('#02d849')
 local darkgreen = hsl('#117c3c')
+local green_sea = hsl("#1affa3") -- fra citruszest
 local pink     = hsl("#ff5699")  -- complement af magenta
 local orange   = hsl(18, 100, 50) 
 local blue1    = hsl('#007fff') --hsl(210, 100, 50) 
 local blue2    = hsl("#0066ff")
 local cyan     = hsl('#33ffff')
-
-local green_sea = hsl("#1AFFA3") -- fra citruszest
 
 -- help treesitter highlight groups
 -- help  highlight groups
@@ -52,25 +52,46 @@ local theme    = lush(function(injected_functions)
 	local sym = injected_functions.sym
 	return {
 		-- Colors
-		White                                { fg = hsl("#f5f5f5") },
-		Bg_black                             { fg = hsl('#120f12') },
-		Bg_blue                              { fg = hsl("#050008") },
-		Gray                                 { fg = hsl('#2d2c2d') }, --visual selected breytt til að sjá betur
-		Purple                               { fg = hsl("#6600ff") },
-		Teal                                 { fg = hsl("#33abcc") },
-		Magenta1                             { fg = hsl("#ff0066") },
-		Magenta2                             { fg = hsl('#ad1f51') }, --2tone
-		Magenta3                             { fg = hsl('#b62d65') },
-		Red                                  { fg = hsl(353, 100, 39) },
-		Yellow                               { fg = hsl(36, 100, 50) },
-		Green1                               { fg = hsl('#00ff66') },
-		Green2                               { fg = hsl('#02d849') },
-		Green_Sea							 { fg = hsl('#1affa3') },
-		Pink                                 { fg = hsl("#ff5699") }, -- complement af magenta
-		Orange                               { fg = hsl(18, 100, 50) },
-		Blue1                                { fg = hsl('#007fff') },
-		Blue2                                { fg = hsl("#0066ff") },
-		Cyan                                 { fg = hsl('#01ffff') },
+		White                                { fg = white },
+		Bg_black                             { fg = bg_black },
+		Bg_blue                              { fg = bg_blue },
+		Gray                                 { fg = gray }, --visual selected breytt til að sjá betur
+		Purple                               { fg = purple },
+		Teal                                 { fg = teal },
+		Magenta1                             { fg = magenta1 },
+		Magenta2                             { fg = magenta2 }, --2tone
+		Magenta3                             { fg = magenta3 },
+		Red                                  { fg = red },
+		Red2                                 { fg = red2 },
+		Yellow                               { fg = yellow },
+		Green1                               { fg = green1 },
+		Green2                               { fg = green2 },
+		Darkgreen							 { fg = darkgreen},
+		Green_sea							 { fg = green_sea },
+		Pink                                 { fg = pink }, -- complement af magenta
+		Orange                               { fg = orange },
+		Blue1                                { fg = blue1 },
+		Blue2                                { fg = blue2 },
+		Cyan                                 { fg = cyan },
+
+		 -- Bg_blue                              { fg = hsl("#050008") },
+		 -- Gray                                 { fg = hsl('#2d2c2d') }, --visual selected breytt til að sjá betur
+		 -- Purple                               { fg = hsl("#6600ff") },
+		 -- Teal                                 { fg = hsl("#33abcc") },
+		 -- Magenta1                             { fg = hsl("#ff0066") },
+		 -- Magenta2                             { fg = hsl('#ad1f51') }, --2tone
+		 -- Magenta3                             { fg = hsl('#b62d65') },
+		 -- Red                                  { fg = hsl(353, 100, 39) },
+		 -- Red2								 { fg = hsl('#ff273f') },
+		 -- Yellow                               { fg = hsl(36, 100, 50) },
+		 -- Green1                               { fg = hsl('#00ff66') },
+		 -- Green2                               { fg = hsl('#02d849') },
+		 -- Green_Sea							 { fg = hsl('#1affa3') },
+		 -- Pink                                 { fg = hsl("#ff5699") }, -- complement af magenta
+		 -- Orange                               { fg = hsl(18, 100, 50) },
+		 -- Blue1                                { fg = hsl('#007fff') },
+		 -- Blue2                                { fg = hsl("#0066ff") },
+		 -- Cyan                                 { fg = hsl('#01ffff') },
 
 		-- Native UI
 		NormalNC                             { fg = "#f5f5f5", bg = "#120f12", }, 
@@ -304,7 +325,7 @@ local theme    = lush(function(injected_functions)
 		sym "@comment.info"                  { DiagnosticInfo }, 
 		sym "@comment.hint"                  { DiagnosticHint }, 
 
-		TSConstructor                        { fg = cyan, }, 
+		TSConstructor                        { fg = cyan, }, --Todo: Breyta i eithvad betra
 		sym "@constructor"                   { TSConstructor }, 
 		TSConditional                        { fg = "#007fff", }, 
 		sym "@conditional"                   { TSConditional }, 
@@ -343,10 +364,10 @@ local theme    = lush(function(injected_functions)
 		-- Functions
 		sym "@function"                      { Function }, 
 		sym "@function.call"                 { Function }, 
-		sym "@function.builtin"              { fg = cyan, gui = "italic",}, 
+		sym "@function.builtin"              { fg = green_sea, gui = "italic",}, 
 		sym "@function.macro"                { Macro }, 
-		sym "@function.method"               { fg = cyan }, 
-		sym "@function.method.call"          { fg = cyan }, 
+		sym "@function.method"               { fg = green_sea }, 
+		sym "@function.method.call"          { fg = green_sea }, 
 
 		TSInclude                            { fg = cyan, }, 
 		sym "@include"                       { TSInclude }, 
