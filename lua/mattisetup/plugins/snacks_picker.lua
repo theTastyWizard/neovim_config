@@ -198,6 +198,16 @@ return {
 		opts = {
 			keymaps = {
 
+				["<leader><leader>"] = {
+					function()
+						Snacks.picker.files({
+							cwd = require("oil").get_current_dir()
+						})
+					end,
+					mode = "n",
+					nowait = true,
+					desc = "Find files in the current directory"
+				},
 				["<leader>ff"] = {
 					function()
 						Snacks.picker.files({
