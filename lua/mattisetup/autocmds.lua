@@ -29,9 +29,6 @@ autocmd("BufEnter", {
 	desc = "Disable new line comment",
 })
 
--- fyrir vimtex
--- local au_group = vim.api.nvim_create_augroup("vimtex_events", {}),
-
 -- Cleanup on quit
 autocmd("User", {
 	pattern = "VimtexEventQuit",
@@ -57,6 +54,7 @@ autocmd("Filetype", {
 	end
 })
 
+-- Til ad hlsearch se bara ef cursor er a ordinu
 autocmd('CursorMoved', {
 	group = vim.api.nvim_create_augroup('auto-hlsearch', { clear = true }),
 	callback = function()
