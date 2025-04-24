@@ -30,6 +30,7 @@ return {
 
 		-- Set to true to watch the filesystem for changes and reload oil
 		watch_for_changes = true,
+		use_default_keymaps = false,
 		keymaps = {
 			["g?"] = "actions.show_help",
 			["l"] = "actions.select",
@@ -46,7 +47,6 @@ return {
 			["gx"] = "actions.open_external",
 			["g."] = "actions.toggle_hidden",
 			["g\\"] = "actions.toggle_trash",
-			use_default_keymaps = false,
 		},
 	}
 }
