@@ -165,8 +165,8 @@ return {
 				local opts = { buffer = bufnr }
 
 				vim.keymap.set('n', 'æ', '<cmd>lua vim.lsp.buf.hover({border = "rounded"})<cr>', opts)
+				vim.keymap.set('n', ',', '<cmd>lua vim.lsp.buf.hover({border = "rounded"})<cr>', opts)
 				vim.keymap.set('n', 'Æ', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-				vim.keymap.set('n', ';', '<cmd>lua vim.lsp.buf.hover({border = "rounded"})<cr>', opts)
 				vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
 				vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
 				vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
