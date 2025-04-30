@@ -47,6 +47,8 @@ vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]], { desc = 'System clipboard Ya
 vim.keymap.set({ "n", "v" }, "<leader>p", [["+]p]], { desc = 'System clipboard put & indent' })
 vim.keymap.set({ "n", "v" }, "<leader>P", [["+]P]], { desc = 'System clipboard put & indent' })
 
+-- yank comment and put
+vim.keymap.set({ "n", "v" }, "ycc", "yygccp", { remap = true, desc = 'yank comment and put' })
 -- normal put with correct indent
 vim.keymap.set({ "n", "v" }, "p", "]p", { desc = 'put with indent' })
 vim.keymap.set({ "n", "v" }, "P", "]P", { desc = 'Put with indent' })
