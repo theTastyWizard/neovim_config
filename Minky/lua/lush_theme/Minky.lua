@@ -45,6 +45,8 @@ local blue1    = hsl('#007fff') --hsl(210, 100, 50)
 local blue2    = hsl("#0066ff")
 local cyan     = hsl('#33ffff')
 
+local cyan_green = hsl("#21c992")
+
 -- help treesitter highlight groups
 -- help  highlight groups
 
