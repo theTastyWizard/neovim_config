@@ -141,7 +141,7 @@ return {
 				self.filename = vim.api.nvim_buf_get_name(0)
 			end,
 			provider = function(self)
-				return vim.fn.fnamemodify(self.filename, ":.:h")
+				return vim.fn.fnamemodify(self.filename, ":.:h") .. "/"
 			end,
 			hl = { fg = utils.get_highlight("Directory").fg }
 		}
