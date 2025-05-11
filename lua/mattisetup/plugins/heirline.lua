@@ -11,7 +11,7 @@ return {
 				bg = utils.get_highlight("statusline").bg,
 				bright_bg = "#1e223c",
 
-				white = utils.get_highlight('White').fg , --'#f5f5f5',
+				white = utils.get_highlight('White').fg, --'#f5f5f5',
 				pink = utils.get_highlight('Magenta1').fg, --"#ff0066",
 				blue = utils.get_highlight('blue1').fg, --"#007fff",
 				cyan = utils.get_highlight('cyan').fg, --"#00ffff",
@@ -19,6 +19,8 @@ return {
 				yellow = utils.get_highlight('yellow').fg, --"#ffa600",
 				orange = utils.get_highlight('orange').fg, --"#d65407",
 				purple = utils.get_highlight('purple').fg, --"#6600ff",
+				green_sea = utils.get_highlight('green_sea').fg,
+
 
 				diag_warn = utils.get_highlight("DiagnosticWarn").fg,
 				diag_error = utils.get_highlight("DiagnosticError").fg,
@@ -40,6 +42,9 @@ return {
 
 
 		require("heirline").load_colors(setup_colors)
+
+		local Align = { provider = "%=" }
+		local Space = { provider = " " }
 
 		local ViMode = {
 			init = function(self)
@@ -84,7 +89,8 @@ return {
 				},
 			},
 			provider = function(self)
-				return " %2(" .. self.mode_names[self.mode] .. "%)"
+				-- return " %2(" .. self.mode_names[self.mode] .. "%)"
+				return "%1(" .. self.mode_names[self.mode] .. "%)"
 			end,
 			-- hl = { fg = 'black', bold = true, },
 			hl = function(self)
@@ -101,68 +107,98 @@ return {
 		}
 
 
-		local FileNameBlock = {
-			-- let's first set up some attributes needed by this component and its children
-			init = function(self)
-				self.filename = vim.api.nvim_buf_get_name(0)
-			end,
-		}
+		-- local FileNameBlock = {
+		-- 	-- let's first set up some attributes needed by this component and its children
+		-- 	init = function(self)
+		-- 		self.filename = vim.api.nvim_buf_get_name(0)
+		-- 	end,
+		-- }
+
 		-- Mitt
-		local JustFileName = {
+		local FileName = {
 			init = function(self)
 				self.filename = vim.api.nvim_buf_get_name(0)
 			end,
 			provider = function(self)
 				return vim.fn.fnamemodify(self.filename, ":t:r")
 			end,
-			hl = { fg = "blue", },
+			hl = { fg = utils.get_highlight("Directory").fg },
+		}
+
+		local FileNameModifer = {
+			hl = function()
+				if vim.bo.modified then
+					-- use `force` because we need to override the child's hl foreground
+					return { fg = "green", force = true }
+				end
+			end,
+		}
+
+		FileNameModified = utils.insert(FileNameModifer, FileName)
+
+		local FolderName = {
+			init = function(self)
+				self.filename = vim.api.nvim_buf_get_name(0)
+			end,
+			provider = function(self)
+				return vim.fn.fnamemodify(self.filename, ":.:h")
+			end,
+			hl = { fg = utils.get_highlight("Directory").fg }
+		}
+		local OilFileName = {
+			init = function(self)
+				self.filename = vim.api.nvim_buf_get_name(0)
+			end,
+			provider = function(self)
+				return vim.fn.fnamemodify(self.filename, ":s?oil://??")
+			end,
+			hl = { fg = utils.get_highlight("Directory").fg }
 		}
 
 		-- We can now define some children separately and add them later
-		local FileName = {
-			init = function(self)
-				self.lfilename = vim.fn.fnamemodify(self.filename, ":.")
-				if self.lfilename == "" then self.lfilename = "[No Name]" end
-			end,
-			-- -- hl = { fg = utils.get_highlight("Directory").fg },
-			hl = { fg = "blue", },
-
-			flexible = 2,
-
-			{
-				provider = function(self)
-					return self.lfilename
-				end,
-			},
-			{
-				provider = function(self)
-					return vim.fn.pathshorten(self.lfilename)
-				end,
-			},
-		}
+		-- local FileName = {
+		-- 	init = function(self)
+		-- 		self.lfilename = vim.fn.fnamemodify(self.filename, ":.")
+		-- 		if self.lfilename == "" then self.lfilename = "[No Name]" end
+		-- 	end,
+		-- 	hl = { fg = utils.get_highlight("Directory").fg },
+		--
+		-- 	flexible = 2,
+		--
+		-- 	{
+		-- 		provider = function(self)
+		-- 			return self.lfilename
+		-- 		end,
+		-- 	},
+		-- 	{
+		-- 		provider = function(self)
+		-- 			return vim.fn.pathshorten(self.lfilename)
+		-- 		end,
+		-- 	},
+		-- }
 
 		local FileFlags = {
-			{
-				condition = function()
-					return vim.bo.modified
-				end,
-				provider = " [+]",
-				hl = { fg = "green" },
-			},
+			-- {
+			-- 	condition = function()
+			-- 		return vim.bo.modified
+			-- 	end,
+			-- 	provider = "[+]",
+			-- 	hl = { fg = "green" },
+			-- },
 			{
 				condition = function()
 					return not vim.bo.modifiable or vim.bo.readonly
 				end,
-				provider = " ", --" ",
+				provider = "", --" ",
 				hl = { fg = "orange" },
 			},
 		}
 		-- let's add the children to our FileNameBlock component
-		FileNameBlock = utils.insert(FileNameBlock,
-			FileName,
-			FileFlags,
-			{ provider = '%<' } -- this means that the statusline is cut here when there's not enough space
-		)
+		-- FileNameBlock = utils.insert(FileNameBlock,
+		-- 	utils.insert(FileNameModifer, JustFileName),
+		-- 	FileFlags,
+		-- 	{ provider = '%<' } -- this means that the statusline is cut here when there's not enough space
+		-- )
 
 		local FileIcon = {
 			init = function(self)
@@ -173,7 +209,11 @@ return {
 					{ default = true })
 			end,
 			provider = function(self)
-				return self.icon and (" " .. self.icon .. " ")
+				if self.filename == "" then
+					return ""
+				else
+					return self.icon and (self.icon)
+				end
 			end,
 			hl = function(self)
 				return { fg = self.icon_color }
@@ -234,14 +274,10 @@ return {
 			condition = conditions.has_diagnostics,
 
 			static = {
-				-- error_icon = vim.fn.sign_getdefined("DiagnosticSignError")[1].text,
-				-- warn_icon = vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text,
-				-- info_icon = vim.fn.sign_getdefined("DiagnosticSignInfo")[1].text,
-				-- hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
-				error_icon = '󰯈 ', --'󰚌 ',
-				warn_icon = ' ',--'󰀪 ', --' ',
-				hint_icon = ' ', --'󱠂 ',
-				info_icon = ' ', --' ',
+				error_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.ERROR],
+				warn_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.WARN],
+				hint_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.HINT],
+				info_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.INFO],
 			},
 
 			init = function(self)
@@ -256,25 +292,25 @@ return {
 			{
 				provider = function(self)
 					-- 0 is just another output, we can decide to print it or not!
-					return self.errors > 0 and (self.error_icon .. self.errors .. " ")
+					return self.errors > 0 and (self.error_icon .. " " .. self.errors .. " ")
 				end,
 				hl = { fg = "diag_error" },
 			},
 			{
 				provider = function(self)
-					return self.warnings > 0 and (self.warn_icon .. self.warnings .. " ")
+					return self.warnings > 0 and (self.warn_icon .. " " .. self.warnings .. " ")
 				end,
 				hl = { fg = "diag_warn" },
 			},
 			{
 				provider = function(self)
-					return self.info > 0 and (self.info_icon .. self.info .. " ")
+					return self.info > 0 and (self.info_icon .. " " .. self.info .. " ")
 				end,
 				hl = { fg = "diag_info" },
 			},
 			{
 				provider = function(self)
-					return self.hints > 0 and (self.hint_icon .. self.hints)
+					return self.hints > 0 and (self.hint_icon .. " " .. self.hints)
 				end,
 				hl = { fg = "diag_hint" },
 			},
@@ -291,14 +327,14 @@ return {
 
 			hl = { fg = "orange" },
 
-			{
-				provider = " "
-			},
+			-- {
+			-- 	provider = " "
+			-- },
 			{ -- git branch name
 				provider = function(self)
 					return self.status_dict.head
 				end,
-				hl = { fg = "white", bold = false }
+				hl = { fg = "orange", bold = false }
 			},
 			-- You could handle delimiters, icons and counts similar to Diagnostics
 			{
@@ -338,7 +374,9 @@ return {
 
 		local TerminalName = {
 			provider = function()
-				local tname, _ = vim.api.nvim_buf_get_name(0):gsub(".*:", "")
+				local filename = vim.api.nvim_buf_get_name(0)
+				local tname = vim.fn.fnamemodify(filename, ":s?.*:??:t")
+				-- local tname, _ = vim.api.nvim_buf_get_name(0):gsub(".*:", "")
 				return " " .. tname
 			end,
 			hl = { fg = "blue", bold = true },
@@ -365,14 +403,14 @@ return {
 					self.search = search
 				end
 			end,
-			provider = "  ",
+			provider = " ",
 			hl = { fg = "purple", },
 			utils.surround({ "[", "]" }, nil, {
 				provider = function(self)
 					local search = self.search
 					return string.format("%d/%d", search.current, math.min(search.total, search.maxcount))
 				end,
-				hl = { fg = "white", bold = false },
+				hl = { fg = "green_sea", bold = false },
 			})
 		}
 
@@ -409,9 +447,6 @@ return {
 			--         return require("grapple").statusline()
 			--     end,
 			-- }),
-			update = {
-				"BufEnter"
-			}
 		}
 
 		local CenterFileName = {
@@ -434,8 +469,6 @@ return {
 			end,
 		}
 
-		local Align = { provider = "%=" }
-		local Space = { provider = " " }
 
 		-- Fyrir surround með litum
 		-- Ruler = utils.surround({ "", "" }, function(self) return self:mode_color() end,
@@ -446,19 +479,20 @@ return {
 		ViMode = utils.surround({ "", "" }, "bright_bg", { ViMode })
 
 		local DefaultStatusline = {
-			ViMode, Space,
-			-- JustFileName, FileFlags, Space,
-			Git, Space, Diagnostics, Align,
-			JustFileName, FileFlags, Align,
-			Grapple,
+			ViMode, Space, FolderName, Space, Git, Space, Diagnostics,
+			Align,
+			FileNameModified, Space, FileFlags,
+			Align,
 			-- ShowCmd,
-			MacroRec, SearchCount, FileIcon, FileType, Space, Ruler
+			MacroRec, Space, SearchCount, Space, Grapple,
+			FileIcon, Space, FileType, Space, Ruler
 		}
 
 		local InactiveStatusline = {
 			condition = conditions.is_not_active,
 			Align,
-			JustFileName, FileFlags,
+			FileNameModified,
+			FileFlags,
 			Align
 		}
 
@@ -484,7 +518,7 @@ return {
 			end,
 			{ condition = conditions.is_active,        ViMode,   Space },
 			Align,
-			FileNameBlock,
+			OilFileName,
 			Align,
 			{ condition = require("grapple").exists(), Grapple },
 			{ condition = conditions.is_active,        MacroRec, Space, SearchCount, Space, Ruler },
@@ -528,8 +562,8 @@ return {
 					s = "purple",
 					S = "purple",
 					["\19"] = "purple",
-					R = "yellow",
-					r = "yellow",
+					R = "purple",
+					r = "purple",
 					["!"] = "pink",
 					t = "pink",
 				},
