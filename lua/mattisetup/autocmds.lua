@@ -35,6 +35,8 @@ autocmd("User", {
 	command = "VimtexClean",
 	desc = "Clean folder on vimtex exit"
 })
+
+-- Færa help glugga til vinstri
 autocmd("FileType", {
 	pattern = { "help" },
 	callback = function()
@@ -60,6 +62,24 @@ autocmd('CursorMoved', {
 	callback = function()
 		if vim.v.hlsearch == 1 and vim.fn.searchcount().exact_match == 0 then
 			vim.schedule(function() vim.cmd.nohlsearch() end)
+		end
+	end
+})
+
+-- Lsp keybindings
+autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("mitt.lsp", {}),
+	callback = function(args)
+		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+		if client:supports_method("textDocument/definition") then
+			vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = " Lsp definition" })
+		end
+		if client:supports_method("textDocument/hover") then
+			vim.keymap.set('n', 'æ', '<cmd>lua vim.lsp.buf.hover({border = "rounded"})<cr>', { desc = "Lsp hover" })
+		end
+		if client:supports_method("textDocument/signatureHelp") or client:supports_method("signature_help") then
+			vim.keymap.set('n', 'Æ', '<cmd>lua vim.lsp.buf.signature_help({border = "rounded"})<cr>',
+				{ desc = "Lsp signature help" })
 		end
 	end
 })

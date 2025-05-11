@@ -15,7 +15,7 @@
 - [ ] setja upp diffview og kanski nota git mergetool með því
 - [ ] passa að lspconfig sé ekki að setja upp haskell-language-server heldur bara haskell-tools
 
-- [ ] Skipta yfir í nýja lsp-setup id
+- [x] Skipta yfir í nýja lsp-setup id
 
 ## Colorscheme
 - Nota base-16 pinky sem grunn og bæta síðan litum við það, eins og þeim sem þú ert búin að safna
