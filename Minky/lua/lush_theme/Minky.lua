@@ -119,7 +119,7 @@ local theme    = lush(function(injected_functions)
 		NonText                              { fg = "#117c3c", }, 
 		EndOfBuffer                          { NonText }, 
 		Whitespace                           { NonText }, 
-		Directory                            { fg = teal, }, 
+		Directory                            { fg = blue1, }, 
 		ErrorMsg                             { fg = yellow, bg = "#120f12", }, 
 		NvimInvalidSpacing                   { ErrorMsg }, 
 		IncSearch                            { fg = "#1b181b", bg = "#00ff66", }, 
