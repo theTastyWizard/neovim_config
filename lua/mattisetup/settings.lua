@@ -50,6 +50,10 @@ vim.opt.virtualedit = "block"
 -- sign column til að hann sé ekki alltaf að færast ef diag
 vim.opt.signcolumn = "yes:1"
 
+-- automatic folding með indent
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = false
+
 -- diagnostic signs
 vim.diagnostic.config({
     signs = {
