@@ -101,9 +101,13 @@ return {
 			}
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "snippets",
+				-- "buffer"
+			},
 			per_filetype = {
-				lua = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', },
+				lua = { 'lazydev', 'lsp', 'path', 'snippets',
+					-- 'buffer',
+				},
 				sql = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod' },
 			},
 			providers = {
