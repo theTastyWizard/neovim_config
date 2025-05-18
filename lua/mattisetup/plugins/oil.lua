@@ -39,7 +39,6 @@ return {
 			["<C-s>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
 			["<C-p>"] = "actions.preview",
 			["<C-c>"] = "actions.close",
-			["<C-l>"] = "actions.refresh",
 			["h"] = "actions.parent",
 			["-"] = "actions.open_cwd",
 			["~"] = "actions.cd",
