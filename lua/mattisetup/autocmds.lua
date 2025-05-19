@@ -76,9 +76,12 @@ autocmd("LspAttach", {
 		end
 		if client:supports_method("textDocument/hover") then
 			vim.keymap.set('n', 'æ', '<cmd>lua vim.lsp.buf.hover({border = "rounded"})<cr>', { desc = "Lsp hover" })
+			vim.keymap.set('n', '<Tab>', '<cmd>lua vim.lsp.buf.hover({border = "rounded"})<cr>', { desc = "Lsp hover" })
 		end
 		if client:supports_method("textDocument/signatureHelp") or client:supports_method("signature_help") then
 			vim.keymap.set('n', 'Æ', '<cmd>lua vim.lsp.buf.signature_help({border = "rounded"})<cr>',
+				{ desc = "Lsp signature help" })
+			vim.keymap.set('n', '<s-Tab>', '<cmd>lua vim.lsp.buf.signature_help({border = "rounded"})<cr>',
 				{ desc = "Lsp signature help" })
 		end
 	end
