@@ -1,7 +1,7 @@
 return {
 	figure = {
 		prefix = "fig",
-		body = "#figure(\n\timage(\"$1.png\", width: 40%),\n\tcaption: [$2])",
+		body = "#figure(\n\timage(\"$1.png\", width: 40%),\n\tcaption: [$0])",
 		desc = "Figure with caption"
 	},
 	header = {
