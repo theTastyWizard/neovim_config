@@ -2,8 +2,7 @@ return {
 	'saghen/blink.cmp',
 	lazy = false, -- lazy loading handled internally
 	-- optional: provides snippets for the snippet source
-	dependencies = 'rafamadriz/friendly-snippets',
-
+	dependencies = { 'rafamadriz/friendly-snippets', 'echasnovski/mini.snippets' },
 	-- use a release tag to download pre-built binaries
 	version = 'v1.*',
 	-- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
@@ -12,6 +11,7 @@ return {
 	-- build = 'RUSTFLAGS="-C target-feature=-crt-static" cargo build --release',
 
 	opts = {
+		snippets = { preset = 'mini_snippets' },
 		-- for keymap, all values may be string | string[]
 		-- use an empty table to disable a keymap
 		keymap = {
