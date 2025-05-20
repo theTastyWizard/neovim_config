@@ -1,6 +1,6 @@
 return {
 	figure = {
-		prefix = "figure",
+		prefix = "fig",
 		body = "#figure(\n\timage(\"$1.png\", width: 40%),\n\tcaption: [$2])",
 		desc = "Figure with caption"
 	},
