@@ -484,7 +484,7 @@ return {
 			FileNameModified, Space, FileFlags,
 			Align,
 			-- ShowCmd,
-			MacroRec, Space, SearchCount, Space, Grapple,
+			MacroRec, Space, SearchCount, Space, Grapple, Space,
 			FileIcon, Space, FileType, Space, Ruler
 		}
 
