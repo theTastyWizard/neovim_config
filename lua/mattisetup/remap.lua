@@ -1,4 +1,9 @@
+-- Leader sem space
 vim.g.mapleader = " "
+
+-- Til að aftengja tab og c-i
+vim.keymap.set("n", "<C-I>", "<C-I>")
+vim.keymap.set("n", "<Tab>", "<Nop>")
 
 vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", { desc = 'Close nvim' })
 vim.keymap.set("n", "<leader>!", "<cmd>q!<cr>", { desc = 'Close nvim with force' })
@@ -35,10 +40,6 @@ vim.keymap.set("n", "Þ", "?", { desc = 'search backward' })
 -- Auðveldari string leit
 vim.keymap.set("n", "ð", "*", { desc = 'search word forward' })
 vim.keymap.set("n", "Ð", "#", { desc = 'search word backward' })
-
--- Skipta endurtekt á f og t leit
-vim.keymap.set({ "n", "v" }, ",", ";", { desc = 'next f & t search' })
-vim.keymap.set({ "n", "v" }, ";", ",", { desc = 'previous f & t search' })
 
 -- next greatest remap ever asbjornHaland tekið frá primeagen
 -- setur system clipboard á space+ y, Y og p,P
