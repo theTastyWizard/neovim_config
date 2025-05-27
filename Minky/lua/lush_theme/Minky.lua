@@ -366,7 +366,7 @@ local theme    = lush(function(injected_functions)
 		-- Functions
 		sym "@function"                      { Function }, 
 		sym "@function.call"                 { Function }, 
-		sym "@function.builtin"              { fg = green_sea, gui = "italic",}, 
+		sym "@function.builtin"              { fg = green_sea}, 
 		sym "@function.macro"                { Macro }, 
 		sym "@function.method"               { fg = green_sea }, 
 		sym "@function.method.call"          { fg = green_sea }, 
@@ -436,12 +436,12 @@ local theme    = lush(function(injected_functions)
 		sym "@class"                         { TSType }, 
 		sym "@struct"                        { TSType }, 
 		sym "@enum"                          { TSType }, 
-		TSTypeBuiltin                        { fg = "#20df6c", gui = "italic", }, 
+		TSTypeBuiltin                        { fg = "#20df6c"}, 
 		sym "@type.builtin"                  { TSTypeBuiltin }, 
 
 		TSVariable                           { fg = yellow }, 
 		sym "@variable"                      { TSVariable }, 
-		TSVariableBuiltin                    { fg = yellow, gui = "italic", }, 
+		TSVariableBuiltin                    { fg = yellow}, 
 		sym "@variable.builtin"              { TSVariableBuiltin }, 
 
 		TSDefinition                         { gui = "underline", sp = "#e7dbdb", }, 
