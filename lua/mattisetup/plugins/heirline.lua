@@ -517,7 +517,6 @@ return {
 				})
 			end,
 			{ condition = conditions.is_active,        ViMode,   Space },
-			Align,
 			OilFileName,
 			Align,
 			{ condition = require("grapple").exists(), Grapple },
