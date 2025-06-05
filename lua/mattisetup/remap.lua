@@ -45,15 +45,17 @@ vim.keymap.set("n", "Ð", "#", { desc = 'search word backward' })
 -- setur system clipboard á space+ y, Y og p,P
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = 'System clipboard yank' })
 vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]], { desc = 'System clipboard Yank' })
-vim.keymap.set({ "n", "v" }, "<leader>p", [["+]p]], { desc = 'System clipboard put & indent' })
-vim.keymap.set({ "n", "v" }, "<leader>P", [["+]P]], { desc = 'System clipboard put & indent' })
+vim.keymap.set({ "n", "v" }, "<leader>p", [["+]p]], { desc = 'System clipboard put' })
+vim.keymap.set({ "n", "v" }, "<leader>P", [["+]P]], { desc = 'System clipboard put' })
+vim.keymap.set({ "n", "v" }, "<leader>]p", [["+]p]], { desc = 'System clipboard put & indent' })
+vim.keymap.set({ "n", "v" }, "<leader>]P", [["+]P]], { desc = 'System clipboard put & indent' })
 
 -- yank comment and put
 -- vim.keymap.set({ "n", "v" }, "ycc", "yygccp", { remap = true, desc = 'yank comment and put' })
 
 -- normal put with correct indent
-vim.keymap.set({ "n", "v" }, "p", "]p", { desc = 'put with indent' })
-vim.keymap.set({ "n", "v" }, "P", "]P", { desc = 'Put with indent' })
+-- vim.keymap.set({ "n", "v" }, "p", "]p", { desc = 'put with indent' })
+-- vim.keymap.set({ "n", "v" }, "P", "]P", { desc = 'Put with indent' })
 
 -- passar að yankaðir hlutir eyðist ekki eftir put
 vim.keymap.set("x", "p", "\"_dP")

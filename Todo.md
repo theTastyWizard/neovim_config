@@ -1,7 +1,6 @@
 # Neovim Todo:
 - [x] Stilla heirline þannig að special og oil verði öðurvísi ef inactive 
 - [x] Setja nvim-java þannig að það virki fyrir allt ég þarf í hugbverk1
-- [X] Kannski setja upp Ocaml REPL, er með Utop en veit ekki hvort það virkar í nvim
 - [ ] Nota nýa snippet dótið frá mini.nvim, virðist vera miklu betra enn allt annað
     - [ ] Setja upp snippet keybinds
 - [ ] Setja upp rainbow-delim en svo þau eru bara á ákveðnum ft -scheme, racket,...
