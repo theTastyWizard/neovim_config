@@ -131,8 +131,8 @@ return {
 			{ "<leader>N",  function() Snacks.notifier.show_history() end, desc = "Show notification history" },
 
 			-- { "<leader>bd", function() Snacks.bufdelete() end,               desc = "Delete Buffer" },
-			{ "<leader>gg", function() Snacks.lazygit() end,               desc = "Lazygit" },
-			{ "<leader>gB", function() Snacks.gitbrowse() end,             desc = "Git Browse" },
+			-- { "<leader>gg", function() Snacks.lazygit() end,               desc = "Lazygit" },
+			-- { "<leader>gB", function() Snacks.gitbrowse() end,             desc = "Git Browse" },
 			{ "<leader>gf", function() Snacks.lazygit.log_file() end,      desc = "Lazygit Current File History" },
 			{ "<leader>gl", function() Snacks.lazygit.log() end,           desc = "Lazygit Log (cwd)" },
 
