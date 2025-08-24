@@ -25,8 +25,24 @@ return {
 			},
 			input = { enabled = true, },
 			scope = { enabled = true, },
-			image = { 
+			image = {
 				enabled = true,
+				formats = {
+					"png",
+					"jpg",
+					"jpeg",
+					"gif",
+					"bmp",
+					"webp",
+					"tiff",
+					"heic",
+					"avif",
+					"mp4",
+					"mov",
+					"avi",
+					"mkv",
+					"webm"
+				},
 				doc = {
 					inline = false,
 					float = true
