@@ -11,6 +11,7 @@ return {
 				"bash", "fish", "make",
 				"markdown", "markdown_inline", "latex",
 				"json", "regex", "html", "css",
+				"gdscript"
 			},
 			sync_install = false,
 			highlight = { enable = true },
