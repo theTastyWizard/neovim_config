@@ -78,7 +78,6 @@ return {
 				},
 			},
 			menu = {
-				border = 'rounded',
 				scrollbar = false,
 				draw = {
 					columns = { { 'label', 'label_description', gap = 1 }, { 'kind', 'kind_icon', gap = 1 } }
@@ -89,14 +88,12 @@ return {
 				auto_show = true,
 				auto_show_delay_ms = 100,
 				window = {
-					border = 'rounded',
 				}
 			},
 		},
 		signature = {
 			enabled = true,
 			window = {
-				border = 'rounded',
 				scrollbar = false,
 			}
 		},

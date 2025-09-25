@@ -1,3 +1,5 @@
+vim.opt.winborder = "rounded"
+
 -- Til að vim opni nýa glugga undir og til hægri
 vim.opt.splitbelow = true
 vim.opt.splitright = true
