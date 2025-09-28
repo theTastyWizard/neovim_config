@@ -46,9 +46,9 @@ vim.keymap.set("n", "Ð", "#", { desc = 'search word backward' })
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = 'System clipboard yank' })
 vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]], { desc = 'System clipboard Yank' })
 vim.keymap.set({ "n", "v" }, "<leader>p", [["+]p]], { desc = 'System clipboard put' })
-vim.keymap.set({ "n", "v" }, "<leader>P", [["+]P]], { desc = 'System clipboard put' })
+vim.keymap.set({ "n", "v" }, "<leader>P", [["+]P]], { desc = 'System clipboard Put' })
 vim.keymap.set({ "n", "v" }, "<leader>]p", [["+]p]], { desc = 'System clipboard put & indent' })
-vim.keymap.set({ "n", "v" }, "<leader>]P", [["+]P]], { desc = 'System clipboard put & indent' })
+vim.keymap.set({ "n", "v" }, "<leader>]P", [["+]P]], { desc = 'System clipboard Put & indent' })
 
 -- yank comment and put
 -- vim.keymap.set({ "n", "v" }, "ycc", "yygccp", { remap = true, desc = 'yank comment and put' })
