@@ -505,6 +505,7 @@ return {
 			end,
 			FileType,
 			Space,
+			Align,
 			HelpFileName,
 			Align,
 			{ condition = conditions.is_active, SearchCount, Space, Ruler },
