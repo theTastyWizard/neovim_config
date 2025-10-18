@@ -72,7 +72,7 @@ autocmd("LspAttach", {
 	callback = function(args)
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 		if client:supports_method("textDocument/definition") then
-			vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = " Lsp definition" })
+			vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = "Lsp definition" })
 		end
 		if client:supports_method("textDocument/hover") then
 			vim.keymap.set('n', 'æ', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = "Lsp hover" })
