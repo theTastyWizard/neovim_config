@@ -12,7 +12,7 @@ autocmd("FileType", {
 		"notify",
 		"man",
 		"qf",
-		"floaterm"
+		"floaterm",
 	},
 	callback = function(event)
 		vim.bo[event.buf].buflisted = false
@@ -29,19 +29,19 @@ autocmd("BufEnter", {
 	desc = "Disable new line comment",
 })
 
--- Cleanup on quit
+-- Vimtex cleanup on quit
 autocmd("User", {
 	pattern = "VimtexEventQuit",
 	command = "VimtexClean",
-	desc = "Clean folder on vimtex exit"
+	desc = "Clean folder on vimtex exit",
 })
 
 -- Færa help glugga til vinstri
 autocmd("FileType", {
 	pattern = { "help" },
 	callback = function()
-		vim.cmd 'wincmd L'
-	end
+		vim.cmd("wincmd L")
+	end,
 })
 
 -- Equal size buffers if window resized
@@ -53,17 +53,19 @@ autocmd("Filetype", {
 	callback = function()
 		vim.bo.textwidth = 90
 		vim.opt_local.colorcolumn = "+1"
-	end
+	end,
 })
 
 -- Til ad hlsearch se bara ef cursor er a ordinu
-autocmd('CursorMoved', {
-	group = vim.api.nvim_create_augroup('auto-hlsearch', { clear = true }),
+autocmd("CursorMoved", {
+	group = vim.api.nvim_create_augroup("auto-hlsearch", { clear = true }),
 	callback = function()
 		if vim.v.hlsearch == 1 and vim.fn.searchcount().exact_match == 0 then
-			vim.schedule(function() vim.cmd.nohlsearch() end)
+			vim.schedule(function()
+				vim.cmd.nohlsearch()
+			end)
 		end
-	end
+	end,
 })
 
 -- Lsp keybindings
@@ -72,17 +74,26 @@ autocmd("LspAttach", {
 	callback = function(args)
 		local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 		if client:supports_method("textDocument/definition") then
-			vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = "Lsp definition" })
+			vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Lsp definition" })
 		end
 		if client:supports_method("textDocument/hover") then
-			vim.keymap.set('n', 'æ', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = "Lsp hover" })
-			vim.keymap.set('n', '<Tab>', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = "Lsp hover" })
+			vim.keymap.set("n", "æ", "<cmd>lua vim.lsp.buf.hover()<cr>", { desc = "Lsp hover" })
+			vim.keymap.set("n", "<Tab>", "<cmd>lua vim.lsp.buf.hover()<cr>", { desc = "Lsp hover" })
 		end
 		if client:supports_method("textDocument/signatureHelp") or client:supports_method("signature_help") then
-			vim.keymap.set('n', 'Æ', '<cmd>lua vim.lsp.buf.signature_help()<cr>',
-				{ desc = "Lsp signature help" })
-			vim.keymap.set('n', '<s-Tab>', '<cmd>lua vim.lsp.buf.signature_help()<cr>',
-				{ desc = "Lsp signature help" })
+			vim.keymap.set("n", "Æ", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { desc = "Lsp signature help" })
+			vim.keymap.set("n", "<s-Tab>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { desc = "Lsp signature help" })
 		end
-	end
+	end,
+})
+
+-- Treesitter highlighting and indents
+autocmd("FileType", {
+	pattern = { "<filetype>" },
+	callback = function()
+		-- higlighting
+		vim.treesitter.start()
+		-- indents
+		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+	end,
 })
