@@ -41,7 +41,7 @@ vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 999
 
-vim.opt.splitkeep = 'cursor'
+vim.opt.splitkeep = "cursor"
 
 -- wrap á góðum stað
 vim.opt.linebreak = true
@@ -58,43 +58,43 @@ vim.opt.foldenable = false
 
 -- diagnostic signs
 vim.diagnostic.config({
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = '󰯈', --'󰚌', --󰅚 󰯈
-            [vim.diagnostic.severity.WARN] = "", --'󰀪', --' ', --󰀪 --
-            [vim.diagnostic.severity.HINT] = '󰌶',--'󱠂 ', --  󰌶 
-            [vim.diagnostic.severity.INFO] = '', --' ',
-        },
-        -- linehl = {
-        -- },
-        numhl = {
-            [vim.diagnostic.severity.ERROR] = 'DiagnosticError',
-            [vim.diagnostic.severity.WARN] = 'DiagnosticWarn',
-        },
-    },
-    virtual_text = false,
-    update_in_insert = false,
-    underline = false,
-    severity_sort = true,
-    float = {
-        focusable = false,
-        style = 'minimal',
-        border = 'rounded',
-        source = 'if_many',
-        header = '',
-        prefix = '',
-    },
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "󰯈", --'󰚌', --󰅚 󰯈
+			[vim.diagnostic.severity.WARN] = "", --'󰀪', --' ', --󰀪 --
+			[vim.diagnostic.severity.HINT] = "󰌶", --'󱠂 ', --  󰌶
+			[vim.diagnostic.severity.INFO] = "", --' ',
+		},
+		-- linehl = {
+		-- },
+		numhl = {
+			[vim.diagnostic.severity.ERROR] = "DiagnosticError",
+			[vim.diagnostic.severity.WARN] = "DiagnosticWarn",
+		},
+	},
+	virtual_text = false,
+	update_in_insert = false,
+	underline = false,
+	severity_sort = true,
+	float = {
+		focusable = false,
+		style = "minimal",
+		border = "rounded",
+		source = "if_many",
+		header = "",
+		prefix = "",
+	},
 })
 
 vim.opt.list = false -- enable or disable listchars
 vim.opt.listchars = {
-    eol = "↲",
-    tab = "-->",
-    trail = "+",
-    extends = ">",
-    precedes = "<",
-    space = "·",
-    nbsp = "␣",
+	eol = "↲",
+	tab = "-->",
+	trail = "+",
+	extends = ">",
+	precedes = "<",
+	space = "·",
+	nbsp = "␣",
 }
 
 -- Tells me if there is the line is wrapped
