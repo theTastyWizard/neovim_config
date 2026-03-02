@@ -1,51 +1,87 @@
 return {
-	'stevearc/oil.nvim',
-	keys = {
-		{ "<leader>e", "<CMD>Oil<CR>", desc = 'Open Oil' }
+	{
+		"stevearc/oil.nvim",
+		keys = {
+			{ "<leader>e", "<CMD>Oil<CR>", desc = "Open Oil" },
+		},
+		config = function()
+			local detail = false
+
+			require("oil").setup({
+				-- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
+				-- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
+				default_file_explorer = true,
+
+				-- Id is automatically added at the beginning, and name at the end
+				-- See :help oil-columns
+				columns = {
+					"icon",
+					-- "permissions",
+					-- "size",
+					-- "mtime",
+				},
+				-- Skip the confirmation popup for simple operations (:help oil.skip_confirm_for_simple_edits)
+				skip_confirm_for_simple_edits = true,
+
+				-- Selecting a new/moved/renamed file or directory will prompt you to save changes first
+				-- (:help prompt_save_on_select_new_entry)
+				prompt_save_on_select_new_entry = true,
+
+				-- Constrain the cursor to the editable parts of the oil buffer
+				-- Set to `false` to disable, or "name" to keep it on the file names
+				constrain_cursor = "editable",
+
+				-- Set to true to watch the filesystem for changes and reload oil
+				watch_for_changes = true,
+				use_default_keymaps = false,
+				keymaps = {
+					["g?"] = "actions.show_help",
+					["l"] = "actions.select",
+					["<Cr>"] = "actions.select",
+					["<C-v>"] = {
+						"actions.select",
+						opts = { vertical = true },
+						desc = "Open the entry in a vertical split",
+					},
+					["<C-s>"] = {
+						"actions.select",
+						opts = { horizontal = true },
+						desc = "Open the entry in a horizontal split",
+					},
+					["<C-p>"] = "actions.preview",
+					["<C-c>"] = "actions.close",
+					["h"] = "actions.parent",
+					["-"] = "actions.open_cwd",
+					["~"] = "actions.cd",
+					["gs"] = "actions.change_sort",
+					["gx"] = "actions.open_external",
+					["g."] = "actions.toggle_hidden",
+					["g\\"] = "actions.toggle_trash",
+					["gd"] = {
+						desc = "Toggle file detail view",
+						callback = function()
+							detail = not detail
+							if detail then
+								require("oil").set_columns({ "mtime", "size", "icon" })
+							else
+								require("oil").set_columns({ "icon" })
+							end
+						end,
+					},
+				},
+			})
+		end,
 	},
-	opts = {
-		-- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
-		-- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
-		default_file_explorer = true,
+	{
+		"malewicz1337/oil-git.nvim",
+		dependencies = { "stevearc/oil.nvim" },
+		opts = {
+			show_file_highlights = false,
+			show_directory_highlights = false,
+			show_ignored_files = true,
+			show_ignored_directories = true,
+			symbol_position = "signcolumn",
 
-
-		-- Id is automatically added at the beginning, and name at the end
-		-- See :help oil-columns
-		columns = {
-			"icon",
-			-- "permissions",
-			-- "size",
-			-- "mtime",
-		},
-		-- Skip the confirmation popup for simple operations (:help oil.skip_confirm_for_simple_edits)
-		skip_confirm_for_simple_edits = true,
-
-		-- Selecting a new/moved/renamed file or directory will prompt you to save changes first
-		-- (:help prompt_save_on_select_new_entry)
-		prompt_save_on_select_new_entry = true,
-
-		-- Constrain the cursor to the editable parts of the oil buffer
-		-- Set to `false` to disable, or "name" to keep it on the file names
-		constrain_cursor = "editable",
-
-		-- Set to true to watch the filesystem for changes and reload oil
-		watch_for_changes = true,
-		use_default_keymaps = false,
-		keymaps = {
-			["g?"] = "actions.show_help",
-			["l"] = "actions.select",
-			["<Cr>"] = "actions.select",
-			["<C-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
-			["<C-s>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
-			["<C-p>"] = "actions.preview",
-			["<C-c>"] = "actions.close",
-			["h"] = "actions.parent",
-			["-"] = "actions.open_cwd",
-			["~"] = "actions.cd",
-			["gs"] = "actions.change_sort",
-			["gx"] = "actions.open_external",
-			["g."] = "actions.toggle_hidden",
-			["g\\"] = "actions.toggle_trash",
-		},
-	}
+		}
+	},
 }

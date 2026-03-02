@@ -7,6 +7,7 @@ local modicator = require('lush_theme.plugins.modicator')
 local blink = require('lush_theme.plugins.blink')
 local mini_icons = require('lush_theme.plugins.mini_icons')
 local which_key = require('lush_theme.plugins.which_key')
+local oil = require('lush_theme.plugins.oil')
 
 local specs = {
 	adal,
@@ -14,6 +15,7 @@ local specs = {
 	mini_icons,
 	blink,
 	which_key,
+	oil,
 }
 
 local spec = lush.merge(specs)
